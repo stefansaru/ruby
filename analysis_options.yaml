@@ -1,0 +1,166 @@
+# Static analysis for pushy.
+#
+# The rule here is that **the analyzer is a gate, not a suggestion**: the
+# wizard fails the run on a single issue, so anything switched on below is
+# something the tree is clean of today and stays clean of.
+#
+# The stock Flutter template leaves every optional lint commented out, which
+# makes "zero analyzer issues" a bar cleared by doing nothing. The project is
+# a week old and 65 Dart files (2026-09-26); turning the strict rules on now
+# costs an afternoon, and never turning them on costs an afternoon a year from now that
+# nobody has.
+#
+# **A rule left off carries a comment saying what enabling it would cost,
+# measured and dated.** A bare `# too noisy` is how a disabled rule becomes
+# permanent.
+
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  # None of the three is an opinion — they are classes of bug the compiler
+  # can see and would otherwise wave through.
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+  errors:
+    # A TODO left in the tree is a note to a future reader, not a defect. It
+    # stays an info so the wizard's zero-issue gate does not turn every note
+    # into a blocker.
+    todo: ignore
+
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
+
+linter:
+  rules:
+    # --- correctness -------------------------------------------------------
+    always_declare_return_types: true
+    avoid_dynamic_calls: true
+    avoid_slow_async_io: true
+    avoid_type_to_string: true
+    cancel_subscriptions: true
+    close_sinks: true
+    collection_methods_unrelated_type: true
+    comment_references: true
+    control_flow_in_finally: true
+    empty_statements: true
+    hash_and_equals: true
+    implicit_reopen: true
+    invalid_case_patterns: true
+    literal_only_boolean_expressions: true
+    no_adjacent_strings_in_list: true
+    no_self_assignments: true
+    no_wildcard_variable_uses: true
+    prefer_void_to_null: true
+    test_types_in_equals: true
+    throw_in_finally: true
+    unnecessary_statements: true
+    unrelated_type_equality_checks: true
+    use_build_context_synchronously: true
+
+    # --- clarity -----------------------------------------------------------
+    always_put_required_named_parameters_first: true
+    avoid_bool_literals_in_conditional_expressions: true
+    avoid_escaping_inner_quotes: true
+    avoid_returning_this: true
+    avoid_unused_constructor_parameters: true
+    avoid_void_async: true
+    combinators_ordering: true
+    directives_ordering: true
+    join_return_with_assignment: true
+    noop_primitive_operations: true
+    omit_local_variable_types: true
+    only_throw_errors: true
+    prefer_asserts_in_initializer_lists: true
+    prefer_const_constructors: true
+    prefer_const_constructors_in_immutables: true
+    prefer_const_declarations: true
+    prefer_const_literals_to_create_immutables: true
+    prefer_expression_function_bodies: true
+    prefer_final_in_for_each: true
+    prefer_final_locals: true
+    prefer_if_elements_to_conditional_expressions: true
+    prefer_initializing_formals: true
+    prefer_interpolation_to_compose_strings: true
+    prefer_null_aware_method_calls: true
+    prefer_single_quotes: true
+    require_trailing_commas: true
+    sized_box_shrink_expand: true
+    sort_constructors_first: true
+    tighten_type_of_initializing_formals: true
+    type_annotate_public_apis: true
+    unnecessary_breaks: true
+    unnecessary_lambdas: true
+    unnecessary_library_directive: true
+    unnecessary_null_aware_operator_on_extension_on_nullable: true
+    unnecessary_null_checks: true
+    unnecessary_parenthesis: true
+    unnecessary_raw_strings: true
+    unnecessary_to_list_in_spreads: true
+    use_colored_box: true
+    use_enums: true
+    use_named_constants: true
+    use_raw_strings: true
+    use_string_buffers: true
+    use_super_parameters: true
+    use_test_throws_matchers: true
+
+    # --- deliberately off, with the cost of turning it on ------------------
+
+    # cascade_invocations: 2026-09-25 — 26 findings, and turning them into
+    # cascades makes the code worse in every one. 16 are test bodies of the
+    # shape `final s = BoardSession(def); s.beginDrag(0); expect(...);` where
+    # the statements are interleaved with assertions, and a cascade cannot be.
+    # Another 3 are `StringBuffer.writeln` in `render`, where the alternative
+    # is one cascade chain forty links long. The remaining 7 are setup in
+    # `board_game.dart`. Revisit if a case ever appears where the cascade is
+    # the clearer form; the lint is not wrong in general, it is wrong here.
+
+    # public_member_api_docs: 2026-09-25 — 291 findings across 34 files. The
+    # engine and lib/gen are documented; the UI widgets largely are not, and
+    # documenting a `build` method to satisfy a lint produces the kind of
+    # comment that says `/// Builds the widget.` This is worth doing for
+    # lib/engine and lib/gen only, and the lint cannot be scoped to a
+    # directory, so it stays off and the doc coverage of those two is held up
+    # by review instead.
+
+    # avoid_positional_boolean_parameters: 2026-09-25 — 6 findings, all of
+    # them in `Frame(rot, flip, config)` and the board geometry, where the
+    # positional form reads better than `Frame(rot: 0, flip: false)` at the
+    # dozens of call sites in the tests. Revisit if it spreads past geometry.
+
+    # one_member_abstracts: off for good. The engine has no abstract classes
+    # and the lint would only fire on a design this project does not use;
+    # switching it on would be enforcing nothing.
+
+    # flutter_style_todos: 2026-09-25 — 0 findings today, but it requires the
+    # `TODO(name):` form, and the project's TODO.md is the place notes live.
+    # Enabling it would push notes into code comments, which is backwards.
+
+# --- why `dart format` is not a gate -----------------------------------------
+#
+# The tree has never been through the current formatter — 58 of its 65 Dart
+# files would change (re-measured 2026-09-26 with `dart format --output=none
+# lib test tool`; 50 of 54 on 2026-09-25). That alone is only a one-time sweep,
+# and would be worth doing. The blocker is that **all five generated level
+# files in `lib/data/` are among the 58.**
+#
+# Those files are generated, and `test/data/random_boards_test.dart` plus the
+# byte-for-byte reproduction check both rest on the tool emitting exactly what
+# is on disk. Formatting them by hand would put them permanently one step out
+# of sync with `render()` in `lib/gen/gen_render.dart`: the next regeneration
+# would show a diff that is pure whitespace and means nothing, which is the
+# fastest way to teach everyone to ignore that diff.
+#
+# So the order is: teach `render()` to emit formatter-clean output, sweep the
+# other 53 files, then add `dart format --set-exit-if-changed` as a gate in
+# `tool/wizard.dart`. Not before — a formatting gate that fights the code
+# generator will be switched off within a week.

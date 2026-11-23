@@ -1,0 +1,67 @@
+# Documentation map
+
+Each file has one job. When two files disagree, the one named here as the owner of
+the subject is right and the other is fixed.
+
+Conventions (2026-11-24, taken from pushy and amethyst because they kept those
+projects' docs true):
+
+- Every rule carries its reason and its date.
+- Present tense means now. What is no longer true moves to [History.md](History.md).
+- Docs do not repeat numbers that live in code (how many cases, how many tests); they
+  name the file that holds them.
+- Outstanding work is only in [../TODO.md](../TODO.md); known faults only in
+  [../OpenIssues.md](../OpenIssues.md).
+
+## The game
+
+| File | Owns |
+|---|---|
+| [GameRules.md](GameRules.md) | The rules, the words with one meaning, every clue and case rule. The authority on behaviour. |
+| [Techniques.md](Techniques.md) | The solving techniques, in order of difficulty; what each hint will explain. |
+| [Settings.md](Settings.md) | The places, their areas and objects, and the naming rule. |
+| [Levels.md](Levels.md) | The case text format, what a shipped case must satisfy, tiers, packs. |
+| [Glossary.md](Glossary.md) | Terms used in docs and code. |
+
+## The code
+
+| File | Owns |
+|---|---|
+| [Architecture.md](Architecture.md) | Layers, files, tools, how a case flows from generator to pack. |
+| [Testing.md](Testing.md) | The gates and the reason for each. |
+| [testing/Tests.md](testing/Tests.md) | Inventory of the test files. |
+| [testing/ManualTestPlan.md](testing/ManualTestPlan.md) | Checks a person runs. |
+| [Performance.md](Performance.md) | Measured generator and solver times. |
+| [Art.md](Art.md) | What must be drawn, sheet formats, the art pipeline. |
+| [architecture/ads/Ads.md](architecture/ads/Ads.md) | Ads design (not built). |
+
+## Features (designs; see TODO for what is built)
+
+| File | Owns |
+|---|---|
+| [features/Hints.md](features/Hints.md) | Hint ladder, coins, the watch-an-ad flow. |
+| [features/Notes.md](features/Notes.md) | Per-suspect notes and marks. |
+| [features/DailyCase.md](features/DailyCase.md) | The shared daily case. |
+
+## Why and for whom
+
+| File | Owns |
+|---|---|
+| [strategy/VisionMissionValues.md](strategy/VisionMissionValues.md) | Vision, mission, values. |
+| [strategy/Objectives.md](strategy/Objectives.md) | Measurable goals. |
+| [strategy/MarketResearch.md](strategy/MarketResearch.md) | The genre, the twelve competitors, sources. |
+| [strategy/TargetAudience.md](strategy/TargetAudience.md) | Who plays and how. |
+| [strategy/PainPointsAndConcepts.md](strategy/PainPointsAndConcepts.md) | What players complain about and our answer to each. |
+| [strategy/RiskAnalysis.md](strategy/RiskAnalysis.md) | Risks and mitigations. |
+| [strategy/Monetisation.md](strategy/Monetisation.md) | Banner, rewarded hints, what we will not do. |
+| [marketing/](marketing/) | Launch campaign, reel scripts, store listing draft. |
+
+## Requirements and process
+
+| File | Owns |
+|---|---|
+| [requirements/Requirements.md](requirements/Requirements.md) | Entry point: strategy, app and process requirements, one file per id. |
+| [requirements/gen/README.md](requirements/gen/README.md) | The machine-checked engine and generator register (GEN ids). |
+| [process/CommitChecklist.md](process/CommitChecklist.md) | What to run before a commit. |
+| [process/DoneLog.md](process/DoneLog.md) | Finished work, by date. |
+| [History.md](History.md) | Decisions reversed and things no longer true. |
