@@ -56,7 +56,7 @@ id. Anything else: follow `docs/requirements/Requirements.md`.
 
 ## Test layout
 
-`test/` mirrors `lib/`: `engine/`, `gen/`, `data/`, plus `architecture_test.dart` and
+`test/` mirrors `lib/`: `engine/`, `gen/`, `data/`, `screens/`, plus `architecture_test.dart` and
 `requirements_test.dart` at the root. Fixtures for hand-written cases are in
 `test/engine/fixtures.dart`. The inventory is `docs/testing/Tests.md`.
 

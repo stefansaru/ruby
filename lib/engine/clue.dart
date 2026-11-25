@@ -208,9 +208,6 @@ sealed class Clue {
   /// The person who makes the statement; null for a general clue.
   int? get subject;
 
-  /// The people this clue depends on; null means everyone.
-  List<int>? get scope;
-
   bool holds(CaseDef c, List<int> pos);
 }
 
@@ -220,8 +217,6 @@ class Is extends Clue {
   @override
   final int subject;
   final CellTest test;
-  @override
-  List<int> get scope => <int>[subject];
   @override
   bool holds(CaseDef c, List<int> pos) => test.test(c, pos[subject]);
 }
@@ -234,8 +229,6 @@ class Rel extends Clue {
   final RelKind kind;
   final int? a;
   final int? b;
-  @override
-  List<int> get scope => <int>[subject, other];
 
   /// The relation between a square for the subject and one for the other.
   bool between(CaseDef c, int x, int y) {
@@ -274,8 +267,6 @@ class Alone extends Clue {
   @override
   final int subject;
   @override
-  List<int>? get scope => null;
-  @override
   bool holds(CaseDef c, List<int> pos) {
     final area = c.cells[pos[subject]].area;
     for (var p = 0; p < pos.length; p++) {
@@ -291,8 +282,6 @@ class AloneWith extends Clue {
   @override
   final int subject;
   final List<int> others;
-  @override
-  List<int>? get scope => null;
   @override
   bool holds(CaseDef c, List<int> pos) {
     final area = c.cells[pos[subject]].area;
@@ -311,8 +300,6 @@ class Others extends Clue {
   final int subject;
   final Selector who;
   final int count;
-  @override
-  List<int>? get scope => null;
   @override
   bool holds(CaseDef c, List<int> pos) {
     final area = c.cells[pos[subject]].area;
@@ -335,8 +322,6 @@ class OnlyOne extends Clue {
   final int subject;
   final CellTest test;
   @override
-  List<int>? get scope => null;
-  @override
   bool holds(CaseDef c, List<int> pos) {
     for (var p = 0; p < pos.length; p++) {
       if (test.test(c, pos[p]) != (p == subject)) return false;
@@ -351,8 +336,6 @@ class AllOthers extends Clue {
   @override
   final int subject;
   final CellTest test;
-  @override
-  List<int>? get scope => null;
   @override
   bool holds(CaseDef c, List<int> pos) {
     for (var p = 0; p < pos.length; p++) {
@@ -370,8 +353,6 @@ class Count extends Clue {
   @override
   int? get subject => null;
   @override
-  List<int>? get scope => null;
-  @override
   bool holds(CaseDef c, List<int> pos) =>
       pos.where((int x) => test.test(c, x)).length == count;
 }
@@ -383,8 +364,6 @@ class More extends Clue {
   final int fewer;
   @override
   int? get subject => null;
-  @override
-  List<int>? get scope => null;
   @override
   bool holds(CaseDef c, List<int> pos) {
     var n = 0;
@@ -405,8 +384,6 @@ class Group extends Clue {
   @override
   int? get subject => null;
   @override
-  List<int>? get scope => null;
-  @override
   bool holds(CaseDef c, List<int> pos) {
     for (var p = 0; p < pos.length; p++) {
       if (who.matches(c.people[p]) && !test.test(c, pos[p])) return false;
@@ -421,8 +398,6 @@ class Negated extends Clue {
   final Clue inner;
   @override
   int? get subject => inner.subject;
-  @override
-  List<int>? get scope => inner.scope;
   @override
   bool holds(CaseDef c, List<int> pos) => !inner.holds(c, pos);
 }

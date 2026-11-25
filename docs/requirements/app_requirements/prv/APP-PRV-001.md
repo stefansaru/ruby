@@ -1,8 +1,10 @@
 # APP-PRV-001 — Consent Before the Ad SDK
 
 **Tags:** Privacy, Ads, Legal
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⛔ Retired (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
+
+> Retired 2026-11-25. Owner ruling: the game carries no ads, so there is no ad SDK to hold back and no consent flow for ads. Replaced by [APP-PAY-001](../pay/APP-PAY-001.md) (no ad SDK is linked) and [APP-PRV-002](APP-PRV-002.md) (the app sends nothing of its own). The rest of this file is kept as history.
 
 ## Requirement
 The ad SDK is not initialised and no ad request is made until consent has been gathered where the law requires it. One property, `ConsentService.adsReady`, is the only definition of 'ads may run'. The player can reopen the consent choice from settings.

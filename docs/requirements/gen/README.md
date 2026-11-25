@@ -12,7 +12,7 @@ Conventions:
 - A test cites a requirement by putting the id at the start of its name.
 - Ids are never reused or renumbered. A retired requirement keeps its file with
   `**Status:** retired` and the date; none are retired yet.
-- Player-facing behaviour (screens, hints as shown, ads) is in the APP
+- Player-facing behaviour (screens, hints as shown, the purchase) is in the APP
   requirements, see [../Requirements.md](../Requirements.md).
 
 | Id | Requirement |
@@ -45,3 +45,12 @@ Conventions:
 | [GEN-026](GEN-026.md) | The solver explains itself and accepts the player's placements |
 | [GEN-027](GEN-027.md) | Grids need not be square |
 | [GEN-028](GEN-028.md) | Packs are well formed as a set |
+| [GEN-029](GEN-029.md) | Every object stands in an area it belongs in |
+| [GEN-030](GEN-030.md) | The victim is listed last and begins with V |
+| [GEN-031](GEN-031.md) | The victim is placed last |
+| [GEN-032](GEN-032.md) | Tutorial and easy cases need no technique beyond clue and single |
+| [GEN-033](GEN-033.md) | A title belongs to its setting |
+| [GEN-034](GEN-034.md) | No door or window unless a clue uses it |
+| [GEN-035](GEN-035.md) | Extra statements are true and never needed |
+| [GEN-036](GEN-036.md) | A statement's mark follows the placements |
+| [GEN-037](GEN-037.md) | A case made on request is as sound as a shipped one |

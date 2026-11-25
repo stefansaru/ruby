@@ -15,9 +15,9 @@ there and here together.
 | 2 | Analyzer clean | `flutter analyze` | Warnings left alone become noise that hides the next real one |
 | 3 | Tests green | `flutter test --reporter=failures-only` | Includes the architecture test, the requirements test and the replay of every shipped case |
 | 4 | Generator reproduces the packs | `dart run tool/generate_cases.dart --dry-run` | A pack that differs from its seed was edited by hand, or the generator changed without regenerating |
-| 5 | Case sweep | `dart run tool/check_cases.dart` | Every shipped case, read back from the pack: parses, one solution and it is the certified one, solved by logic within its tier, every suspect speaks, no clue to spare |
+| 5 | Case sweep | `dart run tool/check_cases.dart` | Every shipped case, read back from the pack: parses, one solution and it is the certified one, solved by logic within its tier, every suspect speaks, no clue to spare, and the later pack rules (full list: `docs/Testing.md` section 3) |
 | 6 | Nothing from `input/` or `output/` is staged | `git status` | `input/` holds photos of a published book; neither folder is ours to publish |
-| 7 | No secrets | `git diff --cached` | No ad unit ids other than Google's public test ids, no keystore, no `.env` |
+| 7 | No secrets | `git diff --cached` | No keystore, no `.env`, no store or billing keys |
 
 Gates 4 and 5 may be skipped only when the commit touches no file under
 `lib/engine/`, `lib/gen/`, `lib/data/` or `tool/`.

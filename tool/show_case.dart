@@ -11,6 +11,7 @@ import 'package:ruby/data/cases.dart';
 import 'package:ruby/engine/atoms.dart';
 import 'package:ruby/engine/case_text.dart';
 import 'package:ruby/engine/logic_solver.dart';
+import 'package:ruby/engine/model.dart';
 import 'package:ruby/engine/wording.dart';
 
 void main(List<String> args) {
@@ -32,9 +33,9 @@ void main(List<String> args) {
     ..writeln();
   for (var g = 0; g < c.grids.length; g++) {
     final d = c.grids[g];
-    if (c.grids.length > 1) stdout.writeln(d.name.replaceAll('_', ' '));
+    if (c.grids.length > 1) stdout.writeln(d.label);
     stdout.writeln(
-      '     ${<String>[for (var k = 0; k < d.cols; k++) String.fromCharCode(65 + k).padRight(3)].join(' ')}',
+      '     ${<String>[for (var k = 0; k < d.cols; k++) colLabel(k).padRight(3)].join(' ')}',
     );
     for (var r = 0; r < d.rows; r++) {
       stdout.writeln(
@@ -99,6 +100,8 @@ void main(List<String> args) {
         ? ' [victim rule]'
         : s.clue == noTouchRule
         ? ' [no-touch rule]'
+        : s.clue == r.lie
+        ? ' [false: ${plain(describeClue(c, c.clues[s.clue!]))}]'
         : ' [${plain(describeClue(c, c.clues[s.clue!]))}]';
     final what = s.placed != null
         ? ' placed on ${c.cellLabel(s.placed!)}'

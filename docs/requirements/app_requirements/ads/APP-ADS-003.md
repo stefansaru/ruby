@@ -1,8 +1,10 @@
 # APP-ADS-003 — Ads Never Interrupt, Never Touch Audio
 
 **Tags:** Ads, PlayerRespect
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⛔ Retired (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
+
+> Retired 2026-11-25. Owner ruling: the game carries no ads, so no ad can interrupt or touch audio. Replaced by [APP-PAY-001](../pay/APP-PAY-001.md) (no ads anywhere) and, for what may never interrupt a case, [APP-PAY-002](../pay/APP-PAY-002.md) (no purchase prompt inside a case). The rest of this file is kept as history.
 
 > If the SDK takes audio focus for a rewarded video regardless, the rule and the listing copy that rests on it must be reworded to what is true.
 

@@ -7,164 +7,2983 @@
 const List<String> tutorialCases = <String>[
   '''
 case tutorial-001
-title The Quiet Teacup
+title The Missing Teacup
 setting home
-area A Hall
-area B Kitchen
+area A Bedroom
+area B Living Room
 area C Garage
-kind s block shelf
-kind r sit rug
-kind p block plant
+kind c sit chair
 kind b sit bed
+kind t block table
+kind a sit car
 grid Home 4 4
-A.. Cb1 Cb1 Br.
-A.. C.. C.. B..
-A.. C.. C.. B..
-A.. As. B.. Bp.
-open Home 4 2 E door
-open Home 2 1 W window
-open Home 1 4 E window
-person A Anna f
-person B Ben m
-person C Cora f
-victim R Rex m
-clue A is on b
-clue A is col 3
-clue B is beside s
-clue C is beside r
-solution A=1:1:3 B=1:4:1 C=1:2:4 R=1:3:2
+A.. A.. C.. C..
+A.. Ab1 Ac. C..
+B.. Ab1 A.. C..
+B.. Bt. B.. Ca.
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is on c
+clue B is beside a
+clue C is row 4
+extra A is row 2
+extra A is in A
+extra B is in C
+extra B is col 4
+extra C is beside t
+extra C is in B
+solution A=1:2:3 B=1:3:4 C=1:4:1 V=1:1:2
 ''',
   '''
 case tutorial-002
-title The Missing Ticket
+title The Missing Sandcastle
 setting beach
-area A Dunes
-area B Cafe
-area C Pier
+area A Rocks
+area B Dunes
+area C Cafe
 kind w sit towel
-kind c sit chair
 kind p block palm
+kind c sit chair
 grid Beach 4 4
-C.. C.. Cp. C..
-C.. Cp. C.. Aw.
-B.. B.. A.. A..
-B.. B.. Bc. A..
-open Beach 3 1 N door
-open Beach 4 1 S window
+C.. Cc. C.. A..
+A.. Aw. A.. A..
+Bw. B.. B.. B..
+B.. B.. Bp. B..
 person A Adam m
 person B Ben m
-person C Carl m
-victim I Ida f
-clue A is row 2
+person C Cora f
+victim V Vlad m
+clue A is beside p
 clue B is beside w
-clue C is on c
-solution A=1:2:1 B=1:3:4 C=1:4:3 I=1:1:2
+clue B is col 3
+clue C is in A
+extra A is in B
+extra A is col 2
+extra B is in A
+extra C is col 4
+solution A=1:4:2 B=1:2:3 C=1:1:4 V=1:3:1
 ''',
   '''
 case tutorial-003
-title The Broken Lantern
+title The Missing Acorn
 setting forest
-area A Cabin
-area B Cave
+area A Lake
+area B Clearing
 area C Pines
-kind r sit rug
-kind t block table
 kind k block rock
+kind u block bush
+kind l sit log
 grid Forest 4 4
-B.. B.. B.. B..
-A.. B.. B.. Br.
-A.. Ar. Bt. C..
-A.. A.. Ck. C..
-person A Anna f
-person B Bea f
-person C Carl m
-victim P Paul m
-clue A is beside r
-clue A is row 2
-clue B is beside r
-clue B is col 2
-clue C is in A
-solution A=1:2:3 B=1:4:2 C=1:3:1 P=1:1:4
-''',
-  '''
-case tutorial-004
-title The Late Window
-setting city
-area A Cafe
-area B Square
-area C Bank
-kind s block shelf
-kind c sit chair
-kind a sit car
-grid City 4 4
-B.. Ba1 Ba1 C..
-A.. A.. B.. Cc.
-A.. As. B.. C..
-A.. Ac. B.. B..
-open City 4 1 W window
-person A Anna f
-person B Bea f
-person C Cora f
-victim D Dan m
-clue A is beside c
-clue B is row 3
-clue C is row 1
-clue C is beside c
-solution A=1:4:1 B=1:3:3 C=1:1:4 D=1:2:2
-''',
-  '''
-case tutorial-005
-title The Cold Hat
-setting farm
-area A Orchard
-area B Yard
-area C Pond
-kind o block cow
-kind h sit hay bale
-kind a sit tractor
-grid Farm 4 4
-Ch. C.. B.. Ba1
-A.. C.. B.. Ba1
-A.. Ah. B.. B..
-Ao. A.. B.. B..
+C.. C.. C.. Bu.
+Cl. C.. B.. B..
+A.. A.. A.. Ak.
+A.. A.. Ak. A..
 person A Adam m
 person B Ben m
 person C Cora f
-victim M Mia f
+victim V Val m
 clue A is in C
-clue B is beside a
-clue B is row 3
-clue C is beside o
-solution A=1:1:1 B=1:3:4 C=1:4:2 M=1:2:3
+clue A is col 3
+clue B is beside k
+clue C is beside l
+extra B is in A
+extra B is col 4
+extra C is col 2
+extra C is in C
+solution A=1:1:3 B=1:4:4 C=1:2:2 V=1:3:1
 ''',
   '''
-case tutorial-006
-title The Silent Key
-setting school
-area A Hall
-area B Library
-area C Yard
+case tutorial-004
+title The Missing Taxi
+setting city
+area A Bank
+area B Park
+area C Street
+kind s block shelf
 kind n sit bench
-kind d block desk
-kind m sit mat
+kind m block lamp
+grid City 4 4
+Cm. C.. A.. A..
+C.. C.. A.. As.
+C.. Cm. B.. B..
+C.. Cm. Bn. B..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vera f
+clue A is on n
+clue B is col 1
+clue C is in B
+extra A is in B
+extra A is row 4
+extra B is beside m
+extra B is in C
+extra C is col 4
+solution A=1:4:3 B=1:2:1 C=1:3:4 V=1:1:2
+''',
+  '''
+case tutorial-005
+title The Missing Scarecrow
+setting farm
+area A Orchard
+area B Barn
+area C Field
 kind e block tree
-grid School 4 4
-Cn. Ce. Bm. B..
-C.. C.. Bd. B..
-C.. C.. C.. B..
-An. A.. A.. B..
-open School 2 3 W door
-open School 4 1 N door
-open School 4 3 E door
-open School 3 4 E window
-open School 4 3 S window
+kind g block pig
+kind o block cow
+grid Farm 4 4
+B.. Ae. C.. C..
+B.. A.. Co. C..
+B.. B.. Co. C..
+Bg. B.. C.. C..
 person A Adam m
 person B Bea f
 person C Carl m
-victim Z Zak m
+victim V Vanda f
+clue A is row 2
+clue A is in B
+clue B is row 1
+clue C is row 4
+clue C is beside o
+extra B is in C
+extra C is in C
+solution A=1:2:1 B=1:1:4 C=1:4:3 V=1:3:2
+''',
+  '''
+case tutorial-006
+title The Missing Blackboard
+setting school
+area A Canteen
+area B Gym
+area C Yard
+kind t block table
+kind m sit mat
+kind e block tree
+kind n sit bench
+grid School 4 4
+Ce. C.. C.. Cn.
+C.. C.. C.. C..
+B.. Bm. B.. Bm.
+B.. B.. At. A..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is beside e
+clue B is col 3
+clue C is on n
+extra A is in C
+extra A is col 1
+extra B is beside m
+extra B is in B
+extra C is in C
+extra C is row 1
+solution A=1:2:1 B=1:3:3 C=1:1:4 V=1:4:2
+''',
+  '''
+case tutorial-007
+title The Missing Ticket
+setting train
+area A Engine
+area B Luggage Car
+area C First Class
+kind s block shelf
+kind c sit seat
+kind k block trunk
+kind l block suitcase
+grid Train 4 4
+C.. Ac. A.. A..
+C.. A.. A.. As.
+Cl. B.. B.. B..
+B.. B.. Bk. Bs.
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vince m
+clue A is in A
+clue B is beside s
+clue C is on c
+extra A is beside s
+extra A is row 2
+extra B is in B
+extra B is row 3
+extra C is in A
+extra C is col 2
+solution A=1:2:3 B=1:3:4 C=1:1:2 V=1:4:1
+''',
+  '''
+case tutorial-008
+title The Missing Anchor
+setting ship
+area A Bow
+area B Bridge
+area C Hold
+kind l block barrel
+kind c sit chair
+kind t block table
+kind k block crate
+grid Ship 4 4
+Al. Bt. B.. B..
+A.. B.. B.. Bc.
+A.. Ac. B.. B..
+A.. A.. Ck. C..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Victor m
+clue A is beside t
+clue B is beside c
+clue B is in A
+clue C is beside c
+clue C is row 4
+extra A is in B
+extra A is col 3
+extra B is col 1
+extra C is in A
+solution A=1:1:3 B=1:3:1 C=1:4:2 V=1:2:4
+''',
+  '''
+case tutorial-009
+title The Missing Marshmallow
+setting camp
+area A Tents
+area B Woods
+area C Fire Ring
+kind c sit chair
+kind l sit log
+kind f block campfire
+grid Camp 4 4
+C.. Cf. C.. C..
+A.. A.. Cf. C..
+A.. Ac. A.. C..
+B.. Bl. B.. B..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vicky f
+clue A is in C
+clue A is row 3
+clue B is row 2
+clue C is on l
+extra B is in A
+extra C is row 4
+extra C is in B
+solution A=1:3:4 B=1:2:1 C=1:4:2 V=1:1:3
+''',
+  '''
+case tutorial-010
+title The Missing Room Key
+setting hotel
+area A Garden
+area B Kitchen
+area C Room 2
+kind c sit chair
+kind d block desk
+grid Hotel 4 4
+Bc. B.. C.. C..
+B.. B.. C.. Cd.
+Bc. Cd. C.. A..
+B.. C.. A.. Ac.
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vince m
+clue A is beside c
+clue B is beside d
+clue B is col 2
+clue C is in A
+extra A is row 2
+extra A is in B
+extra B is in C
+extra C is beside c
+extra C is row 3
+solution A=1:2:1 B=1:4:2 C=1:3:4 V=1:1:3
+''',
+  '''
+case tutorial-011
+title The Missing Picnic
+setting park
+area A Pond
+area B Lawn
+area C Playground
+kind b sit boat
+kind u block bush
+kind w sit swing
+grid Park 4 4
+B.. Bu. Ab1 Ab1
+B.. Cw. A.. A..
+C.. C.. C.. A..
+C.. Cw. C.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vince m
+clue A is on b
+clue A is col 3
+clue B is beside b
+clue C is beside w
+clue C is col 1
+extra A is beside b
+extra B is in A
+extra B is col 4
+extra C is in C
+solution A=1:1:3 B=1:2:4 C=1:4:1 V=1:3:2
+''',
+  '''
+case tutorial-012
+title The Missing Painting
+setting museum
+area A Gift Shop
+area B Hall
+area C Cafe
+kind s block shelf
+kind v block vase
+kind p block plant
+grid Museum 4 4
+C.. Cp. A.. As.
+C.. Av. A.. A..
+B.. Bp. B.. B..
+B.. B.. Bp. B..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is beside s
+clue A is row 1
+clue B is beside s
+clue C is row 3
+extra A is in A
+extra B is in A
+extra B is col 4
+extra C is in B
+extra C is beside p
+solution A=1:1:3 B=1:2:4 C=1:3:1 V=1:4:2
+''',
+  '''
+case tutorial-013
+title The Hidden Key
+setting home
+area A Bathroom
+area B Garage
+area C Garden
+kind r sit rug
+kind a sit car
+kind p block plant
+kind c sit chair
+grid Home 4 4
+B.. B.. C.. Cc.
+B.. Cp. C.. C..
+B.. A.. Ar. C..
+B.. B.. Ba1 Ba1
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vicky f
+clue A is beside a
+clue B is col 3
+clue B is in A
+clue C is beside c
+extra A is row 4
+extra A is in B
+extra B is on r
+extra C is col 4
+extra C is in C
+solution A=1:4:2 B=1:3:3 C=1:2:4 V=1:1:1
+''',
+  '''
+case tutorial-014
+title The Hidden Seashell
+setting beach
+area A Sand
+area B Sea
+area C Dunes
+kind w sit towel
+kind b sit boat
+kind p block palm
+grid Beach 4 4
+A.. Aw. Aw. Bb1
+A.. A.. B.. Bb1
+A.. C.. B.. B..
+C.. C.. Cp. Cw.
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Victor m
+clue A is beside w
+clue A is col 1
+clue B is on w
+clue C is beside b
+extra A is in A
+extra B is beside p
+extra B is in C
+extra C is in B
+extra C is row 2
+solution A=1:1:1 B=1:4:4 C=1:2:3 V=1:3:2
+''',
+  '''
+case tutorial-015
+title The Hidden Mushroom
+setting forest
+area A Lake
+area B Clearing
+area C Cave
+kind k block rock
+kind l sit log
+grid Forest 4 4
+C.. Ck. A.. Ak.
+C.. C.. A.. A..
+Bl. Bl. A.. A..
+B.. B.. B.. A..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Victor m
+clue A is row 4
+clue A is beside l
+clue B is beside k
+clue C is row 1
+clue C is in C
+extra A is in B
+extra B is in A
+extra B is row 2
+extra C is beside k
+solution A=1:4:2 B=1:2:4 C=1:1:1 V=1:3:3
+''',
+  '''
+case tutorial-016
+title The Hidden Newspaper
+setting city
+area A Cafe
+area B Shop
+area C Street
+kind c sit chair
+kind i block bin
+kind s block shelf
+kind t block table
+grid City 4 4
+B.. Bs. C.. Ci.
+B.. B.. Bt. A..
+B.. A.. A.. Ac.
+A.. A.. Ac. Ai.
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vera f
+clue A is beside t
+clue B is on c
+clue C is col 4
+extra A is beside s
+extra A is in B
+extra B is beside i
+extra B is in A
+extra C is in A
+extra C is on c
+solution A=1:2:2 B=1:4:3 C=1:3:4 V=1:1:1
+''',
+  '''
+case tutorial-017
+title The Hidden Pitchfork
+setting farm
+area A Barn
+area B Yard
+area C Orchard
+kind h sit hay bale
+kind a sit tractor
+kind e block tree
+grid Farm 4 4
+A.. A.. Ce. C..
+A.. B.. B.. C..
+Ah. Ba1 Ba1 C..
+B.. Ba. C.. Ce.
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Viola f
+clue A is on h
+clue B is col 3
+clue B is in B
+clue C is in C
+extra A is in A
+extra A is row 3
+extra B is beside a
+extra C is beside e
+extra C is col 4
+solution A=1:3:1 B=1:2:3 C=1:1:4 V=1:4:2
+''',
+  '''
+case tutorial-018
+title The Hidden Satchel
+setting school
+area A Classroom
+area B Hall
+area C Yard
+kind i block bin
+kind n sit bench
+kind e block tree
+grid School 4 4
+A.. Ai. A.. C..
+A.. Ai. A.. C..
+A.. A.. Ce. C..
+Bn. B.. C.. Ci.
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vicky f
+clue A is beside i
+clue A is row 4
+clue B is col 2
+clue C is in C
+clue C is row 1
+extra A is in C
+extra B is beside i
+extra B is in A
+solution A=1:4:3 B=1:3:2 C=1:1:4 V=1:2:1
+''',
+  '''
+case tutorial-019
+title The Hidden Luggage
+setting train
+area A First Class
+area B Dining Car
+area C Engine
+kind r sit rug
+kind t block table
+kind c sit seat
+grid Train 4 4
+A.. Ar. A.. A..
+A.. A.. Ar. A..
+C.. C.. B.. B..
+Cc. C.. Bt. B..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vince m
+clue A is beside c
+clue B is beside r
+clue B is row 1
+clue C is beside c
+clue C is row 4
+extra A is in C
+extra A is row 3
+extra B is in A
+extra C is in C
+solution A=1:3:1 B=1:1:3 C=1:4:2 V=1:2:4
+''',
+  '''
+case tutorial-020
+title The Hidden Porthole
+setting ship
+area A Bow
+area B Hold
+area C Deck
+kind c sit chair
+kind l block barrel
+kind k block crate
+grid Ship 4 4
+A.. A.. Bl. C..
+A.. Ac. B.. C..
+Al. B.. B.. Cl.
+A.. B.. Bk. B..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is beside k
+clue B is on c
+clue C is in C
+extra A is in B
+extra A is row 3
+extra B is in A
+extra B is row 2
+extra C is row 1
+solution A=1:3:3 B=1:2:2 C=1:1:4 V=1:4:1
+''',
+  '''
+case tutorial-021
+title The Hidden Sleeping Bag
+setting camp
+area A Kitchen
+area B Field
+area C Woods
+kind c sit chair
+kind t block table
+kind e block tree
+grid Camp 4 4
+Ce. C.. C.. Ce.
+B.. C.. C.. C..
+B.. B.. A.. C..
+Bt. B.. A.. Ac.
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Val m
+clue A is on c
+clue B is col 3
+clue B is beside e
+clue C is beside t
+extra A is in A
+extra A is row 4
+extra B is in C
+extra C is in B
+extra C is row 3
+solution A=1:4:4 B=1:1:3 C=1:3:1 V=1:2:2
+''',
+  '''
+case tutorial-022
+title The Hidden Luggage Cart
+setting hotel
+area A Kitchen
+area B Room 1
+area C Pool
+kind c sit chair
+kind d block desk
+kind b sit bed
+kind p block plant
+grid Hotel 4 4
+A.. A.. B.. B..
+Ac. A.. Bb1 Bb1
+C.. Cp. B.. Bd.
+C.. C.. B.. B..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vera f
+clue A is beside b
+clue B is on c
+clue C is in A
+extra A is beside d
+extra A is in B
+extra B is row 2
+extra B is in A
+extra C is col 2
+solution A=1:3:3 B=1:2:1 C=1:1:2 V=1:4:4
+''',
+  '''
+case tutorial-023
+title The Hidden Kite
+setting park
+area A Lawn
+area B Path
+area C Rose Garden
+kind u block bush
+kind n sit bench
+grid Park 4 4
+B.. Cn. C.. C..
+B.. Bu. Bu. C..
+Bu. B.. B.. Cn.
+B.. A.. A.. Au.
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Victor m
+clue A is on n
+clue A is row 3
+clue B is row 2
+clue C is beside u
+extra A is in C
+extra B is in B
+extra B is beside u
+extra C is in A
+extra C is col 3
+solution A=1:3:4 B=1:2:1 C=1:4:3 V=1:1:2
+''',
+  '''
+case tutorial-024
+title The Hidden Fossil
+setting museum
+area A Gallery
+area B Gift Shop
+area C Hall
+kind u block statue
+kind n sit bench
+kind v block vase
+grid Museum 4 4
+Cu. A.. A.. Au.
+C.. Cn. A.. A..
+C.. Bv. B.. A..
+C.. C.. C.. An.
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vanda f
+clue A is row 2
+clue A is beside n
+clue B is in C
+clue C is beside u
+extra A is beside u
+extra B is row 4
+extra C is in A
+extra C is col 3
+solution A=1:2:1 B=1:4:2 C=1:1:3 V=1:3:4
+''',
+  '''
+case tutorial-025
+title The Forgotten Slipper
+setting home
+area A Bedroom
+area B Garage
+area C Living Room
+kind s block shelf
+kind p block plant
+kind c sit chair
+grid Home 4 4
+B.. A.. C.. Cc.
+Bs. A.. C.. C..
+B.. As. Cp. C..
+B.. B.. Cp. C..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vicky f
+clue A is beside p
+clue B is in B
+clue B is row 3
+clue C is in B
+extra A is col 3
+extra A is in C
+extra B is beside s
+extra C is col 2
+solution A=1:2:3 B=1:3:1 C=1:4:2 V=1:1:4
+''',
+  '''
+case tutorial-026
+title The Forgotten Sunhat
+setting beach
+area A Cafe
+area B Pier
+area C Rocks
+kind t block table
+kind c sit chair
+kind w sit towel
+grid Beach 4 4
+C.. C.. A.. At.
+Cw. C.. C.. Cw.
+Bc. B.. Bt. C..
+B.. B.. B.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vera f
+clue A is in A
+clue B is beside c
+clue C is beside w
+clue C is col 4
+extra A is row 1
+extra A is beside t
+extra B is row 4
+extra B is in B
+extra C is in C
+solution A=1:1:3 B=1:4:1 C=1:3:4 V=1:2:2
+''',
+  '''
+case tutorial-027
+title The Forgotten Owl
+setting forest
+area A Lake
+area B Clearing
+area C Pines
+kind b sit boat
+kind u block bush
+kind k block rock
+grid Forest 4 4
+C.. C.. Ck. C..
+Bu. A.. C.. Ab1
+B.. A.. A.. Ab1
+B.. A.. A.. A..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is in C
+clue B is on b
+clue C is col 1
+clue C is in C
+extra A is col 3
+extra A is beside k
+extra B is in A
+extra B is col 4
+solution A=1:2:3 B=1:3:4 C=1:1:1 V=1:4:2
+''',
+  '''
+case tutorial-028
+title The Forgotten Tram
+setting city
+area A Park
+area B Bank
+area C Shop
+kind e block tree
+kind n sit bench
+kind c sit chair
+kind t block table
+grid City 4 4
+A.. B.. Bc. C..
+Ae. B.. B.. C..
+A.. A.. A.. C..
+A.. An. A.. Ct.
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vanda f
+clue A is beside c
+clue B is col 2
+clue B is beside n
+clue C is in C
+extra A is in B
+extra A is row 2
+extra B is in A
+extra C is row 1
+solution A=1:2:3 B=1:3:2 C=1:1:4 V=1:4:1
+''',
+  '''
+case tutorial-029
+title The Forgotten Rooster
+setting farm
+area A Barn
+area B House
+area C Yard
+kind a sit tractor
+kind t block table
+kind c sit chair
+kind h sit hay bale
+grid Farm 4 4
+B.. B.. B.. B..
+A.. Bt. B.. Bc.
+A.. Aa1 Ch. C..
+A.. Aa1 C.. C..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vera f
+clue A is in A
+clue B is on a
+clue B is row 3
+clue C is col 3
+clue C is beside c
+extra A is row 4
+extra A is beside a
+extra B is in A
+extra C is in B
+solution A=1:4:1 B=1:3:2 C=1:2:3 V=1:1:4
+''',
+  '''
+case tutorial-030
+title The Forgotten Ruler
+setting school
+area A Canteen
+area B Classroom
+area C Library
+kind c sit chair
+kind i block bin
+kind s block shelf
+grid School 4 4
+A.. C.. C.. Cs.
+A.. A.. Ac. C..
+B.. Bi. B.. Bi.
+B.. B.. B.. B..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vince m
+clue A is row 3
+clue B is in C
+clue C is beside s
+clue C is row 1
+extra A is beside i
+extra A is in B
+extra B is col 4
+extra B is beside s
+extra C is in C
+solution A=1:3:1 B=1:2:4 C=1:1:3 V=1:4:2
+''',
+  '''
+case tutorial-031
+title The Forgotten Whistle
+setting train
+area A First Class
+area B Engine
+area C Dining Car
+kind t block table
+kind s block shelf
+kind c sit seat
+grid Train 4 4
+At. A.. C.. C..
+A.. A.. Cc. B..
+A.. Bs. B.. B..
+At. A.. Bs. B..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vlad m
+clue A is col 1
+clue B is in C
+clue C is in B
+clue C is row 2
+extra A is in A
+extra A is beside t
+extra B is beside c
+extra B is row 1
+solution A=1:3:1 B=1:1:3 C=1:2:4 V=1:4:2
+''',
+  '''
+case tutorial-032
+title The Forgotten Compass
+setting ship
+area A Galley
+area B Cabin
+area C Bridge
+kind t block table
+kind b sit bed
+kind c sit chair
+grid Ship 4 4
+Cc. C.. C.. Ct.
+C.. C.. C.. C..
+A.. A.. At. Bb1
+A.. At. A.. Bb1
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is beside t
+clue B is on b
+clue B is row 4
+clue C is col 3
+clue C is beside t
+extra A is col 2
+extra A is in A
+extra B is beside b
+extra C is in C
+solution A=1:3:2 B=1:4:4 C=1:1:3 V=1:2:1
+''',
+  '''
+case tutorial-033
+title The Forgotten Torch
+setting camp
+area A Lake
+area B Tents
+area C Kitchen
+kind k block rock
+kind n sit tent
+kind t block table
+grid Camp 4 4
+C.. B.. Bn. B..
+C.. B.. B.. B..
+C.. Ct. Ct. C..
+A.. Ak. A.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is beside k
+clue B is on n
+clue C is in C
+extra A is in A
+extra A is row 4
+extra B is col 3
+extra B is in B
+extra C is beside t
+extra C is row 3
+solution A=1:4:1 B=1:1:3 C=1:3:4 V=1:2:2
+''',
+  '''
+case tutorial-034
+title The Forgotten Suite
+setting hotel
+area A Garden
+area B Room 2
+area C Bar
+kind e block tree
+kind c sit chair
+kind o sit sofa
+grid Hotel 4 4
+Ac. Ae. Co1 Co1
+A.. A.. C.. Co.
+A.. A.. C.. Bc.
+A.. A.. C.. B..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vicky f
+clue A is on c
 clue A is beside e
 clue B is in A
-clue C is on m
-solution A=1:2:2 B=1:4:1 C=1:1:3 Z=1:3:4
+clue B is row 4
+clue C is on o
+extra A is col 1
+extra C is col 4
+extra C is in C
+solution A=1:1:1 B=1:4:2 C=1:2:4 V=1:3:3
+''',
+  '''
+case tutorial-035
+title The Forgotten Duck
+setting park
+area A Lawn
+area B Rose Garden
+area C Path
+kind e block tree
+kind u block bush
+kind n sit bench
+grid Park 4 4
+A.. A.. Ae. Ae.
+Bu. Cn. A.. A..
+B.. C.. C.. C..
+B.. C.. C.. Cn.
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vera f
+clue A is col 4
+clue A is beside n
+clue B is in B
+clue C is row 1
+extra A is in C
+extra B is row 4
+extra C is in A
+extra C is beside e
+solution A=1:3:4 B=1:4:1 C=1:1:2 V=1:2:3
+''',
+  '''
+case tutorial-036
+title The Forgotten Mummy
+setting museum
+area A Cafe
+area B Dino Room
+area C Garden
+kind c sit chair
+kind n sit bench
+grid Museum 4 4
+C.. C.. C.. A..
+A.. C.. Cn. A..
+A.. A.. Ac. A..
+B.. B.. Bn. B..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vince m
+clue A is beside c
+clue A is col 4
+clue B is row 4
+clue B is beside n
+clue C is beside n
+extra A is in A
+extra B is in B
+extra C is in C
+extra C is col 3
+solution A=1:3:4 B=1:4:2 C=1:1:3 V=1:2:1
+''',
+  '''
+case tutorial-037
+title The Odd Doorbell
+setting home
+area A Living Room
+area B Garden
+area C Bathroom
+kind r sit rug
+kind t block table
+kind s block shelf
+grid Home 4 4
+A.. A.. Cs. C..
+Ar. A.. C.. C..
+At. A.. C.. Bt.
+A.. Ar. Cs. B..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Viola f
+clue A is in B
+clue B is in C
+clue C is row 2
+clue C is beside r
+extra A is col 4
+extra A is beside t
+extra B is row 3
+extra B is beside s
+extra C is in A
+solution A=1:4:4 B=1:3:3 C=1:2:2 V=1:1:1
+''',
+  '''
+case tutorial-038
+title The Odd Lighthouse
+setting beach
+area A Dunes
+area B Rocks
+area C Sand
+kind k block rock
+kind p block palm
+kind w sit towel
+grid Beach 4 4
+Ak. A.. Cw. C..
+A.. A.. C.. C..
+Ap. A.. C.. Cw.
+B.. B.. Bk. C..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vera f
+clue A is beside p
+clue B is col 1
+clue B is in B
+clue C is on w
+extra A is in A
+extra A is col 2
+extra C is row 1
+extra C is in C
+solution A=1:3:2 B=1:4:1 C=1:1:3 V=1:2:4
+''',
+  '''
+case tutorial-039
+title The Odd Trail
+setting forest
+area A Lake
+area B Path
+area C Cave
+kind b sit boat
+kind u block bush
+kind k block rock
+grid Forest 4 4
+C.. A.. A.. A..
+C.. Ab1 Ab1 A..
+Ck. B.. B.. A..
+B.. B.. Bu. B..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vanda f
+clue A is in A
+clue A is col 2
+clue B is in C
+clue B is row 2
+clue C is col 3
+extra A is beside b
+extra B is beside k
+extra C is beside u
+extra C is in B
+solution A=1:1:2 B=1:2:1 C=1:3:3 V=1:4:4
+''',
+  '''
+case tutorial-040
+title The Odd Alley
+setting city
+area A Square
+area B Cafe
+area C Street
+kind e block tree
+kind m block lamp
+kind t block table
+kind i block bin
+kind a sit car
+grid City 4 4
+A.. Am. A.. A..
+B.. A.. Ae. A..
+B.. Bi. Bt. Ca1
+B.. B.. C.. Ca1
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vince m
+clue A is on a
+clue A is row 4
+clue B is col 3
+clue C is beside i
+extra A is in C
+extra B is in A
+extra B is beside e
+extra C is in B
+extra C is col 1
+solution A=1:4:4 B=1:1:3 C=1:3:1 V=1:2:2
+''',
+  '''
+case tutorial-041
+title The Odd Haystack
+setting farm
+area A House
+area B Field
+area C Orchard
+kind t block table
+kind b sit bed
+kind a sit tractor
+kind e block tree
+grid Farm 4 4
+B.. Ba1 Ba1 B..
+A.. B.. B.. B..
+A.. At. A.. B..
+C.. Ce. A.. Ab.
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Val m
+clue A is on a
+clue B is beside b
+clue C is in B
+clue C is row 2
+extra A is in B
+extra A is col 2
+extra B is col 3
+extra B is in A
+solution A=1:1:2 B=1:4:3 C=1:2:4 V=1:3:1
+''',
+  '''
+case tutorial-042
+title The Odd Homework
+setting school
+area A Canteen
+area B Classroom
+area C Hall
+kind t block table
+kind c sit chair
+kind d block desk
+kind i block bin
+kind n sit bench
+grid School 4 4
+B.. A.. A.. At.
+B.. B.. A.. Ac.
+C.. Bd. A.. At.
+Cn. Bi. B.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vanda f
+clue A is row 3
+clue B is in B
+clue B is row 1
+clue C is in B
+extra A is beside t
+extra A is in A
+extra C is beside d
+extra C is col 2
+solution A=1:3:3 B=1:1:1 C=1:2:2 V=1:4:4
+''',
+  '''
+case tutorial-043
+title The Odd Timetable
+setting train
+area A Luggage Car
+area B Second Class
+area C Engine
+kind k block trunk
+kind c sit seat
+kind s block shelf
+grid Train 4 4
+Ak. A.. B.. C..
+Ak. A.. B.. C..
+A.. Bs. B.. Cc.
+A.. B.. Bc. C..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vicky f
+clue A is beside k
+clue B is on c
+clue C is row 2
+clue C is in B
+extra A is in A
+extra A is col 2
+extra B is row 3
+extra B is in C
+solution A=1:1:2 B=1:3:4 C=1:2:3 V=1:4:1
+''',
+  '''
+case tutorial-044
+title The Odd Logbook
+setting ship
+area A Cabin
+area B Deck
+area C Galley
+kind t block table
+kind k block crate
+kind c sit chair
+grid Ship 4 4
+Bk. B.. B.. C..
+A.. Bc. C.. C..
+At. B.. C.. C..
+A.. B.. C.. Cc.
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Val m
+clue A is on c
+clue B is col 1
+clue C is beside k
+extra A is col 4
+extra A is in C
+extra B is beside t
+extra B is in A
+extra C is beside c
+extra C is col 2
+solution A=1:4:4 B=1:2:1 C=1:1:2 V=1:3:3
+''',
+  '''
+case tutorial-045
+title The Odd Rucksack
+setting camp
+area A Fire Ring
+area B Woods
+area C Lake
+kind k block rock
+kind e block tree
+kind b sit canoe
+grid Camp 4 4
+C.. C.. C.. C..
+C.. Cb. Cb1 Cb1
+B.. B.. A.. A..
+Be. B.. Ak. A..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vanda f
+clue A is in A
+clue B is beside e
+clue C is on b
+clue C is col 2
+extra A is beside k
+extra A is col 4
+extra B is row 3
+extra B is in B
+extra C is beside b
+solution A=1:4:4 B=1:3:1 C=1:2:2 V=1:1:3
+''',
+  '''
+case tutorial-046
+title The Odd Guestbook
+setting hotel
+area A Room 2
+area B Lobby
+area C Bar
+kind d block desk
+kind c sit chair
+kind t block table
+grid Hotel 4 4
+C.. C.. Ct. C..
+C.. C.. Cc. Bd.
+A.. A.. B.. B..
+Ad. A.. B.. B..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is row 4
+clue A is in B
+clue B is beside d
+clue C is on c
+extra B is in A
+extra B is col 1
+extra C is beside t
+extra C is col 3
+solution A=1:4:4 B=1:3:1 C=1:2:3 V=1:1:2
+''',
+  '''
+case tutorial-047
+title The Odd Bandstand
+setting park
+area A Playground
+area B Lawn
+area C Cafe
+kind n sit bench
+kind u block bush
+kind c sit chair
+grid Park 4 4
+B.. Bn. B.. B..
+A.. An. B.. Bu.
+C.. A.. A.. A..
+Cc. C.. A.. A..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is row 3
+clue A is beside c
+clue B is in A
+clue C is col 3
+clue C is beside u
+extra A is in C
+extra B is row 4
+extra C is in B
+solution A=1:3:1 B=1:4:4 C=1:2:3 V=1:1:2
+''',
+  '''
+case tutorial-048
+title The Odd Catalogue
+setting museum
+area A Gift Shop
+area B Cafe
+area C Gallery
+kind v block vase
+kind p block plant
+kind c sit chair
+grid Museum 4 4
+B.. Bc. C.. Cv.
+B.. Bp. C.. C..
+B.. Av. C.. C..
+B.. A.. C.. Cv.
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Viola f
+clue A is beside p
+clue B is in B
+clue B is row 3
+clue C is row 4
+extra A is in B
+extra A is on c
+extra C is in C
+extra C is beside v
+solution A=1:1:2 B=1:3:1 C=1:4:3 V=1:2:4
+''',
+  '''
+case tutorial-049
+title The Midnight Curtain
+setting home
+area A Kitchen
+area B Garage
+area C Garden
+kind c sit chair
+kind a sit car
+kind t block table
+grid Home 4 4
+Ac. A.. Ba1 Ba1
+A.. Ac. B.. B..
+A.. A.. C.. C..
+A.. A.. Ct. C..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vanda f
+clue A is on a
+clue B is beside t
+clue B is col 3
+clue C is beside c
+extra A is in B
+extra A is col 4
+extra B is in C
+extra C is in A
+extra C is col 1
+solution A=1:1:4 B=1:3:3 C=1:2:1 V=1:4:2
+''',
+  '''
+case tutorial-050
+title The Midnight Tide
+setting beach
+area A Pier
+area B Cafe
+area C Sea
+kind c sit chair
+kind t block table
+kind b sit boat
+grid Beach 4 4
+C.. B.. A.. A..
+Cb. Bt. Ac. A..
+Bc. B.. A.. At.
+B.. B.. A.. A..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vince m
+clue A is in B
+clue A is row 4
+clue B is in B
+clue B is on c
+clue C is on c
+extra B is row 3
+extra C is in A
+extra C is col 3
+solution A=1:4:2 B=1:3:1 C=1:2:3 V=1:1:4
+''',
+  '''
+case tutorial-051
+title The Midnight Fern
+setting forest
+area A Cave
+area B Path
+area C Pines
+kind l sit log
+kind u block bush
+kind e block tree
+grid Forest 4 4
+A.. A.. A.. A..
+A.. Al. B.. B..
+C.. B.. B.. Bu.
+Ce. C.. C.. B..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is beside l
+clue B is in B
+clue B is col 2
+clue C is beside u
+extra A is in A
+extra A is col 1
+extra C is col 4
+extra C is in B
+solution A=1:2:1 B=1:3:2 C=1:4:4 V=1:1:3
+''',
+  '''
+case tutorial-052
+title The Midnight Rooftop
+setting city
+area A Bank
+area B Cafe
+area C Square
+kind s block shelf
+kind i block bin
+kind n sit bench
+grid City 4 4
+A.. Cn. C.. C..
+As. B.. Bi. C..
+A.. Bi. B.. B..
+As. A.. B.. B..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is col 2
+clue A is in B
+clue B is beside n
+clue C is col 1
+extra A is beside i
+extra B is in C
+extra B is row 1
+extra C is in A
+extra C is beside s
+solution A=1:2:2 B=1:1:3 C=1:3:1 V=1:4:4
+''',
+  '''
+case tutorial-053
+title The Midnight Milk Pail
+setting farm
+area A Barn
+area B Field
+area C Pond
+kind a sit tractor
+kind k block rock
+grid Farm 4 4
+B.. A.. C.. C..
+B.. A.. Aa. C..
+Ba1 A.. Ck. Ck.
+Ba1 C.. C.. C..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vince m
+clue A is in B
+clue A is row 1
+clue B is on a
+clue C is beside k
+extra B is in A
+extra B is col 3
+extra C is row 4
+extra C is in C
+solution A=1:1:1 B=1:2:3 C=1:4:4 V=1:3:2
+''',
+  '''
+case tutorial-054
+title The Midnight Bell
+setting school
+area A Canteen
+area B Hall
+area C Classroom
+kind c sit chair
+kind i block bin
+kind s block shelf
+grid School 4 4
+B.. B.. C.. C..
+B.. Bs. Cc. C..
+Bi. Cc. C.. Ac.
+B.. C.. C.. A..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vicky f
+clue A is col 3
+clue A is on c
+clue B is on c
+clue C is beside s
+extra A is in C
+extra B is row 3
+extra B is in A
+extra C is in B
+extra C is row 1
+solution A=1:2:3 B=1:3:4 C=1:1:2 V=1:4:1
+''',
+  '''
+case tutorial-055
+title The Midnight Platform
+setting train
+area A Dining Car
+area B Sleeper
+area C Second Class
+kind t block table
+kind r sit rug
+kind l block suitcase
+kind c sit seat
+grid Train 4 4
+C.. C.. A.. A..
+Cc. C.. At. A..
+C.. C.. A.. B..
+Cl. Br. B.. B..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vlad m
+clue A is beside r
+clue B is in B
+clue C is on c
+extra A is col 3
+extra A is in B
+extra B is row 3
+extra C is col 1
+extra C is in C
+solution A=1:4:3 B=1:3:4 C=1:2:1 V=1:1:2
+''',
+  '''
+case tutorial-056
+title The Midnight Lifebuoy
+setting ship
+area A Bow
+area B Bridge
+area C Galley
+kind c sit chair
+kind t block table
+kind l block barrel
+grid Ship 4 4
+Bt. B.. Cc. C..
+B.. A.. C.. C..
+A.. Ac. C.. Cl.
+A.. A.. C.. C..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vanda f
+clue A is beside l
+clue A is row 4
+clue B is beside t
+clue B is col 2
+clue C is in A
+extra A is in C
+extra B is in B
+extra C is beside c
+extra C is row 3
+solution A=1:4:4 B=1:1:2 C=1:3:1 V=1:2:3
+''',
+  '''
+case tutorial-057
+title The Midnight Tent Peg
+setting camp
+area A Fire Ring
+area B Tents
+area C Kitchen
+kind c sit chair
+kind f block campfire
+kind n sit tent
+kind t block table
+grid Camp 4 4
+A.. A.. B.. B..
+Af. A.. B.. Bc.
+Ac. A.. B.. Bn.
+A.. C.. C.. Ct.
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vicky f
+clue A is row 4
+clue B is beside c
+clue B is col 3
+clue C is beside f
+clue C is row 1
+extra A is in C
+extra B is in B
+extra C is in A
+solution A=1:4:2 B=1:2:3 C=1:1:1 V=1:3:4
+''',
+  '''
+case tutorial-058
+title The Midnight Trolley
+setting hotel
+area A Lobby
+area B Garden
+area C Room 2
+kind o sit sofa
+kind e block tree
+kind c sit chair
+kind d block desk
+grid Hotel 4 4
+Cc. C.. Cd. C..
+C.. C.. Ao1 Ao1
+C.. C.. A.. A..
+B.. B.. Be. A..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Viola f
+clue A is on o
+clue A is col 4
+clue B is beside e
+clue C is on c
+extra A is beside o
+extra B is col 2
+extra B is in B
+extra C is col 1
+extra C is in C
+solution A=1:2:4 B=1:4:2 C=1:1:1 V=1:3:3
+''',
+  '''
+case tutorial-059
+title The Midnight Ice Cream
+setting park
+area A Path
+area B Playground
+area C Lawn
+kind u block bush
+kind n sit bench
+kind w sit swing
+kind e block tree
+grid Park 4 4
+B.. Bw. Ce. C..
+Au. A.. C.. Ce.
+An. A.. C.. C..
+A.. A.. C.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vanda f
+clue A is col 4
+clue B is row 4
+clue B is in A
+clue C is on n
+extra A is beside e
+extra A is in C
+extra C is beside u
+extra C is row 3
+solution A=1:1:4 B=1:4:2 C=1:3:1 V=1:2:3
+''',
+  '''
+case tutorial-060
+title The Midnight Exhibit
+setting museum
+area A Hall
+area B Dino Room
+area C Cafe
+kind n sit bench
+kind o block skeleton
+kind t block table
+grid Museum 4 4
+B.. B.. A.. A..
+B.. B.. A.. An.
+B.. Bo. C.. Ct.
+B.. Bo. C.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Viola f
+clue A is row 4
+clue A is beside t
+clue B is beside o
+clue B is col 2
+clue C is in A
+extra A is in C
+extra B is in B
+extra C is col 3
+solution A=1:4:4 B=1:2:2 C=1:1:3 V=1:3:1
+''',
+  '''
+case tutorial-061
+title The Quiet Saucepan
+setting home
+area A Hall
+area B Garage
+area C Bedroom
+kind s block shelf
+kind r sit rug
+grid Home 4 4
+C.. Cs. Cr. C..
+C.. B.. C.. C..
+Bs. B.. Bs. A..
+B.. B.. As. A..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vanda f
+clue A is beside r
+clue B is beside s
+clue B is in A
+clue C is in B
+extra A is in C
+extra A is col 3
+extra B is col 4
+extra C is beside s
+extra C is row 3
+solution A=1:2:3 B=1:4:4 C=1:3:2 V=1:1:1
+''',
+  '''
+case tutorial-062
+title The Quiet Deckchair
+setting beach
+area A Cafe
+area B Rocks
+area C Sea
+kind c sit chair
+kind w sit towel
+kind k block rock
+kind b sit boat
+grid Beach 4 4
+C.. C.. Cb1 Cb1
+B.. B.. C.. C..
+B.. Bk. C.. Ac.
+B.. Bw. B.. A..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vince m
+clue A is beside k
+clue B is on b
+clue B is col 3
+clue C is on w
+extra A is row 3
+extra A is in B
+extra B is in C
+extra C is in B
+extra C is col 2
+solution A=1:3:1 B=1:1:3 C=1:4:2 V=1:2:4
+''',
+  '''
+case tutorial-063
+title The Quiet Pinecone
+setting forest
+area A Path
+area B Cabin
+area C Pines
+kind k block rock
+kind c sit chair
+kind e block tree
+kind u block bush
+grid Forest 4 4
+B.. B.. C.. Cu.
+Bc. C.. Ce. C..
+B.. A.. A.. C..
+A.. Ak. C.. C..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Victor m
+clue A is in B
+clue B is beside u
+clue C is col 1
+clue C is beside k
+extra A is row 1
+extra B is in C
+extra B is col 4
+extra C is in A
+solution A=1:1:2 B=1:2:4 C=1:4:1 V=1:3:3
+''',
+  '''
+case tutorial-064
+title The Quiet Briefcase
+setting city
+area A Bank
+area B Square
+area C Street
+kind s block shelf
+kind i block bin
+kind m block lamp
+grid City 4 4
+A.. As. C.. C..
+A.. A.. C.. C..
+As. B.. Cm. C..
+B.. Bi. C.. Ci.
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vince m
+clue A is col 4
+clue B is row 1
+clue B is beside s
+clue C is in B
+extra A is in C
+extra B is in A
+extra C is row 3
+extra C is beside i
+solution A=1:2:4 B=1:1:1 C=1:3:2 V=1:4:3
+''',
+  '''
+case tutorial-065
+title The Quiet Horseshoe
+setting farm
+area A House
+area B Pond
+area C Yard
+kind c sit chair
+kind k block rock
+kind g block pig
+grid Farm 4 4
+C.. Cg. Ac. A..
+C.. A.. A.. Ac.
+C.. C.. C.. A..
+B.. B.. Bk. A..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vicky f
+clue A is in B
+clue B is beside g
+clue C is on c
+extra A is col 2
+extra A is beside k
+extra B is in C
+extra B is col 1
+extra C is in A
+extra C is row 2
+solution A=1:4:2 B=1:1:1 C=1:2:4 V=1:3:3
+''',
+  '''
+case tutorial-066
+title The Quiet Notebook
+setting school
+area A Canteen
+area B Yard
+area C Library
+kind i block bin
+kind c sit chair
+kind n sit bench
+kind s block shelf
+grid School 4 4
+Bn. B.. A.. A..
+B.. A.. Ai. Ac.
+B.. A.. A.. A..
+Bi. B.. Cs. C..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Val m
+clue A is col 3
+clue B is on n
+clue C is in C
+extra A is beside i
+extra A is in A
+extra B is in B
+extra B is row 1
+extra C is col 4
+extra C is beside s
+solution A=1:3:3 B=1:1:1 C=1:4:4 V=1:2:2
+''',
+  '''
+case tutorial-067
+title The Quiet Lantern
+setting train
+area A First Class
+area B Luggage Car
+area C Second Class
+kind l block suitcase
+kind s block shelf
+kind k block trunk
+grid Train 4 4
+B.. B.. B.. B..
+A.. A.. Bs. B..
+A.. Al. A.. Bk.
+C.. Cl. Al. B..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vera f
+clue A is in A
+clue A is col 1
+clue B is in A
+clue B is col 3
+clue C is beside k
+extra B is beside l
+extra C is in B
+extra C is col 4
+solution A=1:2:1 B=1:3:3 C=1:4:4 V=1:1:2
+''',
+  '''
+case tutorial-068
+title The Quiet Rope
+setting ship
+area A Cabin
+area B Hold
+area C Deck
+kind c sit chair
+kind t block table
+kind l block barrel
+kind a sit lifeboat
+grid Ship 4 4
+C.. C.. C.. C..
+C.. Ca1 Ca1 C..
+A.. A.. A.. B..
+At. Ac. Bl. B..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is in B
+clue B is row 1
+clue B is beside a
+clue C is beside c
+extra A is col 4
+extra A is beside l
+extra B is in C
+extra C is row 3
+extra C is in A
+solution A=1:4:4 B=1:1:3 C=1:3:2 V=1:2:1
+''',
+  '''
+case tutorial-069
+title The Quiet Kettle
+setting camp
+area A Tents
+area B Fire Ring
+area C Lake
+kind n sit tent
+kind f block campfire
+kind b sit canoe
+grid Camp 4 4
+A.. An. A.. A..
+A.. A.. A.. An.
+C.. C.. Cb1 Cb1
+C.. C.. B.. Bf.
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Val m
+clue A is beside n
+clue A is col 1
+clue B is row 4
+clue C is col 3
+clue C is in A
+extra A is in A
+extra B is in C
+extra C is beside n
+solution A=1:1:1 B=1:4:2 C=1:2:3 V=1:3:4
+''',
+  '''
+case tutorial-070
+title The Quiet Towel
+setting hotel
+area A Room 2
+area B Room 1
+area C Garden
+kind c sit chair
+kind b sit bed
+grid Hotel 4 4
+B.. B.. A.. A..
+B.. Bb. A.. Ac.
+C.. C.. C.. C..
+Cc. C.. Cc. C..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Val m
+clue A is on c
+clue B is row 1
+clue B is beside b
+clue C is in A
+clue C is beside c
+extra A is row 4
+extra A is in C
+extra B is in B
+extra C is col 3
+solution A=1:4:1 B=1:1:2 C=1:2:3 V=1:3:4
+''',
+  '''
+case tutorial-071
+title The Quiet Squirrel
+setting park
+area A Cafe
+area B Rose Garden
+area C Path
+kind c sit chair
+kind t block table
+kind n sit bench
+kind f block fountain
+kind u block bush
+grid Park 4 4
+Bf. B.. B.. C..
+Bn. B.. B.. Cu.
+A.. A.. Ac. A..
+At. A.. A.. A..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Viola f
+clue A is col 1
+clue B is in B
+clue C is beside n
+extra A is beside t
+extra A is in A
+extra B is col 3
+extra C is in B
+extra C is row 2
+solution A=1:3:1 B=1:1:3 C=1:2:2 V=1:4:4
+''',
+  '''
+case tutorial-072
+title The Quiet Audio Guide
+setting museum
+area A Hall
+area B Dino Room
+area C Garden
+kind p block plant
+kind n sit bench
+kind o block skeleton
+kind u block statue
+grid Museum 4 4
+B.. B.. Bo. B..
+Bn. B.. B.. Cu.
+A.. Ap. B.. C..
+A.. A.. C.. C..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vanda f
+clue A is col 3
+clue B is in A
+clue B is row 3
+clue C is in A
+extra A is beside o
+extra A is in B
+extra B is beside p
+extra C is beside p
+extra C is col 2
+solution A=1:2:3 B=1:3:1 C=1:4:2 V=1:1:4
+''',
+  '''
+case tutorial-073
+title The Second Cushion
+setting home
+area A Kitchen
+area B Garden
+area C Garage
+kind c sit chair
+kind e block tree
+kind a sit car
+grid Home 4 4
+C.. C.. Ac. A..
+Ca1 Ca1 Ac. A..
+C.. B.. A.. A..
+C.. Be. A.. A..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vicky f
+clue A is col 3
+clue A is beside c
+clue B is on a
+clue C is in B
+extra A is on c
+extra B is in C
+extra B is col 1
+extra C is beside e
+extra C is row 3
+solution A=1:1:3 B=1:2:1 C=1:3:2 V=1:4:4
+''',
+  '''
+case tutorial-074
+title The Second Lifebelt
+setting beach
+area A Pier
+area B Cafe
+area C Sand
+kind c sit chair
+kind t block table
+kind w sit towel
+grid Beach 4 4
+B.. B.. C.. C..
+Bc. B.. Cw. C..
+B.. B.. C.. C..
+B.. Bt. A.. Ac.
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Vicky f
+clue A is row 3
+clue A is beside w
+clue B is in B
+clue B is row 1
+clue C is beside t
+extra A is in C
+extra C is in B
+extra C is row 4
+solution A=1:3:3 B=1:1:2 C=1:4:1 V=1:2:4
+''',
+  '''
+case tutorial-075
+title The Second Moss
+setting forest
+area A Clearing
+area B Cave
+area C Cabin
+kind k block rock
+kind c sit chair
+grid Forest 4 4
+B.. C.. Cc. C..
+Bk. B.. B.. C..
+A.. A.. B.. B..
+Ak. A.. B.. Bk.
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vanda f
+clue A is in A
+clue B is row 2
+clue B is beside k
+clue C is col 4
+extra A is beside k
+extra A is col 1
+extra B is in B
+extra C is in C
+extra C is beside c
+solution A=1:3:1 B=1:2:2 C=1:1:4 V=1:4:3
+''',
+  '''
+case tutorial-076
+title The Second Pigeon
+setting city
+area A Shop
+area B Square
+area C Cafe
+kind s block shelf
+kind n sit bench
+kind i block bin
+grid City 4 4
+Ci. C.. B.. Bn.
+As. A.. B.. Bn.
+A.. A.. B.. B..
+A.. As. B.. B..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Viola f
+clue A is beside n
+clue A is row 3
+clue B is beside s
+clue C is in C
+extra A is in B
+extra B is row 4
+extra B is in A
+extra C is row 1
+extra C is beside i
+solution A=1:3:4 B=1:4:1 C=1:1:2 V=1:2:3
+''',
+  '''
+case tutorial-077
+title The Second Wheelbarrow
+setting farm
+area A Field
+area B Barn
+area C Yard
+kind a sit tractor
+kind o block cow
+kind h sit hay bale
+grid Farm 4 4
+A.. Ao. C.. Ch.
+A.. A.. Aa. C..
+A.. B.. Ba1 Ba1
+B.. B.. B.. B..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Val m
+clue A is beside a
+clue A is in A
+clue B is in A
+clue C is on a
+clue C is col 4
+extra A is beside o
+extra B is beside o
+extra B is row 1
+extra C is beside a
+solution A=1:2:2 B=1:1:1 C=1:3:4 V=1:4:3
+''',
+  '''
+case tutorial-078
+title The Second Chalk
+setting school
+area A Classroom
+area B Gym
+area C Yard
+kind s block shelf
+kind m sit mat
+kind n sit bench
+kind e block tree
+grid School 4 4
+B.. B.. Bn. C..
+Bm. B.. Ce. C..
+As. B.. C.. Ce.
+A.. A.. C.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vince m
+clue A is beside n
+clue B is in A
+clue C is row 3
+extra A is in B
+extra A is col 2
+extra B is row 4
+extra B is beside s
+extra C is in C
+extra C is beside e
+solution A=1:1:2 B=1:4:1 C=1:3:3 V=1:2:4
+''',
+  '''
+case tutorial-079
+title The Second Carriage
+setting train
+area A Dining Car
+area B Sleeper
+area C First Class
+kind c sit seat
+kind b sit bed
+kind r sit rug
+grid Train 4 4
+Cr. B.. B.. B..
+C.. C.. B.. Bb.
+C.. A.. Ac. A..
+C.. Ac. A.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Viola f
+clue A is in C
+clue B is row 1
+clue B is in C
+clue C is col 4
+clue C is beside c
+extra A is col 2
+extra B is on r
+extra C is in A
+solution A=1:2:2 B=1:1:1 C=1:3:4 V=1:4:3
+''',
+  '''
+case tutorial-080
+title The Second Gangway
+setting ship
+area A Bridge
+area B Hold
+area C Galley
+kind t block table
+kind k block crate
+kind c sit chair
+grid Ship 4 4
+Cc. A.. At. A..
+C.. C.. B.. A..
+Cc. C.. Bk. At.
+C.. C.. C.. A..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Victor m
+clue A is beside t
+clue B is on c
+clue C is row 2
+clue C is in A
+extra A is in A
+extra A is row 1
+extra B is in C
+extra B is col 1
+extra C is beside t
+solution A=1:1:2 B=1:3:1 C=1:2:4 V=1:4:3
+''',
+  '''
+case tutorial-081
+title The Second Flask
+setting camp
+area A Field
+area B Kitchen
+area C Tents
+kind n sit tent
+kind c sit chair
+grid Camp 4 4
+C.. Cn. C.. C..
+B.. B.. C.. Cc.
+A.. B.. B.. Bc.
+A.. An. An. A..
+person A Anna f
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is on n
+clue B is on n
+clue B is in C
+clue C is in B
+clue C is col 1
+extra A is row 4
+extra A is in A
+extra B is col 2
+solution A=1:4:3 B=1:1:2 C=1:2:1 V=1:3:4
+''',
+  '''
+case tutorial-082
+title The Second Minibar
+setting hotel
+area A Bar
+area B Kitchen
+area C Pool
+kind c sit chair
+kind t block table
+kind p block plant
+grid Hotel 4 4
+B.. B.. At. C..
+B.. Bc. A.. Cp.
+B.. A.. A.. A..
+Bc. A.. A.. Ac.
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vera f
+clue A is on c
+clue B is row 1
+clue C is beside c
+clue C is row 2
+extra A is row 4
+extra A is in A
+extra B is in B
+extra B is beside c
+extra C is in B
+solution A=1:4:4 B=1:1:2 C=1:2:1 V=1:3:3
+''',
+  '''
+case tutorial-083
+title The Second Frisbee
+setting park
+area A Pond
+area B Lawn
+area C Cafe
+kind b sit boat
+kind n sit bench
+kind e block tree
+kind c sit chair
+grid Park 4 4
+B.. Be. A.. Ab1
+Bn. B.. C.. Ab1
+B.. B.. C.. Cc.
+B.. B.. C.. C..
+person A Anna f
+person B Ben m
+person C Carl m
+victim V Viola f
+clue A is beside e
+clue B is in A
+clue B is col 3
+clue C is beside c
+extra A is row 2
+extra A is beside n
+extra B is beside b
+extra C is col 4
+extra C is in C
+solution A=1:2:2 B=1:1:3 C=1:4:4 V=1:3:1
+''',
+  '''
+case tutorial-084
+title The Second Portrait
+setting museum
+area A Dino Room
+area B Gift Shop
+area C Garden
+kind o block skeleton
+kind n sit bench
+kind v block vase
+kind u block statue
+kind p block plant
+grid Museum 4 4
+A.. B.. Bv. C..
+A.. A.. C.. C..
+A.. Ao. Cu. C..
+A.. An. Cp. C..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vicky f
+clue A is row 1
+clue B is beside o
+clue C is on n
+extra A is in C
+extra B is col 1
+extra B is in A
+extra C is beside o
+extra C is row 4
+solution A=1:1:4 B=1:3:1 C=1:4:2 V=1:2:3
+''',
+  '''
+case tutorial-085
+title The Stolen Doormat
+setting home
+area A Garage
+area B Garden
+area C Hall
+kind s block shelf
+kind a sit car
+kind e block tree
+kind p block plant
+kind r sit rug
+grid Home 4 4
+B.. Aa1 Aa1 A..
+Be. A.. As. A..
+C.. Cp. A.. C..
+C.. Cr. C.. C..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is in B
+clue B is col 3
+clue C is on r
+extra A is beside e
+extra A is col 1
+extra B is in A
+extra B is beside s
+extra C is in C
+extra C is row 4
+solution A=1:1:1 B=1:3:3 C=1:4:2 V=1:2:4
+''',
+  '''
+case tutorial-086
+title The Stolen Flip-Flop
+setting beach
+area A Sea
+area B Rocks
+area C Dunes
+kind b sit boat
+kind k block rock
+kind w sit towel
+kind p block palm
+grid Beach 4 4
+A.. Ak. Ab. Ck.
+Bw. A.. C.. C..
+B.. A.. C.. C..
+A.. A.. Cp. C..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Val m
+clue A is beside p
+clue A is row 3
+clue B is beside p
+clue C is col 2
+extra A is in C
+extra B is col 4
+extra B is in C
+extra C is beside k
+extra C is in A
+solution A=1:3:3 B=1:4:4 C=1:2:2 V=1:1:1
+''',
+  '''
+case tutorial-087
+title The Stolen Birdhouse
+setting forest
+area A Path
+area B Cave
+area C Cabin
+kind u block bush
+kind l sit log
+kind c sit chair
+kind t block table
+grid Forest 4 4
+B.. Bl. C.. Cc.
+B.. B.. C.. C..
+C.. C.. Ct. Au.
+Cc. A.. A.. A..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vanda f
+clue A is row 1
+clue A is beside l
+clue B is col 3
+clue C is beside u
+extra A is in B
+extra B is beside t
+extra B is in C
+extra C is col 4
+extra C is in A
+solution A=1:1:1 B=1:2:3 C=1:4:4 V=1:3:2
+''',
+  '''
+case tutorial-088
+title The Stolen Signpost
+setting city
+area A Park
+area B Shop
+area C Square
+kind e block tree
+kind m block lamp
+kind s block shelf
+grid City 4 4
+Am. A.. B.. Bs.
+Ae. A.. Ce. B..
+A.. A.. C.. C..
+A.. A.. C.. C..
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vera f
+clue A is col 3
+clue A is beside e
+clue B is beside s
+clue C is row 1
+extra A is in C
+extra B is in B
+extra B is row 2
+extra C is beside m
+extra C is in A
+solution A=1:3:3 B=1:2:4 C=1:1:2 V=1:4:1
+''',
+  '''
+case tutorial-089
+title The Stolen Fence
+setting farm
+area A Yard
+area B House
+area C Pond
+kind h sit hay bale
+kind t block table
+kind c sit chair
+kind k block rock
+grid Farm 4 4
+A.. Ah. A.. A..
+A.. B.. Ah. A..
+B.. B.. B.. Ck.
+Bc. B.. Bt. C..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is on h
+clue B is row 3
+clue B is beside t
+clue C is in B
+extra A is in A
+extra A is row 1
+extra B is in B
+extra C is on c
+extra C is row 4
+solution A=1:1:2 B=1:3:3 C=1:4:1 V=1:2:4
+''',
+  '''
+case tutorial-090
+title The Stolen Report Card
+setting school
+area A Gym
+area B Classroom
+area C Canteen
+kind m sit mat
+kind c sit chair
+kind i block bin
+kind t block table
+grid School 4 4
+B.. B.. B.. B..
+A.. Am. Bc. B..
+A.. C.. Ci. B..
+C.. C.. Ct. C..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Vince m
+clue A is on c
+clue B is in C
+clue B is col 1
+clue C is beside i
+extra A is in B
+extra A is col 3
+extra C is row 3
+extra C is in C
+solution A=1:2:3 B=1:4:1 C=1:3:2 V=1:1:4
+''',
+  '''
+case tutorial-091
+title The Stolen Compartment
+setting train
+area A First Class
+area B Dining Car
+area C Sleeper
+kind r sit rug
+kind l block suitcase
+kind b sit bed
+grid Train 4 4
+C.. C.. Cb. Cl.
+C.. Ar. A.. C..
+Br. B.. A.. C..
+B.. B.. A.. C..
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vera f
+clue A is in A
+clue A is row 4
+clue B is row 1
+clue C is in A
+extra B is in C
+extra C is on r
+extra C is col 2
+solution A=1:4:3 B=1:1:1 C=1:2:2 V=1:3:4
+''',
+  '''
+case tutorial-092
+title The Stolen Chart
+setting ship
+area A Galley
+area B Bow
+area C Cabin
+kind l block barrel
+kind c sit chair
+kind b sit bed
+grid Ship 4 4
+C.. C.. C.. Cb.
+C.. C.. Cb1 B..
+A.. A.. Cb1 Bc.
+Al. A.. B.. B..
+person A Adam m
+person B Ben m
+person C Carl m
+victim V Vicky f
+clue A is on b
+clue B is beside l
+clue C is col 3
+clue C is in B
+extra A is in C
+extra A is row 1
+extra B is in A
+extra B is col 1
+solution A=1:1:4 B=1:3:1 C=1:4:3 V=1:2:2
+''',
+  '''
+case tutorial-093
+title The Stolen Songbook
+setting camp
+area A Lake
+area B Kitchen
+area C Fire Ring
+kind k block rock
+kind t block table
+kind c sit chair
+kind l sit log
+grid Camp 4 4
+C.. C.. Bt. B..
+C.. Cl. Cl. B..
+A.. B.. Bc. B..
+A.. Ak. B.. B..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vanda f
+clue A is beside c
+clue B is on l
+clue C is row 3
+clue C is in A
+extra A is row 4
+extra A is in B
+extra B is beside l
+extra B is in C
+solution A=1:4:3 B=1:2:2 C=1:3:1 V=1:1:4
+''',
+  '''
+case tutorial-094
+title The Stolen Revolving Door
+setting hotel
+area A Pool
+area B Room 2
+area C Lobby
+kind p block plant
+kind u sit sunbed
+kind d block desk
+kind c sit chair
+grid Hotel 4 4
+B.. Bd. C.. C..
+B.. B.. Cd. Au.
+B.. B.. A.. A..
+Bc. B.. A.. Ap.
+person A Anna f
+person B Bea f
+person C Cora f
+victim V Vlad m
+clue A is in C
+clue B is row 3
+clue B is beside c
+clue C is on u
+extra A is beside d
+extra A is col 3
+extra B is in B
+extra C is row 2
+extra C is in A
+solution A=1:1:3 B=1:3:1 C=1:2:4 V=1:4:2
+''',
+  '''
+case tutorial-095
+title The Stolen Watering Can
+setting park
+area A Path
+area B Playground
+area C Lawn
+kind u block bush
+kind n sit bench
+kind e block tree
+grid Park 4 4
+A.. A.. A.. B..
+Au. Au. A.. B..
+A.. Ce. B.. Bn.
+C.. C.. B.. Bn.
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Vera f
+clue A is beside e
+clue B is in B
+clue B is row 1
+clue C is row 2
+extra A is in C
+extra A is row 4
+extra C is beside u
+extra C is in A
+solution A=1:4:2 B=1:1:4 C=1:2:3 V=1:3:1
+''',
+  '''
+case tutorial-096
+title The Stolen Relic
+setting museum
+area A Cafe
+area B Gift Shop
+area C Gallery
+kind c sit chair
+kind v block vase
+kind n sit bench
+grid Museum 4 4
+B.. A.. A.. Ac.
+Bv. B.. A.. A..
+Bv. B.. C.. Ac.
+B.. Cn. C.. C..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is in B
+clue B is row 2
+clue B is in B
+clue C is in A
+clue C is col 3
+extra A is beside v
+extra A is row 4
+extra B is beside v
+extra C is beside c
+solution A=1:4:1 B=1:2:2 C=1:1:3 V=1:3:4
+''',
+  '''
+case tutorial-097
+title The Crooked Armchair
+setting home
+area A Bedroom
+area B Garage
+area C Hall
+kind c sit chair
+kind s block shelf
+kind p block plant
+grid Home 4 4
+Ac. A.. A.. B..
+A.. A.. B.. B..
+C.. Cp. B.. Bs.
+C.. C.. Bs. B..
+person A Adam m
+person B Ben m
+person C Cora f
+victim V Vlad m
+clue A is col 3
+clue B is beside p
+clue C is col 2
+clue C is beside c
+extra A is in B
+extra B is in C
+extra B is col 1
+extra C is in A
+solution A=1:2:3 B=1:3:1 C=1:1:2 V=1:4:4
+''',
+  '''
+case tutorial-098
+title The Crooked Bucket
+setting beach
+area A Sand
+area B Sea
+area C Cafe
+kind d sit sunbed
+kind b sit boat
+kind c sit chair
+grid Beach 4 4
+Cc. C.. Ad. A..
+C.. C.. A.. A..
+B.. B.. Bb1 Bb1
+B.. B.. B.. B..
+person A Adam m
+person B Bea f
+person C Cora f
+victim V Victor m
+clue A is beside d
+clue B is beside c
+clue B is row 2
+clue C is row 4
+clue C is beside b
+extra A is row 1
+extra A is in A
+extra B is in C
+extra C is in B
+solution A=1:1:4 B=1:2:1 C=1:4:3 V=1:3:2
+''',
+  '''
+case tutorial-099
+title The Crooked Hollow
+setting forest
+area A Cave
+area B Lake
+area C Clearing
+kind k block rock
+kind b sit boat
+kind u block bush
+grid Forest 4 4
+C.. C.. A.. A..
+Cu. C.. Ak. A..
+C.. Cu. B.. Bb1
+C.. C.. B.. Bb1
+person A Anna f
+person B Bea f
+person C Carl m
+victim V Vera f
+clue A is beside u
+clue A is row 1
+clue B is beside k
+clue C is row 3
+extra A is in C
+extra B is in A
+extra B is col 4
+extra C is in B
+extra C is beside b
+solution A=1:1:1 B=1:2:4 C=1:3:3 V=1:4:2
+''',
+  '''
+case tutorial-100
+title The Crooked Receipt
+setting city
+area A Park
+area B Square
+area C Cafe
+kind i block bin
+kind m block lamp
+kind t block table
+grid City 4 4
+B.. B.. B.. Ai.
+B.. Bi. A.. A..
+B.. C.. A.. Am.
+C.. Ct. A.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+victim V Victor m
+clue A is beside i
+clue B is row 4
+clue B is beside t
+clue C is col 4
+extra A is in B
+extra A is col 2
+extra B is in C
+extra C is in A
+extra C is beside i
+solution A=1:1:2 B=1:4:1 C=1:2:4 V=1:3:3
 ''',
 ];

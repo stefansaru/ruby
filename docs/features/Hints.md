@@ -1,33 +1,60 @@
 # Hints
 
-**Status: designed 2026-11-24, not built.** The engine side (finding the next
-logical step) belongs to the logical solver; the screens, the coin balance and
-the ad flow are TODO. Modelled on amethyst's `docs/features/Tips.md` and
-`APP-GAM-015`, which are the working reference.
+**Status, 2026-11-25: hints are free. A first draft is built; the hint ladder
+below is the design target and is not built.** There are no coins and no ads:
+the owner ruled on 2026-11-25 that the game carries no advertising, and the coin
+balance existed only to be topped up by a rewarded video
+([Monetisation.md](../strategy/Monetisation.md)). What is outstanding is in
+[TODO.md](../../TODO.md).
 
-> **Who owns what.** This page owns the three hints and the flow.
-> [APP-GAM-007](../requirements/app_requirements/gam/APP-GAM-007.md) owns the
-> economy. Prices and awards are **named constants** in
-> `lib/data/config_default.dart` (to be created); this page names them and
-> never states their values, because two copies of a price is one stale price.
+> **Who owns what.** This page owns the hints and their flow.
+> [APP-GAM-006](../requirements/app_requirements/gam/APP-GAM-006.md) is the
+> requirement. The coin economy
+> ([APP-GAM-007](../requirements/app_requirements/gam/APP-GAM-007.md)) is
+> retired.
 
 ## What is free, always
 
 **Tapping a clue shows what the clue means**: the squares that clue allows on
-the bare grid, ignoring everyone else. This is not a hint and costs nothing.
+the bare grid, ignoring everyone else. This is not a hint.
 *Why:* it is the remedy for the genre's first complaint, ambiguous wording, and
-a player must never pay to learn what a sentence means
+a player must never pay, in any model, to learn what a sentence means
 ([APP-UX-002](../requirements/app_requirements/ux/APP-UX-002.md)).
 
-## The hint ladder
+## What is built (2026-11-25)
 
-Each step gives more and costs more. The player chooses the step.
+A draft, free, with draft wording that waits for the owner's review
+(PROC-CNT-003):
 
-| Step | Name | Price constant | What the player gets |
-|---|---|---|---|
-| 1 | **Show squares** | `hintCostShowSquares` | For the suspect the player selects: every square that suspect can still occupy, given all clues and everyone already placed. The work of combining clues is done for them; the conclusion is not. |
-| 2 | **Who is next** | `hintCostWhoIsNext` | The person (or the row, column or area) the next logical step concerns is highlighted, with the technique's name: "Look at Ben", "Look at row 3". No square is given away. |
-| 3 | **Explain and place** | `hintCostExplainStep` | The full step in words, naming the technique and the square ("Only one square in column C is still free, so someone is at C4; Ben is the only one who can be there"), and a **Place** button that makes the move. |
+- **One hint button** on the case screen.
+- **First tap:** says who to look at, and gives any step that cannot be read
+  off the grid (a ruling-out the player would otherwise have to work out).
+- **Second tap:** gives the square.
+- **The hint card has a close button.**
+- **A wrong placement is named first.** If someone on the board is not where
+  the certified solution puts them, the hint says so before anything else, and
+  gives no next step on a wrong board.
+- **Statements show a tick or a cross** as people are placed: a tick when the
+  placements fit the statement, a cross when they contradict it, an empty ring
+  until then.
+- **Extra statements.** A "+" on a character card reveals one more true
+  statement by that person. Free. Whether these are ever sold is open (below).
+
+The engine side is `CaseSession.hint` in `lib/engine/session.dart` and
+`describeStep` in `lib/engine/wording.dart`.
+
+## The hint ladder (design target, not built)
+
+Each step gives more. The player chooses the step. All three are free.
+
+| Step | Name | What the player gets |
+|---|---|---|
+| 1 | **Show squares** | For the suspect the player selects: every square that suspect can still occupy, given all clues and everyone already placed. The work of combining clues is done for them; the conclusion is not. |
+| 2 | **Who is next** | The person (or the row, column or area) the next logical step concerns is highlighted, with the technique's name: "Look at Ben", "Look at row 3". No square is given away. |
+| 3 | **Explain and place** | The full step in words, naming the technique and the square ("Only one square in column C is still free, so someone is at C4; Ben is the only one who can be there"), and a **Place** button that makes the move. |
+
+The draft's two taps are steps 2 and 3 without the technique's name and
+without the Place button. Step 1 is not built.
 
 Rules:
 
@@ -35,76 +62,66 @@ Rules:
    current position**, never a look-up of the stored solution. *Why:* the hint
    must be a reason, and a reason has to follow from what is on the board.
 2. **If the board contradicts the solution, the hint says so first** ("Dana
-   cannot be at B2: she was beside a tree") and costs the same as the step
-   asked for. *Why:* explaining a next step on a wrong board would teach a
-   falsehood.
+   cannot be at B2: she was beside a tree"). *Why:* explaining a next step on a
+   wrong board would teach a falsehood. The stored solution is read for this
+   and for nothing else.
 3. **Step 3 never places without the player pressing Place.** *Why:* some
    players want the reason and their own hand on the move.
-4. **A hint already paid for can be reread free until the board changes.**
+4. **A hint can be reread until the board changes.**
 5. **The technique names are the ones in [Techniques.md](../Techniques.md)** and
    in the glossary; the hint text comes from templates, like clue text.
+6. **A hint is never held back by a timer, a count per day or a balance.**
+   *Why:* the game has no energy and no coins (Monetisation.md rules 3 and 8).
+   If the owner later decides to sell something hint-like, this rule is
+   reworded first.
 
-### What the engine gives today (2026-11-24)
+### What the engine gives (2026-11-25)
 
 `solveLogic(case, fixed: placements)` in `lib/engine/logic_solver.dart` returns
 the steps from the player's position. Each `LogicStep` carries the technique,
 the person, the clue index (or the victim rule or the no-touch rule), the
 square placed and the (person, square) pairs ruled out. That is enough for
 steps 2 and 3 of the ladder. Step 1 (the squares one suspect can still occupy)
-is not returned as such yet: the solver keeps those sets internally and has no
-call that hands them out. Still to build on the engine side:
+is not returned as such: the solver keeps those sets internally and has no
+call that hands them out. Still open:
 
-- **Hint sentences.** No template turns a `LogicStep` into words yet; the
-  wording in Techniques.md is a proposal.
-- **Naming the wrong placement (rule 2).** With a wrong placement the solver
-  reports only that the board is contradictory, not which person is misplaced.
-  The game can find that by comparing the board with the certified solution,
-  then use the solver for the reason; that part is not written.
+- **Hint sentences.** `describeStep` gives one draft sentence per step; the
+  wording is not approved, and the technique is not yet named to the player.
+- **The reason for a wrong placement.** The draft names the misplaced person by
+  comparing the board with the certified solution; it does not yet say which
+  statement the placement breaks.
 - **A step is a ruling-out, not always a placement.** The "next step" may
-  remove squares without placing anyone; step 3 should run on to the next
-  `single` step before offering Place.
-
-## Coins
-
-| Event | Award constant |
-|---|---|
-| Fresh install | `hintBudgetStart` |
-| Solving a case not solved before | `hintRewardPerCase` |
-| Watching one rewarded ad | `hintRewardPerAd` |
-
-- **One balance**, kept on the device, carried across cases and restarts.
-- **`hintRewardPerAd` equals `hintCostExplainStep`**, the dearest hint: one ad
-  buys exactly one full explanation. *Why:* the offer needs no arithmetic.
-- **Spending is all-or-nothing**: a spend that the balance cannot cover debits
-  nothing.
-- Replaying a solved case earns nothing. *Why:* otherwise the easiest case is
-  a coin farm.
-
-## The ad flow
-
-One place in the code pays for a hint (amethyst's `_payOrOfferAd` pattern):
-
-1. The player taps a hint.
-2. If the balance covers it: debit, show the hint. Done.
-3. If not, and a rewarded ad can be offered: a confirm dialog states the trade
-   in one sentence: not enough coins, a short video plays, *n* coins are earned
-   and the hint is used. **No / Yes.**
-4. On **Yes** the ad loads and plays. On the reward callback the coins are
-   credited and the same hint handler runs again, now affordable. The ad buys
-   the hint the player asked for.
-5. If the ad **fails to load** after Yes: the reward is granted anyway, **once
-   per ad-health snapshot** (a snapshot is taken when a case opens).
-6. If the ad loads but the player closes it before the reward: nothing is
-   granted and nothing is debited.
-7. If ads are unavailable (no consent, no network, SDK not ready): unaffordable
-   hints are shown disabled with the reason. Prices do not drop to zero.
-
-The rewarded video in step 4 is the only ad that may play while a case is
-open, and it does so because the player asked for it. Details and the reasons
-are in [Ads.md](../architecture/ads/Ads.md).
+  remove squares without placing anyone. The draft runs on to the next `single`
+  step and shows the rulings-out that concern that person as the reason.
+- **The square of a hint is the solver's own** (`LogicStep.placed`), in keeping with
+  rule 1 (2026-11-25; it used to be read from the stored solution). The stored
+  solution is read only to name a wrong placement (rule 2).
+- **When the solver cannot go on** the next person is named from the stated answer.
+  This cannot happen in a shipped case, which is solved by logic from any correct
+  board (GEN-014); it exists so that a hand-written case that needs guessing still
+  gets help.
+- **Liar cases** (2026-11-25): the hint first says that trying each statement as the
+  false one leaves one, names it ("The false statement is Ben's: ..."), and never
+  quotes it as something Ben said.
+- **Two grids** (2026-11-25): a square is "A4 (Upper Deck)" and a line "Row 4 of the
+  Upper Deck", because both grids have an A4 and a row 4.
+- **Asking again** without moving anyone returns the same hint; the solver runs once
+  per board. The slowest hint measured in the audit was 23 ms on the PC.
 
 ## Open, for the owner
 
-- The three price values and the three awards.
-- Whether step 1 should be free in the tutorial tier.
+- **Whether extra statements or hints are ever sold.** The owner said on
+  2026-11-25: "perhaps these hints could be purchased at some point, for now
+  they could be free." Recorded as open, not decided
+  ([Monetisation.md](../strategy/Monetisation.md)).
 - Whether a solved-with-hints case is marked differently from a clean solve.
+- Whether a case solved with extra statements is marked differently.
+- The hint sentences (TODO.md).
+
+## No longer true
+
+Until 2026-11-24 this page planned a coin balance (a starting grant, a grant per
+first solve, a grant per rewarded ad), a price per hint step, and an ad flow in
+which a rewarded video paid for a hint the player could not afford. All of that
+is retired with the ads ([Ads.md](../architecture/ads/Ads.md),
+[History.md](../History.md)).

@@ -31,6 +31,19 @@ void main(List<String> args) {
 
   final only = option('only');
   final probe = int.tryParse(option('probe') ?? '');
+  // A mistyped flag must not quietly rewrite every pack or pass a gate.
+  final known = RegExp(r'^--(dry-run|verbose|only=\w+|probe=\d+)$');
+  final unknown = args.where((String a) => !known.hasMatch(a)).toList();
+  final badTier = only != null && !Tier.values.any((Tier t) => t.name == only);
+  if (unknown.isNotEmpty || badTier || (probe != null && probe < 1)) {
+    stderr.writeln(
+      'usage: generate_cases [--only=<tier>] [--dry-run] [--probe=<n>] '
+      '[--verbose]\n'
+      'tiers:${Tier.values.map((Tier t) => t.name).join(', ')}',
+    );
+    exitCode = 64;
+    return;
+  }
   var failed = false;
 
   for (final tier in Tier.values) {
@@ -76,6 +89,11 @@ void main(List<String> args) {
         '  hardest technique: ${<String>[for (final MapEntry<Technique, int> e in hardest.entries) '${e.key.name} ${e.value}'].join(', ')}',
       );
     if (probe != null) continue;
+    if (cases.length != slots.length) {
+      // A short pack is never written or compared: the file on disk stays.
+      stdout.writeln('  ${tier.name}: pack not written, slots are missing');
+      continue;
+    }
 
     final file = File('lib/data/${packFileName(tier)}');
     final text = renderPack(tier, cases);

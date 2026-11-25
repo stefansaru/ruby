@@ -1,6 +1,6 @@
 # Testing
 
-Dated 2026-11-24. The inventory of test files is [testing/Tests.md](testing/Tests.md);
+Dated 2026-11-24, revised 2026-11-25. The inventory of test files is [testing/Tests.md](testing/Tests.md);
 checks a person runs are in [testing/ManualTestPlan.md](testing/ManualTestPlan.md).
 
 ## 1. The gates
@@ -24,6 +24,12 @@ No tolerated red. A gate that fails is fixed, or the change is not committed.
   obvious to a reader. These are the tests to read when a rule is in doubt.
 - **The format** (`test/engine/case_text_test.dart`): what the parser accepts, and
   every way it refuses a malformed case.
+- **The edges** (`test/engine/edges_test.dart`, 2026-11-25): the parser refusals
+  with their reasons, the rarer clue forms, a sentence for every technique, the
+  hint and rules lines in both modes, and cases logic cannot finish.
+- **The session** (`test/engine/session_test.dart`): placing, replacing and removing
+  people, clashes reported and not refused, the win check, hints from where the
+  player is.
 - **The solvers** (`test/engine/solver_test.dart`): one solution found, two detected,
   rules applied, a liar handled, hints from a partial placement, a wrong placement
   found out.
@@ -33,6 +39,11 @@ No tolerated red. A gate that fails is fixed, or the change is not committed.
 - **The shipped packs** (`test/data/packs_test.dart`): every case passes the honest
   check, is stored exactly as written, reads as plain sentences, belongs to its tier
   and is not solvable without its hardest technique.
+- **The later pack rules** (`test/data/mapping_test.dart`, `round3_test.dart`):
+  objects in their areas, the victim's name and turn, titles, doors and windows,
+  extra statements, checklist marks, cases made on request.
+- **The draft screens** (`test/screens/play_test.dart`): the app opens, a case of
+  each tier is played to the end, the menu, the checklist, the hint, cat mode.
 - **The structure** (`test/architecture_test.dart`): the layer rules.
 - **The register** (`test/requirements_test.dart`): every GEN requirement is cited by
   a test and every cited id exists.
@@ -43,12 +54,20 @@ No tolerated red. A gate that fails is fixed, or the change is not committed.
 It takes the stored text and trusts nothing the generator said:
 
 1. it parses (so the stated solution obeys every rule and clue);
-2. the exact solver finds exactly one solution, the stated one;
-3. the logic solver finishes it and lands on the same answer;
-4. the hardest technique used lies in the tier's range;
-5. every suspect says something;
-6. no clue can be removed without losing uniqueness (a suspect's only statement is
-   exempt).
+2. every object stands in an area that lists it (GEN-029);
+3. the victim is listed last and has the id V and a name that begins with V (GEN-030);
+4. every door and window is used by a clue (GEN-034);
+5. no statement, extras included, is repeated;
+6. the exact solver finds exactly one solution, the stated one;
+7. the logic solver finishes it and lands on the same answer;
+8. the hardest technique used lies in the tier's range;
+9. the victim is the last person the logic solver places (GEN-031);
+10. every suspect says something;
+11. no clue can be removed without losing uniqueness (a suspect's only statement is
+    exempt).
+
+This list is the complete one (2026-11-25); other docs name the check and point
+here, so the list is kept true in one place.
 
 Reason for a second, independent check: the generator certifies its own output. If
 its idea of "unique" or "solved" were wrong, a check that reused its verdict would
@@ -70,7 +89,10 @@ agree with it. This one recomputes everything from the text.
 
 ## 5. Not covered yet
 
-There is no UI, so there are no widget or integration tests. No coverage floor is
-set yet; it is a TODO item, to be set when the app layers exist. The generator's
+Widget tests of the draft are in `test/screens/`; there are no integration tests on a
+device. Line coverage of the hand-written code in `lib/` was 99.96% on 2026-11-25
+(2610 of 2611 lines, `flutter test --coverage`; before the audit 95.6%). The one line
+is a contradiction check in the subset technique that an easier technique always
+reaches first. No floor is enforced by the doctor script yet (TODO 13). The generator's
 quality as a puzzle setter (are the cases fun?) is not something a test can decide;
 that is the paper-solving check in the manual test plan.

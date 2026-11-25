@@ -26,7 +26,8 @@ was in the same area as the victim, with nobody else there, is the murderer.
    squares; a person on it stands on one of them.
 4. **The victim makes no statement.** Nothing tells you directly where the victim was. The
    parser rejects a case in which the victim speaks. *Why:* finding the victim by elimination
-   is the last step of every case and the reveal.
+   is the last step of every case and the reveal. The solver and the hints keep to that
+   order (GEN-031), and in shipped cases the victim's name begins with V (GEN-030).
 5. **The murderer.** The victim's area holds exactly two people: the victim and the murderer.
    A placement in which the victim is alone, or has two or more companions, is not a
    solution. *Why:* this is itself a rule you can reason with (see `docs/Techniques.md`,

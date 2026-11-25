@@ -7,7 +7,7 @@ jobs with them:
 - **It proves a case needs no guessing.** A case ships only if the logic solver finishes it.
 - **It grades the case.** The tier is decided by the hardest technique the solver had to
   use (`docs/Levels.md`).
-- **It will explain hints.** Every step it takes is recorded (technique, person, clue,
+- **It explains hints.** Every step it takes is recorded (technique, person, clue,
   squares ruled out, square placed), which is what a hint needs to say.
 
 The solver always tries the techniques in the order below and restarts from the top after
@@ -161,14 +161,17 @@ A case belongs to the tier whose range contains the hardest technique it needed 
 | Tier | Hardest technique needed is between |
 |---|---|
 | tutorial | clue and single |
-| easy | clue and last in line |
-| normal | intersection and pair |
+| easy | clue and single |
+| normal | last in line and pair |
 | hard | subset and counting |
 | expert | what if and liar split |
 
-Tutorial and easy overlap on purpose: a tutorial case is a small easy case. From normal up,
-each tier *requires* at least one step from its own range; a case that turns out easier is
-thrown away and drawn again.
+Tutorial and easy have the same range on purpose (GEN-032, 2026-11-24): a tutorial case is a small easy case, and in both every step can be read off the grid: a statement, or the rows and columns of people already placed.
+
+**The victim is placed last** (GEN-031, 2026-11-24). The solver does not place the victim while a suspect is unplaced. *Why:* nothing is said about the victim, so a person finds the victim at the end; a path that places the victim early cannot be followed.
+
+**From normal up, each tier *requires* at least one step from its own range**; a case that
+turns out easier is thrown away and drawn again.
 
 ## Hints
 
@@ -176,10 +179,12 @@ A hint is the next step the solver would take from the player's current placemen
 solver accepts squares already decided (`fixed`) and continues from there. If the player's
 placements contradict the clues, the solver reports a contradiction instead of a step, and
 the hint becomes "something already placed is wrong". The step record exists today
-(`LogicStep`: technique, person, clue index, square placed, squares ruled out);
-`dart run tool/show_case.dart <tier> <n> --answer` prints the steps of any shipped case. The
-hint sentences above are proposals and the hint screen is not built
-(`docs/features/Hints.md`).
+(`LogicStep`: technique, person, clue index, square placed, the row or column of a
+"last in line" step (`line`), squares ruled out). Since 2026-11-25 `LogicResult` also has
+`lie`, the index of the false statement in a solved liar case.
+`dart run tool/show_case.dart <tier> <n> --answer` prints the steps of any shipped case. A
+draft hint exists (`CaseSession.hint`, `describeHint`); its sentences are `describeStep`,
+not the proposals above; the ladder is not built (`docs/features/Hints.md`, 2026-11-25).
 
 ## Limits, stated honestly
 

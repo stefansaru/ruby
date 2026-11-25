@@ -1,8 +1,10 @@
 # APP-GAM-007 — Hint Economy: One Coin Balance
 
 **Tags:** Gameplay, Hints, Monetisation, Persistence
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⛔ Retired (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
+
+> Retired 2026-11-25. Owner ruling: the game carries no ads; the coin balance existed to be topped up by a rewarded video, and without it hints are simply free. Replaced by [APP-GAM-006](APP-GAM-006.md) (hints, free) and [APP-PAY-001](../pay/APP-PAY-001.md) (the one thing that is sold). Whether extra statements or hints are ever sold is open ([Monetisation.md](../../../strategy/Monetisation.md)); if they are, it gets a new id. The rest of this file is kept as history.
 
 > The values of the constants are an open owner decision.
 

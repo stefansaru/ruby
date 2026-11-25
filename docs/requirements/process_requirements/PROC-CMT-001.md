@@ -14,7 +14,7 @@ The gates are what make 'every case is fair' a fact about the repository instead
 - [x] The dry-run compares generated output with the committed packs byte for byte
 
 ## Implementation
-The tools exist (2026-11-24): `tool/generate_cases.dart --dry-run` compares each regenerated pack with the file on disk and exits 1 on any difference; `tool/check_cases.dart` is the sweep. The gates are listed in CommitChecklist.md. `CLAUDE.md` lists the same four commands. Open: no commit has passed the gates yet; set to Done after the first one does.
+The tools exist (2026-11-24): `tool/generate_cases.dart --dry-run` compares each regenerated pack with the file on disk and exits 1 on any difference; `tool/check_cases.dart` is the sweep. The gates are listed in CommitChecklist.md. `CLAUDE.md` lists the same four commands. The first commit, 703bdc8 (round 1), exists and was pushed; the later rounds are not committed (2026-11-25). Open: set to Done when a commit of the later rounds has passed the gates.
 
 ## Related Tests
 `test/data/packs_test.dart` (GEN-022: the tutorial and easy packs are regenerated and compared in the suite; the dry run covers all five).

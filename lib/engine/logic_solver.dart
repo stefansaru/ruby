@@ -53,6 +53,7 @@ class LogicStep {
     this.person,
     this.clue,
     this.placed,
+    this.line,
     this.removed = const <(int, int)>[],
   });
   final Technique technique;
@@ -67,6 +68,10 @@ class LogicStep {
   /// The square the person is placed on, for [Technique.single].
   final int? placed;
 
+  /// (grid, isRow, index) of the row or column the step is about, for
+  /// [Technique.lastInLine].
+  final (int, bool, int)? line;
+
   /// (person, square) pairs ruled out by this step.
   final List<(int, int)> removed;
 }
@@ -77,6 +82,7 @@ class LogicResult {
     required this.contradiction,
     required this.steps,
     required this.pos,
+    this.lie,
   });
 
   /// Everyone is placed and the placement obeys every rule and clue.
@@ -88,6 +94,11 @@ class LogicResult {
 
   /// Person to square where decided, otherwise -1.
   final List<int> pos;
+
+  /// In a solved liar case, the index of the false statement. The steps
+  /// after the liar split used its opposite: a step whose [LogicStep.clue]
+  /// is this index is about the statement being false.
+  final int? lie;
 
   int get score =>
       steps.fold(0, (int sum, LogicStep s) => sum + s.technique.weight);
@@ -121,6 +132,7 @@ LogicResult solveLogic(
   // by logic when every assumption but one runs into a contradiction and
   // that one solves.
   LogicResult? winner;
+  int? winnerLie;
   final steps = <LogicStep>[];
   for (final lie in c.statements) {
     final clues = List<Clue>.of(c.clues);
@@ -139,6 +151,7 @@ LogicResult solveLogic(
       );
     }
     winner = r;
+    winnerLie = lie;
   }
   if (winner == null) {
     return LogicResult(
@@ -153,6 +166,7 @@ LogicResult solveLogic(
     contradiction: false,
     steps: <LogicStep>[...steps, ...winner.steps],
     pos: winner.pos,
+    lie: winnerLie,
   );
 }
 
@@ -172,6 +186,7 @@ class _Solver {
             },
     );
     done = List<bool>.filled(n, false);
+    victimGiven = fixed.containsKey(c.victim);
     _findFullLines();
   }
 
@@ -183,6 +198,19 @@ class _Solver {
   late List<Set<int>> cand;
   late List<bool> done;
 
+  /// The player has already put the victim down.
+  late final bool victimGiven;
+
+  /// The victim is placed last (GEN-031): never before every suspect is,
+  /// unless the player has already done it.
+  bool _victimWaits(int p) {
+    if (p != c.victim || victimGiven) return false;
+    for (var q = 0; q < n; q++) {
+      if (q != p && !done[q]) return true;
+    }
+    return false;
+  }
+
   /// (grid, isRow, index) of every line that must hold a person.
   final List<(int, bool, int)> fullLines = <(int, bool, int)>[];
   final List<LogicStep> steps = <LogicStep>[];
@@ -190,11 +218,7 @@ class _Solver {
   /// When the people exactly fill the grids, every row of a grid with as
   /// many people as rows holds someone (and likewise columns).
   void _findFullLines() {
-    var capacity = 0;
-    for (final g in c.grids) {
-      capacity += g.rows < g.cols ? g.rows : g.cols;
-    }
-    if (capacity != n) return;
+    if (!c.isFull) return;
     for (var g = 0; g < c.grids.length; g++) {
       final d = c.grids[g];
       if (d.rows <= d.cols) {
@@ -236,8 +260,7 @@ class _Solver {
   bool _obeys(List<int> pos) {
     for (var p = 0; p < n; p++) {
       for (var q = 0; q < p; q++) {
-        if (c.conflict(pos[p], pos[q])) return false;
-        if (c.noTouch && c.touching(pos[p], pos[q])) return false;
+        if (c.clash(pos[p], pos[q])) return false;
       }
     }
     return c.murdererIn(pos) >= 0 &&
@@ -288,6 +311,7 @@ class _Solver {
     int? person,
     int? clue,
     int? placed,
+    (int, bool, int)? line,
   }) {
     if (removed.isEmpty && placed == null) return false;
     steps.add(
@@ -296,6 +320,7 @@ class _Solver {
         person: person,
         clue: clue,
         placed: placed,
+        line: line,
         removed: removed,
       ),
     );
@@ -314,7 +339,7 @@ class _Solver {
 
   bool _single() {
     for (var p = 0; p < n; p++) {
-      if (done[p] || cand[p].length != 1) continue;
+      if (done[p] || cand[p].length != 1 || _victimWaits(p)) continue;
       done[p] = true;
       final x = cand[p].first;
       final out = <(int, int)>[];
@@ -344,14 +369,17 @@ class _Solver {
       if (holders == 0) throw _Stop();
       if (holders != 1) continue;
       final out = _filter(holder, (int x) => _inLine(line, x));
-      if (_add(Technique.lastInLine, out, person: holder)) return true;
+      if (_add(Technique.lastInLine, out, person: holder, line: line)) {
+        return true;
+      }
     }
     return false;
   }
 
   bool _intersection() {
     for (var p = 0; p < n; p++) {
-      if (done[p]) continue;
+      // A waiting victim with one square left would be a placement.
+      if (done[p] || (cand[p].length == 1 && _victimWaits(p))) continue;
       final out = <(int, int)>[];
       for (var q = 0; q < n; q++) {
         if (q == p) continue;

@@ -24,13 +24,14 @@ compare. It is also the cheapest reason to open the app tomorrow.
   the number of hints, and a row of plain marks for the order people were
   placed. **Never the murderer, a name, or a position.** *Why:* the card must
   be safe to post where others have not played yet.
-- **No gate:** the daily case costs nothing and needs no ad.
+- **No gate:** the daily case costs nothing.
 
 ## What must be decided first
 
 1. How far ahead the pack is generated, and what happens when it runs out
    (an app update, or generation on the device from the date as seed; the
    second needs the generator to be allowed in the app, which the architecture
-   currently forbids).
+   allows through one service since 2026-11-25 (GEN-023,
+   `lib/services/random_case.dart`)).
 2. Whether time is shown at all. A timer changes a calm puzzle into a race.
 3. Whether the streak is worth its cost in pressure for this audience.

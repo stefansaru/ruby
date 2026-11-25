@@ -4,8 +4,8 @@ Written 2026-11-24. Checks a person does by hand, on top of the automated tests
 (`docs/testing/Tests.md`). Cases are numbered `MT-<area>.<n>`; numbers are never reused. A
 retired case keeps its row with "Retired <date>" in the Expected column.
 
-This round built the engine, the generator and the packs, not the app. So **part A can be run
-today** and **part B waits for the UI**; part B is written now so the UI is built to it.
+**Part A can be run today.** Part B: rows for notes, clue preview, the ladder, the purchase
+and the daily case wait; the rest runs on the draft (2026-11-25).
 
 Run from the repository root. All commands are for the Windows shell or bash alike.
 
@@ -18,7 +18,7 @@ Run from the repository root. All commands are for the Windows shell or bash ali
 | MT-1.1 | Dry run matches the repository | `dart run tool/generate_cases.dart --dry-run` | Every pack line ends "unchanged". Exit code 0. No "NO CASE" line. |
 | MT-1.2 | One tier only | `dart run tool/generate_cases.dart --only=tutorial --dry-run` | Only the tutorial pack is reported, "unchanged". |
 | MT-1.3 | Probe | `dart run tool/generate_cases.dart --probe=3` | For each tier: "3/3 cases", a funnel line with six gates in the order scene, unique, wellFormed, logic, tier, variety, each number no larger than the one before, and a "hardest technique" line. No file in `lib/data/` changes (`git status`). |
-| MT-1.4 | Tier really decides difficulty | Read the "hardest technique" lines of MT-1.3. | tutorial: only clue or single. easy: nothing above lastInLine. normal: only intersection or pair. hard: only subset or counting. expert: only whatIf or liarSplit. |
+| MT-1.4 | Tier really decides difficulty | Read the "hardest technique" lines of MT-1.3. | tutorial: only clue or single. easy: only clue or single. normal: lastInLine, intersection or pair. hard: only subset or counting. expert: only whatIf or liarSplit. |
 | MT-1.5 | Same seed, same case | Run MT-1.1 twice. | Both runs say "unchanged". |
 | MT-1.6 | Verbose | `dart run tool/generate_cases.dart --only=easy --probe=3 --verbose` | One extra line per slot with its id, setting, grid shape, draws, time and hardest technique. |
 | MT-1.7 | A changed pack is caught | Edit one character of a clue in `lib/data/cases_easy.dart`, run MT-1.1, then undo the edit (`git checkout lib/data/cases_easy.dart`). | The easy pack reports "DIFFERS" and the exit code is 1. After the undo, MT-1.1 passes again. |
@@ -36,10 +36,10 @@ Pick cases by slot id so the check can be repeated; pick a different id each rel
 | MT-2.2 | An easy and a normal case on paper | Same, one case from each pack (`show_case.dart easy <n>`, `normal <n>`). | Same. The normal case needs at least one step that is more than "this person has one square left"; the printed steps (with `--answer`) name it. |
 | MT-2.8 | Sentences read well | Read the printed sentences of ten cases across tiers, including one two-grid case. | Every sentence is plain English with one reading. Rows are numbers, columns letters, no compass words. On the two-grid case row and column sentences end "of her grid" / "of his grid". An either-or area sentence does not always name the true area first. |
 | MT-2.3 | Words mean what the rules say | In the cases of MT-2.1 and MT-2.2, check each clue against section 4 of `docs/GameRules.md` on the solved grid: beside (same area, not diagonal), on, row and column numbering, above/below/left/right. | Every clue is true in the solution under the written meaning. None relies on a meaning the rules do not give. |
-| MT-2.4 | Scene makes sense | In five cases from different settings, read the area names and where the objects are. | Areas are in one piece. No object sits in an area where it cannot be by the setting's inside/outside rule (`docs/Settings.md`). Note any pairing that reads oddly (a boat on a path) in `OpenIssues.md`; it is a known rough edge, not a failure. |
+| MT-2.4 | Scene makes sense | In five cases from different settings, read the area names and where the objects are. | Areas are in one piece. No object sits in an area that does not list it (`docs/Settings.md`; automated in `test/data/mapping_test.dart`). Note any listed pairing that still reads oddly in `OpenIssues.md`. |
 | MT-2.5 | Special shapes | Find in the hard pack one two-grid case, one 6 by 8 case and one case with `---` squares; in the expert pack one with `rule liar` and one with `rule notouch`. Check the `solution` line of each against its rule. | Two grids: one person per row and column inside each grid. 6 by 8: six people, one per row, two columns empty. Cut corners: nobody on a `---` square. Liar: exactly one statement is false in the solution. No touching: no two people on touching squares, diagonals included. |
 | MT-2.6 | The murderer is never given away | In ten cases, read the clues of the murderer and of anyone else. | No statement says who was with the victim, and no "alone", "alone with", "same area" or "exactly N others" statement is made by a person standing in the victim's area. |
-| MT-2.7 | Names and titles | Skim the `person`, `victim` and `title` lines of one whole pack. | Suspects have initials A, B, C... in order; the victim has a later initial; every id in a case is different. Titles are two plain words after "The". No title appears twice in any pack (also automated in `test/data/packs_test.dart`). |
+| MT-2.7 | Names and titles | Skim the `person`, `victim` and `title` lines of one whole pack. | Suspects have initials A, B, C... in order; the victim is V; every id in a case is different. Titles are "The", an adjective and a word of the case's setting. No title appears twice in any pack (also automated in `test/data/packs_test.dart`). |
 
 ### MT-3: The parser as a gate
 
@@ -58,9 +58,11 @@ are listed here as the quickest hand check after a format change.
 | MT-3.7 | Door off a wall refused | Add `open Home 2 2 N door` (both squares are Garden). | Rejected: a door or window must be on a wall. |
 | MT-3.5 | Round trip | Parse the starter case, write it, parse again. | The second text equals the first; the solution is unchanged. (Automated in `test/engine/`; listed here because it is the fastest sanity check after a format change.) |
 
-## Part B — waits for the UI
+## Part B — the app
 
-Nothing below can be run yet. Each area names the doc it tests against.
+Rows for notes, clue preview, the ladder, the purchase and the daily case wait; the rest
+runs on the draft (2026-11-25). MT-10.1 to 10.5, 10.7, 11.1, 11.3, 13.2 and 13.3 can be
+run today. Each area names the doc it tests against.
 
 ### MT-10: Placing and winning (`docs/GameRules.md`)
 
@@ -93,27 +95,29 @@ Nothing below can be run yet. Each area names the doc it tests against.
 | MT-12.3 | Auto-eliminate | Turn it on, place Cora. | Cora's row and column are crossed for everyone. Turned off: nothing is crossed. |
 | MT-12.4 | Undo | Place, mark, cross, then undo three times. | Each undo reverses one action, notes included. |
 
-### MT-13: Hints and coins (`docs/features/Hints.md`)
+### MT-13: Hints (`docs/features/Hints.md`)
+
+Hints are free: there are no coins and no ads (owner ruling 2026-11-25). The rows about a
+price, an unaffordable hint and a rewarded video were removed with that ruling.
 
 | # | Test case | Steps | Expected |
 |---|---|---|---|
 | MT-13.1 | Explained step | Ask for the strongest hint on a fresh case. | It names a technique from `docs/Techniques.md`, the person and the square, and offers to place it. |
 | MT-13.2 | Hint follows the board | Place two people correctly, ask again. | The hint is about a later step, not one already done. |
 | MT-13.3 | Wrong board | Place someone wrongly, ask for a hint. | The hint says something placed is wrong; it does not build on the mistake. |
-| MT-13.4 | Price | Note the coin balance, take a hint. | The balance drops by that hint's price, once. |
-| MT-13.5 | Cannot afford | With too few coins, tap a hint. | A dialog explains the trade (watch an ad for coins) with No and Yes. No: nothing happens. |
-| MT-13.6 | Ad buys the hint | Yes, watch the ad to the end. | Coins are credited and the hint is given without a second tap. |
-| MT-13.7 | Ad closed early | Yes, close the ad before the reward. | No coins, no hint. |
 
-### MT-14: Ads (`docs/architecture/ads/Ads.md`)
+### MT-14: No ads, and the purchase (`docs/strategy/Monetisation.md`)
+
+The ad tests (consent, banner, rewarded video, audio) were retired on 2026-11-25. The
+purchase is not built; these wait for it.
 
 | # | Test case | Steps | Expected |
 |---|---|---|---|
-| MT-14.1 | Consent first | Fresh install in a consent region. | The consent form comes before any ad. |
-| MT-14.2 | Banner | Open a case. | The banner sits outside the grid and the statements and never covers a square. |
-| MT-14.3 | Nothing interrupts | Solve three cases in a row. | No full-screen ad appears unless the player asked for one. |
-| MT-14.4 | Player's audio | Play music from another app, watch a rewarded ad. | Record what happens to the music; the store listing claim must match. |
-| MT-14.5 | Offline | Airplane mode, open a case, tap an unaffordable hint. | The case plays; the hint explains ads are unavailable; nothing is given free. |
+| MT-14.1 | No ads anywhere | Play ten cases across tiers, online. | No banner, no video, no consent form for ads, no network request to an ad service. |
+| MT-14.2 | The free part | Fresh install, do not buy. | The free packs play to the end with hints; no timer, no energy, no nag. |
+| MT-14.3 | Price before the gate | Open a locked pack. | The price and what it unlocks are shown before anything else; one tap goes back. |
+| MT-14.4 | Buy and restore | Buy, uninstall, reinstall, restore. | Everything is unlocked again without paying twice. |
+| MT-14.5 | Offline after buying | Buy, then airplane mode. | Every pack still opens. |
 
 ### MT-15: Daily case (`docs/features/DailyCase.md`, proposed)
 
@@ -122,3 +126,19 @@ Nothing below can be run yet. Each area names the doc it tests against.
 | MT-15.1 | Same for everyone | Open the daily case on two devices. | The same case. |
 | MT-15.2 | Streak | Solve on two days running, skip one. | The streak counts 2, then resets. |
 | MT-15.3 | Share card | Share a result. | The card shows time and hints used and reveals no square and no name. |
+
+## Part C — the playable draft on a phone (added 2026-11-25)
+
+| Id | What | Steps | Expected |
+|---|---|---|---|
+| MT-16.1 | Ticks in the list | Solve tutorial 1, go back, close the app, open it again. | A green tick on tutorial 1 before and after the restart. |
+| MT-16.2 | Checklist | In an easy case place the first suspect on a square that fits their statements, then on one that does not. | Green ticks, then at least one red cross; an unplaced suspect shows empty rings. |
+| MT-16.3 | One more statement | Tap "+" on a card until it disappears. | Each tap adds one statement; at most three statements in all; the "+" goes when none are left; reopening the case keeps them open. |
+| MT-16.4 | Grey and scroll | Place the suspects in order. | Each placed card is greyed; the next card gets the thick border and is scrolled into view. |
+| MT-16.5 | Tap to lift | With one suspect selected, tap another suspect standing on the grid. | That suspect is lifted and selected; nobody is replaced. |
+| MT-16.6 | Hint | Tap the hint, read it, tap it again, then close it. | First who to look at and why, then the square; the card closes with its X. In tutorial and easy the reason is "statements and the crossed-out squares". |
+| MT-16.7 | Area names | Open six cases with small and long area names (Hall, Living Room, Second Class). | Every area's name is readable along one of its walls, not hidden by an object or a person, not overlapping another name. |
+| MT-16.8 | No stray doors | Open ten tutorial and easy cases, then normal cases until one has a door. | No door or window in tutorial and easy; where there is one, a statement mentions a door or window, or a statement about seeing (GEN-034: an opening is also kept when a clue is about what someone can see). |
+| MT-16.9 | Titles | Read the titles of one pack beside the setting in the subtitle. | Each title fits its place. Note any that reads badly. |
+| MT-16.10 | Random case | At the bottom of each tab tap "Generate a random case". | A new case opens within a second or two (note the time for hard and expert); it can be solved; going back shows no new row and no tick. |
+| MT-16.11 | Cat mode | Menu, Cat mode; open a case, solve it; open "How to play". | "The missing kitten", "was hiding the kitten", three steps about cats; no "murderer" anywhere on those screens. Switching back restores the detective words. |

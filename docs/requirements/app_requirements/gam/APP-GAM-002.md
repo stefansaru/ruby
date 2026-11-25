@@ -1,7 +1,7 @@
 # APP-GAM-002 — Accusation and Win Check
 
 **Tags:** Gameplay, Core
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⚠️ Partial (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
 
 ## Requirement
@@ -17,10 +17,10 @@ The engine is the only judge, so a case can never be 'correct' once and 'wrong' 
 - [ ] A wrong answer costs nothing and loses nothing
 
 ## Implementation
-Nothing built yet.
+Draft built (2026-11-25). There is no submit button: when the last person is placed, `CaseSession.solved` (the engine's own check against the certified solution) is asked at once. A right board shows a "Case solved" card that names the murderer and the area, and the case is ticked in the list. A wrong board shows "Everyone is placed, but something does not fit yet." and does not say which placement is wrong. Missing: the submit step this requirement describes (or a ruling that the automatic check replaces it), a proper solved screen, and the owner's approval of the wording (TODO 16).
 
 ## Related Tests
-None yet.
+`test/engine/session_test.dart` (GEN-003), `test/screens/play_test.dart`.
 
 ## Related Requirements
 - [APP-GAM-006](../../app_requirements/gam/APP-GAM-006.md) — Hint Ladder

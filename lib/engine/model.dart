@@ -75,11 +75,27 @@ class Opening {
   final bool isDoor;
 }
 
+/// "C" for the third column: columns are lettered, rows are numbered.
+String colLabel(int col) => String.fromCharCode(65 + col);
+
+/// Ids of cases made on request begin with this; shipped ids never do.
+const String randomIdPrefix = 'random-';
+
+bool isRandomId(String caseId) => caseId.startsWith(randomIdPrefix);
+
 class GridDef {
   const GridDef(this.name, this.rows, this.cols, this.cellAt);
+
+  /// As stored in the case text: one word, `_` for a space.
   final String name;
   final int rows;
   final int cols;
+
+  /// The name as a player reads it.
+  String get label => name.replaceAll('_', ' ');
+
+  /// One person per row and column: the shorter side.
+  int get capacity => rows < cols ? rows : cols;
 
   /// `[row][col]` to cell index, -1 where the grid has no square.
   final List<List<int>> cellAt;
@@ -98,6 +114,7 @@ class CaseDef {
     required this.openings,
     required this.people,
     required this.clues,
+    this.extras = const <Clue>[],
     this.liar = false,
     this.noTouch = false,
     this.solution,
@@ -127,6 +144,10 @@ class CaseDef {
   final List<Person> people;
   final List<Clue> clues;
 
+  /// Extra true statements a player can ask for (GEN-035). The case is
+  /// complete without them: the solvers and the rules never read them.
+  final List<Clue> extras;
+
   /// Case rule: exactly one personal statement is false.
   final bool liar;
 
@@ -140,9 +161,18 @@ class CaseDef {
 
   int get victim => people.indexWhere((Person p) => p.isVictim);
 
+  /// How many people the grids can hold.
+  int get capacity => grids.fold(0, (int sum, GridDef g) => sum + g.capacity);
+
+  /// The people fill the grids, so every row of a grid that is not taller
+  /// than wide holds someone, and every column of one not wider than tall.
+  bool get isFull => people.length == capacity;
+
   /// The same scene and cast with different clues or rules.
   CaseDef copyWith({
     List<Clue>? clues,
+    List<Clue>? extras,
+    List<Opening>? openings,
     bool? liar,
     bool? noTouch,
     List<int>? solution,
@@ -156,9 +186,10 @@ class CaseDef {
     areas: areas,
     kinds: kinds,
     cells: cells,
-    openings: openings,
+    openings: openings ?? this.openings,
     people: people,
     clues: clues ?? this.clues,
+    extras: extras ?? this.extras,
     liar: liar ?? this.liar,
     noTouch: noTouch ?? this.noTouch,
     solution: solution ?? this.solution,
@@ -179,6 +210,10 @@ class CaseDef {
     final y = cells[b];
     return x.grid == y.grid && (x.row == y.row || x.col == y.col);
   }
+
+  /// True when two people on these squares break a placement rule of this
+  /// case: the same row or column, or touching in a no-touch case.
+  bool clash(int a, int b) => conflict(a, b) || (noTouch && touching(a, b));
 
   bool touching(int a, int b) {
     final x = cells[a];
@@ -250,9 +285,14 @@ class CaseDef {
     return null;
   }
 
+  /// "B3", and with two grids "B3 (Upper Deck)": both grids have a B3.
+  String placeLabel(int cell) => grids.length > 1
+      ? '${cellLabel(cell)} (${grids[cells[cell].grid].label})'
+      : cellLabel(cell);
+
   /// "B3": lettered column, numbered row.
   String cellLabel(int cell) {
     final c = cells[cell];
-    return '${String.fromCharCode(65 + c.col)}${c.row + 1}';
+    return '${colLabel(c.col)}${c.row + 1}';
   }
 }

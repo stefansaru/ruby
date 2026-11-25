@@ -15,7 +15,7 @@ A tolerated warning hides the next real one.
 - [ ] Continuous integration repeats them on push
 
 ## Implementation
-The analyzer reports nothing and the suite passes locally (2026-11-24) with the strict options copied from pushy. Continuous integration is not set up yet.
+The analyzer reports nothing and the suite passes locally (2026-11-24) with the strict options copied from pushy. A workflow for continuous integration exists (`.github/workflows/dart.yml`) but has not been seen to run (TODO 55, 2026-11-25).
 
 ## Related Tests
 Every file under `test/`; inventory in [Tests.md](../../../testing/Tests.md).

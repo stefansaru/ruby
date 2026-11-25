@@ -8,7 +8,7 @@
 Tapping a clue highlights the squares that clue allows for its person on the bare grid, ignoring other people. It is free and unlimited. For a clue that depends on another person's position the preview says so and shows what can be shown.
 
 ## Why
-It lets the player check what a sentence means instead of trusting their reading, which answers the genre's first complaint. Meaning must never cost coins.
+It lets the player check what a sentence means instead of trusting their reading, which answers the genre's first complaint. Meaning must never cost anything.
 
 ## Acceptance Criteria
 - [ ] Every clue type has a preview or a stated reason why none is possible
@@ -16,7 +16,7 @@ It lets the player check what a sentence means instead of trusting their reading
 - [ ] The preview costs nothing and is not counted as a hint
 
 ## Implementation
-The clue evaluator is being built in the engine in round 1. No UI exists.
+The clue evaluator is built in the engine (`Clue.holds`, 2026-11-24). The draft screen has no clue preview (2026-11-25).
 
 ## Related Tests
 None yet.

@@ -63,13 +63,15 @@ const int victimRule = -1;
 const int noTouchRule = -2;
 
 class Atoms {
-  /// The pieces of [clues] for case [c], plus the victim rule and, when
-  /// the case has it, the no-touch rule. Each piece remembers the index of
-  /// the clue it came from.
-  Atoms(this.c, List<Clue> clues) {
+  /// The pieces of [clues] for case [c], plus, with [rules], the victim
+  /// rule and the no-touch rule when the case has it. Each piece remembers
+  /// the index of the clue it came from. Without [rules] the pieces are
+  /// those of the clues alone (used to mark one statement).
+  Atoms(this.c, List<Clue> clues, {bool rules = true}) {
     for (var i = 0; i < clues.length; i++) {
       _expand(clues[i], i);
     }
+    if (!rules) return;
     final n = c.people.length;
     others.add(OthersAtom(c.victim, _allBut(c.victim), 1, victimRule));
     if (c.noTouch) {

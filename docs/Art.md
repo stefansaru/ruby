@@ -3,9 +3,10 @@
 What Detective Sudoku needs drawn, in what format, and how a drawing becomes
 an asset. Written 2026-11-24; every rule carries its reason.
 
-**No art exists yet.** This round delivers the needs list, the sheet formats
-and the prompts. `sprites/` holds no sheet, `assets/` holds no image, and the
-app draws nothing. The steps that remain are in `TODO.md`.
+**No art exists yet.** What exists is the needs list, the sheet formats and the
+prompts. `sprites/` holds no sheet, `assets/` holds no image, and the app draws
+placeholder shapes (`lib/widgets/case_grid.dart`); no art exists (2026-11-25).
+The steps that remain are in `TODO.md`.
 
 The pipeline is pushy's (`pushy/docs/Art.md` sections 6, 8 and 8a), reused
 because it already paid for its lessons: the owner generates sheets from
@@ -94,7 +95,7 @@ tokens, notes and labels all sit on top of them.
 
 ## 4. The scene: objects
 
-Thirty-nine kinds across the 12 settings, read from `lib/data/settings.dart`.
+Forty kinds across the 12 settings, read from `lib/data/settings.dart`.
 An object shared by several settings is drawn once.
 
 **A person can be on these (one square), 11:**
@@ -125,7 +126,7 @@ An object shared by several settings is drawn once.
 | canoe | camp |
 | sofa | hotel |
 
-**These block their square, 21:**
+**These block their square, 22:**
 
 | Object | Settings |
 |---|---|
@@ -133,9 +134,10 @@ An object shared by several settings is drawn once.
 | desk | school, hotel |
 | shelf | home, city, school, train, museum |
 | plant | home, hotel, museum |
-| lamp | city, train |
+| lamp | city |
 | bin | city, school |
 | trunk | train |
+| suitcase | train |
 | crate | ship |
 | barrel | ship |
 | vase | museum |
@@ -144,7 +146,7 @@ An object shared by several settings is drawn once.
 | tree | home, forest, city, farm, school, camp, hotel, park |
 | palm | beach |
 | bush | forest, park |
-| rock | beach, forest, camp |
+| rock | beach, forest, farm, camp |
 | umbrella | beach |
 | campfire | camp |
 | fountain | park |
@@ -177,10 +179,12 @@ until the object has a description and a sheet cell.
 - Unknown person: a grey silhouette, for card slots not yet revealed.
 - Caught: the pawn behind bars, for the reveal when a case is solved.
 
-**Marks and interface** (sheet `ui`, 16 cells): cross ("not here"), candidate
-dot ("maybe here"), tick, ring highlight, hint button, coin, coin stack,
-watch-an-ad icon, case-solved stamp, magnifying glass, undo, eraser, clue card
-panel, button and pressed button, star.
+**Marks and interface** (sheet `ui`, 16 cells, 15 used): cross ("not here"),
+candidate dot ("maybe here"), tick, ring highlight, hint button, plus button,
+close button, case-solved stamp, magnifying glass, undo, eraser, clue card
+panel, button and pressed button, star. The coin, the coin stack and the
+watch-an-ad icon were removed from the prompt on 2026-11-25 (owner ruling: no
+ads and no coins); plus and close took two of their cells and one is empty.
 
 **Drawn by the font, not sprited:** the column letters and row numbers around
 the grid, the suspect letters, area names, and all clue text. Reason: text in
@@ -201,13 +205,19 @@ Ten prompts, written by `tool/write_sprite_prompts.py`:
 | `terrain` | 4 x 4 | 16 | butted, magenta lines | the 16 floors |
 | `objects_sit` | 4 x 3 | 11 | white, black lines | one-square objects a person can be on |
 | `objects_indoor` | 4 x 3 | 12 | white, black lines | indoor blocking objects |
-| `objects_outdoor` | 4 x 3 | 11 | white, black lines | outdoor blocking objects, door, window |
+| `objects_outdoor` | 4 x 3 | 12 | white, black lines | outdoor blocking objects, door, window |
 | `objects_wide` | 4 x 4 | 14 (7 slots of 2) | white, black lines | wide objects, left-right |
 | `objects_wide_vertical` | 4 x 4 | 14 (7 slots of 2) | white, black lines | wide objects, top-bottom |
 | `people` | 4 x 3 | 11 | white, black lines | tokens |
-| `ui` | 4 x 4 | 16 | white, black lines | marks and interface |
+| `ui` | 4 x 4 | 15 | white, black lines | marks and interface |
 | `icon` | single | 1 | filled | app icon |
 | `feature_graphic` | single | 1 | filled | store banner |
+
+The lamp is on `objects_outdoor`, not `objects_indoor` (2026-11-25). Reason:
+since the Train's lamp became a suitcase, the lamp is only the City's street
+lamp, and moving it freed the indoor cell the suitcase needed without a larger
+grid. Both object sheets that block are now full; the next blocking object
+needs a new sheet or a 4 x 4 grid.
 
 Format rules, all taken from pushy with their reasons:
 
@@ -251,7 +261,9 @@ first file arrives, not before, so the build never names an empty folder.
 
 1. `py -3 tool/write_sprite_prompts.py` writes every outstanding prompt to
    `output/prompts/<name>.txt`. That folder is therefore the list of art
-   still to make. Today it holds all ten.
+   still to make. Today it holds all ten (last run 2026-11-25, with the
+   suitcase). The script builds every prompt before it deletes the old drafts,
+   so a failed check leaves the folder as it was.
 2. The owner pastes a prompt into the image generator and drops the result in
    `input/`.
 3. The sheet is cut and previewed (step 5's tools) and the owner reviews the

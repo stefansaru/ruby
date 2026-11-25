@@ -6,9 +6,9 @@ whoever was alone with the victim did it. Codename **ruby**.
 
 ## Status
 
-The rules engine, the solvers, the puzzle generator and the first case packs are
-built and tested. The game screens are not built yet. [TODO.md](TODO.md) lists what
-is left.
+The rules engine, the solvers, the generator, the case packs and a playable draft
+(placeholder shapes, saved ticks, free hint) are built and tested. The purchase,
+notes, art and release are not. [TODO.md](TODO.md) lists what is left.
 
 ## Getting started
 

@@ -7,1965 +7,2825 @@
 const List<String> hardCases = <String>[
   '''
 case hard-001
-title The Quiet Whistle
+title The Wrong Cushion
 setting home
-area A Bathroom
-area B Kitchen
-area C Hall
-area D Bedroom
-area E Garage
-area F Garden
-kind t block table
-kind b sit bed
+area A Kitchen
+area B Hall
+area C Living Room
+area D Garage
+area E Bathroom
+area F Bedroom
+kind p block plant
 kind r sit rug
-kind e block tree
+kind c sit chair
+kind s block shelf
+kind a sit car
+kind b sit bed
 grid Home 7 7
-E.. E.. E.. Eb. F.. F.. F..
-E.. E.. Fe. F.. Fe. C.. Cr.
-At. A.. A.. B.. B.. C.. C..
-A.. A.. B.. B.. C.. Ct. C..
-D.. B.. Bb. D.. D.. D.. Cr.
-D.. Dt. D.. D.. D.. Db1 C..
-D.. D.. D.. Dt. D.. Db1 D..
-open Home 2 6 W door
-open Home 3 3 N door
-open Home 4 2 S door
-open Home 3 5 N door
-open Home 4 4 E door
-open Home 4 1 S door
-open Home 6 7 S door
-open Home 1 4 N window
-open Home 4 1 W window
-open Home 7 4 S window
-person A Anna f
+E.. E.. Cc. C.. B.. B.. B..
+E.. E.. C.. C.. Br. B.. B..
+Es. Er. D.. D.. Br. B.. Ap.
+D.. D.. Da1 Ds. Br. B.. A..
+Fb2 D.. Da1 Br. B.. B.. Br.
+Fb2 F.. F.. F.. Bp. B.. B..
+F.. F.. F.. F.. B.. B.. B..
+person A Adam m
 person B Bea f
-person C Cora f hat
-person D Dan m hat
-person E Eli m
-person F Finn m
-victim P Paul m hat
-clue A offset E * 1
-clue A alonewith E
-clue B dir D 0 1
-clue B dir E -1 -1
-clue C is in B|D
-clue D offset F 2 *
-clue E is in B|F
-clue E is beside b
-clue F dir D -1 0
-solution A=1:3:4 B=1:1:2 C=1:6:5 D=1:7:1 E=1:4:3 F=1:5:7 P=1:2:6
+person C Carl m hat
+person D Dana f hat
+person E Eva f hat
+person F Faye f
+victim V Vlad m hat
+clue A offset C 1 *
+clue A is beside r
+clue B others f 2
+clue B offset E 3 *
+clue B offset F 2 *
+clue C is row 1
+clue D is in B|C
+clue E dir B -1 1
+clue F is not on r
+extra A dir E -1 -1
+extra C dir A -1 0
+extra C dir A -1 -1
+extra D is in B
+extra D notwith F
+extra E others hat 1
+extra E is in B
+extra F notwith C
+extra F dir E 1 -1
+solution A=1:2:2 B=1:7:5 C=1:1:1 D=1:6:7 E=1:4:6 F=1:5:3 V=1:3:4
 ''',
   '''
 case hard-002
-title The Missing Postcard
+title The Wrong Lifebelt
 setting beach
-area A Sea
-area B Pier
-area C Cafe
-area D Rocks
+area A Dunes
+area B Rocks
+area C Sea
+area D Pier
 area E Sand
-area F Dunes
-kind u block umbrella
+area F Cafe
+kind w sit towel
 kind k block rock
 kind b sit boat
-kind c sit chair
+kind t block table
+kind p block palm
 grid Beach 7 7
-D.. D.. D.. D.. C.. Cc. B..
-D.. D.. D.. Cc. C.. C.. Bb1
-D.. D.. D.. D.. F.. C.. Bb1
-D.. Dk. Db3 Db3 Fu. B.. Bu.
-E.. Eu. D.. Db2 Fk. B.. B..
-E.. E.. D.. Db2 F.. Bk. B..
-E.. Au. A.. D.. F.. B.. B..
-open Beach 2 4 W door
-open Beach 3 6 W door
-open Beach 5 3 W door
-open Beach 7 2 W door
-open Beach 7 3 N door
+Ep. E.. E.. E.. Dt. C.. Cb2
+E.. B.. Bw. E.. D.. C.. Cb2
+B.. Bw. B.. C.. C.. C.. C..
+F.. F.. F.. Ft. Cb1 Cb1 C..
+F.. F.. F.. F.. C.. Ck. C..
+F.. F.. Ft. Ft. A.. C.. C..
+F.. Ft. Aw. A.. A.. A.. C..
 person A Adam m glasses
-person B Bea f hat
-person C Carl m
+person B Bea f
+person C Cora f glasses
 person D Dan m
-person E Eli m hat
-person F Finn m glasses
-victim G Gina f
-clue A is front door
-clue B offset E * -2
-clue C dir A -1 1
-clue D offset A 3 *
-clue E offset F * 1
-clue E dir B 1 0
-clue F is in B
-solution A=1:2:3 B=1:3:5 C=1:1:4 D=1:5:1 E=1:7:7 F=1:4:6 G=1:6:2
+person E Eli m hat,glasses
+person F Faye f
+victim V Vince m hat
+clue A is on w
+clue A offset B * -2
+clue A dir D -1 1
+clue B dir F -1 -1
+clue C is line row b
+clue D is not border
+clue E offset F 3 *
+clue E offset D 2 *
+clue F offset B * 1
+extra B is in C|D
+extra B offset C 2 *
+extra C offset B * -1
+extra C dir D 0 1
+extra D offset B 2 *
+extra D dir C 0 -1
+extra E dir A 1 0
+extra F dir D -1 1
+extra F notwith A
+solution A=1:2:3 B=1:3:5 C=1:1:4 D=1:5:2 E=1:7:7 F=1:4:6 V=1:6:1
 ''',
   '''
 case hard-003
-title The Broken Notebook
+title The Wrong Moss
 setting forest
 area A Cabin
 area B Cave
-area C Pines
+area C Clearing
 area D Lake
-area E Clearing
+area E Pines
 area F Path
+kind r sit rug
 kind k block rock
-kind b sit boat
-kind u block bush
 kind l sit log
+kind u block bush
+kind b sit boat
+kind e block tree
 grid Forest 7 7
-E.. E.. E.. E.. Eb2 El. E..
-E.. E.. E.. Ek. Eb2 El. C..
-F.. Fl. F.. E.. D.. Cb1 Cb1
-F.. F.. F.. D.. Du. C.. C..
-A.. F.. Fb3 Fb3 F.. C.. C..
-Ak. Bk. B.. F.. F.. F.. C..
-B.. B.. B.. Bk. B.. F.. F..
-open Forest 2 1 S door
-open Forest 4 4 S door
-person A Anna f hat
-person B Ben m glasses
-person C Carl m glasses
-person D Dan m hat
-person E Eli m
-person F Finn m
-victim H Hana f
-clue A diag C
-clue B offset D 1 *
-clue C with B
-clue D is beside b
-clue D offset C * 3
-clue E is in F
-clue E only on l
-clue F is in D|F
-clue F offset E 2 *
-solution A=1:2:3 B=1:7:6 C=1:4:1 D=1:6:4 E=1:3:2 F=1:5:5 H=1:1:7
+A.. D.. Db. C.. Cu. Ck. C..
+A.. D.. C.. C.. C.. C.. Cu.
+Ar. D.. Cu. C.. C.. C.. E..
+C.. C.. Cu. C.. Ck. Cu. E..
+B.. B.. B.. Ck. C.. C.. E..
+B.. Bk. B.. F.. E.. E.. Ee.
+Bl. B.. Bk. Fu. F.. E.. Ee.
+open Forest 5 6 E door
+open Forest 5 2 N door
+open Forest 6 5 S door
+person A Adam m hat
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m hat,glasses
+person F Faye f hat,glasses
+victim V Vlad m
+clue A dir B -1 0
+clue B offset D * 1
+clue C is not beside e
+clue D is front door
+clue E dir A -1 1
+clue F offset D * 2
+clue F dir C 1 1
+clue F dir B 1 0
+clue * group hat border
+extra A is in A|F
+extra A offset E 1 *
+extra B is line col k
+extra B dir A 1 1
+extra C dir E 0 -1
+extra C others any 1
+extra D notwith F
+extra D dir F 1 0
+extra E offset C * 1
+extra E is in B|D
+solution A=1:2:1 B=1:3:6 C=1:4:2 D=1:7:5 E=1:1:3 F=1:5:7 V=1:6:4
 ''',
   '''
 case hard-004
-title The Late Umbrella
+title The Wrong Pigeon
 setting city
-area A Square
-area B Park
-area C Cafe
+area A Cafe
+area B Square
+area C Park
 area D Bank
 area E Street
 area F Shop
-kind a sit car
-kind e block tree
 kind t block table
 kind c sit chair
+kind n sit bench
+kind m block lamp
+kind i block bin
+kind s block shelf
 grid City 7 7
-F.. F.. F.. A.. A.. A.. A..
-F.. Fc. F.. F.. Be. A.. A..
-C.. F.. F.. B.. B.. A.. A..
-C.. Ct. Ft. E.. A.. A.. A..
-C.. Cc. C.. Ee. D.. Aa1 Aa1
-C.. C.. Cc. D.. Dc. A.. Aa2
-C.. C.. C.. D.. D.. Dt. Aa2
-open City 3 4 N door
-open City 5 3 N door
-open City 3 4 S door
-open City 4 5 W door
-open City 5 3 E door
-open City 6 3 E door
-open City 1 1 N window
-open City 7 4 S window
-person A Adam m
-person B Ben m glasses
+Em. E.. E.. Em. B.. Bn. B..
+E.. E.. Ei. E.. Ft. Fs. B..
+E.. E.. Em. E.. F.. F.. F..
+E.. E.. Em. E.. D.. F.. Fs.
+C.. C.. Cn. D.. D.. F.. Ft.
+A.. A.. C.. Dc. Ac. F.. F..
+A.. A.. A.. At. A.. F.. F..
+person A Anna f
+person B Bea f
 person C Carl m hat,glasses
-person D Dana f glasses
-person E Eva f glasses
-person F Finn m glasses
-victim L Lena f glasses
-clue A offset C 3 *
-clue B is in A|E
-clue C alonewith D
-clue D offset F * -3
-clue D is row 7
-clue E offset C * 3
-clue F only on a
-solution A=1:6:5 B=1:4:7 C=1:3:1 D=1:7:3 E=1:2:4 F=1:5:6 L=1:1:2
+person D Dan m
+person E Eva f
+person F Finn m hat
+victim V Vera f hat,glasses
+clue A dir B 1 -1
+clue B dir C -1 -1
+clue B is line row i
+clue C offset E -3 *
+clue D offset F * -1
+clue D offset C -3 *
+clue E is col 2
+clue F dir C 1 1
+extra A dir F -1 -1
+extra A is in A|C
+extra B dir E -1 0
+extra C is row 4
+extra C dir B 1 0
+extra D is in A|B
+extra E dir F 1 0
+extra E dir A 1 0
+extra F is in D|F
+extra F is in F
+solution A=1:5:3 B=1:2:4 C=1:4:5 D=1:1:6 E=1:7:2 F=1:6:7 V=1:3:1
 ''',
   '''
 case hard-005
-title The Cold Clock
+title The Wrong Wheelbarrow
 setting farm
-area A Barn
-area B Field
-area C Pond
-area D House
-area E Yard
-area F Orchard
-kind c sit chair
-kind t block table
-kind a sit tractor
-kind h sit hay bale
+area A Pond
+area B Barn
+area C Orchard
+area D Field
+area E House
+area F Yard
+kind k block rock
 kind g block pig
 kind o block cow
+kind e block tree
+kind h sit hay bale
+kind a sit tractor
+kind c sit chair
 grid Farm 7 7
-F.. F.. Fo. F.. F.. A.. Ac.
-Fg. F.. E.. E.. Ea. A.. Ac.
-Fh. D.. D.. Ac. A.. A.. A..
-D.. Dt. D.. Dh. Dh. A.. A..
-D.. Dc. Dh. D.. D.. A.. At.
-Ch. C.. B.. D.. D.. D.. A..
-C.. C.. Ba. D.. D.. D.. D..
-open Farm 3 3 N door
-open Farm 4 6 W door
-open Farm 6 1 N door
-open Farm 3 7 E window
+D.. D.. D.. B.. B.. Bo. A..
+D.. Da1 Bo. B.. B.. A.. Ak.
+D.. Da1 Ch. Bg. A.. A.. Ak.
+D.. Da. Ce. B.. A.. Ak. Ak.
+D.. C.. C.. C.. A.. A.. A..
+Do. C.. C.. A.. A.. F.. Fa.
+A.. A.. A.. A.. Ec. E.. E..
 person A Adam m
-person B Bea f glasses
+person B Bea f
 person C Carl m
-person D Dana f hat,glasses
+person D Dan m
 person E Eva f
-person F Faye f glasses
-victim I Ida f hat
-clue A notwith E
-clue B dir D 1 -1
-clue C is beside a
-clue D offset C * 3
-clue D offset B * 1
-clue E offset F 3 *
-clue F offset A * 1
-clue * group hat not border
-solution A=1:3:1 B=1:7:5 C=1:6:3 D=1:2:6 E=1:4:7 F=1:1:2 I=1:5:4
+person F Finn m glasses
+victim V Vince m
+clue A dir C 1 1
+clue B dir A -1 1
+clue B offset D * 3
+clue C offset D -2 *
+clue D dir C 1 1
+clue E is in B|F
+clue F offset B -2 *
+clue F dir A -1 -1
+clue F is line col a
+clue * count 0 on a
+extra A is in B|E
+extra A offset D 1 *
+extra B diag D
+extra C notwith A
+extra C notwith E
+extra D dir E 1 -1
+extra D dir C 1 0
+extra E dir A -1 -1
+extra E dir F 0 1
+solution A=1:7:5 B=1:3:6 C=1:4:1 D=1:6:3 E=1:2:4 F=1:1:2 V=1:5:7
 ''',
   '''
 case hard-006
-title The Silent Scarf
+title The Wrong Chalk
 setting school
-area A Library
-area B Hall
-area C Canteen
-area D Yard
-area E Gym
-area F Classroom
-kind d block desk
-kind n sit bench
-kind s block shelf
-kind c sit chair
-grid School 7 7
-D.. D.. En. E.. Ed. E.. E..
-D.. Dn. E.. E.. C.. C.. C..
-D.. Dn. Dn. Fc. Cs. C.. C..
-D.. D.. F.. F.. C.. C.. C..
-D.. A.. Ad. A.. Cd. C.. Cs.
-B.. B.. Bn. Bn. C.. C.. C..
-B.. B.. B.. B.. C.. C.. Cn.
-open School 3 3 N door
-open School 2 4 S door
-open School 2 5 N door
-open School 3 5 W door
-open School 5 3 S door
-open School 5 4 E door
-person A Anna f glasses
-person B Ben m
-person C Cora f glasses
-person D Dana f
-person E Eli m
-person F Finn m
-victim J Jack m hat
-clue A dir D 0 -1
-clue B dir F -1 1
-clue C is in D|E
-clue C offset A -3 *
-clue C offset D 2 *
-clue D offset B * 3
-clue E dir A 1 0
-clue E dir D 0 1
-clue F is in A|B
-clue * count 1 on n
-solution A=1:6:5 B=1:4:3 C=1:3:1 D=1:1:6 E=1:7:7 F=1:5:2 J=1:2:4
-''',
-  '''
-case hard-007
-title The Crooked Spoon
-setting train
-area A Dining Car
-area B Sleeper
-area C Luggage Car
-area D Second Class
-area E Engine
-area F First Class
-kind l block lamp
-kind r sit rug
-kind b sit bed
-kind c sit seat
-kind k block trunk
-kind s block shelf
-grid Train 7 7
-E.. Er. E.. Ec. F.. F.. F..
-Er. E.. E.. E.. E.. Fl. F..
-E.. D.. Dc. D.. F.. F.. F..
-B.. D.. D.. Dk. F.. Fr. Fs.
-Br. B.. Ab1 Al. A.. F.. F..
-B.. A.. Ab1 A.. A.. Cc. F..
-B.. A.. A.. A.. Ar. C.. C..
-open Train 3 4 E door
-open Train 4 1 N door
-open Train 6 2 W door
-open Train 5 5 N door
-open Train 6 7 E window
-open Train 7 4 S window
-open Train 7 7 E window
-person A Anna f hat
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eva f
-person F Faye f
-victim J Jack m
-clue A others any 1
-clue B dir F 1 1
-clue B dir D -1 -1
-clue C dir E 1 1
-clue D is in C|F
-clue E is line col l
-clue E is in B|E
-clue F dir A 1 -1
-clue * group f not border
-solution A=1:3:3 B=1:5:5 C=1:7:7 D=1:6:6 E=1:2:4 F=1:4:2 J=1:1:1
-''',
-  '''
-case hard-008
-title The Last Matchbox
-setting ship
-area A Bow
-area B Deck
-area C Bridge
-area D Galley
-area E Cabin
-area F Hold
-kind a sit lifeboat
-kind l block barrel
-kind b sit bed
-kind c sit chair
-kind t block table
-kind k block crate
-grid Ship 7 7
-A.. E.. E.. E.. C.. C.. Cb2
-A.. E.. C.. C.. C.. Cb. Cb2
-A.. E.. E.. Et. E.. Cl. C..
-Al. Ek. E.. C.. C.. Cc. C..
-A.. Ec. D.. C.. F.. C.. C..
-Aa1 Aa1 Dc. B.. Fl. Bl. C..
-A.. A.. B.. B.. B.. B.. Bl.
-open Ship 6 2 N door
-open Ship 5 4 E door
-open Ship 6 6 E door
-open Ship 6 6 W door
-open Ship 6 4 W door
-open Ship 1 3 N window
-open Ship 3 7 E window
-person A Adam m hat
-person B Ben m
-person C Cora f
-person D Dana f
-person E Eva f glasses
-person F Finn m
-victim O Otto m hat,glasses
-clue A is in D|F
-clue B is areacorner
-clue C only on a
-clue D offset B -3 *
-clue D offset F * -3
-clue E is not in B
-clue F with D
-clue F is line row b
-solution A=1:5:5 B=1:7:3 C=1:6:2 D=1:4:4 E=1:1:6 F=1:2:7 O=1:3:1
-''',
-  '''
-case hard-009
-title The Lost Glove
-setting camp
-area A Lake
-area B Fire Ring
-area C Woods
-area D Kitchen
-area E Field
-area F Tents
-kind l sit log
-kind c sit chair
-kind f block campfire
-kind e block tree
-grid Camp 7 7
-E.. E.. El. E.. B.. B.. Bc.
-Ec. E.. E.. F.. F.. Fe. Fe.
-C.. Cc. F.. F.. F.. Dc. Dc.
-C.. Cl. Ff. F.. F.. D.. D..
-C.. C.. Cf. C.. D.. Dc. D..
-A.. C.. C.. C.. D.. D.. Dc.
-Al. C.. C.. Cf. C.. D.. D..
-open Camp 1 6 S door
-open Camp 1 5 W door
-open Camp 3 2 N door
-open Camp 5 5 N door
-person A Anna f glasses
-person B Ben m
-person C Carl m hat,glasses
-person D Dana f hat
-person E Eva f hat
-person F Faye f hat
-victim W Wanda f
-clue A others f 1
-clue B dir C 0 1
-clue C only on c
-clue D is in A|B
-clue D offset B * 1
-clue E is col 3
-clue E dir A -1 0
-clue F is in B|F
-solution A=1:7:2 B=1:5:5 C=1:2:1 D=1:1:6 E=1:6:3 F=1:3:4 W=1:4:7
-''',
-  '''
-case hard-010
-title The Velvet Ribbon
-setting hotel
-area A Room 2
-area B Kitchen
-area C Bar
-area D Garden
-area E Pool
-area F Room 1
-kind p block plant
-kind c sit chair
-kind t block table
-kind o sit sofa
-kind u sit sunbed
-grid Hotel 7 7
-E.. E.. E.. E.. D.. Dp. Fo2
-Ep. Eu. Eu. Ep. C.. D.. Fo2
-Eu. Eu. E.. E.. Co1 Ap. A..
-E.. E.. E.. E.. Co1 A.. A..
-Eu. E.. E.. B.. Bt. Bt. Ac.
-E.. B.. B.. B.. B.. B.. Bt.
-E.. B.. B.. Bp. Bp. B.. B..
-open Hotel 2 5 W door
-open Hotel 3 6 N door
-open Hotel 3 7 N door
-open Hotel 7 5 S window
-person A Adam m
-person B Bea f
-person C Carl m hat,glasses
-person D Dana f hat
-person E Eli m
-person F Finn m glasses
-victim T Tina f
-clue A offset D 3 *
-clue A is not in C
-clue A is row 4
-clue B offset F * 3
-clue C offset E * -3
-clue D dir C -1 1
-clue E is not on c
-clue F is line col u
-clue F dir C -1 0
-clue F dir D 0 1
-solution A=1:4:7 B=1:2:6 C=1:7:1 D=1:1:2 E=1:5:4 F=1:3:3 T=1:6:5
-''',
-  '''
-case hard-011
-title The Hidden Coin
-setting park
-area A Playground
-area B Pond
-area C Rose Garden
-area D Path
-area E Cafe
-area F Lawn
-kind b sit boat
-kind f block fountain
-kind e block tree
-kind t block table
-grid Park 7 7
-Db1 Db1 D.. D.. Af. A.. Ab.
-C.. C.. C.. A.. A.. A.. E..
-B.. Ce. C.. Ce. A.. Et. E..
-B.. Bb. C.. C.. E.. E.. E..
-F.. F.. F.. F.. Et. E.. E..
-F.. F.. F.. F.. F.. F.. F..
-F.. Fe. F.. Ff. Fb. Fe. Ff.
-open Park 3 5 E door
-open Park 2 2 N door
-open Park 3 5 W door
-open Park 3 1 N door
-open Park 4 2 S door
-open Park 4 4 E door
-open Park 5 5 S door
-open Park 4 7 E window
-person A Adam m
-person B Ben m hat
-person C Carl m hat
-person D Dana f glasses
-person E Eva f
-person F Finn m
-victim U Uma f hat
-clue A offset D -3 *
-clue A offset B * -2
-clue B only beside b
-clue C dir E 1 0
-clue D dir C 0 -1
-clue E is beside f
-clue F offset B * 3
-solution A=1:2:1 B=1:1:3 C=1:7:5 D=1:5:2 E=1:6:4 F=1:4:6 U=1:3:7
-''',
-  '''
-case hard-012
-title The Empty Bell
-setting museum
-area A Gallery
-area B Gift Shop
-area C Garden
-area D Dino Room
-area E Cafe
-area F Hall
-kind p block plant
-kind n sit bench
-kind u block statue
-kind v block vase
-kind c sit chair
-grid Museum 7 7
-Ap. F.. F.. Fv. F.. C.. Cn.
-A.. F.. Fp. F.. C.. Cu. C..
-Bn. Dv. D.. D.. C.. Cu. C..
-Bu. B.. B.. B.. C.. C.. Eu.
-B.. B.. B.. B.. B.. E.. E..
-B.. B.. Bn. B.. E.. E.. E..
-Bv. B.. B.. B.. Ec. E.. Ec.
-open Museum 2 1 E door
-open Museum 4 6 S door
-open Museum 7 1 S window
-open Museum 7 5 S window
-person A Adam m glasses
-person B Ben m hat
-person C Cora f
-person D Dan m hat
-person E Eli m
-person F Finn m hat
-victim M Mia f hat
-clue A notwith B
-clue A is line row u
-clue B is not in B
-clue C offset D * 3
-clue C is beside c
-clue D dir A 1 -1
-clue D is beside v
-clue E is line col p
-clue E offset C -1 *
-clue F diag A
-clue F dir D 1 -1
-solution A=1:2:4 B=1:5:7 C=1:7:6 D=1:3:3 E=1:6:1 F=1:4:2 M=1:1:5
-''',
-  '''
-case hard-013
-title The Second Teacup
-setting home
-area A Bathroom
-area B Hall
-area C Kitchen
-area D Garden
-area E Bedroom
-area F Living Room
-area G Garage
-kind a sit car
-kind t block table
-kind s block shelf
-kind c sit chair
-grid Home 8 8
-G.. G.. G.. G.. B.. B.. Bt. B..
-G.. Gc. G.. Bt. B.. B.. B.. D..
-G.. G.. Gs. D.. Bs. B.. B.. D..
-C.. Gt. Da3 Da3 D.. D.. D.. D..
-C.. C.. A.. D.. D.. D.. D.. Da1
-Cc. C.. Aa. D.. D.. Da2 Da2 Da1
-C.. C.. D.. D.. D.. D.. D.. D..
-C.. Cs. D.. D.. F.. Fc. Ea4 Ea4
-open Home 4 3 W door
-open Home 4 1 E door
-open Home 7 8 S door
-open Home 8 1 S window
-open Home 8 6 S window
-open Home 8 7 S window
-person A Adam m hat,glasses
-person B Bea f hat,glasses
-person C Cora f hat,glasses
-person D Dan m
-person E Eli m glasses
-person F Faye f
-person G Gus m glasses
-victim Z Zoe f hat
-clue A notwith F
-clue B is row 6
-clue B offset E * 2
-clue C is line row c
-clue C offset G * 1
-clue D offset F -2 *
-clue E is in C|F
-clue E offset A * -1
-clue E dir G 1 1
-clue F is on a
-clue G is not on c
-solution A=1:1:6 B=1:6:7 C=1:2:3 D=1:3:4 E=1:8:5 F=1:5:8 G=1:7:2 Z=1:4:1
-''',
-  '''
-case hard-014
-title The Locked Ticket
-setting beach
-area A Cafe
-area B Sand
-area C Pier
-area D Sea
-area E Rocks
-area F Dunes
-kind t block table
-kind c sit chair
-kind w sit towel
-kind d sit sunbed
-kind p block palm
-grid Beach 8 8
-A.. A.. E.. E.. E.. E.. B.. B..
-A.. A.. Ep. Ed. E.. E.. Bw. B..
-A.. A.. Ed. E.. E.. E.. B.. Bd.
-At. A.. E.. E.. Ep. Bw. B.. B..
-Ac. At. Ed. E.. E.. B.. B.. B..
-C.. C.. Cw. F.. B.. Bw. B.. B..
-F.. Fd. F.. F.. F.. B.. D.. Dd.
-Fw. Fw. F.. F.. Dp. D.. D.. D..
-open Beach 5 2 E door
-open Beach 5 1 S door
-open Beach 5 4 S door
-open Beach 6 3 E door
-open Beach 6 3 N door
-open Beach 6 5 W door
-open Beach 4 1 W window
-person A Adam m hat
-person B Bea f
-person C Cora f glasses
-person D Dana f glasses
-person E Eva f hat
-person F Faye f hat,glasses
-person G Gina f hat
-victim U Uma f hat
-clue A dir G 1 -1
-clue A diag C
-clue B is in B
-clue B offset C -2 *
-clue B is not border
-clue C dir G 1 1
-clue C dir F -1 1
-clue C is line row p
-clue D is not border
-clue E dir C 1 -1
-clue E is in C|D
-clue F is corner
-clue G is in B|E
-solution A=1:7:5 B=1:2:7 C=1:4:8 D=1:3:2 E=1:6:3 F=1:8:1 G=1:1:6 U=1:5:4
-''',
-  '''
-case hard-015
-title The Borrowed Lantern
-setting forest
-area A Cave
-area B Lake
-area C Clearing
-area D Cabin
-area E Path
-area F Pines
-kind k block rock
-kind c sit chair
-kind l sit log
-kind u block bush
-kind e block tree
-grid Forest 8 8
-E.. El. Ac. A.. A.. A.. A.. A..
-Bl. B.. D.. A.. A.. A.. Ac. Ac.
-B.. B.. D.. A.. Ac. Ak. A.. C..
-D.. D.. Dc. Ak. Ak. A.. A.. C..
-D.. D.. Ak. A.. A.. A.. C.. C..
-F.. Dk. F.. Fk. F.. A.. C.. C..
-F.. F.. F.. F.. F.. Fe. C.. Cu.
-Fe. F.. F.. F.. Fe. Cu. C.. Cu.
-open Forest 5 3 W door
-open Forest 1 3 W door
-open Forest 5 3 S door
-open Forest 2 8 E window
-open Forest 4 1 W window
-person A Adam m hat
-person B Ben m
-person C Cora f
-person D Dan m hat
-person E Eli m
-person F Finn m hat
-person G Gus m hat
-victim S Sam m
-clue A dir F 0 -1
-clue A offset C * 3
-clue B dir E -1 1
-clue B is beside c
-clue C is in F
-clue D notwith F
-clue E dir G 1 -1
-clue E is border
-clue E is in A|B
-clue F offset D -2 *
-clue F diag C
-clue G offset C * 2
-clue G is line col c
-solution A=1:5:6 B=1:1:4 C=1:8:3 D=1:6:8 E=1:3:1 F=1:4:7 G=1:2:5 S=1:7:2
-''',
-  '''
-case hard-016
-title The Open Window
-setting city
-area A Square
-area B Street
-area C Cafe
-area D Shop
-area E Park
-area F Bank
-kind i block bin
-kind m block lamp
-kind a sit car
-kind s block shelf
-kind n sit bench
-grid City 8 8
-B.. Bm. B.. B.. B.. F.. F.. F..
-Bm. B.. B.. Bi. F.. Fs. F.. Fs.
-D.. B.. B.. A.. A.. A.. Ai. F..
-Di. D.. C.. Am. A.. Ai. A.. E..
-D.. D.. Ci. A.. Aa1 Aa1 A.. E..
-D.. Ds. A.. A.. A.. A.. E.. En.
-D.. D.. Di. A.. A.. A.. A.. E..
-D.. D.. Di. D.. Am. Ai. Ai. E..
-open City 3 7 E door
-open City 6 3 N door
-open City 6 3 S door
-open City 3 1 W window
-person A Anna f glasses
-person B Bea f
-person C Carl m hat,glasses
-person D Dana f
-person E Eli m
-person F Faye f hat
-person G Gus m hat
-victim L Leo m
-clue A offset G * -2
-clue B offset A -1 *
-clue C is line col s
-clue D dir E -1 -1
-clue E dir C -1 0
-clue F is row 6
-clue F is in D
-clue G is line col n
-clue G offset E 2 *
-clue G diag B
-solution A=1:3:6 B=1:2:3 C=1:8:2 D=1:4:5 E=1:5:7 F=1:6:1 G=1:7:8 L=1:1:4
-''',
-  '''
-case hard-017
-title The Wrong Hat
-setting farm
-area A Field
-area B Orchard
-area C Yard
-area D Pond
-area E Barn
-area F House
-kind e block tree
-kind g block pig
-kind h sit hay bale
-kind o block cow
-kind b sit bed
-grid Farm 8 8
-C.. Ce. Cg. C.. E.. E.. Eh. E..
-C.. C.. Ce. C.. C.. E.. E.. E..
-C.. Cg. B.. Bg. B.. Eh. E.. Eh.
-F.. C.. A.. B.. B.. B.. E.. E..
-F.. C.. Ae. B.. B.. B.. Bh. B..
-F.. F.. A.. A.. B.. B.. B.. Bg.
-Fb1 Fb1 D.. Do. D.. B.. B.. Bh.
-F.. Fb. D.. Dg. D.. B.. B.. B..
-open Farm 5 7 N door
-open Farm 5 3 E door
-open Farm 5 3 W door
-open Farm 1 8 E window
-open Farm 7 1 W window
-person A Adam m hat,glasses
-person B Bea f
-person C Carl m hat
-person D Dan m hat
-person E Eli m glasses
-person F Faye f glasses
-person G Gus m
-victim N Nora f
-clue A offset D 3 *
-clue A dir F -1 -1
-clue B offset E -3 *
-clue B offset G 2 *
-clue C with G
-clue C is in A|B
-clue D offset E * 2
-clue D dir C 0 -1
-clue E is in D|E
-clue F is line col b
-clue G dir D 0 -1
-solution A=1:4:1 B=1:5:4 C=1:7:8 D=1:1:7 E=1:8:5 F=1:6:2 G=1:3:3 N=1:2:6
-''',
-  '''
-case hard-018
-title The Spare Key
-setting school
-area A Hall
-area B Yard
+area A Yard
+area B Canteen
 area C Classroom
-area D Canteen
+area D Hall
 area E Library
 area F Gym
 kind i block bin
-kind s block shelf
+kind e block tree
+kind t block table
 kind n sit bench
-kind m sit mat
-grid School 8 8
-B.. Bn. B.. B.. B.. Bi. D.. Di.
-B.. Bn. B.. B.. Bn. B.. D.. Di.
-B.. B.. Fi. F.. D.. D.. D.. Dm.
-B.. B.. E.. E.. D.. Ds. D.. Ds.
-A.. A.. Ei. E.. D.. D.. D.. D..
-A.. A.. As. A.. C.. C.. Ci. D..
-Ai. A.. A.. A.. C.. C.. C.. Cs.
-An. A.. Ai. A.. C.. C.. Cs. C..
-open School 2 4 S door
-open School 3 5 W door
-open School 5 1 N door
-open School 6 4 N door
-open School 8 8 S window
-person A Adam m hat
-person B Bea f
+kind c sit chair
+grid School 7 7
+B.. Bi. B.. Bt. B.. B.. B..
+B.. B.. B.. B.. Bi. C.. C..
+B.. B.. B.. B.. C.. C.. C..
+Ec. F.. F.. D.. C.. Ci. C..
+E.. Fn. F.. Dn. C.. Ci. Ci.
+E.. F.. Ae. A.. A.. Ci. C..
+E.. E.. A.. A.. Ai. C.. C..
+person A Anna f
+person B Ben m glasses
 person C Cora f
-person D Dan m glasses
+person D Dana f
 person E Eli m hat
-person F Finn m hat,glasses
-person G Gus m
-victim J Jade f
-clue A dir D 1 -1
-clue A dir G -1 1
-clue A is col 4
-clue B dir E -1 0
-clue B offset A * -1
-clue C offset E * -3
-clue D offset E * -1
-clue E offset F 3 *
-clue F is beside s
-clue G is line col i
-clue G dir C -1 0
-clue G with A
-solution A=1:2:4 B=1:7:3 C=1:4:5 D=1:1:7 E=1:8:8 F=1:5:6 G=1:3:1 J=1:6:2
+person F Faye f hat
+victim V Vicky f glasses
+clue A is beside n
+clue B offset F -2 *
+clue C dir F 1 -1
+clue C offset A * 1
+clue D others hat 1
+clue D dir B -1 1
+clue E dir A 1 0
+clue E dir C 0 -1
+clue F offset D * -2
+extra A dir E 0 1
+extra A offset E * 1
+extra B dir C -1 0
+extra B dir F 0 -1
+extra C dir E 0 1
+extra D notwith B
+extra E dir C -1 -1
+extra F dir C 0 1
+extra F is line row i
+solution A=1:4:2 B=1:3:4 C=1:7:3 D=1:2:7 E=1:6:1 F=1:5:5 V=1:1:6
 ''',
   '''
-case hard-019
-title The Muddy Candle
+case hard-007
+title The Wrong Carriage
 setting train
-area A Second Class
-area B Dining Car
-area C Engine
+area A Engine
+area B Second Class
+area C Luggage Car
 area D Sleeper
 area E First Class
-area F Luggage Car
-kind b sit bed
-kind k block trunk
+area F Dining Car
 kind c sit seat
 kind s block shelf
-grid Train 8 8
-F.. E.. E.. E.. E.. Ec. E.. E..
-Fk. Fc. Fc. Ec. Ec. Es. E.. E..
-F.. F.. Cs. C.. C.. E.. Ec. E..
-Bs. F.. C.. C.. C.. E.. E.. D..
-B.. Fs. F.. C.. Cb. Cb2 D.. Dc.
-B.. F.. F.. A.. A.. Cb2 D.. Ds.
-B.. B.. A.. Ak. Ab1 C.. D.. D..
-Bc. B.. B.. A.. Ab1 A.. D.. D..
-open Train 1 2 W door
-open Train 6 4 W door
-open Train 8 3 S window
-open Train 8 4 S window
-person A Adam m
-person B Ben m hat
-person C Cora f
-person D Dana f
-person E Eli m glasses
-person F Finn m
-person G Gus m hat
-victim U Uma f hat,glasses
-clue A is in C|F
-clue A is not beside s
-clue B is in C|D
-clue B offset A -2 *
-clue C with F
-clue D dir G -1 0
-clue D offset F * -2
-clue E offset G 2 *
-clue E diag F
-clue F dir E 1 0
-clue G only beside k
-solution A=1:6:6 B=1:4:3 C=1:7:8 D=1:2:5 E=1:5:4 F=1:8:7 G=1:3:1 U=1:1:2
+kind l block suitcase
+kind b sit bed
+kind t block table
+kind r sit rug
+grid Train 7 7
+A.. E.. E.. E.. E.. Er. Bl.
+A.. Ac. E.. Et. E.. E.. B..
+A.. A.. As. Et. D.. B.. B..
+A.. Ac. A.. D.. Db1 B.. B..
+A.. F.. Fc. D.. Db1 D.. B..
+F.. Fc. F.. C.. Cs. C.. Bl.
+F.. F.. C.. C.. Cs. C.. B..
+person A Anna f hat,glasses
+person B Bea f glasses
+person C Carl m glasses
+person D Dan m
+person E Eva f hat
+person F Finn m hat
+victim V Val m glasses
+clue A alonewith C
+clue A is col 3
+clue B is corner
+clue C dir A -1 0
+clue D offset B 2 *
+clue E only beside b
+clue F dir C 1 0
+extra A dir F -1 -1
+extra B dir A -1 0
+extra B dir D -1 -1
+extra C is in C|F
+extra C offset E * -3
+extra D is in B
+extra D dir C -1 0
+extra E diag A
+extra E dir C -1 1
+extra F dir B 0 1
+extra F offset D * -2
+solution A=1:6:3 B=1:1:1 C=1:5:2 D=1:3:6 E=1:4:5 F=1:7:4 V=1:2:7
 ''',
   '''
-case hard-020
-title The Torn Map
+case hard-008
+title The Wrong Gangway
 setting ship
-area A Bow
-area B Bridge
-area C Hold
-area D Deck
-area E Galley
-area F Cabin
-kind k block crate
+area A Galley
+area B Deck
+area C Cabin
+area D Bow
+area E Hold
+area F Bridge
 kind l block barrel
+kind k block crate
 kind t block table
 kind c sit chair
-grid Ship 8 8
-A.. A.. Al. Ak. Dc. D.. Dc. D..
-A.. Ak. A.. F.. Dk. D.. D.. D..
-Ek. A.. A.. Fc. D.. D.. D.. D..
-E.. E.. Bt. B.. Dl. D.. Dk. D..
-E.. Ec. El. E.. D.. Dk. Dl. D..
-E.. E.. E.. E.. D.. D.. D.. D..
-El. E.. E.. Et. C.. C.. D.. Dc.
-E.. C.. Cc. C.. Cc. Dl. D.. D..
-open Ship 1 4 E door
-open Ship 3 2 W door
-open Ship 6 5 W door
-open Ship 8 5 E door
-open Ship 8 4 N door
-open Ship 8 1 W window
+grid Ship 7 7
+A.. Al. A.. A.. E.. E.. E..
+F.. Fc. F.. E.. El. E.. E..
+F.. F.. F.. Ct. E.. El. E..
+F.. Ct. Fc. C.. Ek. E.. D..
+C.. C.. C.. C.. E.. E.. D..
+Ct. C.. Bk. B.. E.. D.. D..
+C.. C.. B.. E.. El. Dl. Dl.
 person A Adam m
-person B Ben m hat
-person C Cora f hat
-person D Dana f
-person E Eli m
-person F Finn m
-person G Gus m glasses
-victim J Jade f
-clue A dir D 0 1
-clue A is in A|F
-clue B offset G * -1
-clue B offset A 3 *
-clue C offset A -2 *
-clue D offset E -1 *
-clue D offset F * 2
-clue E is col 5
-clue F dir E -1 -1
-clue G is row 4
-solution A=1:3:4 B=1:6:7 C=1:1:6 D=1:7:3 E=1:8:5 F=1:2:1 G=1:4:8 J=1:5:2
+person B Ben m
+person C Carl m hat
+person D Dana f glasses
+person E Eli m glasses
+person F Finn m hat,glasses
+victim V Vlad m
+clue A dir C 1 1
+clue A is in E|F
+clue B dir D -1 -1
+clue B dir A 0 1
+clue C others f 0
+clue D is not beside k
+clue D is in E
+clue E is in B|F
+clue E offset F 2 *
+clue F offset D 1 *
+extra A others m 1
+extra B dir A -1 0
+extra C others m 1
+extra C dir B 1 -1
+extra D dir B 1 1
+extra E dir A 0 -1
+extra F offset B 3 *
+extra F dir E -1 -1
+solution A=1:5:5 B=1:1:6 C=1:2:2 D=1:3:7 E=1:6:4 F=1:4:1 V=1:7:3
 ''',
   '''
-case hard-021
-title The Early Footprint
+case hard-009
+title The Wrong Flask
 setting camp
-area A Woods
-area B Field
-area C Lake
-area D Tents
-area E Kitchen
+area A Lake
+area B Kitchen
+area C Field
+area D Woods
+area E Tents
 area F Fire Ring
+kind b sit canoe
+kind t block table
+kind k block rock
+kind l sit log
 kind c sit chair
 kind f block campfire
-kind n sit tent
-kind e block tree
-grid Camp 8 8
-B.. Bn. C.. C.. C.. C.. Cc. Cf.
-B.. B.. E.. E.. E.. C.. Ce. C..
-B.. E.. Ec. E.. E.. E.. C.. C..
-Bf. Ec. Ec. E.. E.. E.. C.. C..
-B.. E.. E.. Ec. E.. E.. Ce. C..
-Fe. F.. Ec. E.. D.. D.. Dn. Cf.
-Ff. F.. A.. A.. D.. D.. De. C..
-F.. F.. A.. Ac. A.. A.. D.. D..
-open Camp 1 2 E door
-open Camp 5 7 W door
-open Camp 6 3 W door
-open Camp 5 7 S door
-person A Anna f
-person B Bea f
-person C Carl m hat
-person D Dana f hat
-person E Eva f glasses
-person F Faye f
-person G Gina f
-victim U Uri m glasses
-clue A dir F 1 -1
-clue A dir D -1 0
-clue B is not beside e
-clue C dir F -1 -1
-clue D offset C * -3
-clue E dir C -1 0
-clue E others hat 1
-clue F is in E|F
-clue F dir G 1 0
-clue G is line row f
-clue G offset F * 3
-solution A=1:7:2 B=1:6:6 C=1:3:4 D=1:8:1 E=1:2:3 F=1:5:5 G=1:4:8 U=1:1:7
+grid Camp 7 7
+B.. B.. Ff. F.. Ct. C.. C..
+Bt. B.. Ab2 Ct. C.. Ct. C..
+A.. A.. Ab2 C.. C.. C.. C..
+A.. Ab1 Ab1 A.. Ec. E.. C..
+Dl. Dk. D.. A.. A.. E.. E..
+D.. D.. D.. D.. Ec. E.. E..
+D.. Dk. D.. D.. D.. E.. E..
+person A Anna f hat
+person B Bea f glasses
+person C Carl m
+person D Dan m glasses
+person E Eva f hat
+person F Finn m
+victim V Vlad m
+clue A offset C * 1
+clue A is in B|D
+clue B only on c
+clue C offset F * -3
+clue C alonewith D
+clue D offset C * -2
+clue E offset B -3 *
+clue F is line row k
+extra A offset B * -1
+extra B dir E 0 -1
+extra B dir E 1 -1
+extra C dir A 0 -1
+extra D dir A -1 -1
+extra D dir E 1 -1
+extra E others f 0
+extra E dir B 0 1
+extra F is in C|E
+extra F dir D 0 1
+solution A=1:7:4 B=1:4:5 C=1:2:3 D=1:3:1 E=1:1:7 F=1:5:6 V=1:6:2
 ''',
   '''
-case hard-022
-title The Blue Suitcase
+case hard-010
+title The Wrong Minibar
 setting hotel
 area A Kitchen
 area B Room 1
-area C Garden
-area D Room 2
-area E Lobby
-area F Bar
-area G Pool
+area C Bar
+area D Garden
+area E Pool
+area F Room 2
+kind c sit chair
 kind t block table
-kind d block desk
-kind b sit bed
+kind e block tree
 kind p block plant
 kind u sit sunbed
-grid Hotel 8 8
-Cu. C.. Cu. C.. C.. B.. Bt. B..
-C.. C.. C.. Cu. Cp. B.. B.. B..
-C.. C.. C.. C.. B.. B.. B.. Bb2
-C.. Cu. Cu. C.. C.. B.. Bb. Bb2
-Db3 C.. Cp. C.. F.. A.. Bd. B..
-Db3 Gu. Cp. Eb4 F.. Ab1 Ab1 A..
-G.. G.. G.. Eb4 Ft. A.. A.. A..
-G.. G.. Gp. E.. A.. Ad. A.. At.
-open Hotel 2 6 W door
-open Hotel 4 1 S door
-open Hotel 4 5 S door
-open Hotel 5 4 S door
-open Hotel 6 8 N door
-open Hotel 5 6 W door
-open Hotel 7 4 W door
-open Hotel 8 5 W door
-person A Adam m
-person B Ben m hat
-person C Carl m
-person D Dana f
-person E Eva f hat,glasses
-person F Faye f hat
-person G Gina f
-victim K Karl m
-clue A is line col p
-clue A is row 2
-clue B is row 7
-clue C dir E 0 1
-clue D is not in B
-clue E offset B * 3
-clue F others f 2
-clue G dir A -1 -1
-clue G offset F * 1
-solution A=1:2:3 B=1:7:4 C=1:5:8 D=1:4:5 E=1:8:7 F=1:3:1 G=1:1:2 K=1:6:6
+grid Hotel 7 7
+Cc. A.. At. A.. F.. B.. B..
+C.. A.. A.. A.. F.. F.. Bc.
+A.. A.. A.. Ac. Fc. Fc. F..
+Ac. A.. A.. F.. F.. Fc. F..
+Ac. D.. De. D.. E.. E.. E..
+D.. D.. D.. Dp. Eu. Ep. E..
+D.. De. D.. D.. Eu. E.. E..
+person A Anna f
+person B Bea f
+person C Cora f hat
+person D Dana f glasses
+person E Eli m
+person F Faye f hat,glasses
+victim V Vera f
+clue A offset C 1 *
+clue A with B
+clue B offset A * -1
+clue B is in A|F
+clue B is not beside c
+clue C offset D * -2
+clue D dir E 0 1
+clue E dir C -1 -1
+clue E offset B -1 *
+clue F is in A|E
+extra A dir E 1 -1
+extra C others m 0
+extra C dir F -1 0
+extra D dir A 1 1
+extra D dir F 1 0
+extra E is in A|E
+extra F is in A|C
+extra F others any 3
+solution A=1:4:3 B=1:2:2 C=1:3:5 D=1:6:7 E=1:1:4 F=1:5:1 V=1:7:6
 ''',
   '''
-case hard-023
-title The Sleepy Letter
+case hard-011
+title The Wrong Frisbee
 setting park
 area A Cafe
 area B Lawn
-area C Rose Garden
-area D Playground
-area E Path
-area F Pond
-kind t block table
+area C Path
+area D Rose Garden
+area E Pond
+area F Playground
 kind c sit chair
+kind t block table
 kind n sit bench
+kind f block fountain
 kind u block bush
-kind e block tree
-grid Park 8 8
-F.. Fn. F.. B.. Bn. B.. B.. Bn.
-F.. Fe. F.. Ce. Bn. B.. Bu. B..
-Fn. Fu. F.. C.. B.. Be. B.. B..
-F.. F.. C.. C.. B.. B.. B.. D..
-F.. F.. A.. A.. At. B.. D.. D..
-Fe. A.. Ac. A.. A.. De. D.. De.
-At. A.. A.. A.. A.. D.. Eu. E..
-At. A.. Ac. A.. A.. E.. E.. E..
-open Park 1 4 S door
-open Park 1 4 W door
-open Park 4 7 S door
-open Park 6 2 W door
-open Park 5 5 E door
-open Park 8 5 E door
-open Park 8 4 S window
-person A Adam m glasses
-person B Ben m hat,glasses
+kind b sit boat
+grid Park 7 7
+Du. D.. C.. Cn. B.. B.. Bn.
+D.. C.. C.. C.. B.. A.. Ac.
+D.. D.. E.. E.. A.. A.. At.
+Df. D.. Eb. A.. A.. A.. A..
+Du. D.. F.. A.. Ac. A.. A..
+D.. F.. F.. A.. Ac. A.. A..
+F.. F.. Fn. F.. Ac. A.. A..
+person A Adam m
+person B Ben m glasses
+person C Carl m
+person D Dana f
+person E Eva f glasses
+person F Finn m
+victim V Vera f hat
+clue A is line col b
+clue A is in B|E
+clue B is on c
+clue C dir D -1 1
+clue C offset F 3 *
+clue D dir E -1 0
+clue E is in B|D
+clue F is not beside u
+extra A dir E 0 1
+extra B dir C 1 -1
+extra B dir A 1 1
+extra C notwith E
+extra D dir A 0 1
+extra D is in A|E
+extra E notwith C
+extra E dir C 1 -1
+extra F offset A * 1
+extra F is in B|C
+solution A=1:3:3 B=1:7:5 C=1:4:7 D=1:5:6 E=1:6:1 F=1:1:4 V=1:2:2
+''',
+  '''
+case hard-012
+title The Wrong Portrait
+setting museum
+area A Cafe
+area B Gift Shop
+area C Hall
+area D Dino Room
+area E Garden
+area F Gallery
+kind p block plant
+kind c sit chair
+kind v block vase
+kind u block statue
+kind o block skeleton
+kind n sit bench
+grid Museum 7 7
+C.. C.. Cu. C.. C.. C.. Cp.
+F.. A.. A.. Cp. C.. C.. C..
+F.. Ac. A.. A.. B.. C.. C..
+Fn. Ap. A.. A.. B.. Cp. C..
+D.. A.. Ap. A.. B.. Ep. E..
+D.. D.. Do. A.. Bv. E.. Ep.
+D.. Dn. D.. E.. E.. E.. E..
+person A Anna f glasses
+person B Bea f glasses
 person C Cora f
 person D Dan m
+person E Eva f
+person F Finn m hat
+victim V Vicky f hat
+clue A dir D 0 1
+clue B offset F * -3
+clue B with A
+clue B offset E * 2
+clue C is in B|D
+clue C dir A 0 -1
+clue D dir E -1 -1
+clue E offset A 3 *
+clue E offset C 2 *
+clue F is not beside n
+extra A others m 0
+extra A offset E -3 *
+extra C dir E -1 1
+extra D others m 0
+extra D dir E -1 0
+extra E offset C * -3
+extra F offset C * 2
+extra F is in C|E
+solution A=1:3:6 B=1:1:4 C=1:4:5 D=1:2:1 E=1:6:2 F=1:5:7 V=1:7:3
+''',
+  '''
+case hard-013
+title The Old Doormat
+setting home
+area A Hall
+area B Bathroom
+area C Bedroom
+area D Living Room
+area E Garage
+area F Garden
+kind s block shelf
+kind r sit rug
+kind a sit car
+kind t block table
+grid Home 7 7
+Br. C.. C.. Ft. F.. F.. F..
+B.. Br. C.. Cs. C.. F.. Ft.
+B.. B.. C.. C.. Cs. A.. As.
+E.. B.. C.. C.. D.. A.. A..
+E.. E.. E.. Dr. D.. A.. A..
+E.. E.. Ea1 D.. D.. D.. D..
+Es. E.. Ea1 E.. Dr. D.. D..
+person A Adam m glasses
+person B Bea f hat
+person C Carl m
+person D Dana f glasses
+person E Eva f glasses
+person F Finn m
+victim V Vlad m hat
+clue A is col 4
+clue B is in A|C
+clue C is line row a
+clue C offset E 2 *
+clue C offset D * 1
+clue D is in B
+clue E is in C|F
+clue F offset E -2 *
+clue * count 0 on r
+extra A dir E 1 0
+extra A offset F * -2
+extra B offset F 3 *
+extra B dir C -1 0
+extra D dir C 0 -1
+extra D dir E 0 -1
+extra E dir A -1 0
+extra E others m 0
+extra F dir A 0 1
+extra F offset B * -1
+solution A=1:7:4 B=1:5:7 C=1:6:2 D=1:3:1 E=1:4:3 F=1:2:6 V=1:1:5
+''',
+  '''
+case hard-014
+title The Old Flip-Flop
+setting beach
+area A Rocks
+area B Dunes
+area C Sand
+area D Pier
+area E Cafe
+area F Sea
+kind w sit towel
+kind p block palm
+kind c sit chair
+kind t block table
+kind b sit boat
+kind k block rock
+grid Beach 7 7
+B.. B.. Aw. A.. A.. Dc. D..
+B.. B.. Bw. A.. F.. Dt. D..
+E.. F.. F.. Fk. Fb. D.. D..
+E.. Ec. E.. Ec. E.. D.. E..
+Cp. C.. C.. Et. E.. E.. Et.
+C.. C.. E.. Ec. E.. E.. E..
+Cw. C.. E.. E.. E.. Ec. Ec.
+person A Anna f glasses
+person B Ben m hat,glasses
+person C Cora f hat
+person D Dan m glasses
+person E Eva f glasses
+person F Finn m hat
+victim V Vince m hat,glasses
+clue A is line row p
+clue B is beside c
+clue B is row 6
+clue C is in C|D
+clue C offset B * -2
+clue D is row 2
+clue E dir F 1 0
+clue F offset A * -2
+extra A is in D|E
+extra A dir E 1 0
+extra B is in D|E
+extra C notwith F
+extra D is in B|F
+extra D dir A -1 0
+extra E diag D
+extra E is in E
+extra F dir B 0 1
+extra F others m 0
+solution A=1:5:6 B=1:6:3 C=1:7:1 D=1:2:5 E=1:4:7 F=1:1:4 V=1:3:2
+''',
+  '''
+case hard-015
+title The Old Birdhouse
+setting forest
+area A Pines
+area B Clearing
+area C Cave
+area D Cabin
+area E Lake
+area F Path
+kind e block tree
+kind u block bush
+kind l sit log
+kind k block rock
+kind t block table
+kind c sit chair
+kind b sit boat
+grid Forest 7 7
+Bu. B.. Bu. Bl. B.. B.. A..
+Bl. Bu. B.. B.. B.. Ae. A..
+B.. B.. B.. B.. B.. B.. A..
+B.. E.. Dt. D.. D.. D.. A..
+E.. E.. F.. F.. Fk. D.. Dc.
+Eb1 Eb1 E.. E.. C.. D.. D..
+Eb2 Eb2 E.. E.. C.. Ck. C..
+person A Anna f hat
+person B Bea f
+person C Carl m
+person D Dana f hat
+person E Eli m
+person F Faye f hat,glasses
+victim V Vlad m glasses
+clue A is in A|D
+clue A offset C * -3
+clue A offset D -2 *
+clue B dir C -1 -1
+clue B dir F -1 1
+clue C is not in C
+clue D is in D|E
+clue E is line row e
+clue F offset D * -3
+extra B offset C * -2
+extra C is in A
+extra C dir E 0 1
+extra D dir A 1 0
+extra D is in D
+extra E others any 1
+extra E others m 0
+extra F is beside b
+extra F dir A 1 -1
+solution A=1:4:4 B=1:1:5 C=1:3:7 D=1:6:6 E=1:2:1 F=1:7:3 V=1:5:2
+''',
+  '''
+case hard-016
+title The Old Signpost
+setting city
+area A Bank
+area B Shop
+area C Park
+area D Square
+area E Street
+area F Cafe
+kind c sit chair
+kind t block table
+kind i block bin
+kind m block lamp
+kind e block tree
+kind n sit bench
+kind a sit car
+grid City 7 7
+D.. D.. A.. A.. Ac. At. E..
+D.. De. D.. A.. A.. A.. E..
+D.. D.. D.. A.. E.. E.. E..
+Dn. De. D.. Dn. Dn. E.. E..
+Dn. D.. D.. D.. D.. Ea. Ea1
+D.. D.. F.. Fi. F.. Cm. Ea1
+De. B.. Bi. F.. F.. C.. C..
+person A Adam m hat
+person B Ben m glasses
+person C Cora f
+person D Dan m glasses
+person E Eli m hat,glasses
+person F Finn m hat
+victim V Vicky f
+clue A is in D|E
+clue A offset B * -3
+clue B is in B|F
+clue C dir D 0 1
+clue C is in B|D
+clue C is line row e
+clue D is line col i
+clue D is line row t
+clue E offset C -1 *
+clue F offset B * 2
+clue F dir E -1 1
+extra A dir F 0 -1
+extra B notwith C
+extra B dir F 0 -1
+extra D others f 0
+extra E is in A|D
+extra E is border
+extra F dir B -1 0
+solution A=1:6:2 B=1:7:5 C=1:4:4 D=1:1:3 E=1:3:1 F=1:2:7 V=1:5:6
+''',
+  '''
+case hard-017
+title The Old Fence
+setting farm
+area A Field
+area B Barn
+area C House
+area D Pond
+area E Yard
+area F Orchard
+kind a sit tractor
+kind h sit hay bale
+kind b sit bed
+kind k block rock
+kind g block pig
+kind e block tree
+grid Farm 7 7
+Eg. E.. D.. D.. D.. F.. F..
+E.. Dk. D.. Fe. F.. F.. F..
+Cb4 Cb4 Fe. Fe. Fe. F.. F..
+C.. C.. C.. F.. A.. F.. F..
+B.. B.. B.. Aa1 Aa1 Fe. Fh.
+Ba3 Bh. B.. Ba2 A.. F.. F..
+Ba3 B.. B.. Ba2 B.. F.. F..
+person A Anna f glasses
+person B Bea f hat
+person C Cora f glasses
+person D Dan m glasses
+person E Eva f hat
+person F Faye f hat
+victim V Victor m glasses
+clue A is line col k
+clue A offset F 3 *
+clue B is on a
+clue C dir F 1 1
+clue C offset B -3 *
+clue D dir F -1 0
+clue E offset D * -3
+clue E offset D -1 *
+clue F is not beside a
+extra A is row 6
+extra B is in B|F
+extra B others any 1
+extra C offset D 2 *
+extra D offset F -1 *
+extra D dir B -1 1
+extra E is in A|D
+extra F others m 0
+extra F offset A * -1
+solution A=1:6:2 B=1:7:4 C=1:4:5 D=1:2:6 E=1:1:3 F=1:3:1 V=1:5:7
+''',
+  '''
+case hard-018
+title The Old Report Card
+setting school
+area A Yard
+area B Library
+area C Canteen
+area D Classroom
+area E Gym
+area F Hall
+kind n sit bench
+kind i block bin
+kind d block desk
+kind t block table
+kind c sit chair
+kind m sit mat
+kind s block shelf
+grid School 7 7
+Em. Em. E.. An. A.. A.. Ai.
+E.. E.. E.. A.. A.. A.. An.
+F.. E.. E.. En. Fs. A.. A..
+F.. Fi. Fs. F.. F.. B.. A..
+F.. F.. F.. Fi. F.. B.. Bd.
+F.. C.. Ct. C.. C.. Cc. D..
+C.. C.. C.. C.. Ct. D.. Di.
+person A Anna f hat
+person B Bea f hat,glasses
+person C Cora f
+person D Dana f
+person E Eva f hat,glasses
+person F Finn m hat
+victim V Vanda f hat
+clue A offset D * 1
+clue A is line col s
+clue B is beside m
+clue B is line col m
+clue B offset D * -2
+clue C dir F 0 -1
+clue C is in F
+clue D is in A|C
+clue D offset C * 1
+clue E is in B|D
+clue F is line row c
+extra A dir B -1 1
+extra C dir D -1 0
+extra D notwith B
+extra E others m 0
+extra E is line row s
+extra F is col 7
+extra F notwith A
+solution A=1:1:5 B=1:2:2 C=1:5:3 D=1:7:4 E=1:4:6 F=1:6:7 V=1:3:1
+''',
+  '''
+case hard-019
+title The Old Compartment
+setting train
+area A Engine
+area B First Class
+area C Luggage Car
+area D Sleeper
+area E Second Class
+area F Dining Car
+kind c sit seat
+kind t block table
+kind l block suitcase
+kind s block shelf
+kind r sit rug
+grid Train 7 7
+Fr. F.. B.. Bt. C.. C.. Cl.
+Ft. F.. C.. C.. C.. Cs. Ac.
+F.. Ft. C.. C.. C.. C.. A..
+F.. D.. D.. C.. Cs. C.. A..
+F.. Dl. E.. E.. Ec. Es. A..
+F.. E.. E.. Ec. E.. E.. Es.
+E.. E.. E.. E.. E.. E.. E..
+person A Anna f glasses
+person B Bea f hat,glasses
+person C Carl m
+person D Dana f
 person E Eli m hat
-person F Faye f
-person G Gina f
-victim W Wanda f
-clue A with G
-clue B alonewith A G
-clue B dir A 1 -1
+person F Faye f glasses
+victim V Vera f
+clue A is line row s
+clue B alonewith F
+clue B is line col t
+clue C offset D * 3
+clue C offset A 1 *
+clue D is col 3
+clue E offset F -1 *
+clue E is in F
+clue F is on c
+extra A dir F 0 1
+extra A dir D -1 1
+extra B dir A 0 -1
+extra C is in C|D
+extra D dir C 1 -1
+extra D offset B -3 *
+extra E dir A 0 -1
+extra F offset E * 3
+extra F is line col t
+solution A=1:2:7 B=1:7:2 C=1:3:6 D=1:4:3 E=1:5:1 F=1:6:4 V=1:1:5
+''',
+  '''
+case hard-020
+title The Old Chart
+setting ship
+area A Bridge
+area B Hold
+area C Galley
+area D Cabin
+area E Bow
+area F Deck
+kind c sit chair
+kind l block barrel
+kind k block crate
+kind t block table
+kind r sit rug
+kind a sit lifeboat
+grid Ship 7 7
+D.. D.. D.. D.. F.. F.. F..
+Dr. D.. Dc. D.. Fl. F.. Fa.
+D.. D.. Dr. D.. F.. F.. Fl.
+B.. B.. Bl. E.. E.. E.. F..
+B.. B.. Bk. Ec. E.. E.. E..
+A.. A.. Ac. A.. El. Ct. El.
+A.. Ac. A.. A.. E.. C.. C..
+person A Anna f hat
+person B Bea f
+person C Carl m glasses
+person D Dana f hat,glasses
+person E Eva f hat,glasses
+person F Finn m
+victim V Vince m hat
+clue A offset B -1 *
+clue B is in A
+clue B offset D * -1
+clue C is line col t
+clue C only beside a
+clue D dir C 1 -1
+clue D offset A * -1
+clue E others f 1
+clue E dir A -1 1
+clue F is line row c
+clue F dir C 1 -1
+extra A others any 1
+extra A is in A|B
+extra B is in A|E
+extra C is line row a
+extra D dir B 0 1
+extra E notwith F
+extra F dir A 0 1
+solution A=1:6:3 B=1:7:1 C=1:2:6 D=1:3:2 E=1:1:4 F=1:5:5 V=1:4:7
+''',
+  '''
+case hard-021
+title The Old Songbook
+setting camp
+area A Kitchen
+area B Field
+area C Fire Ring
+area D Woods
+area E Lake
+area F Tents
+kind c sit chair
+kind t block table
+kind e block tree
+kind k block rock
+kind b sit canoe
+kind n sit tent
+grid Camp 7 7
+C.. D.. D.. D.. A.. Ac. A..
+C.. F.. D.. D.. At. At. A..
+Cc. Fn. D.. De. A.. A.. A..
+C.. F.. F.. Ek. A.. A.. A..
+F.. Fn. F.. E.. E.. Eb1 Eb1
+Fn. Fc. F.. B.. Bc. B.. E..
+F.. F.. F.. B.. Bt. B.. B..
+person A Anna f
+person B Bea f hat,glasses
+person C Carl m hat
+person D Dan m
+person E Eli m glasses
+person F Faye f hat,glasses
+victim V Vera f hat
+clue A is line row c
+clue A offset E -3 *
+clue A is in B|F
+clue B is in B|C
+clue C dir E 0 -1
+clue C offset B * 3
+clue D offset F 2 *
+clue D is line col t
+clue E dir D 1 -1
+clue F is in D|F
+extra B is line col n
+extra B dir D -1 0
+extra C dir F 0 1
+extra D dir B 0 1
+extra E notwith B
+extra E notwith F
+extra F offset D * -3
+extra F dir A -1 0
+solution A=1:3:2 B=1:1:1 C=1:5:4 D=1:4:6 E=1:6:5 F=1:2:3 V=1:7:7
+''',
+  '''
+case hard-022
+title The Old Revolving Door
+setting hotel
+area A Bar
+area B Garden
+area C Room 1
+area D Kitchen
+area E Room 2
+area F Lobby
+kind o sit sofa
+kind p block plant
+kind e block tree
+kind b sit bed
+kind c sit chair
+kind d block desk
+grid Hotel 7 7
+Fp. F.. B.. B.. Bp. B.. B..
+Fc. F.. Be. D.. B.. B.. B..
+F.. F.. B.. Dc. B.. Bp. B..
+E.. A.. B.. C.. B.. C.. B..
+E.. A.. A.. C.. C.. C.. Cb2
+Ec. E.. A.. C.. C.. Cb. Cb2
+Ed. E.. A.. Ao1 Ao1 A.. C..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eva f hat
+person F Finn m
+victim V Vanda f hat
+clue A dir C 1 1
+clue A offset B * 3
+clue B is not beside d
+clue C is row 6
+clue C offset E * -3
+clue D is in B|E
+clue D offset B -3 *
+clue E others m 0
+clue F offset E 3 *
+clue F only on b
+extra A offset F * -2
+extra B dir D 1 -1
+extra B alonewith A
+extra C is on c
+extra D is in B|D
+extra E dir C -1 0
+extra E dir B -1 0
+extra F offset A -2 *
+solution A=1:7:5 B=1:4:2 C=1:6:1 D=1:1:6 E=1:2:4 F=1:5:7 V=1:3:3
+''',
+  '''
+case hard-023
+title The Old Watering Can
+setting park
+area A Path
+area B Rose Garden
+area C Pond
+area D Cafe
+area E Lawn
+area F Playground
+kind u block bush
+kind n sit bench
+kind b sit boat
+kind t block table
+kind c sit chair
+grid Park 7 7
+D.. D.. B.. B.. Au. A.. A..
+Dc. D.. D.. B.. Bu. A.. E..
+D.. D.. Dt. D.. Bn. A.. Eu.
+D.. D.. Dc. Dc. Dc. D.. E..
+D.. C.. D.. D.. D.. Dt. F..
+C.. Cb1 Cb1 C.. Dc. Dc. Fn.
+C.. C.. C.. C.. D.. F.. F..
+person A Anna f
+person B Bea f hat
+person C Carl m
+person D Dan m hat,glasses
+person E Eva f hat
+person F Faye f hat,glasses
+victim V Vicky f
+clue A diag C
+clue B notwith F
+clue B offset A * -1
+clue B offset E * -2
+clue C offset B -2 *
+clue C offset F 3 *
 clue C offset B * -3
-clue D offset C -2 *
-clue E dir G 0 1
-clue F is col 4
-clue F offset G 2 *
-clue G dir A -1 0
-clue G is line col u
-solution A=1:2:6 B=1:4:5 C=1:7:2 D=1:5:1 E=1:8:8 F=1:3:4 G=1:1:7 W=1:6:3
+clue D is not in C
+clue E is not in C
+clue F is not on c
+extra A dir B -1 1
+extra A notwith F
+extra D dir C -1 0
+extra D is in D
+extra E dir C -1 0
+extra E dir B 0 1
+extra F dir A 1 -1
+extra F dir B 0 -1
+solution A=1:1:6 B=1:7:5 C=1:5:2 D=1:3:1 E=1:4:7 F=1:2:4 V=1:6:3
 ''',
   '''
 case hard-024
-title The Odd Button
+title The Old Relic
 setting museum
-area A Dino Room
+area A Garden
 area B Gallery
-area C Gift Shop
-area D Hall
-area E Garden
-area F Cafe
+area C Dino Room
+area D Cafe
+area E Gift Shop
+area F Hall
 kind p block plant
-kind s block shelf
-kind c sit chair
 kind n sit bench
-grid Museum 8 8
-E.. Ep. Bs. B.. A.. As. Ap. A..
-E.. E.. B.. Bs. A.. A.. A.. As.
-E.. E.. B.. B.. As. A.. A.. A..
-B.. B.. Bc. C.. C.. C.. Cc. As.
-B.. B.. B.. C.. C.. C.. Cs. A..
-Bs. B.. Ds. D.. Cc. C.. C.. A..
-F.. D.. D.. D.. D.. C.. Cs. A..
-Fp. Dc. D.. D.. D.. C.. Cn. C..
-open Museum 5 3 E door
-open Museum 7 8 S door
-open Museum 6 5 S door
-open Museum 7 2 W door
-open Museum 5 1 W window
-person A Anna f hat
-person B Ben m hat
-person C Carl m glasses
+kind v block vase
+kind o block skeleton
+kind t block table
+grid Museum 7 7
+D.. D.. D.. B.. Ev. E.. B..
+D.. Dt. D.. B.. B.. B.. B..
+D.. Dt. D.. Bn. Bn. Bv. C..
+F.. D.. D.. Co. C.. C.. Cn.
+Fp. Fn. Dp. Dp. D.. C.. C..
+F.. F.. F.. D.. D.. C.. Cn.
+A.. Ap. A.. A.. C.. C.. C..
+person A Anna f
+person B Bea f
+person C Carl m
 person D Dan m hat
-person E Eva f
-person F Finn m
-person G Gus m glasses
-victim S Sam m hat
-clue A with F
-clue B offset D * -2
-clue B is in B|C
-clue C offset B * 3
-clue D offset E 3 *
-clue E dir C -1 0
-clue E offset B * -3
-clue F is col 4
-clue G is line col c
-clue G offset B 3 *
-solution A=1:4:1 B=1:5:5 C=1:7:8 D=1:6:7 E=1:3:2 F=1:1:4 G=1:8:3 S=1:2:6
+person E Eva f hat,glasses
+person F Faye f hat
+victim V Victor m
+clue A is line row n
+clue B only beside t
+clue C is not border
+clue C is line col n
+clue D dir A 1 -1
+clue D dir E -1 -1
+clue D offset E * -2
+clue E notwith F
+clue E offset B 3 *
+clue E dir F 1 -1
+clue F dir B 1 0
+extra A dir E -1 0
+extra A dir F 0 1
+extra B dir E -1 0
+extra B is in A|D
+extra C is in B
+extra F is in C|F
+extra F is line row n
+solution A=1:3:7 B=1:4:2 C=1:2:5 D=1:6:1 E=1:7:3 F=1:5:6 V=1:1:4
 ''',
   '''
 case hard-025
-title The Quiet Scarf
+title The Unlucky Armchair
 setting home
-area A Bathroom
-area B Hall
+area A Kitchen
+area B Garage
 area C Garden
-area D Bedroom
-area E Garage
-area F Living Room
+area D Living Room
+area E Bathroom
+area F Hall
 kind c sit chair
+kind s block shelf
 kind a sit car
+kind e block tree
+kind t block table
+kind r sit rug
 kind p block plant
-grid Downstairs 4 4
-C.. Cp. C.. B..
-Cp. C.. B.. B..
-Ac. C.. Ba2 Ba2
-A.. B.. Ba1 Ba1
-grid Upstairs 4 4
-F.. Fp. F.. Fp.
-F.. F.. F.. D..
-E.. E.. Ec. Dc.
-E.. E.. D.. D..
-open Downstairs 1 4 W door
-open Downstairs 3 1 N door
-open Downstairs 4 1 E door
-open Downstairs 4 3 S window
-open Downstairs 4 1 W window
-open Upstairs 4 1 S window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dan m
-person E Eva f
-person F Faye f
-person G Gina f
-victim Z Zoe f
-clue A offset G * 3
-clue B is in B|F
-clue B offset F 2 *
-clue C others m 0
-clue D offset E * 2
-clue E offset D -2 *
-clue F dir B 0 1
-clue G samegrid F
-clue * count 0 on c
-solution A=1:3:4 B=1:4:2 C=2:3:1 D=2:4:4 E=2:2:2 F=1:2:3 G=1:1:1 Z=2:1:3
+grid Home 7 7
+C.. C.. C.. C.. E.. Ep. E..
+Ce. C.. Bs. B.. B.. B.. B..
+F.. Cc. B.. B.. B.. Ba. Dt.
+F.. Fr. D.. D.. D.. Dr. D..
+F.. Fr. F.. F.. D.. D.. D..
+Fs. F.. F.. F.. D.. D.. D..
+A.. Ac. A.. F.. F.. F.. Dt.
+person A Adam m hat,glasses
+person B Bea f hat,glasses
+person C Cora f hat
+person D Dana f hat,glasses
+person E Eli m
+person F Finn m hat
+victim V Viola f hat,glasses
+clue A others m 1
+clue B offset A 1 *
+clue C dir B 0 1
+clue C offset F * -2
+clue C offset E 1 *
+clue D is in A|F
+clue D offset C * -2
+clue E is col 1
+clue F dir A 1 -1
+extra A is in C|D
+extra A dir E 1 1
+extra B notwith A
+extra B dir C 1 0
+extra D dir F 1 -1
+extra E is line row p
+extra E dir D -1 0
+extra F is not border
+extra F is in D
+solution A=1:4:7 B=1:5:3 C=1:2:4 D=1:7:2 E=1:1:1 F=1:6:6 V=1:3:5
 ''',
   '''
 case hard-026
-title The Missing Spoon
+title The Unlucky Bucket
 setting beach
-area A Dunes
-area B Sea
+area A Pier
+area B Dunes
 area C Sand
-area D Pier
-area E Rocks
-area F Cafe
-kind p block palm
-kind b sit boat
-kind k block rock
-kind d sit sunbed
+area D Cafe
+area E Sea
+area F Rocks
 kind t block table
-grid North_Beach 4 4
-A.. C.. C.. C..
-A.. C.. C.. Ck.
-Ap. A.. B.. Bk.
-A.. A.. Ab. B..
-grid South_Beach 4 4
-D.. F.. E.. Ep.
-Dp. Ft. E.. E..
-D.. F.. F.. F..
-Dd. D.. D.. D..
-open North_Beach 4 3 N door
-open North_Beach 3 3 N door
-open South_Beach 3 4 E window
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
+kind k block rock
+kind p block palm
+kind d sit sunbed
+kind c sit chair
+kind b sit boat
+kind w sit towel
+grid Beach 8 8
+Fk. A.. At. Eb1 Eb1 E.. E.. E..
+F.. Fw. F.. Ek. Ek. E.. C.. C..
+F.. F.. F.. E.. E.. E.. C.. C..
+F.. F.. F.. Dt. D.. Cd. C.. Cd.
+Bk. B.. B.. Dt. D.. D.. D.. Dc.
+B.. B.. B.. B.. D.. Dt. D.. D..
+Bp. Bk. B.. B.. D.. D.. D.. D..
+B.. B.. B.. Bk. Dc. D.. Dc. D..
+open Beach 2 4 W door
+open Beach 4 4 W door
+open Beach 5 3 N door
+open Beach 7 4 E door
+person A Anna f
+person B Bea f glasses
+person C Carl m hat,glasses
+person D Dana f glasses
 person E Eli m
 person F Finn m
-person G Gus m
-victim U Uri m
-clue A offset B -1 *
-clue B offset A * -2
-clue C offset F * 2
-clue D is line row k
-clue D notwith C
-clue E others m 0
-clue E is in B|D
-clue F offset D -2 *
-clue G is in A|B
-solution A=2:2:4 B=2:3:2 C=1:2:3 D=1:3:2 E=2:4:1 F=1:1:1 G=1:4:4 U=2:1:3
+person G Gina f
+victim V Vera f
+clue A is front door
+clue B diag F
+clue B offset C 1 *
+clue B is on d
+clue C offset E * 3
+clue D dir A 1 1
+clue E is beside k
+clue F diag D
+clue G dir B 1 0
+clue G dir E -1 1
+extra A is row 2
+extra A dir E 0 1
+extra C dir A 1 1
+extra C is in B|E
+extra D dir A 1 0
+extra D dir F 1 1
+extra E offset D -2 *
+extra E dir G 0 -1
+extra F offset G * 3
+extra F dir B 1 0
+extra G notwith A
+solution A=1:2:3 B=1:4:8 C=1:3:4 D=1:8:6 E=1:6:1 F=1:7:5 G=1:5:2 V=1:1:7
 ''',
   '''
 case hard-027
-title The Broken Matchbox
+title The Unlucky Hollow
 setting forest
-area A Path
+area A Cabin
 area B Cave
-area C Cabin
+area C Clearing
 area D Pines
-area E Clearing
+area E Path
 area F Lake
-kind e block tree
-kind u block bush
 kind r sit rug
-kind t block table
+kind k block rock
+kind u block bush
+kind l sit log
 kind b sit boat
-grid East_Woods 4 4
-Ct. C.. C.. A..
-C.. C.. A.. A..
-B.. B.. A.. Ae.
-Br. B.. Au. A..
-grid West_Woods 4 4
-F.. F.. F.. F..
-D.. D.. Ee. F..
-D.. Db1 E.. Fe.
-D.. Db1 E.. E..
-open East_Woods 3 1 N door
-open West_Woods 4 2 E door
-open East_Woods 4 2 S window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dana f
+grid Forest 8 8
+B.. Bk. B.. Fk. Du. D.. Eu. E..
+B.. F.. F.. F.. D.. D.. E.. E..
+Fb1 Fb1 F.. Cu. D.. Dl. E.. Ek.
+F.. F.. F.. C.. Du. D.. E.. E..
+Fk. F.. F.. C.. D.. E.. Eu. E..
+A.. A.. F.. C.. D.. E.. E.. E..
+Ar. A.. E.. E.. Eu. Eu. E.. E..
+Ar. A.. E.. E.. Eu. E.. Eu. E..
+person A Adam m hat,glasses
+person B Ben m hat
+person C Carl m hat
+person D Dan m
 person E Eli m
-person F Finn m
-person G Gina f
-victim O Olga f
-clue A is not beside t
-clue A dir C -1 -1
-clue B dir D -1 -1
-clue B others f 0
-clue C dir E -1 0
-clue D is in B|E
-clue E offset C * 2
-clue F offset B * 2
-clue F is in C|F
-clue G is not in F
-solution A=2:1:1 B=1:2:1 C=2:2:2 D=1:3:2 E=2:4:4 F=1:1:3 G=1:4:4 O=2:3:3
+person F Finn m hat
+person G Gus m hat
+victim V Vlad m hat
+clue A dir C -1 1
+clue A is row 3
+clue B offset F 2 *
+clue C is in B|F
+clue D is line col u
+clue E is col 5
+clue F offset C -3 *
+clue F dir E -1 1
+clue G is in B|F
+extra A is line row b
+extra B others f 0
+extra B dir E 0 -1
+extra C notwith E
+extra C is line row u
+extra D is line row r
+extra D is in A|E
+extra E others hat 1
+extra E dir D 0 -1
+extra F notwith B
+extra G dir F 0 -1
+extra G is in A|B
+solution A=1:3:3 B=1:4:4 C=1:5:2 D=1:7:7 E=1:6:5 F=1:2:6 G=1:1:1 V=1:8:8
 ''',
   '''
 case hard-028
-title The Late Glove
+title The Unlucky Receipt
 setting city
-area A Square
-area B Shop
-area C Bank
+area A Bank
+area B Street
+area C Cafe
 area D Park
-area E Cafe
-area F Street
+area E Shop
+area F Square
+kind s block shelf
 kind i block bin
-kind t block table
 kind c sit chair
+kind n sit bench
+kind m block lamp
+kind t block table
 kind e block tree
-grid Old_Town 4 4
-A.. B.. B.. Bt.
-A.. C.. B.. B..
-Ai. C.. B.. Bt.
-A.. C.. Cc. C..
-grid New_Town 4 4
-Fi. F.. F.. F..
-E.. Ei. F.. Fe.
-E.. E.. D.. D..
-E.. D.. Di. Di.
-open Old_Town 1 1 E door
-open New_Town 2 1 N door
-open New_Town 3 4 N door
-open New_Town 4 2 W door
+grid City 8 8
+D.. Dn. D.. C.. C.. C.. C.. C..
+D.. D.. D.. C.. Ci. C.. Cc. C..
+D.. D.. D.. Cc. Ci. C.. C.. C..
+D.. D.. Dm. C.. C.. C.. Cc. Ci.
+D.. D.. Dn. E.. E.. E.. Et. E..
+D.. A.. A.. As. F.. Fm. F.. Fe.
+B.. B.. B.. B.. Fm. F.. F.. F..
+Bi. B.. B.. F.. F.. F.. Fm. F..
 person A Anna f
-person B Bea f
-person C Cora f
-person D Dan m
-person E Eli m
-person F Faye f
+person B Ben m hat
+person C Cora f hat
+person D Dana f
+person E Eva f glasses
+person F Finn m
 person G Gus m
-victim S Sara f
-clue A is not beside c
-clue B dir D 0 -1
-clue C offset A 1 *
-clue D offset C 1 *
-clue D offset C * 3
-clue E is line row t
-clue F is row 1
-clue G is col 3
-solution A=2:1:3 B=2:4:2 C=2:2:1 D=2:3:4 E=1:3:2 F=1:1:1 G=1:2:3 S=1:4:4
+victim V Vlad m hat
+clue A is in A|B
+clue A offset E * 2
+clue B offset F * 2
+clue C offset E -2 *
+clue D is in B|D
+clue D dir C -1 0
+clue E is line row i
+clue F is line col c
+clue G is beside t
+extra A dir F 0 -1
+extra B is not border
+extra B offset C 1 *
+extra C notwith D
+extra C is in A|C
+extra D offset A * -1
+extra E dir D 1 0
+extra E others f 1
+extra F dir A 1 0
+extra F notwith B
+extra G dir A -1 0
+extra G is in D|E
+solution A=1:7:3 B=1:3:6 C=1:2:7 D=1:1:2 E=1:4:1 F=1:8:4 G=1:5:8 V=1:6:5
 ''',
   '''
 case hard-029
-title The Cold Ribbon
+title The Unlucky Egg Basket
 setting farm
 area A Barn
-area B Pond
-area C Field
-area D Orchard
-area E Yard
-area F House
+area B Yard
+area C Orchard
+area D Field
+area E House
+area F Pond
+kind g block pig
+kind a sit tractor
 kind h sit hay bale
+kind e block tree
+kind b sit bed
 kind c sit chair
-kind o block cow
-kind t block table
-grid Farmyard 4 4
-C.. A.. Ac. A..
-C.. A.. A.. A..
-C.. Ah. A.. B..
-Co. C.. Bh. B..
-grid Fields 4 4
-F.. Ft. F.. F..
-Dh. F.. F.. F..
-D.. E.. E.. Ft.
-D.. E.. Eo. E..
-open Farmyard 2 4 S door
-open Fields 1 1 N window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dan m
-person E Eli m
-person F Finn m
-person G Gina f
-victim T Tina f
-clue A is in A|D
-clue B dir F -1 0
-clue C offset E * 3
-clue C is not in A
-clue D dir F 0 -1
-clue D is line row h
-clue E with G
-clue E dir A 1 -1
-clue F is line row t
-clue G samegrid A
-solution A=1:1:3 B=2:1:1 C=1:3:4 D=2:2:2 E=1:2:1 F=2:3:3 G=1:4:2 T=2:4:4
+kind k block rock
+grid Farm 8 8
+C.. Ce. C.. F.. F.. Fk. Fk. F..
+C.. Ce. Fk. F.. F.. F.. F.. F..
+C.. C.. C.. B.. Fk. F.. F.. Fk.
+C.. Ch. C.. B.. B.. E.. E.. E..
+Ch. C.. Ch. C.. B.. A.. E.. Eb2
+C.. C.. Ce. B.. Ba1 Ag. E.. Eb2
+D.. Ch. C.. B.. Ba1 A.. E.. Ec.
+Da. C.. C.. B.. B.. A.. E.. Ec.
+person A Adam m hat,glasses
+person B Ben m hat
+person C Carl m hat
+person D Dan m hat,glasses
+person E Eva f hat
+person F Faye f hat,glasses
+person G Gus m
+victim V Viola f glasses
+clue A with F
+clue B is in A|D
+clue B is line row h
+clue C notwith A
+clue D dir C -1 -1
+clue D offset G 2 *
+clue E offset A 2 *
+clue E is on a
+clue F is beside e
+clue F is on h
+clue G alonewith A F
+extra A is col 2
+extra A notwith D
+extra B dir D 1 0
+extra C notwith F
+extra C dir G 1 1
+extra D is in E|F
+extra E notwith C
+extra F dir C 0 -1
+extra G is beside e
+extra G is in A|C
+solution A=1:4:2 B=1:7:6 C=1:8:8 D=1:3:7 E=1:6:5 F=1:5:3 G=1:1:1 V=1:2:4
 ''',
   '''
 case hard-030
-title The Silent Coin
+title The Unlucky Lunchbox
 setting school
-area A Gym
-area B Yard
+area A Hall
+area B Gym
 area C Library
-area D Hall
-area E Classroom
-area F Canteen
+area D Yard
+area E Canteen
+area F Classroom
 kind n sit bench
-kind t block table
-kind d block desk
 kind m sit mat
-grid Ground_Floor 4 4
-A.. A.. A.. A..
-A.. An. A.. B..
-C.. C.. At. B..
-Cd. C.. B.. Bn.
-grid First_Floor 4 4
-Fd. Fn. F.. Fm.
-F.. F.. F.. F..
-E.. En. D.. D..
-E.. E.. Dd. D..
-open Ground_Floor 2 1 S door
-open First_Floor 3 2 N door
-open First_Floor 4 4 E window
+kind d block desk
+kind c sit chair
+kind e block tree
+kind t block table
+kind i block bin
+grid School 8 8
+B.. B.. Bn. B.. B.. B.. Bn. E..
+B.. B.. Bn. Bm. B.. B.. B.. E..
+B.. B.. B.. Bm. B.. B.. E.. E..
+Bm. Bm. B.. C.. C.. Ec. E.. Et.
+De. D.. D.. C.. Cc. E.. E.. Et.
+Dn. D.. D.. C.. C.. C.. Et. E..
+D.. F.. F.. C.. C.. Cd. C.. Cc.
+F.. F.. Fi. An. A.. C.. Cd. C..
 person A Adam m
-person B Ben m
-person C Cora f
-person D Dana f
+person B Ben m glasses
+person C Carl m
+person D Dan m hat,glasses
 person E Eli m
-person F Faye f
+person F Faye f hat
 person G Gina f
-victim L Leo m
-clue A others any 1
-clue B offset G * 2
-clue C offset E 1 *
-clue C is grid Ground_Floor
-clue D offset C * 3
-clue E dir A 0 -1
-clue E with A
-clue F dir G 0 -1
+victim V Viola f glasses
+clue A is col 7
+clue B alonewith A D
+clue C is in C|F
+clue D is not beside m
+clue E only on c
+clue E is line col d
 clue F offset G -2 *
-clue G is line col n
-solution A=1:1:3 B=2:3:4 C=1:3:1 D=1:4:4 E=1:2:2 F=2:2:1 G=2:4:2 L=2:1:3
+clue G only beside c
+clue G diag B
+extra A is line col t
+extra A dir B -1 1
+extra B is line row m
+extra B others glasses 1
+extra C others m 0
+extra C dir B 1 1
+extra D alonewith A B
+extra D is in B|C
+extra E offset A 2 *
+extra F dir B 1 -1
+extra F dir A 1 -1
+extra G dir F 0 1
+solution A=1:2:7 B=1:3:3 C=1:7:4 D=1:1:5 E=1:4:6 F=1:6:1 G=1:8:8 V=1:5:2
 ''',
   '''
 case hard-031
-title The Crooked Bell
+title The Unlucky Signal
 setting train
-area A First Class
-area B Sleeper
-area C Second Class
-area D Dining Car
-area E Engine
-area F Luggage Car
-kind s block shelf
-kind c sit seat
-kind r sit rug
-kind t block table
+area A Luggage Car
+area B Dining Car
+area C Sleeper
+area D Second Class
+area E First Class
+area F Engine
 kind k block trunk
-grid Front_Cars 4 4
-A.. As. A.. B..
-A.. Ac. A.. B..
-C.. Cr. Bt. Br.
-C.. C.. C.. B..
-grid Rear_Cars 4 4
-Et. E.. F.. F..
-E.. Ec. Fk. F..
-E.. Ec. D.. D..
-E.. E.. D.. Dr.
-open Front_Cars 2 3 S door
-open Front_Cars 2 1 S door
-open Front_Cars 4 4 W door
-open Rear_Cars 3 3 N door
-open Front_Cars 4 3 S window
-open Rear_Cars 1 3 N window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dana f
+kind l block suitcase
+kind c sit seat
+kind b sit bed
+kind r sit rug
+kind s block shelf
+grid Train 8 8
+E.. El. Er. Al. B.. B.. B.. Bc.
+El. E.. A.. A.. B.. Bc. A.. B..
+El. E.. A.. A.. A.. Al. A.. A..
+Er. E.. A.. A.. Al. A.. C.. C..
+E.. E.. El. A.. A.. A.. Dc. C..
+E.. E.. E.. A.. Dc. D.. D.. Cb.
+E.. E.. F.. Ak. Dl. D.. D.. D..
+F.. F.. Fs. Dl. D.. D.. D.. D..
+person A Adam m
+person B Bea f hat,glasses
+person C Cora f glasses
+person D Dana f hat
 person E Eva f
-person F Faye f
+person F Finn m
 person G Gus m
-victim N Nora f
-clue A offset D * -2
-clue B is line col k
-clue C offset G * 1
-clue D offset F -1 *
-clue E is line row t
-clue E offset G * -1
-clue F is beside t
-clue F offset B -1 *
-clue G is beside s
-clue G diag C
-solution A=2:4:2 B=2:3:3 C=1:2:4 D=2:1:4 E=1:3:2 F=2:2:1 G=1:1:3 N=1:4:1
+victim V Vanda f
+clue A others any 2
+clue B dir C 1 1
+clue C only beside k
+clue D is in A|D
+clue E offset A -2 *
+clue F dir A 1 1
+clue F dir D -1 1
+clue G only beside c
+clue G is border
+clue G diag F
+extra A offset F -1 *
+extra A dir C -1 -1
+extra B others f 1
+extra B dir F 1 0
+extra C dir A 1 1
+extra C offset B -1 *
+extra D is line row l
+extra D alonewith B
+extra E offset A * -2
+extra E is in B|E
+extra F with A
+solution A=1:3:3 B=1:7:7 C=1:6:4 D=1:8:5 E=1:1:1 F=1:4:6 G=1:2:8 V=1:5:2
 ''',
   '''
 case hard-032
-title The Last Teacup
+title The Unlucky Hammock
 setting ship
-area A Bow
-area B Deck
-area C Hold
-area D Galley
-area E Cabin
-area F Bridge
-kind a sit lifeboat
+area A Cabin
+area B Bow
+area C Bridge
+area D Hold
+area E Galley
+area F Deck
+kind b sit bed
+kind c sit chair
 kind l block barrel
-kind k block crate
-kind r sit rug
 kind t block table
-grid Upper_Deck 4 4
-C.. A.. A.. A..
-Cl. B.. B.. Aa.
-C.. C.. Ba1 Ba1
-C.. Ck. B.. B..
-grid Lower_Deck 4 4
-D.. Dr. D.. F..
-Dk. D.. D.. F..
-E.. E.. D.. Fr.
-E.. Et. El. E..
-open Upper_Deck 2 2 W door
-open Lower_Deck 1 3 E door
-open Lower_Deck 3 3 S door
-open Upper_Deck 1 1 N window
-open Lower_Deck 1 1 W window
-open Lower_Deck 2 4 E window
+kind k block crate
+grid Ship 8 8
+B.. B.. B.. A.. A.. A.. A.. A..
+B.. B.. B.. B.. A.. A.. A.. Ab1
+B.. B.. Bc. Bl. B.. Bl. B.. Ab1
+D.. D.. D.. D.. D.. F.. F.. F..
+Dk. Dl. D.. D.. Dl. Fc. F.. F..
+D.. D.. D.. D.. Fc. F.. F.. F..
+C.. C.. E.. Dk. Fl. F.. F.. F..
+Ct. C.. E.. Et. E.. Et. F.. Fl.
 person A Anna f
-person B Ben m
-person C Cora f
-person D Dan m
-person E Eli m
-person F Finn m
+person B Bea f hat,glasses
+person C Cora f hat,glasses
+person D Dana f glasses
+person E Eva f
+person F Finn m glasses
 person G Gus m
-victim O Olga f
-clue A offset D * 2
-clue B is front door
-clue C is areacorner
-clue C diag B
-clue D is beside k
-clue E dir C 1 -1
-clue F samegrid B
-clue G is in A|C
-clue G offset D 1 *
-solution A=1:2:4 B=2:1:4 C=2:3:2 D=1:3:2 E=2:4:1 F=2:2:3 G=1:4:1 O=1:1:3
+victim V Vlad m
+clue A dir C -1 1
+clue B is line row b
+clue B is line col l
+clue B diag E
+clue C dir F -1 1
+clue D is not on c
+clue E is row 4
+clue E dir G 1 -1
+clue F offset D * -1
+clue F is in E|F
+clue G offset C -2 *
+extra A dir C 0 1
+extra A is in A|F
+extra C is in F
+extra C dir A 1 0
+extra D dir F 0 1
+extra D dir E 1 1
+extra E dir D 0 -1
+extra F dir C 1 0
+extra G dir C -1 -1
+extra G dir C 0 -1
+solution A=1:1:8 B=1:2:4 C=1:5:7 D=1:7:6 E=1:4:2 F=1:8:5 G=1:3:3 V=1:6:1
 ''',
   '''
 case hard-033
-title The Lost Ticket
+title The Unlucky Paddle
 setting camp
-area A Tents
+area A Fire Ring
 area B Lake
 area C Field
-area D Kitchen
-area E Woods
-area F Fire Ring
-kind t block table
-kind b sit canoe
+area D Woods
+area E Kitchen
+area F Tents
+kind l sit log
 kind c sit chair
-kind f block campfire
-grid Camp 6 8
-E.. Eb2 Eb2 D.. D.. D.. B.. Bb1
-E.. E.. E.. Dc. Dc. D.. B.. Bb1
-C.. C.. Ct. D.. D.. B.. B.. Bf.
-Cf. C.. Ct. F.. F.. F.. B.. B..
-C.. C.. F.. Fc. A.. At. B.. Bc.
-C.. F.. F.. Fc. A.. A.. B.. B..
-open Camp 3 6 W door
-open Camp 3 2 N door
-open Camp 3 3 E door
-open Camp 6 1 E door
-open Camp 6 6 E door
-open Camp 1 4 N window
-person A Anna f hat
-person B Bea f
-person C Cora f hat
-person D Dana f
+kind b sit canoe
+kind n sit tent
+kind k block rock
+kind t block table
+grid Camp 8 8
+D.. D.. D.. D.. D.. A.. A.. Al.
+D.. D.. D.. Dl. Dk. Al. A.. A..
+D.. D.. D.. Dl. Dk. D.. A.. A..
+D.. Dl. D.. D.. D.. A.. Al. A..
+D.. F.. F.. D.. Ac. A.. A.. A..
+Bb1 Fn. F.. Et. E.. E.. E.. Ec.
+Bb1 F.. Fn. C.. Et. E.. E.. E..
+B.. B.. Cn. C.. C.. C.. E.. E..
+person A Adam m glasses
+person B Ben m hat,glasses
+person C Cora f glasses
+person D Dan m
 person E Eva f hat
-victim F Finn m
-clue A offset B 3 *
-clue B is border
-clue B offset A * -2
-clue C is row 1
-clue C with E
-clue D dir E -1 -1
-clue E dir C 0 -1
-clue * count 2 on c
-solution A=1:6:3 B=1:3:1 C=1:1:8 D=1:2:5 E=1:4:7 F=1:5:4
+person F Faye f
+person G Gina f hat,glasses
+victim V Vera f hat
+clue A offset G * 2
+clue B offset F * -2
+clue B is line col k
+clue C offset G -3 *
+clue D is line row t
+clue D is in C|D
+clue E is in A|F
+clue E offset A 3 *
+clue F alonewith C
+clue F dir C 0 1
+clue G dir E -1 0
+extra A dir G -1 0
+extra A is line row k
+extra B dir A 1 0
+extra C dir A 0 1
+extra C dir D -1 0
+extra D is in C|E
+extra E dir C 1 0
+extra F dir A 1 0
+extra G dir B -1 0
+extra G is in D|E
+solution A=1:2:3 B=1:6:5 C=1:1:6 D=1:7:4 E=1:5:2 F=1:3:7 G=1:4:1 V=1:8:8
 ''',
   '''
 case hard-034
-title The Velvet Lantern
+title The Unlucky Elevator
 setting hotel
-area A Garden
-area B Room 2
-area C Pool
-area D Room 1
-area E Bar
-area F Lobby
+area A Bar
+area B Room 1
+area C Lobby
+area D Garden
+area E Room 2
+area F Kitchen
+area G Pool
 kind o sit sofa
-kind t block table
 kind d block desk
-kind b sit bed
-grid Hotel 6 8
-Bo1 Bo1 B.. C.. D.. Dt. F.. F..
-A.. B.. C.. C.. D.. Fb3 Fb3 F..
-A.. C.. C.. C.. D.. Dd. D.. D..
-A.. C.. C.. C.. D.. E.. Dd. D..
-A.. C.. C.. C.. C.. E.. E.. E..
-A.. A.. C.. C.. E.. E.. Eo2 Eo2
-open Hotel 3 4 E door
-open Hotel 3 6 N door
-open Hotel 4 1 E door
-open Hotel 3 6 S door
-open Hotel 5 5 S door
-open Hotel 1 3 N window
-open Hotel 1 5 N window
+kind p block plant
+kind e block tree
+kind c sit chair
+kind u sit sunbed
+grid Hotel 8 8
+Gp. A.. A.. A.. Ao2 Ao2 A.. A..
+G.. G.. G.. A.. Ao1 Ao1 A.. A..
+G.. G.. Gu. Gu. G.. G.. Gu. A..
+F.. Fc. G.. G.. G.. G.. G.. A..
+E.. E.. E.. G.. C.. C.. Cp. A..
+E.. Ec. E.. E.. C.. Co3 Co3 C..
+D.. C.. C.. C.. Cp. C.. C.. C..
+De. B.. Bd. C.. C.. C.. C.. Cp.
 person A Adam m
-person B Bea f
-person C Cora f
-person D Dana f
-person E Eli m hat
-victim K Karl m
-clue A dir E -1 -1
-clue B offset C * 3
-clue B is col 7
-clue C is row 4
-clue C offset B -2 *
-clue D offset C * -2
-clue D dir A 0 1
-clue E offset C * 2
-clue E is in A|F
-solution A=1:1:1 B=1:6:7 C=1:4:4 D=1:3:2 E=1:2:6 K=1:5:8
+person B Ben m
+person C Carl m hat
+person D Dan m glasses
+person E Eva f hat
+person F Finn m hat,glasses
+person G Gus m hat
+victim V Val m hat
+clue A is row 2
+clue B is in E|F
+clue B dir D -1 -1
+clue C dir D 1 0
+clue C diag F
+clue D is in A|B
+clue D diag E
+clue E is line row p
+clue E notwith D
+clue F is beside u
+clue F dir A 1 -1
+clue G dir C 1 0
+clue G is line col p
+extra A others any 1
+extra A dir E -1 0
+extra B dir A 1 0
+extra C dir D 0 -1
+extra D dir E 0 1
+extra E is beside o
+extra F alonewith A
+extra G dir D 1 -1
+solution A=1:2:3 B=1:4:1 C=1:6:5 D=1:5:8 E=1:7:6 F=1:3:2 G=1:8:7 V=1:1:4
 ''',
   '''
 case hard-035
-title The Hidden Window
+title The Unlucky Birdbath
 setting park
 area A Rose Garden
-area B Lawn
+area B Cafe
+area C Pond
+area D Path
+area E Playground
+area F Lawn
+kind n sit bench
+kind t block table
+kind b sit boat
+kind u block bush
+kind w sit swing
+grid Park 8 8
+E.. Ew. Ew. E.. D.. A.. A.. A..
+E.. E.. E.. E.. D.. An. A.. A..
+Ew. E.. En. Ew. D.. Dn. F.. A..
+E.. B.. Bt. D.. D.. D.. F.. F..
+E.. En. D.. D.. Dn. D.. Fu. F..
+E.. E.. E.. D.. Du. F.. F.. C..
+Ew. E.. E.. En. Fu. F.. F.. Cb1
+E.. E.. E.. E.. Fu. C.. C.. Cb1
+person A Anna f
+person B Ben m glasses
+person C Cora f glasses
+person D Dana f hat
+person E Eva f
+person F Finn m hat,glasses
+person G Gus m hat,glasses
+victim V Vera f
+clue A offset G -3 *
+clue B is beside n
+clue C dir F 1 0
+clue C is in A|B
+clue D offset G * -3
+clue E is line row b
+clue E dir D -1 -1
+clue F is col 1
+clue G offset B -2 *
+extra A dir B -1 0
+extra A is in D|E
+extra B is in E|F
+extra B offset D -2 *
+extra C notwith E
+extra D is in C|E
+extra D dir A 0 -1
+extra E dir A 0 -1
+extra F is in E|F
+extra F with D
+extra G dir A 0 1
+extra G others f 0
+solution A=1:1:5 B=1:6:2 C=1:3:8 D=1:8:4 E=1:7:3 F=1:2:1 G=1:4:7 V=1:5:6
+''',
+  '''
+case hard-036
+title The Unlucky Display Case
+setting museum
+area A Garden
+area B Gallery
+area C Cafe
+area D Hall
+area E Dino Room
+area F Gift Shop
+kind u block statue
+kind n sit bench
+kind v block vase
+kind p block plant
+kind t block table
+kind o block skeleton
+kind s block shelf
+grid Museum 8 8
+B.. B.. B.. Bv. D.. Du. Du. D..
+B.. Bn. Bn. B.. D.. D.. D.. E..
+B.. Bn. B.. B.. B.. E.. E.. En.
+F.. Bv. B.. B.. B.. E.. E.. Eo.
+F.. Fv. F.. Fs. Ct. C.. Cp. C..
+Fv. F.. F.. C.. C.. Cp. C.. An.
+F.. F.. F.. A.. C.. A.. C.. Au.
+F.. F.. F.. A.. A.. Au. A.. A..
+person A Anna f glasses
+person B Ben m hat
+person C Cora f
+person D Dan m hat
+person E Eli m
+person F Faye f glasses
+person G Gina f
+victim V Viola f
+clue A is line row s
+clue B dir C 1 1
+clue B is line row p
+clue C is row 2
+clue D dir G 0 -1
+clue D alonewith F G
+clue E offset A * -3
+clue E is not border
+clue F is col 1
+clue G is line row n
+extra A only beside t
+extra A is beside t
+extra B dir C 1 0
+extra C is in C|D
+extra C offset B * -1
+extra D dir F 0 1
+extra E is in F
+extra F notwith E
+extra F is in B|E
+extra G others glasses 1
+extra G dir E 0 1
+solution A=1:5:6 B=1:6:8 C=1:2:7 D=1:4:4 E=1:7:3 F=1:1:1 G=1:3:5 V=1:8:2
+''',
+  '''
+case hard-037
+title The Mysterious Teapot
+setting home
+area A Garage
+area B Garden
+area C Hall
+area D Living Room
+area E Kitchen
+area F Bathroom
+area G Bedroom
+kind s block shelf
+kind t block table
+kind r sit rug
+kind p block plant
+kind c sit chair
+grid Home 8 8
+Bt. Bt. B.. B.. E.. E.. Es. Cr.
+B.. Bt. B.. E.. E.. F.. Fp. Cr.
+B.. B.. G.. E.. As. F.. F.. C..
+B.. B.. G.. Gr. A.. F.. C.. Cr.
+D.. D.. G.. G.. G.. C.. C.. C..
+D.. Dc. D.. G.. G.. G.. Cp. C..
+D.. D.. D.. G.. G.. Gs. Gr. C..
+Dc. D.. D.. Gr. G.. G.. G.. C..
+person A Anna f hat
+person B Bea f
+person C Cora f hat,glasses
+person D Dan m hat
+person E Eva f hat,glasses
+person F Finn m hat,glasses
+person G Gus m
+victim V Viola f glasses
+clue A dir D -1 -1
+clue A is col 2
+clue B offset E * 2
+clue C dir E -1 1
+clue D with C
+clue D is on r
+clue E offset A * 1
+clue F is not in B
+clue G dir F -1 1
+clue G dir C 0 -1
+clue G dir E 1 0
+extra A offset E -3 *
+extra B dir A -1 0
+extra B is col 5
+extra C dir B 1 0
+extra C others f 0
+extra D dir G -1 0
+extra E is in D|E
+extra E is row 6
+extra F is in A|D
+extra F dir A 1 -1
+solution A=1:3:2 B=1:2:5 C=1:5:7 D=1:4:8 E=1:6:3 F=1:8:1 G=1:7:4 V=1:1:6
+''',
+  '''
+case hard-038
+title The Mysterious Crab
+setting beach
+area A Dunes
+area B Rocks
+area C Cafe
+area D Pier
+area E Sand
+area F Sea
+kind p block palm
+kind k block rock
+kind w sit towel
+kind t block table
+kind c sit chair
+kind d sit sunbed
+kind b sit boat
+grid Beach 8 8
+C.. C.. E.. Ep. A.. A.. Ap. A..
+C.. Ct. Ed. E.. A.. Ak. A.. A..
+C.. C.. E.. E.. Ak. A.. Ap. A..
+Ct. E.. E.. E.. E.. A.. Ap. Bk.
+Dc. D.. D.. Ed. E.. A.. B.. B..
+Fb2 Fb2 D.. E.. B.. B.. B.. B..
+F.. F.. Fb1 E.. E.. B.. Bw. Bw.
+F.. F.. Fb1 E.. B.. Bk. B.. B..
+person A Anna f hat
+person B Ben m
+person C Carl m hat
+person D Dan m hat,glasses
+person E Eva f
+person F Faye f hat
+person G Gina f glasses
+victim V Victor m hat,glasses
+clue A only on w
+clue B dir A 0 -1
+clue C diag G
+clue C is row 3
+clue C is in A|C
+clue D is in A|C
+clue E is corner
+clue F is in B|F
+clue F is line col c
+clue G is line row p
+clue G is line col k
+extra A dir G 0 1
+extra A offset G * 2
+extra B is in B|D
+extra B is line col d
+extra D is in C|D
+extra D others m 0
+extra E dir G 1 1
+extra E offset C * 2
+extra F dir G 0 -1
+extra G notwith C
+solution A=1:7:7 B=1:5:3 C=1:3:6 D=1:1:2 E=1:8:8 F=1:6:1 G=1:4:5 V=1:2:4
+''',
+  '''
+case hard-039
+title The Mysterious Footprint
+setting forest
+area A Clearing
+area B Pines
+area C Cabin
+area D Path
+area E Lake
+area F Cave
+kind k block rock
+kind l sit log
+kind e block tree
+kind r sit rug
+kind c sit chair
+kind b sit boat
+grid Forest 8 8
+D.. Dl. Dl. F.. Fk. Bk. B.. B..
+D.. D.. Eb1 B.. Be. B.. Be. B..
+D.. D.. Eb1 B.. B.. B.. B.. B..
+E.. E.. E.. B.. B.. C.. Cc. C..
+Ek. E.. E.. B.. Be. C.. C.. Cr.
+A.. Ak. Ek. B.. Be. C.. C.. C..
+A.. A.. A.. A.. B.. Bk. Bk. C..
+Ak. A.. Al. A.. B.. B.. B.. B..
+person A Anna f hat
+person B Ben m
+person C Carl m glasses
+person D Dana f glasses
+person E Eva f
+person F Finn m
+person G Gina f
+victim V Vlad m
+clue A is beside e
+clue B dir F -1 1
+clue C offset F -1 *
+clue D is beside e
+clue D offset G -2 *
+clue E offset C * 1
+clue E offset A -3 *
+clue F offset E * 3
+clue G with D
+clue G dir B -1 1
+extra A dir B 0 -1
+extra A others glasses 1
+extra B dir F 0 1
+extra B notwith G
+extra C is line row e
+extra C is areacorner
+extra D is in B|E
+extra E offset F * -3
+extra F is in B|F
+extra F is in B|D
+extra G dir A 0 1
+solution A=1:5:4 B=1:4:6 C=1:6:1 D=1:1:7 E=1:2:2 F=1:7:5 G=1:3:8 V=1:8:3
+''',
+  '''
+case hard-040
+title The Mysterious Umbrella
+setting city
+area A Street
+area B Cafe
+area C Shop
+area D Square
+area E Park
+area F Bank
+kind m block lamp
+kind c sit chair
+kind t block table
+kind s block shelf
+kind e block tree
+kind i block bin
+grid City 8 8
+F.. Ft. F.. B.. B.. B.. B.. Bt.
+C.. B.. Bc. B.. B.. B.. B.. Bt.
+Cs. D.. D.. D.. D.. B.. B.. B..
+C.. C.. D.. D.. D.. D.. B.. Bc.
+Am. A.. A.. D.. Dm. Dm. D.. E..
+Am. A.. A.. De. D.. E.. E.. E..
+A.. Am. A.. Ee. Ei. E.. Ei. E..
+A.. E.. E.. Ee. E.. E.. E.. E..
+person A Adam m
+person B Ben m
+person C Cora f hat
+person D Dan m hat,glasses
+person E Eva f
+person F Finn m hat
+person G Gina f hat
+victim V Vanda f hat
+clue A is in C|E
+clue A offset G -2 *
+clue B offset F -3 *
+clue B offset D * 3
+clue C is in A|F
+clue D dir E -1 0
+clue D is in C
+clue E dir D 0 1
+clue F dir A -1 1
+clue G is in A|C
+extra A is line col m
+extra B notwith E
+extra C dir E -1 -1
+extra C dir G 0 1
+extra D is in C|E
+extra E is in E
+extra E dir C 0 1
+extra F is in A|D
+extra F is in C|D
+extra G is line col s
+extra G dir A 0 -1
+solution A=1:6:6 B=1:2:5 C=1:1:3 D=1:4:2 E=1:7:8 F=1:5:7 G=1:8:1 V=1:3:4
+''',
+  '''
+case hard-041
+title The Mysterious Weathervane
+setting farm
+area A Yard
+area B Field
+area C House
+area D Orchard
+area E Barn
+area F Pond
+kind h sit hay bale
+kind o block cow
+kind a sit tractor
+kind b sit bed
+kind k block rock
+grid Farm 8 8
+Eo. E.. E.. E.. E.. E.. E.. F..
+E.. Ea3 Ea3 E.. B.. Eo. E.. Fk.
+E.. E.. Dh. D.. B.. B.. Eo. Ea.
+E.. B.. D.. D.. D.. Ba1 E.. C..
+A.. B.. B.. B.. B.. Ba1 C.. Cb2
+Ah. B.. B.. A.. Bo. B.. C.. Cb2
+A.. A.. A.. A.. Ah. A.. A.. C..
+A.. A.. A.. A.. Ah. A.. A.. C..
+person A Anna f
+person B Ben m
+person C Cora f hat
+person D Dan m
+person E Eli m
+person F Finn m hat
+person G Gina f hat
+victim V Vicky f hat
+clue A is in D|E
+clue A offset C 3 *
+clue A alone
+clue B notwith C
+clue C with D
+clue C dir F 0 -1
+clue D offset C * 1
+clue E dir B 0 1
+clue E offset C * 3
+clue E offset B -3 *
+clue F alonewith E
+clue G is in A|E
+extra B is in A|E
+extra B is in A|F
+extra C dir G 0 -1
+extra D offset F * -3
+extra D dir E -1 -1
+extra F is line row o
+extra F dir B 0 1
+extra G is in E|F
+extra G offset C 2 *
+solution A=1:4:4 B=1:8:1 C=1:1:2 D=1:2:3 E=1:5:5 F=1:6:6 G=1:3:8 V=1:7:7
+''',
+  '''
+case hard-042
+title The Mysterious Pencil
+setting school
+area A Library
+area B Classroom
+area C Hall
+area D Canteen
+area E Yard
+area F Gym
+kind d block desk
+kind s block shelf
+kind c sit chair
+kind i block bin
+kind m sit mat
+grid School 8 8
+A.. C.. Cs. E.. Ei. E.. E.. Ei.
+A.. Cs. C.. E.. E.. E.. B.. Bs.
+A.. C.. E.. E.. Ei. E.. B.. D..
+A.. A.. E.. E.. B.. B.. B.. Dc.
+Ad. B.. B.. B.. Bd. Bd. B.. D..
+B.. Bd. B.. Bs. Bd. Bd. B.. Dc.
+B.. Bs. B.. B.. B.. Bs. Fm. D..
+B.. B.. B.. Bs. B.. B.. F.. F..
+person A Anna f hat,glasses
+person B Bea f
+person C Carl m
+person D Dana f hat
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Victor m glasses
+clue A is in B|E
+clue B is not in D
+clue C offset D 2 *
+clue D notwith C
+clue E is in D|E
+clue E diag G
+clue E is in B|D
+clue F dir C 1 -1
+clue F dir B 0 1
+clue F offset G 1 *
+clue G dir B 0 -1
+extra A dir E 1 -1
+extra A dir F 0 -1
+extra B is beside i
+extra B dir C -1 -1
+extra C dir B 0 1
+extra C is in A|B
+extra D offset A -1 *
+extra D dir C -1 -1
+extra G is in B
+extra G offset B * -1
+solution A=1:5:3 B=1:2:5 C=1:6:7 D=1:4:2 E=1:3:8 F=1:8:6 G=1:7:4 V=1:1:1
+''',
+  '''
+case hard-043
+title The Mysterious Tunnel
+setting train
+area A Luggage Car
+area B Sleeper
+area C Dining Car
+area D First Class
+area E Engine
+area F Second Class
+kind s block shelf
+kind l block suitcase
+kind t block table
+kind c sit seat
+grid Train 8 8
+B.. B.. C.. Ct. C.. C.. Fs. Fl.
+Bl. Bl. B.. C.. C.. Ct. F.. F..
+D.. B.. B.. C.. C.. Ct. F.. F..
+D.. Dc. F.. F.. Fl. F.. F.. Fs.
+D.. D.. A.. A.. A.. A.. F.. Fs.
+A.. As. A.. A.. A.. A.. A.. F..
+A.. A.. As. A.. E.. E.. Fl. F..
+Al. A.. A.. Al. E.. Ec. E.. F..
+person A Anna f
+person B Bea f
+person C Cora f hat,glasses
+person D Dan m
+person E Eli m
+person F Faye f hat
+person G Gina f
+victim V Viola f glasses
+clue A is on c
+clue A offset E * -2
+clue B is col 5
+clue C dir E 1 0
+clue D others m 1
+clue E is not beside l
+clue F dir B 1 1
+clue F offset C * 2
+clue G is in A|F
+clue G is in A|E
+clue G offset F 2 *
+extra A is in D
+extra B dir F -1 -1
+extra B is in C|E
+extra C is border
+extra C dir E 0 1
+extra D is in A|D
+extra D dir F 0 -1
+extra E offset G 1 *
+extra E notwith C
+extra F dir B 1 0
+solution A=1:4:2 B=1:1:5 C=1:8:6 D=1:7:1 E=1:6:4 F=1:3:8 G=1:5:3 V=1:2:7
+''',
+  '''
+case hard-044
+title The Mysterious Spyglass
+setting ship
+area A Bow
+area B Cabin
+area C Galley
+area D Bridge
+area E Hold
+area F Deck
+kind c sit chair
+kind l block barrel
+kind t block table
+kind k block crate
+grid Ship 8 8
+B.. C.. C.. F.. F.. Fl. F.. F..
+Bt. Bt. C.. F.. E.. Ek. E.. E..
+Bt. Cc. C.. C.. C.. E.. El. E..
+Bc. B.. C.. Cc. C.. D.. Dc. El.
+B.. B.. C.. C.. Ct. Dc. D.. D..
+B.. B.. C.. A.. C.. Dt. D.. D..
+B.. B.. A.. A.. D.. D.. D.. D..
+B.. A.. A.. Al. Ac. D.. D.. D..
+person A Adam m
+person B Bea f hat
+person C Cora f
+person D Dana f hat
+person E Eva f
+person F Faye f
+person G Gina f
+victim V Val m
+clue A is in C|F
+clue B is in B|F
+clue C alone
+clue D offset E -2 *
+clue E offset G -1 *
+clue E offset A * -3
+clue E is row 5
+clue F is not beside l
+clue F is line col c
+clue F is in A
+clue G is in A|D
+clue * group hat border
+extra A offset B 1 *
+extra A dir E -1 0
+extra B is beside l
+extra B dir C 0 1
+extra C notwith G
+extra C offset B * -2
+extra D offset B * 3
+extra D dir C -1 0
+extra G offset B * 2
+extra G is in D|F
+solution A=1:2:4 B=1:1:5 C=1:4:3 D=1:3:8 E=1:5:1 F=1:8:2 G=1:6:7 V=1:7:6
+''',
+  '''
+case hard-045
+title The Mysterious Guy Rope
+setting camp
+area A Tents
+area B Kitchen
+area C Field
+area D Fire Ring
+area E Lake
+area F Woods
+kind c sit chair
+kind t block table
+kind b sit canoe
+kind k block rock
+grid Camp 8 8
+F.. Fk. F.. Eb1 Eb1 A.. D.. Dc.
+Fk. F.. Fk. E.. Ek. A.. Ac. C..
+F.. F.. F.. E.. E.. A.. Cc. C..
+F.. Ek. E.. E.. E.. A.. Bt. C..
+E.. E.. E.. E.. B.. Bt. B.. C..
+E.. E.. E.. Eb. B.. Bt. B.. B..
+E.. E.. E.. B.. B.. B.. B.. B..
+Eb2 Eb2 E.. B.. Bt. B.. Bt. B..
+person A Adam m hat,glasses
+person B Bea f
+person C Carl m
+person D Dan m glasses
+person E Eva f hat
+person F Faye f
+person G Gus m hat
+victim V Vicky f
+clue A notwith E
+clue A dir B 1 -1
+clue B only beside c
+clue B dir G 0 -1
+clue C is in A|E
+clue C others f 1
+clue C offset G * -2
+clue D only beside b
+clue D is col 1
+clue E offset G * -3
+clue F dir G 0 -1
+clue G offset D -2 *
+extra A offset C -1 *
+extra B dir F 0 1
+extra D alonewith C E
+extra E dir B 1 -1
+extra E is in D|E
+extra F dir C -1 -1
+extra F diag G
+extra G dir B 1 1
+extra G is line col t
+solution A=1:3:2 B=1:2:6 C=1:4:5 D=1:7:1 E=1:6:4 F=1:1:3 G=1:5:7 V=1:8:8
+''',
+  '''
+case hard-046
+title The Mysterious Wake-Up Call
+setting hotel
+area A Pool
+area B Garden
+area C Bar
+area D Room 2
+area E Kitchen
+area F Lobby
+area G Room 1
+kind p block plant
+kind e block tree
+kind o sit sofa
+kind d block desk
+kind b sit bed
+kind t block table
+grid Hotel 8 8
+Db2 Db2 D.. D.. D.. D.. D.. D..
+D.. Dd. F.. F.. Dd. D.. Dd. D..
+Fp. Fp. Fp. Et. E.. D.. D.. Db.
+F.. F.. F.. E.. E.. E.. E.. Be.
+F.. F.. F.. Be. B.. B.. B.. Bp.
+F.. F.. F.. G.. B.. B.. B.. B..
+Fd. F.. Gd. G.. Gd. A.. A.. A..
+Fp. F.. G.. G.. Co1 Co1 Ap. Ap.
+person A Anna f hat
+person B Bea f
+person C Carl m hat
+person D Dan m
+person E Eli m hat,glasses
+person F Finn m
+person G Gina f hat,glasses
+victim V Victor m hat
+clue A offset D * 1
+clue B offset A -2 *
+clue C dir B 1 0
+clue D offset B * -3
+clue D others any 1
+clue E offset D * -3
+clue E is areacorner
+clue F offset A * 1
+clue F is not beside p
+clue G offset B 1 *
+clue G dir E -1 -1
+extra A offset G 1 *
+extra A dir F -1 -1
+extra B notwith E
+extra B others glasses 1
+extra C dir B 0 -1
+extra C dir G 0 1
+extra D dir A 1 0
+extra E notwith G
+extra F is in B
+extra G is line col b
+solution A=1:3:6 B=1:1:8 C=1:7:4 D=1:5:5 E=1:8:2 F=1:6:7 G=1:2:1 V=1:4:3
+''',
+  '''
+case hard-047
+title The Mysterious Sundial
+setting park
+area A Lawn
+area B Rose Garden
 area C Path
 area D Cafe
 area E Playground
 area F Pond
 kind e block tree
-kind b sit boat
-kind c sit chair
-kind w sit swing
-kind u block bush
-grid Park 6 8
-Be. B.. B.. D.. D.. D.. D.. Dc.
-B.. Bb. Fw. Dc. Dc. D.. D.. D..
-A.. F.. F.. Ce. E.. E.. E.. Ew.
-A.. F.. F.. C.. E.. Ee. E.. E..
-Ae. F.. F.. F.. F.. F.. Fu. F..
-F.. Fe. Fb1 Fb1 F.. F.. F.. F..
-open Park 2 2 E door
-open Park 2 4 W door
-open Park 2 6 S door
-open Park 5 1 E door
-open Park 3 4 E door
-person A Adam m hat
-person B Bea f
-person C Carl m
-person D Dana f hat,glasses
-person E Eli m glasses
-victim Z Zak m hat,glasses
-clue A is col 2
-clue B is line col u
-clue C is in D|F
-clue D dir A -1 0
-clue E dir D -1 1
-clue E others f 1
-clue E offset C * -3
-clue * group f beside e
-clue * count 0 on w
-solution A=1:5:2 B=1:4:7 C=1:6:6 D=1:2:1 E=1:1:3 Z=1:3:5
-''',
-  '''
-case hard-036
-title The Empty Hat
-setting museum
-area A Hall
-area B Garden
-area C Cafe
-area D Dino Room
-area E Gallery
-area F Gift Shop
 kind n sit bench
-kind p block plant
-kind c sit chair
-kind o block skeleton
-grid Museum 6 8
-C.. C.. F.. F.. Fc. F.. Fo. F..
-Cp. C.. F.. F.. F.. F.. F.. An.
-Cn. Cc. Ep. E.. B.. A.. Fo. A..
-C.. C.. En. D.. Bn. An. An. A..
-C.. E.. E.. Dp. A.. A.. A.. A..
-E.. E.. Ec. D.. D.. Ap. A.. A..
-open Museum 1 2 E door
-open Museum 3 6 N door
-open Museum 3 4 N door
-open Museum 3 5 N door
-open Museum 5 5 N door
-open Museum 5 4 W door
-open Museum 4 5 W door
-open Museum 1 7 N window
-open Museum 5 8 E window
-person A Anna f hat
-person B Ben m hat
-person C Carl m
-person D Dana f
-person E Eli m hat
-victim N Ned m hat
-clue A dir E 1 -1
-clue A is row 4
-clue B offset C 1 *
-clue B offset A * 3
-clue C is in C|D
-clue D only beside o
-clue E only beside c
-clue * count 1 on c
-solution A=1:4:4 B=1:6:7 C=1:5:1 D=1:1:8 E=1:2:5 N=1:3:2
-''',
-  '''
-case hard-037
-title The Second Key
-setting home
-area A Bathroom
-area B Kitchen
-area C Living Room
-area D Bedroom
-area E Garage
-area F Garden
-kind r sit rug
-kind c sit chair
-kind b sit bed
+kind f block fountain
+kind u block bush
 kind t block table
-kind p block plant
-kind e block tree
-grid Home 6 8
-Ec. E.. Br. B.. B.. Fe. F.. F..
-C.. Ct. B.. Bb2 Bb2 F.. Fp. F..
-C.. C.. C.. B.. F.. Fe. F.. F..
-Cr. C.. C.. F.. Fe. F.. Fp. F..
-D.. D.. C.. A.. A.. Ab1 Ab1 Ar.
-Dp. D.. C.. A.. A.. A.. Ac. A..
-open Home 2 2 N door
-open Home 2 3 S door
-open Home 4 2 S door
-open Home 3 1 W window
-open Home 6 7 S window
-person A Adam m
-person B Bea f
-person C Cora f
-person D Dan m
-person E Eli m hat
-victim R Rosa f hat
-clue A is in C|F
-clue A offset C -2 *
-clue A is line row r
-clue B is line row b
-clue C offset D 1 *
-clue C dir D 0 1
-clue D is line col c
-clue E offset A * 2
-clue E is in A|B
-clue E offset B * 3
-clue * count 0 on r
-solution A=1:4:2 B=1:2:1 C=1:6:8 D=1:5:7 E=1:3:4 R=1:1:5
-''',
-  '''
-case hard-038
-title The Locked Candle
-setting beach
-area A Sea
-area B Rocks
-area C Dunes
-area D Pier
-area E Sand
-area F Cafe
-kind d sit sunbed
-kind u block umbrella
-kind w sit towel
-kind k block rock
 kind c sit chair
-grid Beach 6 8
-B.. B.. Fc. F.. F.. F.. F.. F..
-Bw. B.. Bu. B.. F.. Fc. Cd. C..
-B.. Bw. B.. B.. B.. F.. C.. Cu.
-A.. E.. E.. D.. Bd. B.. C.. C..
-Ad. Ew. D.. Dk. D.. D.. D.. D..
-A.. E.. D.. D.. Dw. Dd. Dw. D..
-open Beach 2 8 N door
-open Beach 4 1 N door
-open Beach 4 8 S door
-open Beach 1 3 N window
-person A Adam m
-person B Bea f
+kind b sit boat
+grid Park 8 8
+C.. Cu. F.. F.. F.. A.. A.. Ae.
+Cu. C.. C.. F.. A.. A.. A.. Ae.
+C.. C.. C.. F.. Fb. A.. An. En.
+C.. D.. D.. B.. Bf. D.. D.. En.
+Cn. Dt. D.. D.. D.. D.. E.. E..
+D.. Dt. D.. Dc. D.. E.. E.. E..
+D.. Dc. E.. E.. En. E.. En. E..
+D.. E.. En. E.. E.. E.. E.. E..
+person A Anna f
+person B Ben m
 person C Carl m
 person D Dana f hat
-person E Eli m hat
-victim Z Zoe f
-clue A is in A|C
-clue B dir A 0 1
-clue C dir D -1 1
-clue D is front door
-clue D offset B -3 *
-clue D offset E * -2
-clue E offset D 1 *
-clue E offset C * -2
-clue * count 0 on w
-solution A=1:2:7 B=1:6:8 C=1:1:5 D=1:3:1 E=1:4:3 Z=1:5:6
+person E Eli m hat,glasses
+person F Faye f
+person G Gus m
+victim V Vlad m
+clue A is beside t
+clue B dir C -1 0
+clue C offset E * -1
+clue C is line row u
+clue D offset G * -3
+clue D dir B 1 1
+clue E offset G * 3
+clue E offset A 2 *
+clue F dir G 0 -1
+clue F offset C 1 *
+clue G offset C 3 *
+extra A dir E 0 -1
+extra A alonewith D G
+extra B alone
+extra B is in C|E
+extra C offset D -2 *
+extra D dir G -1 -1
+extra E dir F 0 1
+extra F offset G -2 *
+extra G offset A -1 *
+extra G dir F 1 1
+solution A=1:6:3 B=1:1:1 C=1:2:7 D=1:4:2 E=1:8:8 F=1:3:4 G=1:5:5 V=1:7:6
 ''',
   '''
-case hard-039
-title The Borrowed Map
-setting forest
-area A Lake
-area B Pines
-area C Clearing
-area D Path
-area E Cave
-area F Cabin
-kind k block rock
-kind e block tree
-kind l sit log
-kind r sit rug
-grid Forest 6 8
-D.. D.. D.. Dl. F.. F.. F.. F..
-Bk. A.. A.. D.. Fk. F.. F.. F..
-B.. A.. Ak. A.. Fk. F.. Fr. F..
-E.. E.. E.. A.. Ce. C.. C.. C..
-Er. E.. Ek. E.. C.. C.. C.. C..
-E.. E.. E.. Ce. C.. C.. C.. Ce.
-open Forest 2 2 W door
-open Forest 6 2 S window
-person A Adam m
-person B Ben m hat
-person C Cora f hat
-person D Dana f glasses
-person E Eva f hat
-victim N Ned m glasses
-clue A is in C|D
-clue B offset D -1 *
-clue B is areacorner
-clue C dir E 0 -1
-clue D only beside k
-clue D offset A * -3
-clue E is in E
-clue E offset A -2 *
-solution A=1:6:6 B=1:1:8 C=1:5:1 D=1:2:3 E=1:4:2 N=1:3:7
-''',
-  '''
-case hard-040
-title The Open Footprint
-setting city
-area A Street
-area B Square
-area C Park
-area D Shop
-area E Cafe
-area F Bank
-kind a sit car
+case hard-048
+title The Mysterious Ticket Stub
+setting museum
+area A Dino Room
+area B Gift Shop
+area C Gallery
+area D Hall
+area E Garden
+area F Cafe
 kind n sit bench
+kind s block shelf
+kind v block vase
+kind u block statue
+kind p block plant
+kind c sit chair
+grid Museum 8 8
+C.. C.. C.. C.. En. E.. E.. A..
+Bv. Cv. C.. C.. E.. En. A.. A..
+B.. C.. C.. E.. E.. Eu. An. A..
+B.. C.. Cu. E.. E.. E.. An. A..
+B.. F.. F.. Fp. En. F.. An. A..
+Bs. F.. F.. F.. Fp. Fc. A.. A..
+B.. F.. F.. Fp. F.. F.. A.. A..
+B.. B.. F.. F.. Fp. F.. Dp. D..
+person A Anna f hat,glasses
+person B Bea f hat
+person C Cora f hat
+person D Dan m
+person E Eva f
+person F Finn m hat
+person G Gus m
+victim V Viola f hat,glasses
+clue A dir C -1 -1
+clue A offset C * -3
+clue B is beside n
+clue B offset G * 3
+clue C dir D 1 -1
+clue C only beside c
+clue D diag B
+clue E dir G -1 0
+clue E is in A|B
+clue F alonewith D
+clue G dir C -1 0
+extra A others any 1
+extra B dir F -1 -1
+extra C is row 7
+extra D dir C 0 1
+extra D is beside n
+extra E is in B|E
+extra F dir B 1 1
+extra F dir E 1 0
+extra G offset A * -1
+extra G offset E * 1
+solution A=1:1:3 B=1:2:5 C=1:7:6 D=1:5:8 E=1:3:1 F=1:6:7 G=1:4:2 V=1:8:4
+''',
+  '''
+case hard-049
+title The Lost Photograph
+setting home
+area A Hall
+area B Bathroom
+area C Bedroom
+area D Garage
+area E Garden
+area F Living Room
+area G Kitchen
+kind r sit rug
+kind p block plant
+kind b sit bed
+kind s block shelf
 kind e block tree
+kind c sit chair
+grid Home 8 8
+Gp. G.. Ar. A.. A.. B.. B.. B..
+C.. C.. Fc. A.. A.. B.. B.. Bp.
+C.. C.. F.. A.. A.. Bp. B.. B..
+Ds. Cb. A.. A.. Ap. A.. B.. B..
+D.. A.. A.. Ap. A.. E.. E.. Ee.
+D.. D.. D.. D.. E.. E.. E.. E..
+D.. D.. D.. Ds. E.. Ec. E.. E..
+D.. D.. Ds. E.. Ee. E.. Ee. Ee.
+person A Adam m glasses
+person B Ben m hat
+person C Cora f
+person D Dan m
+person E Eva f hat
+person F Faye f hat,glasses
+person G Gina f
+victim V Vera f
+clue A is line row c
+clue A is in D|G
+clue B offset C * -2
+clue B is line row c
+clue C is line col r
+clue D is in B|F
+clue E is not beside s
+clue F offset G 1 *
+clue F offset E * -3
+clue F offset G * 1
+clue G dir A -1 0
+extra A dir C 1 -1
+extra B dir C -1 0
+extra C dir A -1 1
+extra C is in E|F
+extra D dir B -1 0
+extra D dir F -1 0
+extra E dir F 1 0
+extra E dir D 1 0
+extra G dir C 0 1
+extra G others f 1
+solution A=1:7:2 B=1:2:1 C=1:3:3 D=1:1:7 E=1:6:8 F=1:5:5 G=1:4:4 V=1:8:6
+''',
+  '''
+case hard-050
+title The Lost Postcard
+setting beach
+area A Rocks
+area B Pier
+area C Dunes
+area D Sea
+area E Cafe
+area F Sand
+kind w sit towel
+kind k block rock
 kind t block table
 kind c sit chair
-grid City 6 8
-Ce. C.. C.. C.. C.. B.. Bn. E..
-A.. C.. C.. C.. Dt. B.. B.. E..
-Aa1 Ca2 Ca2 C.. D.. D.. Dt. E..
-Aa1 Dt. D.. Dc. Dc. D.. D.. Ec.
-A.. F.. F.. D.. D.. D.. D.. D..
-Fc. F.. D.. D.. Dc. D.. D.. D..
-open City 1 5 S door
-open City 1 6 W door
-open City 2 6 S door
-open City 4 1 E door
-open City 6 3 S window
+kind d sit sunbed
+grid Beach 8 8
+D.. Dk. Dk. D.. Fd. A.. B.. Bt.
+D.. D.. D.. F.. F.. A.. B.. B..
+Cw. C.. D.. F.. A.. A.. B.. B..
+C.. C.. E.. F.. Ak. A.. B.. B..
+Ck. Et. E.. E.. E.. Aw. Bc. B..
+C.. Et. Ec. Et. E.. A.. A.. A..
+E.. E.. Et. E.. E.. Ec. A.. E..
+E.. E.. E.. E.. E.. E.. Et. E..
+open Beach 3 3 E door
+open Beach 6 8 N door
+open Beach 4 5 W door
+open Beach 3 2 N door
+open Beach 6 1 E door
+open Beach 5 4 N door
+person A Adam m
+person B Ben m hat
+person C Carl m hat,glasses
+person D Dan m hat
+person E Eva f
+person F Faye f
+person G Gus m hat,glasses
+victim V Victor m hat
+clue A offset D * -3
+clue A is front door
+clue B diag E
+clue C is in C|D
+clue D is not in C
+clue E is in C|F
+clue E dir D 0 1
+clue F is in A|F
+clue F offset G * -2
+clue G offset F -2 *
+extra A dir D 0 -1
+extra B offset C * -1
+extra B dir G 0 -1
+extra C notwith B
+extra C others m 0
+extra D dir B 1 0
+extra D offset C * 1
+extra E notwith A
+extra F dir D 0 1
+extra G offset E * 3
+extra G notwith D
+solution A=1:6:1 B=1:4:2 C=1:2:3 D=1:8:4 E=1:1:5 F=1:5:6 G=1:3:8 V=1:7:7
+''',
+  '''
+case hard-051
+title The Lost Axe
+setting forest
+area A Lake
+area B Clearing
+area C Cave
+area D Cabin
+area E Pines
+area F Path
+kind b sit boat
+kind k block rock
+kind t block table
+kind r sit rug
+kind l sit log
+grid East_Woods 4 4
+C.. C.. Ck. B..
+C.. B.. B.. B..
+Bk. Bk. B.. Ab1
+A.. A.. A.. Ab1
+grid West_Woods 4 4
+F.. Fk. F.. F..
+F.. Dr. D.. E..
+Dt. D.. El. E..
+D.. D.. E.. E..
 person A Anna f
 person B Ben m
 person C Cora f
-person D Dana f hat
-person E Eli m glasses
-victim F Finn m hat
-clue A is beside c
-clue B offset C * 1
-clue C is col 2
-clue D diag B
-clue E is on c
-clue E dir A -1 -1
-clue * group f border
-solution A=1:6:6 B=1:5:3 C=1:1:2 D=1:3:1 E=1:4:5 F=1:2:4
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gus m
+victim V Vlad m
+clue A dir B 1 -1
+clue B is line col k
+clue B others m 0
+clue C dir D -1 0
+clue D offset G 2 *
+clue D offset F * 3
+clue E dir A 0 -1
+clue F is col 1
+clue G is line row k
+extra A offset B 2 *
+extra A notwith F
+extra B is col 3
+extra C notwith D
+extra C dir D -1 -1
+extra D dir F -1 1
+extra E notwith F
+extra E offset B * -2
+extra F notwith E
+extra F is in D|E
+extra G others m 0
+extra G is in A|F
+solution A=1:4:2 B=1:2:3 C=2:2:2 D=2:3:4 E=1:1:1 F=2:4:1 G=2:1:3 V=1:3:4
 ''',
   '''
-case hard-041
-title The Wrong Suitcase
+case hard-052
+title The Lost Pavement
+setting city
+area A Bank
+area B Cafe
+area C Square
+area D Shop
+area E Street
+area F Park
+kind c sit chair
+kind i block bin
+kind m block lamp
+kind n sit bench
+grid Old_Town 4 4
+B.. Bc. A.. A..
+B.. B.. Ac. A..
+B.. C.. C.. C..
+Ci. C.. C.. C..
+grid New_Town 4 4
+E.. E.. E.. E..
+Em. E.. E.. Em.
+Fm. F.. D.. D..
+F.. F.. Fn. Di.
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Victor m
+clue A offset F * 3
+clue B dir G 0 1
+clue B others m 0
+clue C is grid New_Town
+clue D samepos E
+clue E others any 1
+clue F is in E|F
+clue G offset D 3 *
+extra A notwith E
+extra A notwith G
+extra B offset G * 1
+extra C offset A -1 *
+extra C dir F -1 1
+extra D dir G -1 0
+extra D dir G -1 -1
+extra E is in D|E
+extra E samepos D
+extra F dir E 0 -1
+extra F is in A|F
+extra G dir B 0 -1
+extra G is col 3
+solution A=2:3:4 B=1:2:4 C=2:2:3 D=1:1:2 E=2:1:2 F=2:4:1 G=1:4:3 V=1:3:1
+''',
+  '''
+case hard-053
+title The Lost Gate
 setting farm
 area A House
 area B Pond
 area C Yard
-area D Barn
-area E Orchard
-area F Field
-kind h sit hay bale
+area D Orchard
+area E Field
+area F Barn
+kind b sit bed
+kind k block rock
 kind g block pig
+kind h sit hay bale
 kind e block tree
-kind o block cow
-grid Farm 8 8
---- --- D.. D.. B.. F.. F.. F..
---- D.. Dh. B.. B.. Fg. F.. F..
-B.. Bh. B.. B.. Bg. F.. F.. Fg.
-E.. E.. B.. B.. A.. Ah. F.. F..
-E.. A.. A.. A.. A.. Ah. Ch. C..
-E.. E.. A.. A.. C.. C.. C.. C..
-Eh. E.. C.. C.. C.. Co. C.. C..
-C.. C.. Ce. C.. C.. Ce. C.. ---
-open Farm 1 5 E door
-open Farm 5 2 N door
-open Farm 5 5 S door
-open Farm 5 8 N door
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-person E Eva f
-person F Finn m
-person G Gina f
-victim T Tina f
-clue A is line col h
-clue B offset E 2 *
-clue B only on h
-clue C is areacorner
-clue D offset C -1 *
-clue E dir A 1 1
-clue F is in A|E
-clue F dir E 0 1
-clue G offset B * -2
-solution A=1:2:2 B=1:5:6 C=1:7:8 D=1:6:1 E=1:3:3 F=1:4:5 G=1:1:4 T=1:8:7
-''',
-  '''
-case hard-042
-title The Spare Letter
-setting school
-area A Gym
-area B Yard
-area C Classroom
-area D Canteen
-area E Hall
-area F Library
-kind c sit chair
-kind m sit mat
-kind n sit bench
-kind t block table
-kind d block desk
-grid School 8 8
-F.. Fc. F.. D.. D.. D.. --- ---
-Fc. F.. D.. Dt. D.. Bn. B.. ---
-D.. D.. D.. Dn. D.. B.. B.. B..
-D.. Dm. D.. D.. D.. Bn. B.. Am.
-Dd. Dd. D.. D.. Ed. Bn. A.. A..
-D.. Dd. C.. Cm. E.. E.. A.. A..
---- Cm. C.. C.. C.. E.. E.. A..
---- --- Ct. C.. C.. E.. Em. Ac.
-open School 3 6 W door
-open School 4 5 S door
-open School 5 6 S door
-open School 6 3 W door
-open School 8 8 S window
-open School 8 4 S window
+grid Farmyard 4 4
+B.. B.. Bk. B..
+A.. A.. A.. B..
+A.. A.. C.. Cg.
+A.. Ab1 Ab1 C..
+grid Fields 4 4
+E.. Fg. F.. F..
+E.. Fh. F.. F..
+Eh. Fh. F.. De.
+Dh. D.. D.. D..
 person A Adam m
 person B Ben m
 person C Cora f
@@ -1973,52 +2833,2078 @@ person D Dana f
 person E Eva f
 person F Finn m
 person G Gina f
-victim M Max m
-clue A is beside m
-clue B is corner
-clue C offset F * -2
-clue D dir F 1 0
-clue E offset A 1 *
-clue F dir E 0 1
-clue F is in C|D
-clue F is line col n
-clue G offset A -2 *
-clue G others m 0
-clue G with E
-solution A=1:5:8 B=1:2:7 C=1:1:2 D=1:8:5 E=1:6:1 F=1:7:4 G=1:3:3 M=1:4:6
+victim V Vince m
+clue A samegrid F
+clue B dir E 0 1
+clue C offset G * -3
+clue C is line row h
+clue D is not beside k
+clue E dir A -1 1
+clue F offset A 1 *
+clue F is line col g
+clue G offset D 1 *
+extra A dir B 0 -1
+extra A dir E 1 0
+extra B is in A
+extra B is not border
+extra C notwith F
+extra D offset C * 1
+extra D samegrid G
+extra E dir F -1 0
+extra E is in B|F
+extra F is in C|D
+extra G others f 0
+extra G others m 0
+solution A=1:3:1 B=1:2:3 C=2:2:1 D=2:3:2 E=1:1:2 F=1:4:4 G=2:4:4 V=2:1:3
 ''',
   '''
-case hard-043
-title The Muddy Button
+case hard-054
+title The Lost Register
+setting school
+area A Yard
+area B Canteen
+area C Gym
+area D Classroom
+area E Library
+area F Hall
+kind n sit bench
+kind i block bin
+kind d block desk
+kind c sit chair
+grid Ground_Floor 4 4
+Bi. B.. Bi. Cn.
+B.. B.. B.. C..
+A.. B.. A.. A..
+A.. An. An. A..
+grid First_Floor 4 4
+F.. F.. Fi. E..
+F.. F.. F.. Ec.
+D.. D.. Dc. E..
+D.. D.. Dd. E..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+person F Faye f
+person G Gina f
+victim V Vince m
+clue A is border
+clue A is areacorner
+clue B is in E
+clue C offset A * 1
+clue D is beside d
+clue E offset B -3 *
+clue E is col 2
+clue F offset C 1 *
+clue F others m 1
+clue G dir C -1 0
+extra A dir C 1 -1
+extra B dir D 0 1
+extra B is in D|E
+extra C notwith F
+extra C is in B|C
+extra D diag B
+extra D dir B -1 -1
+extra E samegrid B
+extra F is in A|D
+extra G is on n
+extra G offset A -3 *
+solution A=1:4:1 B=2:4:4 C=1:2:2 D=2:3:3 E=2:1:2 F=1:3:3 G=1:1:4 V=2:2:1
+''',
+  '''
+case hard-055
+title The Lost Berth
+setting train
+area A Engine
+area B Dining Car
+area C Second Class
+area D Luggage Car
+area E First Class
+area F Sleeper
+kind c sit seat
+kind l block suitcase
+kind s block shelf
+kind r sit rug
+kind b sit bed
+grid Front_Cars 4 4
+Bc. B.. B.. C..
+B.. B.. B.. Cl.
+Ac. C.. Cc. C..
+A.. C.. C.. C..
+grid Rear_Cars 4 4
+E.. Ds. Ds. D..
+E.. E.. D.. D..
+Ec. E.. F.. Fb1
+E.. Er. F.. Fb1
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eli m
+person F Finn m
+person G Gus m
+victim V Vince m
+clue A is in C|F
+clue B is on c
+clue C offset A * -3
+clue D with G
+clue E dir B 0 1
+clue E offset D 1 *
+clue F is col 3
+clue G dir E 1 1
+clue * count 1 on r
+extra A is line col b
+extra A dir C 0 1
+extra B offset G -1 *
+extra B dir E 1 0
+extra C notwith D
+extra C is line row s
+extra D offset E -1 *
+extra D alonewith G
+extra E is in B|F
+extra F dir A -1 -1
+extra F others m 0
+extra G dir B 1 1
+extra G others m 1
+solution A=2:3:4 B=1:3:1 C=2:1:1 D=1:1:4 E=1:2:2 F=2:2:3 G=1:4:3 V=2:4:2
+''',
+  '''
+case hard-056
+title The Lost Sail
+setting ship
+area A Galley
+area B Bridge
+area C Hold
+area D Deck
+area E Bow
+area F Cabin
+kind t block table
+kind c sit chair
+kind l block barrel
+grid Upper_Deck 4 4
+Cl. A.. A.. Bc.
+C.. A.. At. B..
+C.. C.. A.. A..
+C.. C.. C.. At.
+grid Lower_Deck 4 4
+Dl. D.. Dl. E..
+D.. Dc. D.. El.
+D.. F.. F.. E..
+D.. F.. Fc. F..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eli m
+person F Faye f
+person G Gina f
+victim V Vanda f
+clue A offset F 3 *
+clue B offset C -2 *
+clue C others f 0
+clue D alonewith A F
+clue E is not on c
+clue F others m 1
+clue G is beside t
+extra A samepos C
+extra A dir D 0 -1
+extra B is in B|C
+extra B dir C -1 1
+extra C others m 0
+extra C is in C|E
+extra D notwith G
+extra D is beside l
+extra E notwith D
+extra E alone
+extra F is line row l
+extra F is in A|D
+extra G is in A|E
+extra G notwith F
+solution A=2:4:1 B=1:2:4 C=1:4:1 D=2:2:3 E=2:3:4 F=2:1:2 G=1:3:3 V=1:1:2
+''',
+  '''
+case hard-057
+title The Lost Firewood
+setting camp
+area A Lake
+area B Tents
+area C Kitchen
+area D Field
+area E Woods
+area F Fire Ring
+kind k block rock
+kind c sit chair
+kind t block table
+kind n sit tent
+kind e block tree
+grid Lakeside 4 4
+C.. C.. C.. Cc.
+Ct. A.. A.. Ak.
+Bc. A.. A.. A..
+B.. B.. Bc. B..
+grid Hillside 4 4
+Fk. F.. D.. Dn.
+F.. D.. D.. D..
+E.. Ek. Ee. E..
+E.. E.. E.. Ee.
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Viola f
+clue A offset F * 1
+clue B is in D|F
+clue C is grid Lakeside
+clue D offset F -1 *
+clue D is in A|F
+clue E diag B
+clue F is in A
+clue F dir A -1 -1
+clue G offset B * -3
+clue * count 1 on n
+extra A dir F 1 1
+extra A diag D
+extra B dir G 0 1
+extra B offset E -1 *
+extra C is in C
+extra C offset A -3 *
+extra D diag F
+extra E is in D|E
+extra E is in B|D
+extra F is line col c
+extra G is in E
+extra G dir E 1 -1
+solution A=1:4:4 B=2:1:4 C=1:1:1 D=1:2:2 E=2:2:3 F=1:3:3 G=2:3:1 V=2:4:2
+''',
+  '''
+case hard-058
+title The Lost Pillow
+setting hotel
+area A Lobby
+area B Bar
+area C Room 2
+area D Kitchen
+area E Room 1
+area F Pool
+kind o sit sofa
+kind d block desk
+kind t block table
+kind p block plant
+grid Ground_Floor 4 4
+Cd. C.. C.. C..
+C.. C.. Cd. B..
+C.. Ao1 B.. B..
+A.. Ao1 Bo2 Bo2
+grid First_Floor 4 4
+Ed. E.. F.. Fp.
+E.. E.. F.. F..
+E.. E.. Dt. D..
+E.. D.. Dt. D..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eli m
+person F Finn m
+person G Gina f
+victim V Viola f
+clue A offset C -3 *
+clue A is in A|E
+clue B is not beside o
+clue C is in C|D
+clue D others f 0
+clue D is col 2
+clue E is beside o
+clue F dir C -1 0
+clue F is in B|E
+clue G offset E 1 *
+extra A with F
+extra B dir F -1 0
+extra B is line col t
+extra C dir A 0 1
+extra C samegrid B
+extra D others m 0
+extra E samegrid G
+extra E notwith G
+extra F dir A 1 -1
+extra G is in A|F
+extra G is beside o
+solution A=2:1:2 B=2:2:3 C=2:4:4 D=1:1:2 E=1:3:3 F=2:3:1 G=1:4:1 V=1:2:4
+''',
+  '''
+case hard-059
+title The Lost Carousel
+setting park
+area A Cafe
+area B Playground
+area C Pond
+area D Path
+area E Rose Garden
+area F Lawn
+kind c sit chair
+kind n sit bench
+kind b sit boat
+kind f block fountain
+grid North_Park 4 4
+C.. B.. B.. B..
+C.. C.. Bn. B..
+C.. Cb. A.. A..
+Cb. Ac. A.. A..
+grid South_Park 4 4
+D.. E.. Ef. F..
+Dn. E.. E.. F..
+D.. E.. Fn. Fn.
+D.. E.. E.. F..
+open North_Park 3 3 N door
+open North_Park 4 2 W door
+open South_Park 2 3 E door
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gina f
+victim V Vera f
+clue A dir E -1 1
+clue B offset G * -2
+clue C is front door
+clue D others m 0
+clue D is in E
+clue E dir F 1 0
+clue E dir D -1 -1
+clue F alone
+clue F is not on n
+clue G offset C 2 *
+extra A notwith B
+extra A is in E|F
+extra B dir C 1 0
+extra B dir G -1 0
+extra C dir G -1 0
+extra C notwith B
+extra D offset A 2 *
+extra E alonewith D
+extra F is in D
+extra G is col 4
+extra G samegrid B
+solution A=2:2:4 B=1:3:2 C=1:2:3 D=2:4:3 E=2:3:2 F=2:1:1 G=1:4:4 V=1:1:1
+''',
+  '''
+case hard-060
+title The Lost Mask
+setting museum
+area A Dino Room
+area B Hall
+area C Garden
+area D Gift Shop
+area E Cafe
+area F Gallery
+kind o block skeleton
+kind p block plant
+kind u block statue
+kind v block vase
+kind c sit chair
+kind n sit bench
+grid Ground_Floor 4 4
+Ao. C.. Cp. C..
+A.. Cu. C.. C..
+A.. A.. B.. B..
+Bp. B.. B.. Bu.
+grid First_Floor 4 4
+F.. Fu. D.. Dv.
+Fn. F.. D.. D..
+E.. F.. F.. D..
+Ec. F.. Dv. D..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+person F Finn m
+person G Gina f
+victim V Vera f
+clue A is in F
+clue B dir G -1 0
+clue C is in C
+clue D only beside v
+clue E only on n
+clue F others f 0
+clue F offset C * 2
+clue G is in B|F
+extra A dir E 1 0
+extra A notwith C
+extra B notwith D
+extra B is in A|D
+extra C others m 1
+extra C with F
+extra D dir E -1 1
+extra D dir A -1 1
+extra E alonewith A
+extra E notwith G
+extra F dir C 1 0
+extra G offset F * -1
+extra G dir F 1 -1
+solution A=2:4:2 B=1:3:1 C=1:1:2 D=2:1:3 E=2:2:1 F=1:2:4 G=1:4:3 V=2:3:4
+''',
+  '''
+case hard-061
+title The Spare Blanket
+setting home
+area A Bathroom
+area B Kitchen
+area C Hall
+area D Garden
+area E Living Room
+area F Garage
+kind p block plant
+kind r sit rug
+kind s block shelf
+kind t block table
+grid Downstairs 4 4
+B.. B.. Cp. C..
+B.. B.. Bs. C..
+B.. Ar. Bs. C..
+Ap. A.. A.. A..
+grid Upstairs 4 4
+D.. F.. F.. Fs.
+Dt. E.. Ep. F..
+D.. Ep. E.. F..
+D.. E.. E.. F..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Viola f
+clue A offset D * -2
+clue B dir D 0 1
+clue C is areacorner
+clue D dir F -1 0
+clue E offset G * -1
+clue F offset A 3 *
+clue G diag E
+clue G offset C * 2
+extra A others f 0
+extra A dir D -1 -1
+extra B offset D * 1
+extra B offset A 1 *
+extra C is in B|C
+extra C is grid Downstairs
+extra D notwith B
+extra D dir B 0 -1
+extra E is row 4
+extra E dir G 0 -1
+extra F dir A 0 1
+extra F notwith G
+extra G is grid Downstairs
+solution A=2:1:1 B=2:2:4 C=1:1:2 D=2:3:3 E=1:4:3 F=2:4:2 G=1:3:4 V=1:2:1
+''',
+  '''
+case hard-062
+title The Spare Parasol
+setting beach
+area A Rocks
+area B Dunes
+area C Pier
+area D Sea
+area E Cafe
+area F Sand
+kind k block rock
+kind p block palm
+kind w sit towel
+kind t block table
+kind d sit sunbed
+grid North_Beach 4 4
+B.. Bp. Ct. C..
+Bw. B.. B.. B..
+B.. A.. A.. A..
+Ak. A.. A.. A..
+grid South_Beach 4 4
+E.. E.. Et. D..
+E.. E.. E.. D..
+Et. F.. Fd. D..
+F.. F.. F.. Dk.
+open North_Beach 2 3 N door
+open North_Beach 3 2 W door
+open South_Beach 3 1 S door
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eli m
+person F Faye f
+person G Gus m
+victim V Vlad m
+clue A others f 1
+clue B alone
+clue B offset F * 2
+clue C samegrid A
+clue D is front door
+clue E is in C|F
+clue F offset E * -3
+clue G is not beside t
+clue G is in E
+extra A dir D -1 1
+extra A is line row t
+extra B dir F 1 1
+extra C dir D -1 0
+extra C others m 0
+extra D dir A 0 -1
+extra D diag C
+extra E is grid North_Beach
+extra E is in B|C
+extra F samegrid B
+extra F notwith E
+extra G is in C|E
+solution A=2:3:3 B=1:4:3 C=2:1:4 D=2:4:1 E=1:1:4 F=1:3:1 G=2:2:2 V=1:2:2
+''',
+  '''
+case hard-063
+title The Spare Birdsong
+setting forest
+area A Clearing
+area B Lake
+area C Path
+area D Cave
+area E Pines
+area F Cabin
+kind k block rock
+kind l sit log
+kind b sit boat
+kind t block table
+grid East_Woods 4 4
+C.. A.. A.. Bb1
+C.. Al. A.. Bb1
+C.. A.. Ak. B..
+C.. Cl. A.. B..
+grid West_Woods 4 4
+Dk. D.. E.. F..
+D.. D.. E.. F..
+E.. Ek. Ek. Ft.
+E.. E.. E.. F..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Vanda f
+clue A is areacorner
+clue A dir G 1 -1
+clue B dir A 1 0
+clue C with D
+clue D is in E
+clue D offset C 1 *
+clue E offset D 1 *
+clue F is in B|D
+clue G offset A -1 *
+extra A offset G 1 *
+extra B offset A 1 *
+extra B samegrid G
+extra C diag F
+extra C samegrid E
+extra D is grid West_Woods
+extra E others m 0
+extra E is in F
+extra F offset C * -1
+extra F is in A|D
+extra G offset B -2 *
+extra G notwith D
+solution A=1:3:2 B=1:4:1 C=2:2:3 D=2:3:1 E=2:4:4 F=2:1:2 G=1:2:4 V=1:1:3
+''',
+  '''
+case hard-064
+title The Spare Clocktower
+setting city
+area A Park
+area B Bank
+area C Street
+area D Shop
+area E Square
+area F Cafe
+kind m block lamp
+kind c sit chair
+kind t block table
+kind i block bin
+grid Old_Town 4 4
+Bc. B.. A.. A..
+B.. B.. Am. C..
+B.. B.. C.. C..
+B.. Bc. Cm. C..
+grid New_Town 4 4
+D.. D.. Ft. E..
+Dt. D.. F.. Ei.
+D.. Dt. F.. E..
+D.. D.. E.. E..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eva f
+person F Finn m
+person G Gina f
+victim V Victor m
+clue A dir F -1 -1
+clue B is beside m
+clue C is col 1
+clue D samepos B
+clue E dir D -1 0
+clue F dir B 1 1
+clue G dir A -1 -1
+extra A is in B|D
+extra A dir G 0 1
+extra B alonewith F
+extra B others m 1
+extra C is grid New_Town
+extra C samegrid E
+extra D dir C -1 1
+extra D is in B|F
+extra E is areacorner
+extra E alone
+extra F dir A 1 1
+extra F with B
+extra G dir B -1 0
+extra G offset F -3 *
+solution A=1:2:2 B=1:3:3 C=2:4:1 D=2:3:3 E=2:1:4 F=1:4:4 G=1:1:1 V=2:2:2
+''',
+  '''
+case hard-065
+title The Spare Harvest
+setting farm
+area A Field
+area B Orchard
+area C House
+area D Pond
+area E Barn
+area F Yard
+kind a sit tractor
+kind h sit hay bale
+kind b sit bed
+kind c sit chair
+kind k block rock
+kind g block pig
+grid Farmyard 4 4
+Aa1 Aa1 B.. B..
+A.. A.. B.. Bh.
+C.. Cc. C.. C..
+C.. C.. C.. Cb.
+grid Fields 4 4
+Ea2 Ea2 D.. D..
+E.. E.. Dk. D..
+E.. E.. E.. Dk.
+Fg. F.. F.. D..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gus m
+victim V Vicky f
+clue A dir B 0 1
+clue B dir C -1 -1
+clue B offset A -2 *
+clue C is beside c
+clue D others f 1
+clue D offset E 3 *
+clue D offset G * 2
+clue E dir G -1 0
+clue F offset C * 2
+clue G offset E 1 *
+extra A is in A|C
+extra A with C
+extra B is in A
+extra C with A
+extra C notwith B
+extra E is in D|F
+extra E is in B|D
+extra F is in A|B
+extra F samegrid B
+extra G is in C|E
+extra G dir E 0 -1
+solution A=1:3:3 B=1:1:1 C=1:4:2 D=2:4:4 E=2:1:3 F=1:2:4 G=2:2:2 V=2:3:1
+''',
+  '''
+case hard-066
+title The Spare Eraser
+setting school
+area A Gym
+area B Hall
+area C Yard
+area D Library
+area E Classroom
+area F Canteen
+kind n sit bench
+kind i block bin
+kind d block desk
+kind t block table
+kind c sit chair
+grid Ground_Floor 4 4
+A.. C.. Ci. C..
+An. A.. Ci. C..
+A.. A.. C.. C..
+A.. An. Bi. B..
+grid First_Floor 4 4
+F.. Fc. F.. D..
+Fc. F.. D.. D..
+F.. E.. D.. Dd.
+F.. Ec. D.. Dt.
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gina f
+victim V Vanda f
+clue A is line row n
+clue B is in E|F
+clue C is line row i
+clue D dir C 1 0
+clue E is in C|D
+clue E alone
+clue F with A
+clue F offset C * -2
+clue G offset B 2 *
+extra A others f 1
+extra A others any 1
+extra B notwith A
+extra B dir E -1 0
+extra C is beside i
+extra C dir F -1 0
+extra D dir F 1 1
+extra D alonewith C
+extra E others f 0
+extra F is in A|B
+extra G is areacorner
+extra G is grid First_Floor
+solution A=1:4:1 B=2:1:3 C=1:1:4 D=1:3:3 E=2:2:4 F=1:2:2 G=2:3:2 V=2:4:1
+''',
+  '''
+case hard-067
+title The Spare Luggage Rack
+setting train
+area A Luggage Car
+area B Second Class
+area C Dining Car
+area D Sleeper
+area E Engine
+area F First Class
+kind k block trunk
+kind c sit seat
+kind r sit rug
+kind t block table
+kind l block suitcase
+kind b sit bed
+kind s block shelf
+grid Front_Cars 4 4
+B.. B.. C.. Cr.
+Bc. C.. Ct. C..
+B.. B.. A.. C..
+Bc. A.. Ak. A..
+grid Rear_Cars 4 4
+Es. E.. F.. D..
+E.. Ec. Fr. D..
+E.. D.. Db1 Dl.
+E.. D.. Db1 D..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eli m
+person F Finn m
+person G Gina f
+victim V Victor m
+clue A is not in E
+clue B is line row r
+clue B is in D|F
+clue C is border
+clue D dir F -1 -1
+clue D dir C 1 1
+clue E is in C|F
+clue F with D
+clue G offset A 2 *
+extra A is line row s
+extra A others f 0
+extra B notwith C
+extra C others m 0
+extra C dir F -1 0
+extra D diag F
+extra E is in C
+extra E is line row c
+extra F offset E 2 *
+extra F dir C 1 1
+extra G alone
+extra G is in E|F
+solution A=2:1:3 B=2:2:4 C=1:1:1 D=1:3:3 E=1:2:2 F=1:4:4 G=2:3:1 V=2:4:2
+''',
+  '''
+case hard-068
+title The Spare Cargo
+setting ship
+area A Bridge
+area B Cabin
+area C Bow
+area D Deck
+area E Galley
+area F Hold
+kind c sit chair
+kind b sit bed
+kind l block barrel
+kind k block crate
+kind t block table
+grid Ship 6 8
+C.. Et. E.. E.. F.. F.. D.. D..
+C.. C.. E.. A.. Ac. Fl. Dk. D..
+C.. C.. A.. Ac. A.. D.. D.. D..
+Cl. A.. A.. Ac. A.. A.. Dc. B..
+A.. A.. A.. A.. A.. A.. B.. B..
+A.. Ac. A.. A.. A.. Ac. Bb1 Bb1
+person A Anna f hat
+person B Ben m hat
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f glasses
+clue A is beside k
+clue B with C
+clue C with A
+clue D offset C * -2
+clue D diag A
+clue E is in A|F
+clue * group f border
+extra A is in D
+extra A is line row c
+extra B is in A|D
+extra B dir C 0 1
+extra C diag B
+extra C dir E 1 1
+extra D is in A|E
+extra E others f 0
+extra E offset C * -1
+solution A=1:2:8 B=1:4:7 C=1:3:6 D=1:6:4 E=1:1:5 V=1:5:1
+''',
+  '''
+case hard-069
+title The Spare Billycan
+setting camp
+area A Field
+area B Woods
+area C Kitchen
+area D Lake
+area E Fire Ring
+area F Tents
+kind n sit tent
+kind e block tree
+kind c sit chair
+kind t block table
+kind k block rock
+kind b sit canoe
+kind f block campfire
+grid Camp 6 8
+C.. Cc. C.. D.. D.. D.. D.. D..
+C.. Db1 Db1 D.. Dk. D.. Dk. D..
+C.. A.. A.. An. D.. D.. Db2 Db2
+C.. Ct. C.. D.. D.. F.. Dk. D..
+C.. Ct. B.. B.. B.. F.. F.. Ef.
+C.. C.. Be. B.. Fn. F.. F.. E..
+person A Adam m
+person B Bea f hat
+person C Cora f
+person D Dana f glasses
+person E Eva f
+victim V Vlad m
+clue A is col 1
+clue B is line row c
+clue C dir A -1 0
+clue C is col 4
+clue C offset E * -3
+clue D diag C
+clue D offset B * 1
+clue E is line row t
+extra A dir E -1 0
+extra A is in B|C
+extra B dir C -1 0
+extra B is in C|D
+extra D is in F
+extra E with D
+extra E offset D 1 *
+solution A=1:3:1 B=1:1:5 C=1:2:4 D=1:4:6 E=1:5:7 V=1:6:2
+''',
+  '''
+case hard-070
+title The Spare Reservation
+setting hotel
+area A Garden
+area B Room 2
+area C Bar
+area D Pool
+area E Lobby
+area F Kitchen
+kind p block plant
+kind e block tree
+kind d block desk
+kind c sit chair
+kind o sit sofa
+kind u sit sunbed
+grid Hotel 6 8
+E.. E.. Ec. E.. Eo. Fc. F.. F..
+Bc. B.. B.. E.. Bc. Co1 F.. F..
+B.. B.. Bd. B.. B.. Co1 C.. D..
+Bd. B.. B.. B.. B.. A.. D.. Du.
+Ap. A.. A.. Ae. A.. A.. D.. Du.
+Ap. A.. Ap. A.. A.. A.. A.. D..
+person A Adam m
+person B Ben m hat
+person C Carl m hat,glasses
+person D Dan m
+person E Eli m hat
+victim V Vera f glasses
+clue A alone
+clue B is beside p
+clue B diag A
+clue C offset E * 1
+clue C is on u
+clue D offset A -2 *
+clue D is line col p
+clue E is in A|E
+extra A others f 0
+extra A offset E * -2
+extra B with E
+extra C dir E -1 1
+extra D dir B -1 0
+extra E dir B 0 1
+extra E dir A 1 0
+solution A=1:3:5 B=1:5:3 C=1:4:8 D=1:1:1 E=1:6:7 V=1:2:4
+''',
+  '''
+case hard-071
+title The Spare Balloon
+setting park
+area A Playground
+area B Rose Garden
+area C Lawn
+area D Path
+area E Pond
+area F Cafe
+kind n sit bench
+kind u block bush
+kind b sit boat
+kind c sit chair
+kind t block table
+grid Park 6 8
+D.. Ft. F.. F.. F.. Fc. F.. F..
+D.. D.. D.. D.. Du. Du. Cu. C..
+D.. D.. D.. D.. D.. D.. C.. C..
+D.. Du. D.. D.. D.. B.. Bn. C..
+An. A.. A.. A.. Dn. Eb1 B.. B..
+A.. An. A.. A.. E.. Eb1 E.. B..
+person A Anna f
+person B Ben m hat
+person C Carl m hat
+person D Dana f
+person E Eli m glasses
+victim V Vera f
+clue A offset B * -1
+clue A dir B 1 0
+clue B dir E 1 -1
+clue B is col 3
+clue C offset D -1 *
+clue C dir A 1 1
+clue C diag E
+clue D is in B|E
+clue E offset B * 2
+extra A others hat 1
+extra B dir C -1 0
+extra D dir E 1 1
+extra D is in D|E
+extra E dir B 0 1
+extra E dir C -1 0
+solution A=1:3:2 B=1:2:3 C=1:4:8 D=1:5:6 E=1:1:5 V=1:6:7
+''',
+  '''
+case hard-072
+title The Spare Sculpture
+setting museum
+area A Cafe
+area B Hall
+area C Gift Shop
+area D Dino Room
+area E Gallery
+area F Garden
+kind p block plant
+kind u block statue
+kind v block vase
+kind n sit bench
+kind o block skeleton
+grid Museum 6 8
+D.. D.. D.. D.. D.. D.. Fu. F..
+Dn. D.. Do. Dn. F.. F.. F.. F..
+C.. Cv. D.. D.. D.. D.. F.. Fu.
+C.. C.. C.. C.. A.. E.. F.. Bu.
+A.. A.. Ap. A.. Ap. E.. E.. B..
+A.. A.. A.. A.. A.. Ev. E.. B..
+person A Adam m glasses
+person B Bea f
+person C Carl m
+person D Dan m hat
+person E Eli m hat
+victim V Vera f
+clue A dir D 1 -1
+clue A is not beside p
+clue B is in D|E
+clue B offset A -2 *
+clue C is in B|F
+clue D is in C
+clue D is line col p
+clue E is not on n
+clue E offset B * -1
+clue * count 1 on n
+extra A is areacorner
+extra B is line row u
+extra C is in A|F
+extra C is corner
+extra D offset A -1 *
+extra E is beside p
+solution A=1:5:1 B=1:3:6 C=1:1:8 D=1:4:3 E=1:6:5 V=1:2:4
+''',
+  '''
+case hard-073
+title The Last Teacup
+setting home
+area A Living Room
+area B Garage
+area C Kitchen
+area D Bedroom
+area E Garden
+area F Hall
+kind t block table
+kind s block shelf
+kind b sit bed
+kind e block tree
+kind p block plant
+grid Home 6 8
+F.. F.. F.. F.. D.. D.. D.. E..
+F.. F.. Fs. F.. Db1 Db1 E.. E..
+Fs. Fs. F.. F.. F.. Fp. Et. E..
+B.. B.. Bs. Fs. A.. At. Ee. E..
+B.. C.. Ct. C.. A.. At. A.. A..
+Ct. C.. C.. C.. A.. At. A.. A..
+person A Adam m hat
+person B Bea f hat
+person C Cora f
+person D Dana f hat
+person E Eva f
+victim V Vince m
+clue A is in B|D
+clue A is areacorner
+clue B is not border
+clue C dir A 1 -1
+clue C offset E -1 *
+clue D offset B -1 *
+clue D is not beside t
+clue E is in C|E
+clue E offset A * -2
+clue * count 0 on b
+extra A notwith B
+extra B notwith A
+extra B dir E 0 1
+extra C dir B 1 -1
+extra D dir E -1 1
+extra E dir D 1 0
+solution A=1:1:5 B=1:3:4 C=1:5:1 D=1:2:8 E=1:6:3 V=1:4:2
+''',
+  '''
+case hard-074
+title The Last Sandcastle
+setting beach
+area A Dunes
+area B Sand
+area C Cafe
+area D Rocks
+area E Pier
+area F Sea
+kind k block rock
+kind p block palm
+kind w sit towel
+kind c sit chair
+kind t block table
+kind b sit boat
+grid Beach 6 8
+Et. E.. Dk. A.. A.. A.. A.. C..
+E.. F.. D.. D.. Ap. Ak. A.. Cc.
+F.. F.. D.. D.. C.. C.. C.. C..
+F.. F.. F.. F.. Cc. C.. Ct. C..
+Fb3 Fb3 Fb1 Fb1 C.. C.. C.. C..
+F.. F.. Fb2 Fb2 F.. B.. B.. Bw.
+person A Anna f
+person B Ben m
+person C Cora f hat
+person D Dan m hat,glasses
+person E Eli m glasses
+victim V Vlad m
+clue A dir D 0 -1
+clue B is not in A
+clue B is line row c
+clue B is in A|E
+clue C only on c
+clue C offset D * 2
+clue D dir A -1 1
+clue E offset D 2 *
+extra A is in A|F
+extra A dir B 0 1
+extra C dir A -1 1
+extra D alone
+extra D others m 0
+extra E is on b
+extra E offset C 1 *
+solution A=1:6:2 B=1:2:1 C=1:4:5 D=1:3:3 E=1:5:4 V=1:1:8
+''',
+  '''
+case hard-075
+title The Last Acorn
+setting forest
+area A Pines
+area B Lake
+area C Cabin
+area D Cave
+area E Path
+area F Clearing
+kind e block tree
+kind k block rock
+kind t block table
+kind u block bush
+kind l sit log
+grid Forest 6 8
+E.. Ct. C.. C.. Fu. Fu. F.. F..
+E.. C.. Ct. C.. F.. F.. F.. Fl.
+El. E.. Dk. A.. F.. F.. F.. F..
+E.. E.. D.. A.. F.. Fl. F.. F..
+E.. E.. Eu. Ae. B.. B.. F.. F..
+E.. E.. E.. Eu. Bk. B.. F.. F..
+person A Adam m hat
+person B Ben m hat
+person C Carl m hat,glasses
+person D Dana f hat
+person E Eva f hat
+victim V Vicky f
+clue A dir D -1 0
+clue B diag D
+clue C dir D 0 1
+clue D dir B 1 -1
+clue D offset C * -2
+clue D is beside l
+clue E offset C -2 *
+clue E is beside k
+extra A dir C -1 0
+extra A is in D|E
+extra B with C
+extra B dir D -1 1
+extra C is in B|F
+extra C dir E 1 0
+extra E is in A|D
+solution A=1:1:1 B=1:2:7 C=1:6:8 D=1:3:6 E=1:4:3 V=1:5:2
+''',
+  '''
+case hard-076
+title The Last Taxi
+setting city
+area A Park
+area B Shop
+area C Bank
+area D Street
+area E Square
+area F Cafe
+kind n sit bench
+kind m block lamp
+kind t block table
+kind s block shelf
+kind a sit car
+kind i block bin
+grid City 6 8
+E.. Em. E.. E.. Ei. E.. E.. D..
+C.. Ei. E.. E.. Em. Dm. D.. D..
+C.. C.. Ei. E.. B.. Bt. D.. Da.
+C.. C.. Cs. B.. B.. A.. Am. A..
+Cs. C.. C.. C.. C.. A.. A.. A..
+C.. C.. Cs. F.. Ft. An. An. A..
+person A Adam m hat
+person B Ben m glasses
+person C Carl m hat
+person D Dana f
+person E Eva f glasses
+victim V Vera f
+clue A dir B 0 -1
+clue B others f 0
+clue B others m 0
+clue C is beside m
+clue C offset D * -2
+clue C offset E -3 *
+clue D offset C 2 *
+clue E is beside n
+clue * group hat not border
+extra A is in A|C
+extra A offset C * -2
+extra B is in D
+extra D offset A 1 *
+extra D is in A
+extra E is in A
+extra E diag D
+solution A=1:3:2 B=1:1:8 C=1:2:4 D=1:4:6 E=1:5:7 V=1:6:1
+''',
+  '''
+case hard-077
+title The Last Scarecrow
+setting farm
+area A House
+area B Barn
+area C Pond
+area D Field
+area E Orchard
+area F Yard
+kind t block table
+kind o block cow
+kind k block rock
+kind e block tree
+kind a sit tractor
+kind h sit hay bale
+grid Farm 6 8
+F.. F.. Bo. B.. B.. B.. C.. Ck.
+F.. F.. Fa1 A.. A.. C.. C.. Ck.
+F.. F.. Fa1 F.. At. C.. C.. C..
+Do. Fh. F.. F.. F.. C.. C.. Ck.
+D.. D.. Do. D.. D.. E.. E.. C..
+D.. Do. D.. Ee. E.. E.. E.. C..
+person A Adam m glasses
+person B Ben m
+person C Cora f hat
+person D Dan m hat
+person E Eva f
+victim V Val m
+clue A notwith D
+clue A offset E 2 *
+clue A offset C * -1
+clue B offset D 3 *
+clue C dir A 1 1
+clue C offset B * -3
+clue D is in E|F
+clue E dir B 0 -1
+extra B is in C
+extra B is in C|D
+extra C is in D|E
+extra D dir A -1 -1
+extra D offset E * -3
+extra E is in F
+extra E dir C 0 1
+solution A=1:5:2 B=1:4:6 C=1:6:3 D=1:1:1 E=1:3:4 V=1:2:7
+''',
+  '''
+case hard-078
+title The Last Blackboard
+setting school
+area A Yard
+area B Hall
+area C Gym
+area D Library
+area E Classroom
+area F Canteen
+kind i block bin
+kind m sit mat
+kind n sit bench
+kind c sit chair
+kind d block desk
+kind s block shelf
+grid School 6 8
+A.. Ai. A.. F.. F.. F.. Fi. Dc.
+A.. A.. Ai. F.. F.. F.. Fi. D..
+E.. Es. A.. A.. C.. C.. C.. B..
+E.. Es. Cm. C.. Cm. C.. C.. Bi.
+E.. E.. Ed. Ed. C.. C.. B.. B..
+E.. E.. E.. E.. E.. Cn. B.. Bi.
+person A Anna f hat
+person B Bea f
+person C Cora f hat
+person D Dana f
+person E Eli m
+victim V Viola f
+clue A offset E * 3
+clue B is in A|D
+clue B offset A 1 *
+clue C dir D -1 0
+clue C alone
+clue D offset A * 3
+clue E dir B -1 0
+clue * count 0 on m
+extra A notwith D
+extra A dir D 0 -1
+extra B alonewith E
+extra C offset D -2 *
+extra D dir B 1 1
+extra D dir A 0 1
+extra E dir C -1 -1
+extra E is in A
+solution A=1:2:4 B=1:3:3 C=1:4:6 D=1:6:7 E=1:1:1 V=1:5:8
+''',
+  '''
+case hard-079
+title The Last Ticket
 setting train
 area A Sleeper
 area B First Class
-area C Engine
+area C Dining Car
 area D Second Class
-area E Dining Car
-area F Luggage Car
-kind t block table
-kind c sit seat
-kind b sit bed
+area E Luggage Car
+area F Engine
+kind l block suitcase
 kind r sit rug
+kind c sit seat
+kind k block trunk
 kind s block shelf
+grid Train 6 8
+E.. Br. B.. Fc. F.. D.. D.. D..
+E.. Ek. Fs. F.. A.. D.. D.. D..
+F.. F.. F.. F.. A.. A.. Dc. Cc.
+F.. Fc. F.. Al. A.. Al. Dc. C..
+Fc. F.. Fc. A.. A.. A.. D.. D..
+F.. F.. F.. A.. A.. Ar. D.. Dl.
+person A Adam m hat
+person B Ben m hat,glasses
+person C Cora f
+person D Dan m
+person E Eli m
+victim V Victor m
+clue A only on r
+clue A dir E 0 -1
+clue B is in B|E
+clue C dir B 1 -1
+clue D is not in C
+clue D is border
+clue E offset B 2 *
+clue E dir C 1 1
+extra A offset D * -2
+extra B notwith E
+extra B is in B
+extra C offset B 1 *
+extra C notwith B
+extra D notwith C
+extra E is in D|E
+solution A=1:6:6 B=1:1:3 C=1:2:1 D=1:5:8 E=1:3:7 V=1:4:5
+''',
+  '''
+case hard-080
+title The Last Anchor
+setting ship
+area A Deck
+area B Bow
+area C Cabin
+area D Bridge
+area E Galley
+area F Hold
+kind k block crate
+kind c sit chair
+kind l block barrel
+kind b sit bed
+kind t block table
+grid Ship 6 8
+E.. El. E.. E.. E.. Cb1 Cb1 C..
+El. E.. E.. E.. C.. C.. C.. C..
+F.. E.. Bl. B.. Bc. C.. C.. C..
+F.. F.. A.. Bc. B.. B.. C.. C..
+Fl. F.. A.. B.. Bl. B.. D.. D..
+Fl. F.. Ak. B.. B.. B.. D.. Dt.
+person A Anna f
+person B Bea f hat,glasses
+person C Carl m glasses
+person D Dan m hat
+person E Eli m
+victim V Vera f glasses
+clue A is not in E
+clue B dir C 1 1
+clue C is in B|C
+clue D offset C -1 *
+clue D offset E * 3
+clue D offset A * -2
+clue E offset A -2 *
+clue * group glasses beside l
+extra A dir B 0 1
+extra A notwith C
+extra B dir C 1 0
+extra B with C
+extra C offset D 1 *
+extra C dir E 1 0
+extra E is in C|E
+extra E is in E
+solution A=1:3:8 B=1:6:5 C=1:5:4 D=1:4:6 E=1:1:3 V=1:2:2
+''',
+  '''
+case hard-081
+title The Last Marshmallow
+setting camp
+area A Field
+area B Lake
+area C Kitchen
+area D Fire Ring
+area E Tents
+area F Woods
+kind n sit tent
+kind t block table
+kind b sit canoe
+kind k block rock
+kind c sit chair
+kind f block campfire
+kind l sit log
+grid Camp 6 8
+B.. Bb1 En. D.. F.. F.. C.. Cc.
+B.. Bb1 E.. D.. Fk. F.. An. A..
+B.. Bk. E.. D.. Df. F.. At. A..
+B.. B.. E.. Dl. Dl. Fk. A.. A..
+B.. E.. E.. D.. D.. D.. An. A..
+B.. B.. Ec. E.. Df. D.. D.. D..
+person A Adam m hat
+person B Bea f
+person C Cora f hat
+person D Dan m hat
+person E Eli m hat
+victim V Vicky f
+clue A offset C -1 *
+clue A is in B|E
+clue A is line col k
+clue B diag E
+clue B offset E * -3
+clue C is in A|B
+clue C is not on n
+clue D only beside b
+clue D is row 2
+clue E dir A -1 0
+extra B dir D 1 0
+extra C dir E 1 0
+extra D dir E -1 0
+extra E dir D 1 0
+extra E offset C * -2
+solution A=1:4:2 B=1:6:3 C=1:5:8 D=1:2:1 E=1:3:6 V=1:1:5
+''',
+  '''
+case hard-082
+title The Last Room Key
+setting hotel
+area A Room 2
+area B Bar
+area C Lobby
+area D Pool
+area E Room 1
+area F Garden
+kind d block desk
+kind b sit bed
+kind o sit sofa
+kind p block plant
+kind u sit sunbed
+kind c sit chair
+kind e block tree
+grid Hotel 6 8
+F.. F.. F.. F.. F.. Fe. F.. Fc.
+F.. F.. F.. Fc. F.. A.. A.. Fc.
+Bo2 Bo2 C.. Cd. A.. A.. Dp. D..
+B.. C.. C.. A.. Ad. Ab1 D.. D..
+B.. C.. E.. E.. A.. Ab1 D.. Dp.
+B.. Eb3 Eb3 E.. E.. Ec. Du. D..
+person A Adam m hat
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f glasses
+victim V Victor m
+clue A is col 3
+clue A offset E 1 *
+clue B is in C
+clue C offset B * 3
+clue D is beside d
+clue D dir C 0 1
+clue E dir A -1 -1
+clue * count 1 on c
+extra A offset D -1 *
+extra B is line col o
+extra B dir D 0 -1
+extra C dir D 1 0
+extra C alone
+extra D notwith E
+extra E is in D|F
+extra E offset D -2 *
+solution A=1:3:3 B=1:5:2 C=1:6:5 D=1:4:6 E=1:2:1 V=1:1:8
+''',
+  '''
+case hard-083
+title The Last Picnic
+setting park
+area A Lawn
+area B Playground
+area C Rose Garden
+area D Pond
+area E Cafe
+area F Path
+kind e block tree
+kind u block bush
+kind n sit bench
+kind w sit swing
+kind b sit boat
+kind t block table
+grid Park 6 8
+F.. F.. B.. Db1 Db1 D.. A.. A..
+F.. F.. Bn. B.. D.. D.. A.. Ae.
+F.. Fu. B.. Bw. A.. A.. A.. A..
+E.. Fn. B.. B.. Au. Au. Ae. C..
+E.. Et. B.. A.. A.. A.. Ae. C..
+E.. A.. A.. Au. A.. A.. Cu. C..
+person A Adam m glasses
+person B Bea f
+person C Cora f hat,glasses
+person D Dana f hat,glasses
+person E Eli m
+victim V Val m
+clue A is in D
+clue A offset B * -3
+clue B offset C * 2
+clue C is row 5
+clue D dir E -1 1
+clue D dir A 1 1
+clue E is line row w
+clue E is in C|F
+extra A is on b
+extra B is in C|E
+extra B offset A * 3
+extra C offset E 2 *
+extra C dir D 1 -1
+extra D is in A|D
+extra E offset B -3 *
+solution A=1:1:5 B=1:6:8 C=1:5:6 D=1:2:7 E=1:3:1 V=1:4:2
+''',
+  '''
+case hard-084
+title The Last Painting
+setting museum
+area A Gallery
+area B Dino Room
+area C Garden
+area D Hall
+area E Cafe
+area F Gift Shop
+kind v block vase
+kind n sit bench
+kind u block statue
+kind p block plant
+kind c sit chair
+kind s block shelf
+grid Museum 6 8
+Ep. Bn. B.. C.. C.. Cp. C.. Dp.
+Ec. E.. B.. C.. Cp. C.. C.. D..
+E.. E.. E.. C.. Cu. C.. Du. D..
+Fs. F.. E.. E.. C.. Dp. D.. Dp.
+F.. Fs. F.. F.. D.. D.. D.. D..
+F.. A.. Av. F.. D.. D.. D.. D..
+person A Adam m hat
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m hat,glasses
+victim V Val m
+clue A dir B 1 -1
+clue A is col 6
+clue B offset E 1 *
+clue C only on c
+clue D dir C 1 0
+clue E is in A|D
+extra A is in A|D
+extra B dir D 1 1
+extra B dir E 0 1
+extra C dir E -1 -1
+extra C dir A -1 0
+extra D is in C|D
+extra D is col 4
+extra E others m 1
+extra E is beside p x2
+solution A=1:6:6 B=1:5:8 C=1:2:1 D=1:3:4 E=1:4:7 V=1:1:5
+''',
+  '''
+case hard-085
+title The Wrong Key
+setting home
+area A Garden
+area B Kitchen
+area C Garage
+area D Hall
+area E Living Room
+area F Bedroom
+area G Bathroom
+kind p block plant
+kind e block tree
+kind s block shelf
+kind a sit car
+kind c sit chair
+grid Home 8 8
+Ec. E.. E.. E.. E.. B.. --- ---
+G.. Gp. E.. G.. Gp. Bs. B.. ---
+G.. Gs. Gs. G.. G.. B.. Cs. C..
+A.. A.. G.. G.. C.. C.. Ca1 Ca1
+A.. A.. Ae. Ae. A.. F.. C.. C..
+A.. A.. Ap. A.. A.. F.. Fc. F..
+A.. A.. Ap. Ap. A.. D.. D.. Dp.
+--- Ae. A.. A.. D.. D.. D.. D..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eva f
+person F Finn m
+person G Gina f
+victim V Vicky f
+clue A is in B|C
+clue B is in B|E
+clue C is in D|G
+clue D dir A 0 -1
+clue D is in C
+clue E dir C 1 0
+clue E offset F * 2
+clue F dir D -1 -1
+clue G is in G
+clue G dir B -1 -1
+extra A dir F 0 1
+extra A others any 1
+extra B only beside s
+extra B dir A -1 -1
+extra C is in D|E
+extra C dir A 1 -1
+extra D is in C|F
+extra E is in A|C
+extra F dir B 0 -1
+extra F dir A -1 0
+extra G notwith A
+solution A=1:5:8 B=1:3:6 C=1:7:7 D=1:4:5 E=1:8:3 F=1:1:1 G=1:2:4 V=1:6:2
+''',
+  '''
+case hard-086
+title The Wrong Seashell
+setting beach
+area A Dunes
+area B Pier
+area C Sand
+area D Sea
+area E Rocks
+area F Cafe
+kind p block palm
+kind k block rock
+kind t block table
+kind u block umbrella
+kind b sit boat
+kind w sit towel
+kind c sit chair
+grid Beach 8 8
+--- --- B.. Bt. B.. B.. A.. A..
+--- C.. D.. B.. B.. Bt. Ak. A..
+C.. Cp. D.. D.. D.. D.. D.. Ap.
+Cu. C.. C.. C.. D.. Db2 Db2 Db.
+C.. Ew. Cp. E.. D.. Db. F.. Fc.
+C.. Ew. Ek. E.. Db1 Db1 D.. F..
+E.. Ew. E.. E.. Ek. D.. F.. F..
+--- E.. E.. E.. E.. E.. Ft. F..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gus m
+victim V Victor m
+clue A is in D
+clue A dir F -1 0
+clue B is line col b
+clue C dir A -1 -1
+clue C is line col b
+clue D is in F
+clue D is corner
+clue E is in C|E
+clue F dir G -1 1
+clue F diag C
+clue G offset E * 2
+extra A is col 7
+extra B notwith F
+extra B dir E -1 1
+extra C dir G -1 0
+extra D dir G 1 1
+extra E dir B 1 0
+extra E is row 6
+extra F is in A|E
+extra G dir E 1 0
+extra G others f 1
+solution A=1:4:7 B=1:1:5 C=1:3:6 D=1:8:8 E=1:6:1 F=1:5:4 G=1:7:3 V=1:2:2
+''',
+  '''
+case hard-087
+title The Wrong Mushroom
+setting forest
+area A Pines
+area B Path
+area C Clearing
+area D Cave
+area E Cabin
+area F Lake
+kind e block tree
+kind k block rock
+kind u block bush
+kind l sit log
+kind t block table
+kind c sit chair
+kind b sit boat
+grid Forest 8 8
+--- --- F.. F.. Fb1 E.. E.. E..
+--- Fb2 Fb2 F.. Fb1 Et. E.. Ec.
+B.. F.. F.. F.. F.. F.. E.. E..
+Bk. B.. F.. Dl. Dk. D.. E.. Ec.
+Bk. C.. C.. D.. D.. D.. D.. D..
+B.. C.. A.. A.. D.. D.. Dl. D..
+--- Cu. Ae. A.. D.. D.. Dl. D..
+--- --- D.. D.. D.. Dl. Dl. D..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+person E Eva f
+person F Faye f
+person G Gina f
+victim V Vlad m
+clue A dir F 0 -1
+clue B is line row b
+clue C with D
+clue D is col 2
+clue E dir G -1 0
+clue E offset B * 2
+clue F offset D * 2
+clue F is line row u
+clue G is in C|F
+clue G offset E * -3
+extra A dir C 1 1
+extra A dir B 0 -1
+extra B dir F 0 1
+extra B offset F * 2
+extra C is in B|E
+extra C dir G 1 0
+extra D others any 1
+extra D dir A -1 0
+extra E is in E|F
+extra F dir C 0 1
+extra G is in E|F
+solution A=1:8:3 B=1:1:6 C=1:6:1 D=1:4:2 E=1:2:8 F=1:7:4 G=1:3:5 V=1:5:7
+''',
+  '''
+case hard-088
+title The Wrong Newspaper
+setting city
+area A Shop
+area B Park
+area C Bank
+area D Cafe
+area E Street
+area F Square
+kind i block bin
+kind c sit chair
+kind t block table
+kind m block lamp
+kind e block tree
+grid City 8 8
+--- --- A.. A.. A.. Ai. B.. Bi.
+--- E.. E.. E.. Cc. B.. B.. B..
+E.. E.. Ei. Em. C.. C.. B.. B..
+E.. E.. D.. E.. C.. C.. Bi. Bi.
+Em. E.. Dt. E.. Dc. D.. F.. B..
+D.. Ei. D.. D.. Dc. F.. Fm. F..
+Dc. D.. D.. D.. D.. F.. Fe. F..
+D.. D.. D.. D.. D.. F.. Fe. ---
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+person F Faye f
+person G Gus m
+victim V Val m
+clue A is not in D
+clue B dir E 1 -1
+clue B offset D * -1
+clue C offset G * 3
+clue D is in A|B
+clue E is areacorner
+clue F diag B
+clue G offset D 3 *
+clue G dir B 1 1
+extra A dir D 1 1
+extra A is row 7
+extra B dir F -1 0
+extra C dir A 0 -1
+extra C is in B|F
+extra D dir A -1 0
+extra D offset F * -2
+extra E dir B 0 1
+extra E offset A * -2
+extra F is on c
+extra F offset B * 3
+extra G dir D 0 1
+solution A=1:7:8 B=1:3:2 C=1:5:7 D=1:1:3 E=1:2:6 F=1:6:5 G=1:4:4 V=1:8:1
+''',
+  '''
+case hard-089
+title The Wrong Pitchfork
+setting farm
+area A Barn
+area B Orchard
+area C Yard
+area D Pond
+area E House
+area F Field
+kind g block pig
+kind h sit hay bale
+kind e block tree
+kind a sit tractor
+kind k block rock
+kind c sit chair
+grid Farm 8 8
+B.. Be. B.. B.. Bh. A.. --- ---
+B.. B.. D.. Be. A.. A.. Ah. ---
+B.. B.. D.. B.. A.. Ag. A.. A..
+Be. B.. D.. F.. F.. Fa2 A.. E..
+Bh. D.. Dk. F.. F.. Fa2 F.. E..
+B.. D.. Ca1 E.. E.. F.. F.. Ec.
+--- C.. Ca1 C.. E.. Ec. E.. E..
+--- --- C.. C.. E.. E.. E.. Ec.
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eva f
+person F Faye f
+person G Gina f
+victim V Val m
+clue A offset G -1 *
+clue B is line col e
+clue B dir D 0 1
+clue C offset F 2 *
+clue D dir C 0 -1
+clue E dir G 0 -1
+clue E offset F 1 *
+clue F is beside a
+clue F offset C * -3
+clue G offset D 3 *
+clue G is beside k
+extra A notwith E
+extra A dir G -1 0
+extra B is col 4
+extra C offset B -1 *
+extra C dir D 1 0
+extra D dir E -1 -1
+extra D notwith A
+extra E offset B -2 *
+extra F is line row k
+extra G is in A|D
+solution A=1:3:7 B=1:8:4 C=1:7:8 D=1:1:1 E=1:6:2 F=1:5:5 G=1:4:3 V=1:2:6
+''',
+  '''
+case hard-090
+title The Wrong Satchel
+setting school
+area A Canteen
+area B Gym
+area C Hall
+area D Yard
+area E Library
+area F Classroom
+kind t block table
+kind m sit mat
+kind n sit bench
+kind s block shelf
+kind i block bin
+kind e block tree
+kind d block desk
+grid School 8 8
+--- D.. D.. Fs. F.. Bn. B.. B..
+D.. Di. D.. F.. F.. Fs. Bm. B..
+At. D.. D.. D.. F.. E.. E.. E..
+A.. Di. De. Di. De. Et. E.. E..
+A.. D.. D.. E.. Ed. E.. Et. Ed.
+Cn. Cn. Cs. C.. C.. Cs. C.. E..
+C.. C.. C.. C.. C.. C.. C.. E..
+--- C.. C.. C.. C.. C.. E.. Et.
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+person F Finn m
+person G Gus m
+victim V Victor m
+clue A is line row m
+clue B is line row n
+clue B offset D * -1
+clue C dir G 0 -1
+clue D dir F -1 1
+clue D offset E 3 *
+clue D offset A * 3
+clue E is in A|B
+clue F dir C -1 0
+clue G offset B -1 *
+extra A dir G 0 1
+extra A dir E 1 -1
+extra B is in C
+extra C dir F 1 0
+extra C dir G 1 -1
+extra E dir C -1 1
+extra E notwith D
+extra F is in C|F
+extra F dir A 1 0
+extra G dir D 1 -1
+extra G dir C -1 0
+solution A=1:2:5 B=1:6:7 C=1:8:2 D=1:4:8 E=1:1:6 F=1:7:1 G=1:5:3 V=1:3:4
+''',
+  '''
+case hard-091
+title The Wrong Luggage
+setting train
+area A Luggage Car
+area B Sleeper
+area C Dining Car
+area D Engine
+area E First Class
+area F Second Class
+kind k block trunk
+kind b sit bed
+kind t block table
+kind r sit rug
+kind c sit seat
+kind s block shelf
+kind l block suitcase
 grid Train 8 8
-B.. Bb. Ft. F.. F.. F.. F.. F..
-A.. A.. Ab1 F.. F.. F.. F.. F..
-A.. Ac. Ab1 Fr. Fr. F.. F.. F..
-A.. Ac. A.. Ft. F.. D.. Fb4 Fb4
-A.. A.. At. A.. At. Db2 Db2 D..
-E.. A.. A.. A.. A.. C.. D.. Ds.
-E.. Eb3 Eb3 A.. A.. Cr. C.. ---
---- E.. E.. A.. A.. C.. --- ---
-open Train 1 2 E door
-open Train 2 2 N door
-open Train 2 3 N door
-open Train 5 5 E door
-open Train 1 2 N window
-open Train 5 8 E window
-open Train 7 1 W window
-open Train 8 6 E window
+Ct. C.. C.. C.. C.. Cr. --- ---
+Ct. C.. C.. C.. C.. C.. C.. ---
+Ct. Ct. Ct. C.. C.. Ct. C.. C..
+Ct. C.. C.. C.. C.. D.. Ct. Cr.
+Ds. Dc. Ds. Dc. D.. D.. D.. D..
+A.. A.. D.. D.. D.. D.. D.. D..
+A.. A.. Ak. El. E.. F.. F.. Fc.
+--- A.. E.. E.. Bb1 Bb1 F.. F..
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Viola f
+clue A is in A|E
+clue B is not on b
+clue C is corner
+clue C is line col c
+clue D offset A * 1
+clue E is beside t
+clue E offset D 3 *
+clue F offset E * 3
+clue G is line col r
+clue G offset C 3 *
+extra A is line col k
+extra A is in E
+extra B dir C 1 -1
+extra B is line col s
+extra C dir G 0 1
+extra D dir E 0 1
+extra D dir F -1 -1
+extra E notwith B
+extra F notwith A
+extra F is in C|F
+extra G is line col b
+solution A=1:8:3 B=1:7:1 C=1:3:8 D=1:1:4 E=1:4:2 F=1:2:5 G=1:6:6 V=1:5:7
+''',
+  '''
+case hard-092
+title The Wrong Porthole
+setting ship
+area A Bridge
+area B Hold
+area C Bow
+area D Galley
+area E Cabin
+area F Deck
+kind t block table
+kind l block barrel
+kind k block crate
+kind c sit chair
+grid Ship 8 8
+--- F.. D.. Et. E.. E.. E.. ---
+F.. F.. Dc. E.. Ec. E.. E.. Ec.
+Fl. F.. D.. E.. E.. Et. E.. E..
+B.. B.. B.. C.. Cl. At. A.. E..
+B.. B.. Bk. C.. Cl. Cl. A.. A..
+Bl. B.. Bl. C.. C.. C.. At. A..
+B.. B.. B.. C.. Cl. C.. A.. A..
+Bl. B.. B.. C.. C.. C.. Cc. C..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m
+person F Faye f
+person G Gina f
+victim V Vlad m
+clue A offset E -2 *
+clue B dir E 1 -1
+clue C is in A|D
+clue D dir G 1 0
+clue D dir C -1 1
+clue D diag A
+clue E is in B|C
+clue F offset C 3 *
+clue G offset D * 3
+extra A offset D * -3
+extra A is in B
+extra B diag E
+extra B is beside l
+extra C dir F 0 -1
+extra C dir F -1 0
+extra E dir G 1 0
+extra E is in C|F
+extra F is in A|B
+extra F is in A|E
+extra G is in E|F
+extra G others f 1
+solution A=1:5:1 B=1:8:5 C=1:3:3 D=1:2:4 E=1:7:6 F=1:6:8 G=1:1:7 V=1:4:2
+''',
+  '''
+case hard-093
+title The Wrong Sleeping Bag
+setting camp
+area A Woods
+area B Kitchen
+area C Fire Ring
+area D Tents
+area E Lake
+area F Field
+kind e block tree
+kind k block rock
+kind c sit chair
+kind l sit log
+kind n sit tent
+kind b sit canoe
+kind t block table
+grid Camp 8 8
+--- --- C.. C.. Dn. Dn. --- ---
+--- Cl. C.. Dc. D.. D.. B.. ---
+E.. Ek. E.. D.. D.. Bc. B.. B..
+E.. E.. E.. D.. A.. A.. Ak. F..
+E.. Ek. E.. D.. Ae. A.. A.. F..
+E.. E.. D.. D.. A.. A.. A.. Ft.
+E.. Eb. Dn. A.. A.. Ae. A.. F..
+E.. Ek. Eb. A.. Ak. A.. F.. Fn.
 person A Anna f
 person B Bea f
 person C Cora f
@@ -2026,190 +4912,336 @@ person D Dana f
 person E Eli m
 person F Faye f
 person G Gus m
-victim W Wanda f
-clue A dir E -1 -1
-clue B offset C 3 *
-clue C offset G 3 *
-clue D alonewith F G
-clue E offset G * -3
-clue F offset A 3 *
-clue F dir D 0 1
-clue G dir C -1 -1
-clue G dir F -1 1
-solution A=1:1:1 B=1:8:2 C=1:5:8 D=1:3:4 E=1:7:3 F=1:4:5 G=1:2:6 W=1:6:7
+victim V Val m
+clue A dir E 0 -1
+clue B diag D
+clue B is col 4
+clue B offset D * -2
+clue C with F
+clue D is corner
+clue E offset C -2 *
+clue F dir C -1 -1
+clue G is in A
+clue G offset C 1 *
+extra A notwith D
+extra A is in C
+extra C dir F 0 1
+extra C is line col k
+extra D offset E * -2
+extra D dir G -1 0
+extra E dir D 1 1
+extra E is in C|F
+extra F others m 0
+extra F dir D 0 -1
+extra G is beside e
+solution A=1:2:3 B=1:3:4 C=1:6:2 D=1:1:6 E=1:4:8 F=1:5:1 G=1:7:5 V=1:8:7
 ''',
   '''
-case hard-044
-title The Torn Whistle
-setting ship
-area A Galley
-area B Cabin
-area C Bow
-area D Bridge
-area E Deck
-area F Hold
-kind r sit rug
-kind t block table
-kind c sit chair
-kind k block crate
-kind a sit lifeboat
-grid Ship 8 8
-Ak. Ak. A.. A.. A.. A.. D.. D..
-A.. A.. A.. At. A.. A.. D.. Dr.
-A.. A.. Ac. A.. A.. A.. D.. D..
-A.. At. A.. Ar. Ar. A.. Dc. D..
-Ft. Fr. F.. F.. C.. C.. C.. Ck.
-F.. Fk. F.. Fr. Ea1 Ea1 C.. C..
---- F.. F.. F.. E.. E.. E.. ---
---- --- Br. B.. Ec. E.. --- ---
-open Ship 4 4 S door
-open Ship 4 5 S door
-open Ship 8 4 N door
-open Ship 1 8 E window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-person E Eva f
-person F Faye f
-person G Gus m
-victim I Ida f
-clue A dir G -1 -1
-clue B offset E -2 *
-clue C dir F -1 -1
-clue D offset E * 1
-clue E is line col r
-clue E is beside c
-clue F is in A
-clue G dir F -1 -1
-solution A=1:2:1 B=1:5:7 C=1:1:3 D=1:8:6 E=1:7:5 F=1:4:4 G=1:3:2 I=1:6:8
-''',
-  '''
-case hard-045
-title The Early Postcard
-setting camp
-area A Woods
-area B Field
-area C Kitchen
-area D Tents
-area E Fire Ring
-area F Lake
-kind e block tree
-kind c sit chair
-kind f block campfire
-kind l sit log
-grid Camp 8 8
-F.. F.. Bf. B.. B.. Ac. A.. Ae.
-Fl. F.. Fc. Cc. C.. C.. A.. A..
-F.. F.. F.. Ff. F.. C.. C.. E..
-F.. F.. Ff. F.. F.. E.. El. E..
-F.. F.. F.. E.. E.. El. E.. E..
-Dc. D.. F.. E.. Ec. E.. E.. E..
---- D.. Fc. F.. E.. E.. E.. ---
---- --- F.. F.. Ef. E.. --- ---
-open Camp 1 3 S door
-open Camp 1 6 W door
-open Camp 6 4 S door
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dan m
-person E Eva f
-person F Faye f
-person G Gina f
-victim L Leo m
-clue A is in C|E
-clue B is in B|F
-clue C is not on c
-clue D is not beside e
-clue E offset F 3 *
-clue E offset B 2 *
-clue E alonewith C G
-clue F is line row e
-clue G only beside l
-solution A=1:3:6 B=1:2:1 C=1:6:8 D=1:7:2 E=1:4:7 F=1:1:4 G=1:5:5 L=1:8:3
-''',
-  '''
-case hard-046
-title The Blue Notebook
+case hard-094
+title The Wrong Luggage Cart
 setting hotel
-area A Bar
-area B Lobby
-area C Room 2
-area D Kitchen
-area E Garden
-area F Room 1
+area A Lobby
+area B Room 1
+area C Kitchen
+area D Bar
+area E Room 2
+area F Garden
 area G Pool
+kind d block desk
 kind p block plant
-kind t block table
 kind b sit bed
-kind e block tree
 kind c sit chair
+kind t block table
+kind e block tree
 kind u sit sunbed
 grid Hotel 8 8
---- --- E.. Ee. E.. G.. --- ---
---- Bb1 F.. F.. Fc. G.. A.. ---
-B.. Bb1 F.. F.. F.. Ge. A.. Ap.
-B.. Bp. B.. B.. G.. G.. A.. A..
-Bt. B.. B.. B.. G.. Gp. G.. G..
-D.. D.. B.. B.. D.. G.. Gu. C..
-Dp. D.. D.. D.. D.. Db3 Db. Cb2
-D.. D.. D.. D.. D.. Db3 C.. Cb2
-open Hotel 1 3 S door
-open Hotel 1 5 E door
-open Hotel 3 5 S door
-open Hotel 5 4 E door
-open Hotel 6 8 N door
-open Hotel 3 8 E window
+--- Ap. Ad. Cc. Gu. Gp. Gp. F..
+A.. A.. A.. C.. G.. Gu. G.. F..
+Ec. A.. C.. Ct. G.. Gu. F.. F..
+E.. E.. C.. C.. G.. G.. Fe. Fp.
+E.. Ed. C.. G.. G.. F.. F.. F..
+E.. B.. B.. G.. G.. F.. F.. F..
+Bb1 Bb1 B.. D.. D.. F.. F.. Fp.
+--- B.. Dc. D.. D.. Dt. Fp. F..
 person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+person F Finn m
+person G Gus m
+victim V Vanda f
+clue A is beside e
+clue A offset B 2 *
+clue B is in C|E
+clue C offset A * 1
+clue D offset C 1 *
+clue E is in C
+clue F is on b
+clue G offset A * -3
+extra A dir C 1 0
+extra B dir G -1 -1
+extra B offset A -2 *
+extra C dir A 0 1
+extra C dir E -1 1
+extra D only beside p
+extra D dir A -1 0
+extra E dir G -1 -1
+extra E is line row p
+extra F is in A|B
+extra F dir A 1 0
+extra G dir C 1 0
+extra G is beside c
+solution A=1:5:7 B=1:3:1 C=1:1:8 D=1:2:6 E=1:4:3 F=1:7:2 G=1:8:4 V=1:6:5
+''',
+  '''
+case hard-095
+title The Wrong Kite
+setting park
+area A Path
+area B Rose Garden
+area C Lawn
+area D Cafe
+area E Playground
+area F Pond
+kind n sit bench
+kind u block bush
+kind f block fountain
+kind c sit chair
+kind w sit swing
+kind b sit boat
+grid Park 8 8
+--- --- E.. E.. Ew. E.. B.. B..
+--- E.. E.. En. B.. B.. B.. Bn.
+D.. D.. Dc. D.. B.. Bf. Bn. B..
+D.. D.. Dc. D.. Bn. B.. B.. Fb1
+A.. A.. D.. D.. B.. B.. F.. Fb1
+A.. A.. Au. Dc. C.. F.. F.. F..
+An. A.. Au. Cn. C.. C.. F.. ---
+A.. A.. Au. Cn. C.. C.. --- ---
+person A Anna f
 person B Ben m
 person C Carl m
 person D Dana f
-person E Eva f
+person E Eli m
 person F Faye f
-person G Gus m
-victim R Rosa f
-clue A offset E * -3
-clue A offset D -2 *
-clue B is not in A
-clue C others any 1
-clue D offset F -3 *
-clue D offset G * 3
-clue E alone
-clue E offset A -2 *
-clue F is in D|F
-clue G others f 1
-clue G offset C * 1
-solution A=1:3:2 B=1:6:8 C=1:4:3 D=1:5:7 E=1:1:5 F=1:8:1 G=1:7:4 R=1:2:6
+person G Gina f
+victim V Vanda f
+clue A is line row f
+clue B is col 5
+clue B is line row c
+clue C offset G -3 *
+clue D is beside u
+clue E is row 1
+clue F only on n
+clue F offset A * -2
+clue G dir C 1 -1
+extra A only on c
+extra A notwith C
+extra B dir A 1 1
+extra C is in B
+extra C dir F -1 1
+extra D is line row u
+extra D dir G 1 -1
+extra E dir F -1 1
+extra E dir B -1 1
+extra F dir E 1 0
+extra G dir D -1 1
+extra G dir F -1 0
+solution A=1:3:3 B=1:6:5 C=1:2:7 D=1:8:2 E=1:1:8 F=1:7:1 G=1:5:6 V=1:4:4
 ''',
   '''
-case hard-047
-title The Sleepy Umbrella
-setting park
-area A Pond
-area B Lawn
-area C Playground
-area D Rose Garden
-area E Cafe
-area F Path
-kind w sit swing
-kind u block bush
+case hard-096
+title The Wrong Fossil
+setting museum
+area A Cafe
+area B Gallery
+area C Dino Room
+area D Garden
+area E Hall
+area F Gift Shop
+kind p block plant
+kind t block table
+kind v block vase
+kind u block statue
 kind n sit bench
-kind e block tree
+grid Museum 8 8
+--- --- Bu. B.. D.. D.. Du. D..
+--- C.. Cn. B.. D.. D.. D.. Ap.
+B.. B.. Bu. B.. B.. B.. A.. A..
+B.. Bv. B.. B.. B.. At. Ap. A..
+F.. F.. Fv. F.. Bv. A.. A.. A..
+E.. F.. F.. F.. Fv. A.. A.. A..
+E.. E.. E.. Eu. E.. A.. A.. A..
+--- E.. Eu. En. E.. A.. A.. At.
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eli m
+person F Finn m
+person G Gus m
+victim V Val m
+clue A dir F -1 0
+clue B dir C -1 1
+clue C offset E * -3
+clue D dir F 0 -1
+clue E dir C -1 1
+clue E offset G * 1
+clue F offset B 2 *
+clue F dir E -1 1
+clue G alonewith D
+clue G is in A|D
+extra A is in B|C
+extra A with B
+extra B dir D 1 -1
+extra B notwith C
+extra C dir A 1 1
+extra C offset F 2 *
+extra D others m 1
+extra D dir F -1 0
+extra E offset B 3 *
+extra F is in A|C
+extra G is in D|E
+solution A=1:4:1 B=1:3:4 C=1:7:3 D=1:2:7 E=1:6:6 F=1:5:8 G=1:1:5 V=1:8:2
+''',
+  '''
+case hard-097
+title The Old Slipper
+setting home
+area A Living Room
+area B Bathroom
+area C Kitchen
+area D Garage
+area E Garden
+area F Hall
+area G Bedroom
 kind c sit chair
-grid Park 8 8
-Ce. C.. B.. Be. Be. B.. --- ---
-C.. B.. B.. B.. B.. B.. B.. ---
-Bn. B.. Dn. D.. D.. D.. D.. Du.
-D.. D.. D.. De. Fe. F.. F.. Fw.
-D.. D.. D.. De. F.. F.. Fe. F..
-Du. A.. A.. A.. F.. E.. F.. F..
-D.. A.. A.. A.. A.. Ec. E.. Ec.
-Aw. Aw. A.. Au. E.. E.. E.. ---
-open Park 3 1 N door
-open Park 2 6 S door
-open Park 6 4 E door
-open Park 7 7 N door
+kind p block plant
+kind s block shelf
+kind a sit car
+kind t block table
+kind r sit rug
+grid Home 8 8
+--- --- D.. Da1 Da1 D.. --- ---
+--- C.. D.. D.. D.. Ac. Ac. ---
+Cc. C.. D.. D.. D.. A.. A.. A..
+E.. E.. Et. Ds. A.. Ac. A.. A..
+Et. E.. E.. E.. A.. A.. A.. Ac.
+E.. E.. Gs. G.. B.. Bp. B.. Fs.
+E.. G.. G.. G.. B.. B.. Bp. F..
+Gr. Gr. G.. G.. B.. F.. F.. F..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eli m
+person F Finn m
+person G Gina f
+victim V Vanda f
+clue A is in A|C
+clue B offset D -3 *
+clue C is row 2
+clue C is beside a
+clue D is in F|G
+clue D dir F 1 1
+clue E is in D|F
+clue E only beside s
+clue F dir C 1 1
+clue F offset G -3 *
+clue G notwith F
+extra A with F
+extra A is beside c
+extra B is in C|E
+extra B is in E|F
+extra C dir A -1 -1
+extra D offset E * -1
+extra E offset F * 2
+extra F offset A * 1
+extra G dir C 1 0
+extra G is line row s
+solution A=1:4:5 B=1:5:2 C=1:2:4 D=1:8:7 E=1:7:8 F=1:3:6 G=1:6:1 V=1:1:3
+''',
+  '''
+case hard-098
+title The Old Sunhat
+setting beach
+area A Dunes
+area B Pier
+area C Rocks
+area D Cafe
+area E Sand
+area F Sea
+kind k block rock
+kind c sit chair
+kind t block table
+kind u block umbrella
+kind b sit boat
+grid Beach 8 8
+--- --- D.. Dc. Dc. B.. --- ---
+--- D.. D.. D.. D.. B.. B.. ---
+Dc. D.. D.. E.. E.. B.. Bc. Bt.
+D.. D.. Dt. E.. E.. B.. B.. B..
+Dt. D.. D.. Eu. Eu. B.. B.. Bt.
+D.. D.. D.. Fb1 Fb1 B.. B.. Bt.
+C.. Ck. Dc. F.. F.. A.. Ak. A..
+Ck. C.. C.. C.. F.. A.. A.. A..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eli m
+person F Finn m
+person G Gus m
+victim V Vince m
+clue A offset C * -2
+clue A is in A|E
+clue B dir D 1 1
+clue C alonewith E F
+clue D is beside k
+clue E diag G
+clue E offset C * -1
+clue F dir C 1 0
+clue G dir B 0 -1
+extra A dir D -1 1
+extra B offset A * -1
+extra B dir G 1 0
+extra C others f 0
+extra C offset F * -1
+extra D alonewith B
+extra D is in C|D
+extra E is line row c
+extra F others any 2
+extra F offset A * 3
+extra G offset A * -3
+extra G dir C 0 -1
+solution A=1:3:5 B=1:8:4 C=1:2:7 D=1:7:1 E=1:1:6 F=1:4:8 G=1:5:2 V=1:6:3
+''',
+  '''
+case hard-099
+title The Old Owl
+setting forest
+area A Cave
+area B Clearing
+area C Lake
+area D Cabin
+area E Path
+area F Pines
+kind l sit log
+kind k block rock
+kind b sit boat
+kind c sit chair
+kind t block table
+kind u block bush
+grid Forest 8 8
+D.. Dc. D.. Dc. D.. Ck. --- ---
+D.. D.. Dc. D.. D.. Cb1 Cb1 ---
+D.. D.. Dt. D.. F.. C.. C.. Bl.
+Dc. A.. Fu. F.. Fl. B.. Bl. B..
+A.. A.. F.. F.. F.. F.. F.. B..
+A.. A.. A.. F.. F.. Fu. F.. B..
+El. Al. F.. F.. F.. Fl. F.. B..
+E.. E.. F.. F.. Fl. F.. F.. ---
 person A Adam m
 person B Ben m
 person C Carl m
@@ -2217,63 +5249,85 @@ person D Dan m
 person E Eva f
 person F Faye f
 person G Gus m
-victim H Hugo m
-clue A is beside c
-clue B is in B|C
-clue C offset B * -2
-clue D is line col w
-clue E dir B -1 -1
-clue F is col 5
-clue F offset D -3 *
-clue G is in E|F
-clue G offset A -2 *
-solution A=1:7:7 B=1:2:4 C=1:8:2 D=1:6:8 E=1:1:3 F=1:3:5 G=1:5:6 H=1:4:1
+victim V Vanda f
+clue A offset G * 1
+clue A is beside l
+clue B dir A -1 1
+clue C dir B -1 0
+clue D is row 6
+clue D dir E 0 1
+clue D offset E 1 *
+clue E offset B * 1
+clue F is in B|E
+clue G dir F -1 -1
+clue G is line row c
+extra A with B
+extra B dir A 0 1
+extra B diag C
+extra C dir B -1 -1
+extra C offset D -2 *
+extra E offset D * -1
+extra E dir G 1 0
+extra F dir C 0 1
+extra F notwith C
+extra G dir A -1 0
+solution A=1:8:4 B=1:7:5 C=1:4:2 D=1:6:7 E=1:5:6 F=1:3:8 G=1:1:3 V=1:2:1
 ''',
   '''
-case hard-048
-title The Odd Clock
-setting museum
-area A Gallery
-area B Dino Room
-area C Garden
-area D Hall
-area E Gift Shop
-area F Cafe
-kind t block table
+case hard-100
+title The Old Tram
+setting city
+area A Shop
+area B Square
+area C Park
+area D Street
+area E Cafe
+area F Bank
+kind i block bin
+kind s block shelf
+kind m block lamp
+kind e block tree
 kind n sit bench
-kind v block vase
+kind a sit car
 kind c sit chair
-grid Museum 8 8
-Fc. F.. F.. B.. Bn. B.. --- ---
-F.. Fn. F.. E.. Ec. Et. Ec. ---
-D.. D.. E.. E.. E.. E.. E.. E..
-D.. Dt. En. E.. En. E.. E.. A..
-Dt. Dv. D.. E.. Ev. E.. E.. An.
-D.. Dv. D.. E.. C.. E.. E.. A..
-D.. D.. D.. D.. C.. A.. A.. At.
---- D.. D.. D.. Cn. C.. A.. A..
-open Museum 1 5 S door
-open Museum 6 3 E door
-open Museum 1 6 E window
-open Museum 3 8 N window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dana f
-person E Eva f
+grid City 8 8
+A.. A.. A.. A.. A.. Ai. --- ---
+F.. Fc. Fs. Be. A.. As. A.. ---
+Fc. Fs. F.. B.. B.. Be. B.. D..
+F.. F.. F.. F.. Bm. B.. Bm. D..
+F.. Ci. C.. C.. B.. Da1 Da1 D..
+C.. Cn. C.. C.. B.. D.. D.. D..
+--- C.. C.. E.. B.. D.. Dm. D..
+--- --- Ci. Ei. E.. D.. D.. D..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eli m
 person F Faye f
-person G Gus m
-victim P Pia f
-clue A only on n
-clue A others m 1
-clue B dir E 0 1
-clue C dir D 1 -1
-clue D is in C|F
-clue D dir A 1 -1
-clue E is in C|E
-clue E offset F -2 *
-clue F dir G 0 1
-clue G offset B * -3
-solution A=1:5:8 B=1:7:6 C=1:8:2 D=1:6:5 E=1:2:4 F=1:4:7 G=1:1:3 P=1:3:1
+person G Gina f
+victim V Val m
+clue A dir D 1 1
+clue B diag C
+clue B offset E -1 *
+clue C offset A * -2
+clue D offset C * -2
+clue E dir A 1 -1
+clue F offset E 1 *
+clue G dir D -1 0
+clue G is in B
+clue G is line col m
+extra A dir F -1 -1
+extra A is in B|C
+extra B dir G 0 1
+extra C dir D 0 1
+extra C dir G -1 0
+extra D dir B 0 -1
+extra D dir E -1 0
+extra E offset C * 1
+extra E dir D 1 1
+extra F others m 0
+extra F dir E 1 0
+solution A=1:5:5 B=1:6:8 C=1:1:3 D=1:4:1 E=1:7:4 F=1:8:6 G=1:3:7 V=1:2:2
 ''',
 ];

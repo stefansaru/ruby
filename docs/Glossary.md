@@ -84,6 +84,6 @@ we use when building the game.
 | **gate** | A check a draw must pass to ship (`docs/Levels.md` section 2). |
 | **funnel** | Per tier, how many draws passed each gate. |
 | **dry run** | Rebuilding the packs and comparing with the files on disk without writing. A commit gate. |
-| **sweep** (honest check) | Re-checking every stored case from its text alone: parses, one solution, solved by logic in its tier, every suspect speaks, no clue to spare. `checkShipped`; run by `tool/check_cases.dart` and the data tests. |
+| **sweep** (honest check) | Re-checking every stored case from its text alone: parses, one solution, solved by logic in its tier, every suspect speaks, no clue to spare, and the later pack rules (the full list is in `docs/Testing.md` section 3). `checkShipped`; run by `tool/check_cases.dart` and the data tests. |
 | **GEN register** | The machine-checked engine and generator requirements in `docs/requirements/gen/`; each is cited by a test. |
 | **probe** | Generating only the first few slots of each tier to read the funnel. |

@@ -7,1750 +7,4018 @@
 const List<String> easyCases = <String>[
   '''
 case easy-001
-title The Quiet Glove
+title The Broken Photograph
 setting home
-area A Kitchen
-area B Hall
-area C Garden
-area D Living Room
-kind c sit chair
-kind t block table
-kind p block plant
+area A Bathroom
+area B Kitchen
+area C Garage
+area D Bedroom
 kind r sit rug
 kind s block shelf
+kind p block plant
+kind a sit car
+kind c sit chair
+kind b sit bed
 grid Home 5 5
-Cp. C.. Bt. Bt. B..
-A.. A.. B.. Bt. B..
-Ac. A.. B.. B.. B..
-D.. D.. D.. D.. Ds.
-D.. D.. D.. Dr. D..
-open Home 1 3 W door
-open Home 2 2 N door
-open Home 2 2 E door
-open Home 3 4 S door
-open Home 1 5 N window
-person A Adam m
-person B Ben m
-person C Carl m
+D.. Dc. D.. D.. D..
+Bp. D.. D.. Db1 Db1
+B.. A.. Ar. A.. A..
+B.. A.. A.. A.. As.
+C.. C.. Ca. A.. As.
+person A Anna f
+person B Bea f
+person C Cora f
 person D Dan m
-victim W Will m
-clue A is in A
-clue B is row 3
-clue C is col 1
+victim V Val m
+clue A is beside s
+clue B is on r
 clue C is corner
-clue D is col 4
-solution A=1:2:2 B=1:3:3 C=1:5:1 D=1:4:4 W=1:1:5
+clue D is in B
+extra A is in A
+extra A is col 4
+extra B is in A
+extra B is col 3
+extra C is beside b
+extra C is in D
+extra D is col 1
+solution A=1:5:4 B=1:3:3 C=1:1:5 D=1:4:1 V=1:2:2
 ''',
   '''
 case easy-002
-title The Missing Ribbon
+title The Broken Postcard
 setting beach
-area A Pier
-area B Cafe
-area C Rocks
+area A Dunes
+area B Pier
+area C Sand
 area D Sea
-kind p block palm
+kind w sit towel
 kind t block table
-kind u block umbrella
+kind c sit chair
 kind d sit sunbed
+kind k block rock
 grid Beach 5 5
-B.. Bt. Cu. C.. C..
-Bt. Bt. Cu. Cd. C..
-B.. B.. C.. C.. C..
-B.. B.. Dd. A.. C..
-B.. B.. D.. Ap. A..
-open Beach 4 4 N door
+D.. C.. Cd. B.. Bt.
+D.. Dk. C.. Bc. B..
+D.. D.. A.. B.. B..
+A.. Aw. A.. B.. A..
+Aw. A.. A.. A.. A..
 person A Adam m
-person B Ben m
+person B Bea f
 person C Carl m
-person D Dan m
-victim J Jack m
+person D Dana f
+victim V Vicky f
 clue A is col 1
-clue A is corner
-clue B is col 4
-clue C is row 1
-clue D is beside u
-solution A=1:5:1 B=1:2:4 C=1:1:5 D=1:3:3 J=1:4:2
+clue A is in D
+clue B is beside t
+clue C is on d
+clue D is beside w
+extra B is col 5
+extra B is beside c
+extra C is row 1
+extra C is in C
+extra D is in A
+extra D is row 5
+solution A=1:3:1 B=1:2:5 C=1:1:3 D=1:5:2 V=1:4:4
 ''',
   '''
 case easy-003
-title The Broken Coin
+title The Broken Axe
 setting forest
-area A Cave
-area B Clearing
-area C Lake
-area D Pines
+area A Cabin
+area B Lake
+area C Cave
+area D Path
 kind r sit rug
-kind c sit chair
-kind u block bush
-kind e block tree
+kind k block rock
+kind b sit boat
+kind l sit log
 grid Forest 5 5
-C.. Cu. B.. A.. A..
-C.. C.. B.. A.. A..
-Ce. C.. Bu. A.. Ac.
-C.. Be. B.. Ar. A..
-D.. D.. D.. Du. De.
-open Forest 4 4 W door
-open Forest 4 1 S door
-open Forest 4 4 S door
-open Forest 4 5 E window
+C.. Dk. D.. B.. B..
+C.. C.. C.. B.. Bb.
+Ck. C.. C.. B.. Bk.
+Ck. Cl. C.. B.. Ar.
+C.. A.. A.. A.. A..
 person A Adam m
 person B Bea f
 person C Carl m
 person D Dan m
-victim T Tina f
-clue A is beside r
-clue A is row 4
-clue B is beside u
-clue B is col 2
-clue C is col 3
-clue D is beside u
-solution A=1:4:5 B=1:2:2 C=1:5:3 D=1:1:1 T=1:3:4
+victim V Vanda f
+clue A is on r
+clue B is beside l
+clue C is in D
+clue D is in B
+extra A is row 4
+extra A is in A
+extra B is in C
+extra B is col 2
+extra C is beside k
+extra C is row 1
+extra D is beside b
+extra D is col 4
+solution A=1:4:5 B=1:3:2 C=1:1:3 D=1:2:4 V=1:5:1
 ''',
   '''
 case easy-004
-title The Late Bell
+title The Broken Pavement
 setting city
-area A Shop
-area B Bank
-area C Cafe
-area D Street
+area A Bank
+area B Park
+area C Square
+area D Cafe
+kind c sit chair
+kind i block bin
+kind m block lamp
+kind e block tree
 kind t block table
-kind n sit bench
 grid City 5 5
-B.. B.. C.. Ct. C..
-Bt. B.. B.. Ct. C..
-A.. Bt. B.. C.. C..
-A.. D.. D.. C.. Ct.
-At. Dn. D.. C.. C..
-open City 3 1 E door
-open City 3 2 S door
-open City 4 1 E door
-open City 5 4 W door
-open City 1 1 W window
-open City 4 1 W window
-person A Anna f
-person B Bea f
+C.. C.. Bi. B.. Bm.
+Dt. Ce. B.. B.. B..
+D.. Ce. A.. B.. B..
+C.. C.. A.. Bi. B..
+C.. A.. Ac. A.. B..
+person A Adam m
+person B Ben m
 person C Carl m
 person D Dana f
-victim G Gus m
-clue A is in B
-clue B is corner
-clue C is in A
-clue C is beside t
-clue D is beside n
-solution A=1:2:2 B=1:1:5 C=1:4:1 D=1:5:3 G=1:3:4
+victim V Viola f
+clue A is beside c
+clue B is beside c
+clue B is col 2
+clue C is in C
+clue D is beside m
+extra A is row 4
+extra A is in A
+extra B is in A
+extra C is row 1
+extra C is corner
+extra D is in B
+extra D is col 5
+solution A=1:4:3 B=1:5:2 C=1:1:1 D=1:2:5 V=1:3:4
 ''',
   '''
 case easy-005
-title The Cold Teacup
+title The Broken Gate
 setting farm
-area A Pond
-area B House
+area A Field
+area B Orchard
 area C Yard
-area D Field
-kind e block tree
+area D House
 kind h sit hay bale
-kind g block pig
+kind o block cow
+kind e block tree
+kind a sit tractor
+kind t block table
 grid Farm 5 5
-D.. D.. A.. A.. Ae.
-D.. Dg. A.. Ah. A..
-D.. D.. D.. C.. Ae.
-D.. Dh. D.. Ch. A..
-Bh. B.. D.. C.. A..
-open Farm 3 5 W door
-open Farm 5 1 N door
+Ca1 Ca1 D.. D.. B..
+C.. C.. D.. D.. B..
+C.. D.. Dt. B.. Be.
+C.. Dt. D.. Ao. A..
+Ca. A.. Ah. A.. A..
 person A Adam m
 person B Bea f
-person C Carl m
+person C Cora f
 person D Dan m
-victim F Finn m
-clue A is in C
-clue B is in A
-clue B is corner
-clue C is on h
-clue D is row 2
-clue D is in A
-solution A=1:3:4 B=1:5:5 C=1:4:2 D=1:2:3 F=1:1:1
+victim V Vanda f
+clue A is on a
+clue B is beside o
+clue C is in D
+clue C is col 2
+clue D is beside e
+extra A is beside a
+extra A is in C
+extra B is beside h
+extra B is in A
+extra C is beside t
+extra D is in B
+extra D is row 2
+solution A=1:1:1 B=1:5:4 C=1:3:2 D=1:2:5 V=1:4:3
 ''',
   '''
 case easy-006
-title The Silent Ticket
+title The Broken Register
 setting school
-area A Classroom
-area B Library
-area C Gym
-area D Yard
-kind m sit mat
-kind i block bin
-kind e block tree
+area A Canteen
+area B Gym
+area C Library
+area D Hall
+kind t block table
+kind c sit chair
+kind n sit bench
+kind d block desk
+kind s block shelf
 grid School 5 5
-B.. Bm. D.. D.. De.
-C.. D.. D.. D.. Di.
-C.. D.. Di. De. D..
-Cm. C.. C.. A.. Ai.
-Cm. C.. Am. A.. A..
-open School 1 2 E door
-open School 3 1 E door
-open School 2 1 W window
-open School 5 5 S window
+A.. D.. D.. D.. D..
+A.. Cd. C.. Cc. Ds.
+A.. At. C.. C.. B..
+A.. A.. At. C.. Bn.
+A.. A.. At. Ac. A..
 person A Adam m
-person B Bea f
+person B Ben m
 person C Carl m
-person D Dana f
-victim W Wanda f
-clue A is beside m
-clue A is on m
+person D Dan m
+victim V Vicky f
+clue A is beside c
 clue B is in C
-clue C is row 3
-clue D is in B
-solution A=1:5:1 B=1:4:3 C=1:3:5 D=1:1:2 W=1:2:4
+clue B is row 4
+clue C is row 5
+clue C is beside t
+clue D is in D
+extra A is in C
+extra A is beside d
+extra C is in A
+extra D is col 5
+extra D is beside s
+solution A=1:2:3 B=1:4:4 C=1:5:2 D=1:1:5 V=1:3:1
 ''',
   '''
 case easy-007
-title The Crooked Lantern
-setting train
-area A Dining Car
-area B Second Class
-area C Sleeper
-area D First Class
-kind c sit seat
-kind t block table
-kind k block trunk
-kind r sit rug
-grid Train 5 5
-A.. A.. D.. Ck. Dc.
-At. A.. D.. C.. D..
-Ac. A.. Dk. D.. D..
-B.. B.. B.. Br. B..
-Bk. B.. Bk. B.. B..
-open Train 1 4 E door
-open Train 3 1 S door
-open Train 2 1 W window
-open Train 1 3 N window
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dan m
-victim J Jade f
-clue A is col 5
-clue A is beside r
-clue B is in D
-clue C is beside t
-clue D is in C
-solution A=1:4:5 B=1:1:3 C=1:3:1 D=1:2:4 J=1:5:2
-''',
-  '''
-case easy-008
-title The Last Window
-setting ship
-area A Bow
-area B Cabin
-area C Hold
-area D Deck
-kind l block barrel
-kind c sit chair
-kind r sit rug
-kind t block table
-grid Ship 5 5
-Cl. C.. C.. A.. A..
-C.. C.. A.. A.. A..
-Ct. Dc. D.. A.. A..
-Br. D.. D.. A.. Al.
-B.. D.. D.. Ac. Al.
-open Ship 3 1 E door
-open Ship 5 1 E door
-open Ship 2 1 W window
-open Ship 4 1 W window
-person A Anna f
-person B Bea f
-person C Cora f
-person D Dan m
-victim I Ivan m
-clue A is in C
-clue B is on c
-clue C is row 2
-clue C is in C
-clue D is in B
-solution A=1:1:3 B=1:5:4 C=1:2:2 D=1:4:1 I=1:3:5
-''',
-  '''
-case easy-009
-title The Lost Hat
-setting camp
-area A Field
-area B Tents
-area C Woods
-area D Lake
-kind e block tree
-kind b sit canoe
-kind c sit chair
-kind f block campfire
-grid Camp 5 5
-Ab1 Ab1 D.. D.. D..
-Ae. A.. Df. D.. Dc.
-A.. D.. D.. D.. D..
-Bb2 Bb2 C.. C.. C..
-B.. B.. B.. C.. Cc.
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dana f
-victim L Leo m
-clue A is in C
-clue A is col 3
-clue B is in B
-clue C is on c
-clue D is corner
-solution A=1:4:3 B=1:5:2 C=1:2:5 D=1:1:1 L=1:3:4
-''',
-  '''
-case easy-010
-title The Velvet Key
-setting hotel
-area A Pool
-area B Kitchen
-area C Room 2
-area D Bar
-kind p block plant
-kind c sit chair
-kind d block desk
-kind b sit bed
-kind o sit sofa
-grid Hotel 5 5
-A.. A.. B.. C.. D..
-Ap. B.. B.. C.. Do.
-A.. A.. B.. Cd. C..
-B.. B.. B.. B.. C..
-Bc. B.. Bb. Bd. Cd.
-open Hotel 3 2 N door
-open Hotel 2 3 E door
-open Hotel 3 5 N door
-open Hotel 5 4 S window
-open Hotel 3 5 E window
-open Hotel 2 5 E window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dana f
-victim J Jack m
-clue A is on b
-clue B is beside p
-clue C is row 3
-clue D is on o
-solution A=1:5:3 B=1:1:1 C=1:3:2 D=1:2:5 J=1:4:4
-''',
-  '''
-case easy-011
-title The Hidden Candle
-setting park
-area A Lawn
-area B Rose Garden
-area C Playground
-area D Cafe
-kind u block bush
-kind w sit swing
-kind n sit bench
-kind t block table
-grid Park 5 5
-A.. Au. A.. A.. A..
-B.. C.. Cw. C.. C..
-B.. B.. C.. C.. Cu.
-Bw. B.. Cn. C.. Dt.
-B.. B.. Bw. Bu. D..
-open Park 1 1 S door
-open Park 5 4 N door
-open Park 3 5 S door
-open Park 5 5 E window
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dana f
-victim U Uma f
-clue A is row 1
-clue B is col 2
-clue B is beside w
-clue C is on n
-clue D is beside w
-clue D is in C
-solution A=1:1:5 B=1:5:2 C=1:4:3 D=1:2:4 U=1:3:1
-''',
-  '''
-case easy-012
-title The Empty Map
-setting museum
-area A Cafe
-area B Dino Room
-area C Gallery
-area D Gift Shop
-kind v block vase
-kind n sit bench
-kind s block shelf
-kind c sit chair
-grid Museum 5 5
-C.. C.. C.. Cs. C..
-Av. A.. Cn. Cn. C..
-D.. D.. Cv. B.. C..
-Dc. D.. C.. B.. B..
-D.. Dc. C.. Bn. B..
-open Museum 3 4 N door
-open Museum 5 4 S window
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
-victim M Mia f
-clue A is in B
-clue A is row 4
-clue B is row 1
-clue C is on c
-clue D is in B
-solution A=1:4:5 B=1:1:1 C=1:5:2 D=1:3:4 M=1:2:3
-''',
-  '''
-case easy-013
-title The Second Footprint
-setting home
-area A Bathroom
-area B Garage
-area C Hall
-area D Living Room
-kind t block table
-kind r sit rug
-kind b sit bed
-grid Home 5 5
-A.. A.. At. A.. D..
-Db2 Db2 D.. Db3 Db3
-D.. D.. D.. D.. C..
-D.. B.. B.. C.. Cb1
-Br. B.. B.. C.. Cb1
-open Home 4 4 N door
-open Home 1 1 N window
-open Home 2 1 W window
-open Home 3 5 E window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dan m
-victim G Gina f
-clue A is on r
-clue B is col 4
-clue C is in D
-clue C is on b
-clue D is on b
-solution A=1:5:1 B=1:1:4 C=1:2:2 D=1:4:5 G=1:3:3
-''',
-  '''
-case easy-014
-title The Locked Suitcase
-setting beach
-area A Dunes
-area B Cafe
-area C Sea
-area D Pier
-kind w sit towel
-kind p block palm
-kind b sit boat
-grid Beach 5 5
-B.. B.. C.. C.. C..
-B.. C.. C.. Cb1 Cp.
-B.. Aw. D.. Cb1 C..
-B.. A.. D.. D.. C..
-Dw. D.. Dw. D.. D..
-open Beach 4 1 S door
-person A Adam m
-person B Bea f
-person C Cora f
-person D Dana f
-victim F Finn m
-clue A is in B
-clue A is row 1
-clue B is on w
-clue C is row 2
-clue D is row 5
-clue D is beside w
-solution A=1:1:1 B=1:3:2 C=1:2:3 D=1:5:4 F=1:4:5
-''',
-  '''
-case easy-015
-title The Borrowed Letter
-setting forest
-area A Lake
-area B Clearing
-area C Cave
-area D Cabin
-kind e block tree
-kind l sit log
-kind c sit chair
-kind r sit rug
-grid Forest 5 5
-Dc. D.. D.. A.. Ae.
-D.. D.. D.. A.. A..
-D.. Dr. A.. Al. A..
-Dc. B.. Be. C.. A..
-D.. C.. Cc. C.. A..
-open Forest 4 5 W door
-open Forest 4 3 S door
-open Forest 5 2 W door
-open Forest 5 2 S window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dan m
-victim F Faye f
-clue A is col 4
-clue B is in D
-clue B is row 3
-clue C is on c
-clue D is beside r
-solution A=1:1:4 B=1:3:1 C=1:5:3 D=1:2:2 F=1:4:5
-''',
-  '''
-case easy-016
-title The Open Button
-setting city
-area A Park
-area B Street
-area C Square
-area D Bank
-kind e block tree
-kind a sit car
-kind n sit bench
-kind t block table
-grid City 5 5
-A.. A.. A.. Aa1 Aa1
-D.. A.. Ae. A.. Be.
-Dt. A.. A.. A.. B..
-D.. A.. C.. C.. C..
-Cn. Ce. C.. C.. Cn.
-open City 3 5 S door
-open City 5 1 N door
-open City 2 1 W window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dana f
-victim J Jade f
-clue A is beside e
-clue B is beside n
-clue C is in B
-clue D is in C
-solution A=1:2:2 B=1:5:4 C=1:3:5 D=1:4:3 J=1:1:1
-''',
-  '''
-case easy-017
-title The Wrong Whistle
-setting farm
-area A Barn
-area B Pond
-area C Yard
-area D House
-kind b sit bed
-kind e block tree
-kind o block cow
-kind g block pig
-kind c sit chair
-grid Farm 5 5
-Cg. D.. D.. D.. Dc.
-C.. C.. D.. D.. Dc.
-C.. C.. Co. A.. D..
-Be. C.. C.. A.. A..
-B.. B.. B.. Ab1 Ab1
-open Farm 4 5 N door
-open Farm 5 4 W door
-open Farm 5 4 S window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dan m
-victim P Pia f
-clue A is on b
-clue B is beside g
-clue C is in D
-clue C is col 2
-clue D is beside c
-solution A=1:5:4 B=1:2:1 C=1:1:2 D=1:3:5 P=1:4:3
-''',
-  '''
-case easy-018
-title The Spare Postcard
-setting school
-area A Classroom
-area B Hall
-area C Library
-area D Canteen
-kind n sit bench
-kind d block desk
-kind c sit chair
-kind m sit mat
-grid School 5 5
-Dd. D.. D.. Dc. C..
-D.. D.. D.. Cd. C..
-A.. Dn. D.. D.. Cd.
-A.. A.. A.. Dm. C..
-An. B.. Bd. D.. C..
-open School 4 2 S door
-open School 5 3 E door
-open School 5 4 S window
-open School 4 5 E window
-open School 5 2 S window
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dan m
-victim T Tina f
-clue A is in A
-clue B is beside d
-clue C is corner
-clue D is in C
-solution A=1:4:3 B=1:1:2 C=1:5:1 D=1:2:5 T=1:3:4
-''',
-  '''
-case easy-019
-title The Muddy Notebook
+title The Broken Berth
 setting train
 area A First Class
 area B Dining Car
-area C Engine
-area D Sleeper
-kind r sit rug
-kind c sit seat
-kind l block lamp
+area C Second Class
+area D Engine
 kind t block table
+kind c sit seat
+kind r sit rug
+kind s block shelf
 grid Train 5 5
-B.. B.. A.. A.. A..
-Bc. B.. Ar. A.. D..
-B.. C.. Cl. D.. Dr.
-C.. C.. C.. D.. Dt.
-C.. C.. C.. Cl. D..
-open Train 1 5 S door
-open Train 2 2 S door
-open Train 1 1 N window
-open Train 1 3 N window
-open Train 5 2 S window
+A.. A.. A.. A.. A..
+D.. Ds. Ac. A.. At.
+Ds. D.. A.. B.. B..
+C.. D.. Br. Br. B..
+Cc. C.. C.. B.. B..
 person A Adam m
-person B Bea f
+person B Ben m
 person C Cora f
-person D Dana f
-victim W Wanda f
-clue A is in D
-clue B is col 3
-clue B is beside r
-clue C is beside l
-clue D is in A
-solution A=1:5:5 B=1:1:3 C=1:3:2 D=1:2:4 W=1:4:1
+person D Dan m
+victim V Vera f
+clue A is beside t
+clue A is beside c
+clue B is in B
+clue C is on c
+clue D is in D
+clue D is row 4
+extra A is row 2
+extra B is col 5
+extra C is in C
+extra C is col 1
+solution A=1:2:4 B=1:3:5 C=1:5:1 D=1:4:2 V=1:1:3
 ''',
   '''
-case easy-020
-title The Torn Umbrella
+case easy-008
+title The Broken Sail
 setting ship
-area A Bow
+area A Cabin
 area B Galley
 area C Deck
 area D Hold
-kind k block crate
-kind t block table
-kind a sit lifeboat
-kind r sit rug
-grid Ship 5 5
-Ak. Dr. D.. D.. B..
-A.. A.. D.. D.. Bt.
-A.. Ak. A.. B.. B..
-A.. A.. C.. C.. C..
-A.. C.. C.. Ca. Ck.
-open Ship 2 5 W door
-open Ship 3 3 E door
-open Ship 1 3 N window
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dan m
-victim J Jack m
-clue A is beside k
-clue A is in A
-clue B is on r
-clue C is beside t
-clue D is beside k
-solution A=1:2:1 B=1:1:2 C=1:3:5 D=1:5:4 J=1:4:3
-''',
-  '''
-case easy-021
-title The Early Clock
-setting camp
-area A Field
-area B Fire Ring
-area C Tents
-area D Kitchen
-kind k block rock
-kind n sit tent
-kind l sit log
-grid Camp 5 5
-A.. A.. A.. Ak. A..
-C.. C.. C.. A.. A..
-C.. Cl. D.. D.. D..
-C.. Cn. D.. D.. D..
-B.. Bn. B.. D.. D..
-open Camp 1 3 S door
-open Camp 5 5 S window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dana f
-victim P Paul m
-clue A is corner
-clue B is in D
-clue C is beside l
-clue C is row 3
-clue D is beside k
-clue D is col 3
-solution A=1:5:5 B=1:4:4 C=1:3:1 D=1:1:3 P=1:2:2
-''',
-  '''
-case easy-022
-title The Blue Scarf
-setting hotel
-area A Kitchen
-area B Room 2
-area C Pool
-area D Garden
 kind b sit bed
-kind c sit chair
-kind p block plant
-grid Hotel 5 5
-C.. C.. C.. Cp. C..
-C.. Cp. C.. C.. C..
-Bc. B.. B.. B.. B..
-Bc. B.. B.. B.. Dp.
-B.. A.. Ab1 Ab1 D..
-open Hotel 3 4 N door
-open Hotel 5 4 N door
-open Hotel 5 4 E door
-open Hotel 5 1 W window
-open Hotel 5 3 S window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-victim U Uma f
-clue A is col 4
-clue A is in B
-clue B is on b
-clue C is row 3
-clue D is beside p
-clue D is corner
-solution A=1:4:4 B=1:5:3 C=1:3:2 D=1:1:5 U=1:2:1
-''',
-  '''
-case easy-023
-title The Sleepy Spoon
-setting park
-area A Playground
-area B Rose Garden
-area C Pond
-area D Path
-kind u block bush
-kind e block tree
-kind b sit boat
-kind w sit swing
-grid Park 5 5
-C.. C.. Cw. C.. C..
-A.. De. Cb2 Cb2 Be.
-Au. D.. D.. C.. B..
-D.. De. D.. B.. B..
-De. D.. Bb1 Bb1 B..
-open Park 2 1 N door
-open Park 4 4 W door
-person A Adam m
-person B Bea f
-person C Cora f
-person D Dan m
-victim P Pia f
-clue A is beside e
-clue B is in A
-clue C is on w
-clue D is in D
-solution A=1:3:5 B=1:2:1 C=1:1:3 D=1:5:2 P=1:4:4
-''',
-  '''
-case easy-024
-title The Odd Matchbox
-setting museum
-area A Cafe
-area B Gallery
-area C Hall
-area D Gift Shop
-kind n sit bench
-kind c sit chair
-kind u block statue
-kind p block plant
-grid Museum 5 5
-An. B.. B.. B.. Bc.
-A.. C.. B.. Bn. B..
-Cu. C.. Dp. Bu. B..
-C.. C.. D.. Dc. B..
-Cp. C.. D.. D.. B..
-open Museum 1 1 E door
-open Museum 1 2 S door
-open Museum 2 1 S door
-open Museum 3 4 S door
-open Museum 5 2 E door
-open Museum 2 1 W window
-open Museum 1 3 N window
-person A Anna f
-person B Bea f
-person C Cora f
-person D Dan m
-victim O Otto m
-clue A is beside u
-clue A is col 2
-clue B is beside p
-clue C is beside c
-clue C is row 1
-clue D is in D
-solution A=1:3:2 B=1:4:1 C=1:1:4 D=1:5:3 O=1:2:5
-''',
-  '''
-case easy-025
-title The Quiet Ticket
-setting home
-area A Garden
-area B Bathroom
-area C Garage
-area D Living Room
-area E Hall
-kind a sit car
-kind b sit bed
-kind c sit chair
-kind t block table
-kind p block plant
-grid Home 6 6
-E.. Eb5 Eb5 A.. Aa1 Aa1
-Ep. E.. E.. D.. D.. Dt.
-C.. Et. E.. D.. D.. D..
-C.. Cb4 D.. Dt. D.. D..
-C.. Cb4 C.. C.. Cb3 Cb3
-Cc. C.. C.. C.. Bb2 Bb2
-open Home 1 6 S door
-open Home 2 4 W door
-open Home 3 1 N door
-open Home 6 5 W door
-open Home 6 6 E window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-person E Eva f
-victim Z Zak m
-clue A is beside c
-clue B is in B
-clue C is beside b
-clue C is beside t
-clue D is on b
-clue E is col 6
-solution A=1:5:1 B=1:6:5 C=1:2:2 D=1:1:3 E=1:4:6 Z=1:3:4
-''',
-  '''
-case easy-026
-title The Missing Lantern
-setting beach
-area A Rocks
-area B Dunes
-area C Pier
-area D Sand
-area E Sea
-kind b sit boat
-kind k block rock
-kind u block umbrella
-kind d sit sunbed
-grid Beach 6 6
-A.. A.. A.. A.. E.. E..
-Ab1 D.. D.. Dd. Ek. E..
-Ab1 C.. D.. B.. B.. Bk.
-C.. Cb3 Cb3 B.. B.. B..
-C.. C.. C.. Bb2 Bb2 B..
-C.. Cu. C.. Bk. B.. B..
-open Beach 1 2 S door
-open Beach 2 4 E door
-open Beach 4 3 N door
-open Beach 6 4 W door
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eva f
-victim U Uri m
-clue A is on b
-clue B is in D
-clue B is row 3
-clue C is in B
-clue C is col 5
-clue D is row 6
-clue E is beside u
-solution A=1:2:1 B=1:3:3 C=1:4:5 D=1:6:6 E=1:5:2 U=1:1:4
-''',
-  '''
-case easy-027
-title The Broken Window
-setting forest
-area A Pines
-area B Path
-area C Cave
-area D Clearing
-area E Lake
-kind b sit boat
-kind e block tree
-kind r sit rug
-kind t block table
-grid Forest 6 6
-C.. C.. D.. D.. E.. E..
-C.. Ct. D.. Db2 Db2 E..
-C.. C.. Cr. C.. E.. Eb3
-C.. Ab1 Ab1 E.. E.. Eb3
-C.. Be. B.. B.. E.. E..
-Ct. C.. Ee. E.. E.. Ee.
-open Forest 4 2 N door
-open Forest 4 2 S door
-person A Adam m
-person B Bea f
-person C Cora f
-person D Dana f
-person E Eva f
-victim O Otto m
-clue A is in C
-clue A is row 4
-clue B is in B
-clue C is col 5
-clue C is beside b
-clue D is in C
-clue E is in D
-clue E is on b
-solution A=1:4:1 B=1:5:3 C=1:3:5 D=1:6:2 E=1:2:4 O=1:1:6
-''',
-  '''
-case easy-028
-title The Late Hat
-setting city
-area A Square
-area B Shop
-area C Bank
-area D Park
-area E Street
-kind a sit car
-kind c sit chair
-kind t block table
-kind e block tree
-kind n sit bench
-grid City 6 6
-Bc. B.. B.. B.. Aa1 Aa1
-B.. B.. B.. Bc. A.. A..
-Bt. B.. B.. B.. A.. A..
-C.. Cc. De. D.. D.. D..
-C.. C.. D.. Dn. D.. Ee.
-Ct. C.. C.. D.. De. E..
-open City 3 3 S door
-open City 3 5 S door
-open City 6 1 S window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-person E Eva f
-victim R Rex m
-clue A is beside c
-clue A is col 2
-clue B is on n
-clue C is col 5
-clue C is in D
-clue D is in C
-clue E is in A
-solution A=1:1:2 B=1:5:4 C=1:4:5 D=1:6:3 E=1:3:6 R=1:2:1
-''',
-  '''
-case easy-029
-title The Cold Key
-setting farm
-area A Yard
-area B Field
-area C Orchard
-area D Pond
-area E Barn
-kind o block cow
-kind t block table
-grid Farm 6 6
-B.. B.. B.. B.. Bo. A..
-Bo. B.. B.. A.. A.. A..
-Co. C.. C.. A.. A.. A..
-C.. C.. C.. Co. C.. Ao.
-D.. D.. D.. Ao. A.. A..
-D.. Do. A.. Ao. E.. Et.
-open Farm 2 4 N door
-open Farm 4 6 W door
-open Farm 6 6 S window
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dan m
-person E Eva f
-victim L Lena f
-clue A is beside o
-clue B is in B
-clue C is in B
-clue C is col 1
-clue D is in E
-clue E is col 2
-solution A=1:5:6 B=1:2:3 C=1:1:1 D=1:6:5 E=1:4:2 L=1:3:4
-''',
-  '''
-case easy-030
-title The Silent Candle
-setting school
-area A Gym
-area B Library
-area C Yard
-area D Canteen
-area E Classroom
-kind i block bin
-kind c sit chair
-kind m sit mat
-kind s block shelf
-grid School 6 6
-B.. Bc. C.. Ci. C.. E..
-B.. Bi. E.. E.. E.. E..
-B.. B.. B.. E.. Es. E..
-B.. Bc. B.. E.. Ec. Ai.
-D.. D.. Ds. D.. A.. A..
-D.. Dm. D.. D.. A.. A..
-open School 1 2 E door
-open School 1 5 E door
-open School 2 2 E door
-open School 4 1 W window
-open School 5 6 E window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dan m
-person E Eli m
-victim L Lena f
-clue A is in C
-clue A is col 3
-clue B is corner
-clue C is beside c
-clue D is beside m
-clue E is in B
-solution A=1:1:3 B=1:6:6 C=1:4:4 D=1:5:2 E=1:3:1 L=1:2:5
-''',
-  '''
-case easy-031
-title The Crooked Map
-setting train
-area A Engine
-area B Dining Car
-area C First Class
-area D Second Class
-area E Luggage Car
-kind r sit rug
-kind t block table
-kind c sit seat
-kind l block lamp
-kind b sit bed
-grid Train 6 6
-Ar. A.. A.. D.. D.. B..
-E.. E.. A.. A.. D.. B..
-E.. Eb1 A.. A.. D.. Bt.
-E.. Eb1 A.. A.. Dt. D..
-El. E.. Ar. C.. C.. Cr.
-E.. Ec. C.. C.. Cc. C..
-open Train 5 3 W door
-open Train 2 4 N door
-open Train 5 5 N door
-open Train 1 5 N window
-open Train 1 6 E window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dan m
-person E Eva f
-victim T Tom m
-clue A is beside t
-clue B is beside b
-clue C is on r
-clue D is in D
-clue D is col 6
-clue E is in D
-solution A=1:3:5 B=1:2:2 C=1:5:3 D=1:4:6 E=1:1:4 T=1:6:1
-''',
-  '''
-case easy-032
-title The Last Footprint
-setting ship
-area A Bow
-area B Galley
-area C Cabin
-area D Hold
-area E Deck
-kind a sit lifeboat
-kind k block crate
-kind t block table
 kind l block barrel
-kind r sit rug
-grid Ship 6 6
-D.. D.. Dt. A.. A.. Ak.
-D.. D.. Dk. A.. A.. Aa.
-El. D.. D.. Dl. C.. C..
-E.. D.. B.. D.. Dr. Ck.
-B.. B.. B.. B.. D.. D..
-Bt. B.. Bt. Bt. D.. D..
-open Ship 3 2 W door
-open Ship 2 5 S door
-open Ship 3 5 W door
-open Ship 6 4 E door
-open Ship 5 1 N door
-open Ship 6 6 S window
-open Ship 6 1 S window
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eli m
-victim G Gus m
-clue A is row 3
-clue B is in B
-clue C is col 1
-clue C is in B
-clue D is col 6
-clue E is beside a
-solution A=1:3:2 B=1:4:3 C=1:5:1 D=1:6:6 E=1:2:5 G=1:1:4
-''',
-  '''
-case easy-033
-title The Lost Suitcase
-setting camp
-area A Field
-area B Tents
-area C Woods
-area D Lake
-area E Fire Ring
-kind t block table
-kind f block campfire
 kind c sit chair
-kind e block tree
-kind l sit log
-grid Camp 6 6
-E.. E.. E.. E.. Ec. E..
-De. D.. D.. D.. Cf. C..
-D.. D.. D.. Dl. C.. C..
-A.. A.. B.. B.. C.. C..
-A.. Af. At. Bc. Af. Cc.
-A.. A.. A.. A.. A.. C..
-open Camp 4 4 N door
-open Camp 4 4 E door
-open Camp 5 5 N door
-person A Anna f
-person B Bea f
-person C Cora f
-person D Dana f
-person E Eva f
-victim U Uri m
-clue A is beside c
-clue B is in C
-clue C is beside f
-clue C is in C
-clue D is row 5
-clue E is beside l
-solution A=1:1:4 B=1:4:5 C=1:2:6 D=1:5:1 E=1:3:3 U=1:6:2
-''',
-  '''
-case easy-034
-title The Velvet Letter
-setting hotel
-area A Pool
-area B Room 1
-area C Bar
-area D Room 2
-area E Garden
-kind e block tree
-kind p block plant
-kind c sit chair
-kind b sit bed
-grid Hotel 6 6
-A.. A.. A.. D.. D.. D..
-Ap. A.. Ae. A.. Dc. Db.
-C.. Cp. C.. C.. Ee. Ee.
-C.. Cp. C.. C.. E.. E..
-Bc. B.. E.. E.. E.. E..
-B.. B.. E.. E.. Ep. E..
-open Hotel 1 3 E door
-open Hotel 1 4 N window
-open Hotel 4 1 W window
-person A Adam m
-person B Bea f
-person C Carl m
-person D Dan m
-person E Eva f
-victim O Olga f
-clue A is beside c
-clue B is in E
-clue B is col 3
-clue C is corner
-clue D is row 3
-clue E is row 6
-solution A=1:2:6 B=1:5:3 C=1:1:1 D=1:3:4 E=1:6:2 O=1:4:5
-''',
-  '''
-case easy-035
-title The Hidden Button
-setting park
-area A Rose Garden
-area B Cafe
-area C Lawn
-area D Playground
-area E Path
-kind w sit swing
-kind t block table
-kind u block bush
-kind b sit boat
-grid Park 6 6
-Bt. B.. C.. C.. Cu. C..
-Bt. B.. C.. C.. C.. Cw.
-B.. B.. Aw. A.. C.. Cu.
-B.. E.. A.. A.. D.. C..
-Eb1 Eb1 A.. D.. Du. C..
-E.. E.. A.. D.. C.. C..
-open Park 1 2 E door
-open Park 3 3 N door
-open Park 3 3 W door
-open Park 6 3 W door
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eli m
-victim W Wanda f
-clue A is col 2
-clue B is beside u
-clue C is row 5
-clue C is in C
-clue D is in C
-clue D is row 6
-clue E is beside w
-solution A=1:2:2 B=1:1:4 C=1:5:6 D=1:6:5 E=1:4:3 W=1:3:1
-''',
-  '''
-case easy-036
-title The Empty Whistle
-setting museum
-area A Gallery
-area B Dino Room
-area C Cafe
-area D Hall
-area E Gift Shop
-kind s block shelf
-kind c sit chair
-kind u block statue
-grid Museum 6 6
-A.. A.. Au. C.. Cu. Bc.
-A.. A.. Ac. Cu. C.. B..
-A.. As. A.. Ds. C.. B..
-A.. Ac. A.. D.. D.. D..
-Eu. Ac. A.. D.. Ds. Ds.
-E.. A.. D.. D.. Dc. D..
-open Museum 3 5 S door
-open Museum 3 6 S door
-open Museum 6 2 W door
-open Museum 1 6 E window
-person A Anna f
-person B Bea f
-person C Carl m
-person D Dana f
-person E Eva f
-victim S Sara f
-clue A is beside u
-clue A is in A
-clue B is col 4
-clue C is beside u
-clue D is row 1
-clue D is in A
-clue E is in C
-solution A=1:2:3 B=1:5:4 C=1:6:1 D=1:1:2 E=1:3:5 S=1:4:6
-''',
-  '''
-case easy-037
-title The Second Postcard
-setting home
-area A Garage
-area B Hall
-area C Garden
-area D Bathroom
-area E Bedroom
-kind p block plant
-kind r sit rug
-kind e block tree
-kind a sit car
-kind s block shelf
-grid Home 6 6
-E.. E.. Ea1 Ea1 C.. A..
-Er. E.. C.. C.. C.. A..
-E.. Ce. C.. C.. B.. Ap.
-C.. Ca. Cp. C.. B.. B..
-D.. Ds. C.. C.. B.. B..
-D.. D.. D.. D.. Bp. Br.
-open Home 4 1 N door
-person A Adam m
-person B Bea f
-person C Cora f
-person D Dan m
-person E Eva f
-victim S Sam m
-clue A is beside p
-clue A is col 3
-clue B is corner
-clue C is in B
-clue D is in B
-clue D is row 3
-clue E is col 2
-clue E is in D
-solution A=1:5:3 B=1:1:1 C=1:4:6 D=1:3:5 E=1:6:2 S=1:2:4
-''',
-  '''
-case easy-038
-title The Locked Notebook
-setting beach
-area A Sea
-area B Sand
-area C Dunes
-area D Cafe
-area E Pier
-kind p block palm
-kind d sit sunbed
-kind w sit towel
-kind t block table
-grid Beach 6 6
-A.. A.. Aw. Ad. Ap. A..
-D.. D.. A.. A.. A.. Ad.
-Dt. D.. A.. A.. A.. Cw.
-B.. B.. Bw. C.. C.. C..
-B.. Bd. B.. B.. E.. E..
-Bw. B.. E.. Ew. E.. Ed.
-open Beach 1 1 S door
-open Beach 4 1 N door
-open Beach 4 5 S door
-person A Adam m
-person B Ben m
-person C Cora f
-person D Dana f
-person E Eva f
-victim N Ned m
-clue A is beside w
-clue A is in E
-clue B is in B
-clue C is in B
-clue C is beside w
-clue D is beside t
-clue E is col 5
-solution A=1:6:3 B=1:5:4 C=1:4:2 D=1:2:1 E=1:3:5 N=1:1:6
-''',
-  '''
-case easy-039
-title The Borrowed Umbrella
-setting forest
-area A Pines
-area B Cave
-area C Cabin
-area D Path
-area E Clearing
-kind e block tree
-kind b sit boat
-kind u block bush
-grid Forest 6 6
-C.. C.. C.. Eu. B.. B..
-C.. C.. C.. E.. B.. B..
-C.. Eb2 Eb2 E.. B.. B..
-A.. E.. E.. E.. B.. B..
-Ae. E.. E.. B.. B.. B..
-D.. D.. D.. Db1 Db1 B..
-open Forest 2 5 W door
-open Forest 4 1 N door
-open Forest 5 1 S door
-open Forest 6 3 N door
-open Forest 2 1 W window
-open Forest 6 6 E window
-person A Anna f
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eli m
-victim K Kira f
-clue A is in B
-clue A is corner
-clue B is row 6
-clue B is corner
-clue C is in E
-clue C is row 5
-clue D is in E
-clue D is row 4
-clue E is col 2
-clue E is in C
-solution A=1:1:6 B=1:6:1 C=1:5:3 D=1:4:4 E=1:2:2 K=1:3:5
-''',
-  '''
-case easy-040
-title The Open Clock
-setting city
-area A Street
-area B Park
-area C Bank
-area D Shop
-area E Cafe
-kind n sit bench
-kind m block lamp
-kind i block bin
-kind c sit chair
-grid City 6 6
-A.. C.. C.. E.. E.. Ec.
-An. Ci. C.. Ei. E.. E..
-D.. D.. Cc. Ec. E.. Ei.
-D.. D.. C.. Bi. E.. E..
-Di. B.. Bn. B.. B.. B..
-B.. Bn. B.. B.. B.. Bm.
-open City 2 1 S door
-open City 4 3 W door
-open City 1 6 E window
-person A Anna f
-person B Ben m
-person C Cora f
-person D Dana f
-person E Eli m
-victim O Otto m
-clue A is col 2
-clue A is beside n
-clue B is in E
-clue B is on c
-clue C is corner
-clue D is in D
-clue E is in E
-solution A=1:5:2 B=1:3:4 C=1:1:6 D=1:4:1 E=1:2:5 O=1:6:3
-''',
-  '''
-case easy-041
-title The Wrong Scarf
-setting farm
-area A Orchard
-area B Barn
-area C Field
-area D Pond
-area E House
-kind h sit hay bale
-kind o block cow
-kind t block table
-kind e block tree
-kind b sit bed
-grid Farm 6 6
-D.. D.. De. C.. A.. Ao.
-D.. D.. D.. C.. Co. A..
-Eb1 Eb1 D.. A.. A.. A..
-E.. E.. Dh. A.. A.. A..
-Bt. E.. D.. Ah. Ah. A..
-B.. B.. B.. A.. A.. A..
-open Farm 3 1 W window
-open Farm 5 1 W window
-person A Adam m
-person B Ben m
-person C Cora f
-person D Dana f
-person E Eva f
-victim H Hugo m
-clue A is col 4
-clue B is on h
-clue C is row 2
-clue C is in D
-clue D is in D
-clue D is beside h
-clue E is beside b
-clue E is col 2
-solution A=1:1:4 B=1:5:5 C=1:2:1 D=1:3:3 E=1:4:2 H=1:6:6
-''',
-  '''
-case easy-042
-title The Spare Spoon
-setting school
-area A Hall
-area B Gym
-area C Classroom
-area D Library
-area E Canteen
-kind s block shelf
-kind t block table
-kind c sit chair
-kind m sit mat
-grid School 6 6
-Em. E.. E.. D.. Dm. D..
-As. A.. A.. D.. B.. B..
-C.. A.. D.. D.. B.. Bc.
-C.. A.. D.. D.. B.. Bt.
-Cc. A.. D.. Dm. B.. B..
-C.. At. D.. B.. Bc. B..
-open School 1 4 W door
-open School 2 3 E door
-open School 2 5 N door
-open School 1 3 N window
-open School 1 6 E window
-open School 6 2 S window
-open School 3 6 E window
-open School 3 1 W window
-person A Adam m
-person B Ben m
-person C Carl m
-person D Dana f
-person E Eli m
-victim T Tina f
-clue A is beside t
-clue B is beside m
-clue C is in B
-clue C is row 2
-clue D is in B
-clue D is corner
-clue E is beside c
-solution A=1:5:2 B=1:1:4 C=1:2:5 D=1:6:6 E=1:4:1 T=1:3:3
-''',
-  '''
-case easy-043
-title The Muddy Matchbox
-setting train
-area A Engine
-area B Luggage Car
-area C Second Class
-area D Dining Car
-area E First Class
-kind k block trunk
-kind t block table
-kind b sit bed
-kind c sit seat
-grid Train 6 6
-Ak. A.. A.. C.. C.. Ct.
-A.. D.. D.. D.. C.. C..
-A.. E.. Dk. D.. C.. C..
-Ak. E.. D.. Db1 Ct. C..
-Bt. E.. E.. Db1 C.. C..
-B.. Ec. Ek. E.. E.. Cb.
-open Train 1 3 S door
-open Train 3 3 W door
-open Train 3 1 E door
-open Train 4 1 S door
-open Train 6 1 W window
-person A Anna f
-person B Bea f
-person C Cora f
-person D Dana f
-person E Eli m
-victim T Tina f
-clue A is in C
-clue A is row 2
-clue B is beside c
-clue C is in C
-clue D is row 1
-clue E is in E
-solution A=1:2:5 B=1:5:2 C=1:4:6 D=1:1:3 E=1:6:4 T=1:3:1
-''',
-  '''
-case easy-044
-title The Torn Glove
-setting ship
-area A Deck
-area B Cabin
-area C Galley
-area D Hold
-area E Bow
-kind a sit lifeboat
 kind k block crate
-kind c sit chair
-kind r sit rug
-grid Ship 6 6
-Dk. Bk. B.. Dk. Dr. D..
-D.. D.. D.. Dc. C.. C..
-D.. Dr. D.. D.. C.. Cr.
-D.. D.. Aa1 Aa1 C.. C..
-A.. A.. A.. A.. C.. Cc.
-A.. A.. A.. A.. Ek. E..
-open Ship 1 2 W door
-open Ship 2 5 N door
-open Ship 5 4 E door
-open Ship 5 6 S door
-open Ship 6 4 E door
-open Ship 1 2 N window
+grid Ship 5 5
+Dk. B.. B.. B.. B..
+D.. Bl. B.. B.. B..
+Ab1 Ab1 B.. Bc. Bl.
+A.. A.. A.. C.. C..
+A.. A.. A.. A.. Cl.
 person A Adam m
 person B Bea f
 person C Carl m
 person D Dana f
-person E Eli m
-victim K Karl m
-clue A is in C
-clue A is beside c
-clue B is beside c
+victim V Vlad m
+clue A is on c
+clue B is row 2
 clue C is corner
-clue D is beside c
-clue D is beside r
-clue E is in B
-solution A=1:5:5 B=1:3:4 C=1:6:1 D=1:4:6 E=1:1:3 K=1:2:2
+clue D is corner
+clue D is col 1
+extra A is in B
+extra A is row 3
+extra B is beside l
+extra B is in B
+extra C is col 5
+extra C is in B
+extra D is in A
+solution A=1:3:4 B=1:2:3 C=1:1:5 D=1:5:1 V=1:4:2
 ''',
   '''
-case easy-045
-title The Early Ribbon
+case easy-009
+title The Broken Firewood
 setting camp
-area A Kitchen
-area B Tents
-area C Lake
-area D Fire Ring
-area E Woods
-kind t block table
-kind c sit chair
+area A Fire Ring
+area B Lake
+area C Woods
+area D Field
 kind k block rock
-kind e block tree
 kind l sit log
-grid Camp 6 6
-D.. De. D.. El. E.. Et.
-Dk. D.. D.. Ec. E.. E..
-D.. A.. A.. E.. E.. E..
-Ac. At. A.. Bc. E.. E..
-Ck. At. A.. B.. B.. E..
-C.. A.. A.. B.. B.. B..
-open Camp 1 3 E door
-open Camp 3 3 N door
-open Camp 3 3 E door
-open Camp 5 2 W door
-open Camp 4 3 E door
-open Camp 4 4 N door
-open Camp 6 2 S window
+kind n sit tent
+kind c sit chair
+grid Camp 5 5
+D.. Dc. D.. Dn. B..
+D.. D.. D.. D.. Bk.
+A.. Ak. Ak. Cl. C..
+A.. A.. A.. C.. C..
+A.. A.. A.. Ck. C..
 person A Adam m
 person B Bea f
 person C Cora f
-person D Dana f
-person E Eli m
-victim L Leo m
-clue A is row 1
-clue A is in E
+person D Dan m
+victim V Val m
+clue A is beside k
+clue A is col 2
 clue B is row 3
-clue B is in E
+clue C is corner
 clue C is in D
-clue D is beside t
-clue D is row 6
-clue E is beside c
-solution A=1:1:5 B=1:3:6 C=1:2:3 D=1:6:2 E=1:5:4 L=1:4:1
+clue D is beside n
+extra A is in A
+extra B is in C
+extra B is beside l
+extra C is beside c
+extra D is in D
+extra D is row 2
+solution A=1:4:2 B=1:3:5 C=1:1:1 D=1:2:4 V=1:5:3
 ''',
   '''
-case easy-046
-title The Blue Coin
+case easy-010
+title The Broken Pillow
 setting hotel
-area A Lobby
-area B Room 2
-area C Garden
-area D Kitchen
-area E Room 1
+area A Garden
+area B Kitchen
+area C Room 2
+area D Lobby
+kind p block plant
+kind e block tree
 kind t block table
 kind c sit chair
-kind e block tree
-grid Hotel 6 6
-B.. B.. B.. B.. At. At.
-Bc. Bc. B.. B.. A.. A..
-B.. C.. C.. Bc. A.. A..
-C.. C.. C.. Et. A.. A..
-C.. Ce. C.. E.. E.. Ec.
-C.. Ce. Dc. D.. D.. E..
-open Hotel 2 2 S door
-open Hotel 5 3 E door
-open Hotel 4 5 W door
-open Hotel 6 2 E door
-open Hotel 6 3 S window
+grid Hotel 5 5
+Dp. D.. C.. C.. A..
+B.. D.. Cc. A.. Ae.
+Bt. Bt. A.. A.. A..
+B.. B.. A.. Ap. Ap.
+B.. B.. A.. A.. A..
 person A Adam m
 person B Bea f
 person C Carl m
 person D Dan m
-person E Eva f
-victim L Lena f
-clue A is in A
-clue B is in D
+victim V Vera f
+clue A is beside t
+clue A is col 1
+clue B is on c
+clue C is beside p
 clue C is beside e
-clue D is in E
-clue D is beside c
-clue E is beside c
-clue E is col 3
-solution A=1:3:6 B=1:6:4 C=1:4:2 D=1:5:5 E=1:2:3 L=1:1:1
+clue D is in B
+extra A is in B
+extra B is in C
+extra B is col 3
+extra C is in A
+extra D is row 5
+solution A=1:4:1 B=1:2:3 C=1:3:5 D=1:5:2 V=1:1:4
 ''',
   '''
-case easy-047
-title The Sleepy Bell
+case easy-011
+title The Broken Carousel
 setting park
-area A Lawn
-area B Playground
-area C Cafe
-area D Pond
-area E Path
-kind e block tree
-kind n sit bench
-kind c sit chair
-kind t block table
-grid Park 6 6
-De. D.. Dn. Bn. Bn. B..
-D.. C.. C.. Bn. B.. B..
-D.. C.. Ct. En. B.. B..
-A.. Ae. Cc. E.. A.. B..
-A.. Ae. A.. A.. A.. A..
-Ae. Ae. A.. A.. A.. A..
-open Park 1 4 W door
-open Park 3 2 W door
-open Park 4 1 N door
+area A Pond
+area B Rose Garden
+area C Playground
+area D Path
+kind b sit boat
+kind f block fountain
+kind w sit swing
+kind u block bush
+grid Park 5 5
+A.. A.. A.. A.. Du.
+Ab2 Ab2 C.. D.. D..
+Ab1 C.. C.. B.. Bf.
+Ab1 Cw. B.. B.. B..
+A.. A.. A.. Bf. B..
 person A Adam m
 person B Ben m
 person C Carl m
 person D Dana f
-person E Eva f
-victim S Sam m
-clue A is beside n
-clue B is in D
-clue C is on n
-clue D is row 6
-clue D is beside e
-clue E is beside t
-solution A=1:4:4 B=1:2:1 C=1:1:5 D=1:6:3 E=1:3:2 S=1:5:6
+victim V Victor m
+clue A is in C
+clue A is row 3
+clue B is on b
+clue C is beside f
+clue D is on w
+extra B is col 1
+extra B is beside b
+extra C is in B
+extra C is row 5
+extra D is in C
+extra D is row 4
+solution A=1:3:3 B=1:2:1 C=1:5:5 D=1:4:2 V=1:1:4
 ''',
   '''
-case easy-048
-title The Odd Teacup
+case easy-012
+title The Broken Mask
 setting museum
 area A Cafe
 area B Hall
 area C Dino Room
 area D Garden
-area E Gallery
+kind t block table
+kind c sit chair
+kind u block statue
+kind n sit bench
+kind o block skeleton
+grid Museum 5 5
+B.. C.. Cn. Du. D..
+Bu. C.. Co. C.. D..
+Ac. A.. C.. C.. Cn.
+A.. A.. A.. Ac. C..
+A.. A.. A.. At. A..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Viola f
+clue A is in B
+clue B is in A
+clue C is on n
+clue D is beside c
+extra A is corner
+extra A is beside u
+extra B is col 2
+extra C is row 3
+extra C is in C
+extra D is in A
+extra D is row 4
+solution A=1:1:1 B=1:5:2 C=1:3:5 D=1:4:3 V=1:2:4
+''',
+  '''
+case easy-013
+title The Borrowed Blanket
+setting home
+area A Bedroom
+area B Kitchen
+area C Garage
+area D Living Room
+kind r sit rug
+kind s block shelf
+grid Home 5 5
+Bs. C.. Cs. C.. Cs.
+Bs. C.. A.. Ar. C..
+B.. B.. A.. A.. C..
+B.. B.. B.. A.. C..
+D.. D.. Dr. D.. D..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Viola f
+clue A is on r
+clue B is on r
+clue B is in A
+clue C is beside s
+clue D is in B
+clue D is beside s
+extra A is row 5
+extra A is in D
+extra B is col 4
+extra C is in C
+extra C is col 2
+extra D is row 3
+solution A=1:5:3 B=1:2:4 C=1:1:2 D=1:3:1 V=1:4:5
+''',
+  '''
+case easy-014
+title The Borrowed Parasol
+setting beach
+area A Sea
+area B Rocks
+area C Pier
+area D Cafe
+kind b sit boat
+kind w sit towel
+kind c sit chair
+kind t block table
+grid Beach 5 5
+B.. B.. C.. C.. Ct.
+Bw. B.. C.. C.. C..
+Bw. A.. D.. C.. C..
+A.. A.. Dt. Cc. C..
+A.. A.. A.. Ab. Cc.
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Victor m
+clue A is row 3
+clue A is beside c
+clue B is beside b
+clue C is on w
+clue D is in C
+extra A is in C
+extra B is col 3
+extra B is in A
+extra C is beside w
+extra C is in B
+extra D is col 5
+extra D is beside c
+solution A=1:3:4 B=1:5:3 C=1:2:1 D=1:4:5 V=1:1:2
+''',
+  '''
+case easy-015
+title The Borrowed Birdsong
+setting forest
+area A Cabin
+area B Path
+area C Clearing
+area D Pines
+kind t block table
+kind l sit log
+kind u block bush
+kind k block rock
+grid Forest 5 5
+D.. D.. Dk. Bl. B..
+D.. C.. C.. B.. Bu.
+Cl. C.. C.. B.. B..
+C.. At. A.. A.. A..
+A.. A.. A.. At. A..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dan m
+victim V Vera f
+clue A is in B
+clue B is beside t
+clue B is col 5
+clue C is beside k
+clue D is row 2
+clue D is in C
+extra A is col 4
+extra B is in A
+extra C is row 1
+extra C is in D
+solution A=1:3:4 B=1:5:5 C=1:1:2 D=1:2:3 V=1:4:1
+''',
+  '''
+case easy-016
+title The Borrowed Clocktower
+setting city
+area A Street
+area B Square
+area C Bank
+area D Shop
+kind a sit car
+kind i block bin
+kind n sit bench
+kind c sit chair
+kind t block table
+grid City 5 5
+C.. Cc. C.. D.. Aa1
+Bi. B.. B.. D.. Aa1
+B.. B.. Bn. Dt. Dt.
+Bn. B.. B.. D.. D..
+B.. B.. B.. D.. D..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Vince m
+clue A is on c
+clue B is beside i
+clue C is in A
+clue D is beside t
+extra A is in C
+extra A is col 2
+extra B is in B
+extra B is col 1
+extra C is on a
+extra C is beside a
+extra D is in D
+extra D is col 4
+solution A=1:1:2 B=1:3:1 C=1:2:5 D=1:4:4 V=1:5:3
+''',
+  '''
+case easy-017
+title The Borrowed Harvest
+setting farm
+area A Barn
+area B Pond
+area C Field
+area D Orchard
+kind g block pig
+kind k block rock
+kind o block cow
+kind h sit hay bale
+kind e block tree
+grid Farm 5 5
+A.. B.. Bk. C.. Ch.
+Ag. A.. A.. Ag. C..
+A.. A.. D.. Dh. C..
+A.. D.. D.. De. C..
+A.. D.. C.. Co. C..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dana f
+victim V Viola f
+clue A is row 2
+clue B is on h
+clue C is on h
+clue C is in C
+clue D is in C
+extra A is in A
+extra A is beside g
+extra B is beside e
+extra B is in D
+extra C is corner
+extra D is beside o
+extra D is col 3
+solution A=1:2:2 B=1:3:4 C=1:1:5 D=1:5:3 V=1:4:1
+''',
+  '''
+case easy-018
+title The Borrowed Eraser
+setting school
+area A Yard
+area B Canteen
+area C Hall
+area D Gym
+kind e block tree
+kind n sit bench
+kind c sit chair
+grid School 5 5
+B.. B.. B.. D.. D..
+Bc. C.. C.. Dn. D..
+A.. A.. C.. Cn. D..
+A.. A.. A.. C.. C..
+A.. A.. An. Ae. Ae.
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Vicky f
+clue A is beside n
+clue B is row 3
+clue B is in D
+clue C is in C
+clue C is beside n
+clue D is corner
+extra A is row 5
+extra A is in A
+extra C is row 4
+extra D is row 1
+extra D is in B
+solution A=1:5:2 B=1:3:5 C=1:4:4 D=1:1:1 V=1:2:3
+''',
+  '''
+case easy-019
+title The Borrowed Luggage Rack
+setting train
+area A Luggage Car
+area B Engine
+area C Sleeper
+area D First Class
+kind s block shelf
+kind l block suitcase
+kind b sit bed
+kind c sit seat
+grid Train 5 5
+D.. D.. D.. Bs. B..
+C.. Dc. As. A.. B..
+C.. C.. C.. A.. A..
+C.. C.. C.. Cl. A..
+Cb1 Cb1 C.. As. A..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Vanda f
+clue A is on c
+clue B is on b
+clue C is beside s
+clue D is in A
+extra A is row 2
+extra A is in D
+extra B is beside b
+extra B is row 5
+extra C is in B
+extra C is row 1
+extra D is col 4
+solution A=1:2:2 B=1:5:1 C=1:1:5 D=1:3:4 V=1:4:3
+''',
+  '''
+case easy-020
+title The Borrowed Cargo
+setting ship
+area A Bow
+area B Deck
+area C Hold
+area D Cabin
+kind c sit chair
+kind k block crate
+kind r sit rug
+grid Ship 5 5
+B.. B.. B.. D.. Ac.
+B.. Bk. D.. Dr. A..
+Ck. C.. D.. D.. Dr.
+C.. C.. D.. Dr. D..
+C.. Ck. C.. D.. D..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Viola f
+clue A is in B
+clue B is in C
+clue C is in B
+clue C is col 3
+clue D is col 5
+clue D is on r
+extra A is beside k
+extra A is row 2
+extra B is beside k
+extra B is row 4
+extra D is in D
+solution A=1:2:1 B=1:4:2 C=1:1:3 D=1:3:5 V=1:5:4
+''',
+  '''
+case easy-021
+title The Borrowed Billycan
+setting camp
+area A Woods
+area B Field
+area C Kitchen
+area D Tents
+kind l sit log
+kind k block rock
+kind c sit chair
+kind t block table
+kind n sit tent
+grid Camp 5 5
+Bc. B.. Ak. A.. A..
+B.. D.. A.. Ak. A..
+D.. Dn. A.. A.. Al.
+C.. Ct. Ct. C.. C..
+Ct. C.. C.. C.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Vera f
+clue A is col 3
+clue B is in B
+clue C is beside l
+clue D is on n
+extra A is in C
+extra A is beside t
+extra B is corner
+extra B is on c
+extra C is in A
+extra C is beside k
+extra D is in D
+extra D is row 3
+solution A=1:5:3 B=1:1:1 C=1:2:5 D=1:3:2 V=1:4:4
+''',
+  '''
+case easy-022
+title The Borrowed Reservation
+setting hotel
+area A Room 1
+area B Lobby
+area C Bar
+area D Pool
+kind c sit chair
+kind d block desk
+kind o sit sofa
+kind t block table
+kind p block plant
+grid Hotel 5 5
+C.. Ct. C.. C.. C..
+A.. C.. C.. C.. Co.
+A.. A.. Ac. Co1 Co1
+A.. A.. A.. D.. B..
+A.. A.. Ac. Dp. Bd.
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Val m
+clue A is on o
+clue B is in B
+clue C is in A
+clue D is beside c
+extra A is row 3
+extra A is in C
+extra B is beside d
+extra B is col 5
+extra C is col 1
+extra D is in A
+extra D is col 2
+solution A=1:3:4 B=1:4:5 C=1:2:1 D=1:5:2 V=1:1:3
+''',
+  '''
+case easy-023
+title The Borrowed Balloon
+setting park
+area A Lawn
+area B Pond
+area C Cafe
+area D Path
+kind u block bush
+kind b sit boat
+kind c sit chair
+kind t block table
+kind n sit bench
+grid Park 5 5
+A.. C.. Du. B.. Bb1
+Au. C.. Dn. D.. Bb1
+Cc. C.. D.. Du. D..
+C.. C.. C.. C.. D..
+C.. C.. Cc. Ct. D..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+victim V Vanda f
+clue A is on n
+clue B is in A
+clue C is corner
+clue D is col 4
+extra A is row 2
+extra A is beside u
+extra B is beside u
+extra B is col 1
+extra C is in D
+extra C is col 5
+extra D is in C
+extra D is beside t
+solution A=1:2:3 B=1:1:1 C=1:5:5 D=1:4:4 V=1:3:2
+''',
+  '''
+case easy-024
+title The Borrowed Sculpture
+setting museum
+area A Gallery
+area B Garden
+area C Dino Room
+area D Cafe
+kind u block statue
+kind n sit bench
+kind c sit chair
+kind p block plant
+grid Museum 5 5
+A.. A.. A.. Bu. B..
+Au. A.. Cn. B.. B..
+A.. Au. C.. B.. Bn.
+C.. C.. C.. D.. D..
+C.. D.. D.. Dp. Dc.
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dana f
+victim V Vicky f
+clue A is row 5
+clue A is in C
+clue B is in C
+clue C is in A
+clue C is col 3
+clue D is beside u
+extra A is corner
+extra B is col 2
+extra D is in B
+extra D is row 2
+solution A=1:5:1 B=1:4:2 C=1:1:3 D=1:2:4 V=1:3:5
+''',
+  '''
+case easy-025
+title The Quiet Teacup
+setting home
+area A Living Room
+area B Kitchen
+area C Garage
+area D Hall
+kind c sit chair
+kind p block plant
+kind s block shelf
+kind t block table
+kind a sit car
+grid Home 5 5
+Ac. A.. B.. Bt. Bs.
+A.. A.. B.. B.. B..
+Ap. A.. C.. C.. Ca1
+Dp. C.. C.. C.. Ca1
+D.. D.. C.. C.. C..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Victor m
+clue A is beside c
+clue B is in D
+clue C is beside a
+clue C is row 4
+clue D is beside s
+extra A is row 1
+extra A is in A
+extra B is beside p
+extra B is row 5
+extra C is in C
+extra D is col 5
+extra D is in B
+solution A=1:1:2 B=1:5:1 C=1:4:4 D=1:2:5 V=1:3:3
+''',
+  '''
+case easy-026
+title The Quiet Sandcastle
+setting beach
+area A Sea
+area B Sand
+area C Pier
+area D Rocks
+kind b sit boat
+kind d sit sunbed
+kind t block table
+kind k block rock
+kind w sit towel
+grid Beach 5 5
+D.. C.. C.. Ct. C..
+D.. Dw. C.. Ct. Ct.
+Dk. D.. B.. B.. C..
+D.. D.. Bd. A.. A..
+D.. D.. A.. Ab1 Ab1
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+victim V Vera f
+clue A is in B
+clue B is on d
+clue C is beside w
+clue D is beside t
+extra A is col 4
+extra B is row 4
+extra B is in B
+extra C is row 2
+extra C is beside k
+extra D is col 5
+extra D is in C
+solution A=1:3:4 B=1:4:3 C=1:2:1 D=1:1:5 V=1:5:2
+''',
+  '''
+case easy-027
+title The Quiet Acorn
+setting forest
+area A Cave
+area B Lake
+area C Pines
+area D Clearing
+kind l sit log
+kind k block rock
+kind b sit boat
+kind e block tree
+grid Forest 5 5
+D.. Dk. C.. B.. B..
+C.. Ck. Ce. B.. B..
+Ck. C.. C.. Bb1 Bb1
+A.. C.. C.. B.. B..
+A.. Al. C.. Bk. B..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Vicky f
+clue A is beside e
+clue B is in C
+clue C is corner
+clue D is in A
+clue D is corner
+extra A is row 3
+extra A is in C
+extra B is row 4
+extra C is in B
+extra C is row 1
+extra D is beside l
+solution A=1:3:3 B=1:4:2 C=1:1:5 D=1:5:1 V=1:2:4
+''',
+  '''
+case easy-028
+title The Quiet Taxi
+setting city
+area A Cafe
+area B Park
+area C Shop
+area D Square
+kind t block table
+kind i block bin
+kind e block tree
+kind s block shelf
+kind n sit bench
+grid City 5 5
+Be. Ai. C.. C.. C..
+B.. A.. A.. C.. C..
+A.. A.. A.. C.. Cs.
+A.. At. C.. C.. Dn.
+At. C.. Cs. D.. D..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+victim V Vince m
+clue A is in D
+clue B is beside t
+clue B is col 2
+clue C is beside t
+clue D is beside s
+extra A is col 4
+extra B is in A
+extra C is in A
+extra C is col 1
+extra D is in C
+extra D is col 5
+solution A=1:5:4 B=1:3:2 C=1:4:1 D=1:2:5 V=1:1:3
+''',
+  '''
+case easy-029
+title The Quiet Scarecrow
+setting farm
+area A Field
+area B Yard
+area C Barn
+area D Orchard
+kind a sit tractor
+kind g block pig
+kind o block cow
+kind h sit hay bale
+kind e block tree
+grid Farm 5 5
+De. D.. D.. D.. A..
+D.. D.. D.. Dh. A..
+C.. Co. B.. A.. A..
+B.. B.. B.. A.. A..
+B.. Bg. Aa1 Aa1 A..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dan m
+victim V Vince m
+clue A is in D
+clue A is col 1
+clue B is corner
+clue C is beside h
+clue D is row 3
+extra A is beside e
+extra B is in A
+extra B is beside a
+extra C is row 1
+extra C is in D
+extra D is in B
+solution A=1:2:1 B=1:5:5 C=1:1:4 D=1:3:3 V=1:4:2
+''',
+  '''
+case easy-030
+title The Quiet Blackboard
+setting school
+area A Gym
+area B Canteen
+area C Library
+area D Yard
+kind m sit mat
+kind c sit chair
+kind t block table
+kind e block tree
+grid School 5 5
+C.. Ct. C.. C.. Ct.
+D.. C.. C.. Ct. C..
+D.. B.. B.. Am. A..
+De. B.. Am. Am. A..
+Bc. B.. A.. A.. A..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Vince m
+clue A is on c
+clue B is in B
+clue C is row 3
+clue C is on m
+clue D is row 1
+extra A is in B
+extra A is corner
+extra B is col 2
+extra C is beside m
+extra D is in C
+extra D is beside t
+solution A=1:5:1 B=1:4:2 C=1:3:4 D=1:1:3 V=1:2:5
+''',
+  '''
+case easy-031
+title The Quiet Ticket
+setting train
+area A Dining Car
+area B Luggage Car
+area C First Class
+area D Engine
+kind r sit rug
+kind k block trunk
+kind s block shelf
+kind t block table
+grid Train 5 5
+C.. A.. Ar. B.. Bk.
+Ct. D.. Ds. B.. Bs.
+Cr. D.. D.. D.. B..
+C.. C.. C.. Ct. B..
+Cr. C.. C.. C.. B..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Viola f
+clue A is beside s
+clue B is in B
+clue B is row 1
+clue C is on r
+clue C is beside t
+clue D is beside t
+extra A is col 2
+extra A is in D
+extra B is beside k
+extra C is in C
+extra D is in C
+extra D is row 4
+solution A=1:2:2 B=1:1:4 C=1:3:1 D=1:4:3 V=1:5:5
+''',
+  '''
+case easy-032
+title The Quiet Anchor
+setting ship
+area A Cabin
+area B Bridge
+area C Galley
+area D Deck
+kind t block table
+kind c sit chair
+kind k block crate
+kind a sit lifeboat
+grid Ship 5 5
+At. A.. B.. B.. Bt.
+Ct. Da1 B.. B.. Bc.
+C.. Da1 Dk. D.. B..
+C.. C.. D.. D.. D..
+Ct. C.. D.. Dk. D..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dana f
+victim V Val m
+clue A is on a
+clue B is in C
+clue C is beside t
+clue D is beside t
+clue D is col 5
+extra A is in D
+extra A is beside k
+extra B is beside t
+extra B is row 4
+extra C is in B
+extra C is row 1
+extra D is in B
+solution A=1:3:2 B=1:4:1 C=1:1:4 D=1:2:5 V=1:5:3
+''',
+  '''
+case easy-033
+title The Quiet Marshmallow
+setting camp
+area A Fire Ring
+area B Tents
+area C Woods
+area D Kitchen
+kind l sit log
+kind c sit chair
+kind e block tree
+kind t block table
+grid Camp 5 5
+B.. B.. B.. Bc. B..
+A.. B.. Bc. B.. D..
+Al. A.. Cl. C.. Dt.
+A.. Al. C.. C.. C..
+A.. A.. Ce. C.. C..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Vicky f
+clue A is beside c
+clue B is beside l
+clue B is row 5
+clue C is beside e
+clue D is in C
+extra A is in B
+extra A is row 1
+extra B is in A
+extra C is in C
+extra C is beside l
+extra D is row 3
+extra D is beside l
+solution A=1:1:5 B=1:5:2 C=1:4:3 D=1:3:4 V=1:2:1
+''',
+  '''
+case easy-034
+title The Quiet Room Key
+setting hotel
+area A Room 1
+area B Kitchen
+area C Bar
+area D Room 2
+kind d block desk
+kind c sit chair
+kind t block table
+kind b sit bed
+grid Hotel 5 5
+Ac. A.. A.. Ct. C..
+D.. A.. A.. B.. C..
+D.. D.. Ad. B.. B..
+D.. Dc. D.. B.. B..
+D.. Db1 Db1 Bt. B..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+victim V Viola f
+clue A is beside c
+clue A is col 1
+clue B is corner
+clue B is row 1
+clue C is in B
+clue D is beside d
+extra A is in D
+extra B is in C
+extra C is col 4
+extra D is in A
+extra D is row 2
+solution A=1:4:1 B=1:1:5 C=1:3:4 D=1:2:3 V=1:5:2
+''',
+  '''
+case easy-035
+title The Quiet Picnic
+setting park
+area A Pond
+area B Cafe
+area C Path
+area D Playground
+kind b sit boat
+kind t block table
+kind n sit bench
+kind w sit swing
+grid Park 5 5
+D.. Cn. C.. C.. C..
+D.. Dw. C.. Cn. B..
+D.. A.. C.. C.. Bt.
+D.. Ab1 Ab1 Cn. Cn.
+D.. D.. Dw. C.. C..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Vera f
+clue A is beside n
+clue A is row 3
+clue B is beside w
+clue C is in C
+clue D is beside t
+extra A is in C
+extra B is col 2
+extra B is in D
+extra C is beside n
+extra C is col 3
+extra D is in B
+extra D is col 5
+solution A=1:3:4 B=1:5:2 C=1:1:3 D=1:2:5 V=1:4:1
+''',
+  '''
+case easy-036
+title The Quiet Painting
+setting museum
+area A Gallery
+area B Dino Room
+area C Gift Shop
+area D Cafe
 kind u block statue
 kind o block skeleton
-kind p block plant
+kind s block shelf
+kind v block vase
 kind c sit chair
+grid Museum 5 5
+A.. Dc. Bo. B.. B..
+A.. D.. D.. Cs. C..
+A.. Dc. D.. Cv. C..
+Au. D.. D.. C.. C..
+A.. D.. C.. C.. C..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dana f
+victim V Vicky f
+clue A is in B
+clue B is beside s
+clue C is col 3
+clue C is beside c
+clue D is in A
+extra A is row 1
+extra A is beside o
+extra B is in C
+extra B is col 5
+extra C is in D
+extra D is beside u
+extra D is row 5
+solution A=1:1:4 B=1:2:5 C=1:3:3 D=1:5:1 V=1:4:2
+''',
+  '''
+case easy-037
+title The Second Key
+setting home
+area A Garage
+area B Living Room
+area C Kitchen
+area D Hall
+kind s block shelf
+kind a sit car
+kind c sit chair
+kind p block plant
+grid Home 5 5
+C.. Bc. Ds. D.. D..
+Cp. B.. D.. A.. As.
+C.. B.. A.. Aa1 Aa1
+C.. Cp. C.. A.. A..
+C.. C.. A.. A.. A..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Vanda f
+clue A is beside s
+clue B is beside p
+clue C is on c
+clue D is in D
+extra A is in A
+extra A is on a
+extra B is in C
+extra B is col 1
+extra C is in B
+extra C is col 2
+extra D is col 3
+extra D is beside s
+solution A=1:3:5 B=1:4:1 C=1:1:2 D=1:2:3 V=1:5:4
+''',
+  '''
+case easy-038
+title The Second Seashell
+setting beach
+area A Rocks
+area B Sea
+area C Sand
+area D Cafe
+kind w sit towel
+kind b sit boat
+kind p block palm
+kind u block umbrella
+kind c sit chair
+grid Beach 5 5
+A.. Aw. C.. Cp. C..
+C.. C.. C.. C.. Cu.
+C.. B.. D.. Dc. B..
+C.. B.. B.. B.. B..
+B.. B.. B.. Bb1 Bb1
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Vince m
+clue A is corner
+clue A is beside b
+clue B is beside c
+clue C is beside u
+clue D is on w
+extra A is in B
+extra B is in D
+extra B is col 3
+extra C is row 2
+extra C is in C
+extra D is in A
+extra D is row 1
+solution A=1:5:5 B=1:3:3 C=1:2:4 D=1:1:2 V=1:4:1
+''',
+  '''
+case easy-039
+title The Second Mushroom
+setting forest
+area A Cabin
+area B Lake
+area C Pines
+area D Cave
+kind t block table
+kind c sit chair
+kind b sit boat
+kind k block rock
+grid Forest 5 5
+A.. At. A.. Ac. B..
+A.. D.. B.. B.. B..
+A.. Dk. B.. Bb1 Bb1
+A.. D.. B.. C.. C..
+D.. Dk. C.. Ck. C..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+victim V Vince m
+clue A is corner
+clue B is col 1
+clue B is beside t
+clue C is col 2
+clue D is beside b
+clue D is row 2
+extra A is col 5
+extra A is beside k
+extra B is in A
+extra C is beside k
+extra C is in D
+extra D is in B
+solution A=1:5:5 B=1:1:1 C=1:4:2 D=1:2:4 V=1:3:3
+''',
+  '''
+case easy-040
+title The Second Newspaper
+setting city
+area A Street
+area B Bank
+area C Shop
+area D Square
+kind a sit car
+kind c sit chair
+kind s block shelf
+kind t block table
+kind n sit bench
+kind m block lamp
+grid City 5 5
+Bs. B.. Bc. Bc. C..
+B.. B.. Bc. B.. C..
+B.. B.. B.. A.. Ct.
+Dn. D.. Dm. Aa1 C..
+D.. D.. A.. Aa1 Cs.
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+victim V Vanda f
+clue A is beside n
+clue B is col 2
+clue B is beside s
+clue C is beside s
+clue D is in A
+extra A is corner
+extra A is col 1
+extra B is in B
+extra C is in C
+extra C is beside t
+extra D is beside a
+extra D is row 3
+solution A=1:5:1 B=1:1:2 C=1:4:5 D=1:3:4 V=1:2:3
+''',
+  '''
+case easy-041
+title The Second Pitchfork
+setting farm
+area A House
+area B Yard
+area C Field
+area D Pond
+kind t block table
+kind c sit chair
+kind h sit hay bale
+kind o block cow
+kind k block rock
+grid Farm 5 5
+A.. Dk. D.. B.. B..
+A.. A.. Ch. Bh. B..
+A.. C.. C.. C.. B..
+At. C.. C.. Co. C..
+Ac. C.. C.. C.. Ch.
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+victim V Val m
+clue A is on c
+clue B is beside o
+clue C is in B
+clue C is beside h
+clue D is beside k
+extra A is beside t
+extra A is in A
+extra B is in C
+extra B is row 3
+extra C is row 2
+extra D is in D
+extra D is col 3
+solution A=1:5:1 B=1:3:4 C=1:2:5 D=1:1:3 V=1:4:2
+''',
+  '''
+case easy-042
+title The Second Satchel
+setting school
+area A Classroom
+area B Yard
+area C Gym
+area D Canteen
+kind s block shelf
+kind e block tree
+kind i block bin
+kind n sit bench
+kind t block table
+grid School 5 5
+B.. B.. C.. C.. C..
+Be. Bi. Cn. D.. Di.
+B.. B.. D.. D.. D..
+A.. A.. Dt. D.. D..
+As. A.. D.. Di. D..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Val m
+clue A is beside s
+clue B is col 1
+clue B is beside s
+clue C is corner
+clue D is beside i
+extra A is col 2
+extra A is in A
+extra B is in A
+extra C is col 5
+extra C is in C
+extra D is col 4
+extra D is in D
+solution A=1:5:2 B=1:4:1 C=1:1:5 D=1:2:4 V=1:3:3
+''',
+  '''
+case easy-043
+title The Second Luggage
+setting train
+area A Dining Car
+area B Engine
+area C Luggage Car
+area D Sleeper
+kind c sit seat
+kind k block trunk
+kind l block suitcase
+kind r sit rug
+grid Train 5 5
+Dr. B.. Bc. B.. B..
+D.. Bc. B.. B.. Bc.
+D.. C.. C.. B.. C..
+Ac. A.. C.. Cl. Ck.
+A.. A.. C.. Ck. C..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+victim V Vince m
+clue A is on c
+clue B is beside c
+clue C is beside r
+clue D is corner
+extra A is in B
+extra A is col 3
+extra B is in A
+extra B is row 4
+extra C is in D
+extra C is col 1
+extra D is beside k
+extra D is in C
+solution A=1:1:3 B=1:4:2 C=1:2:1 D=1:5:5 V=1:3:4
+''',
+  '''
+case easy-044
+title The Second Porthole
+setting ship
+area A Deck
+area B Bow
+area C Cabin
+area D Galley
+kind k block crate
+kind c sit chair
+kind l block barrel
+kind b sit bed
+kind t block table
+grid Ship 5 5
+B.. Bl. B.. Cb1 Ak.
+B.. Bc. Bc. Cb1 A..
+B.. B.. B.. A.. A..
+D.. D.. D.. D.. D..
+D.. D.. Dl. D.. Dt.
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dana f
+victim V Vanda f
+clue A is beside l
+clue A is in D
+clue B is beside t
+clue C is beside l
+clue C is beside c
+clue D is col 4
+clue D is in A
+extra A is col 2
+extra B is in D
+extra B is row 4
+extra C is row 1
+solution A=1:5:2 B=1:4:5 C=1:1:3 D=1:3:4 V=1:2:1
+''',
+  '''
+case easy-045
+title The Second Sleeping Bag
+setting camp
+area A Tents
+area B Field
+area C Kitchen
+area D Fire Ring
+kind n sit tent
+kind t block table
+kind c sit chair
+grid Camp 5 5
+B.. C.. Ct. C.. Ct.
+B.. C.. C.. C.. Cc.
+Bt. C.. C.. C.. C..
+B.. B.. D.. A.. A..
+Bc. B.. Dc. A.. An.
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Vicky f
+clue A is beside t
+clue B is corner
+clue C is beside n
+clue D is row 3
+clue D is beside c
+extra A is in C
+extra A is row 2
+extra B is in B
+extra B is col 1
+extra C is col 4
+extra C is in A
+extra D is in C
+solution A=1:2:3 B=1:1:1 C=1:5:4 D=1:3:5 V=1:4:2
+''',
+  '''
+case easy-046
+title The Second Luggage Cart
+setting hotel
+area A Pool
+area B Kitchen
+area C Lobby
+area D Room 1
+kind p block plant
+kind u sit sunbed
+kind t block table
+kind d block desk
+kind b sit bed
+grid Hotel 5 5
+Cp. D.. D.. B.. B..
+C.. Db1 Db1 B.. Bt.
+C.. Dd. D.. A.. A..
+A.. Au. A.. Au. A..
+A.. A.. Ap. A.. A..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+victim V Vanda f
+clue A is beside u
+clue A is col 4
+clue B is beside t
+clue C is in C
+clue C is row 2
+clue D is beside b
+extra A is beside p
+extra B is in B
+extra B is col 5
+extra C is beside p
+extra D is in D
+extra D is row 3
+solution A=1:5:4 B=1:1:5 C=1:2:1 D=1:3:3 V=1:4:2
+''',
+  '''
+case easy-047
+title The Second Kite
+setting park
+area A Playground
+area B Lawn
+area C Cafe
+area D Pond
+kind n sit bench
+kind w sit swing
+kind c sit chair
+kind b sit boat
+grid Park 5 5
+B.. B.. B.. C.. C..
+B.. D.. D.. Cc. C..
+Bn. Db1 Db1 C.. C..
+A.. A.. An. Cc. C..
+Aw. A.. A.. A.. Cc.
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Val m
+clue A is beside n
+clue A is row 4
+clue B is in B
+clue C is row 2
+clue C is on c
+clue D is in D
+extra A is in A
+extra B is corner
+extra B is col 1
+extra C is in C
+extra D is beside b
+extra D is col 3
+solution A=1:4:2 B=1:1:1 C=1:2:4 D=1:3:3 V=1:5:5
+''',
+  '''
+case easy-048
+title The Second Fossil
+setting museum
+area A Hall
+area B Cafe
+area C Gallery
+area D Dino Room
+kind u block statue
+kind p block plant
+kind t block table
+kind v block vase
+kind n sit bench
+kind o block skeleton
+grid Museum 5 5
+B.. Bt. D.. D.. Dn.
+Bp. B.. Dn. Do. D..
+B.. B.. D.. D.. D..
+A.. A.. Au. D.. A..
+C.. Cv. A.. Ap. A..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Vera f
+clue A is col 4
+clue B is corner
+clue B is beside t
+clue C is beside u
+clue D is row 3
+clue D is in B
+extra A is in D
+extra B is in B
+extra C is beside p
+extra C is in A
+solution A=1:4:4 B=1:1:1 C=1:5:3 D=1:3:2 V=1:2:5
+''',
+  '''
+case easy-049
+title The Stolen Slipper
+setting home
+area A Bedroom
+area B Living Room
+area C Bathroom
+area D Garden
+kind c sit chair
+kind p block plant
+kind s block shelf
+kind t block table
+kind e block tree
+grid Home 5 5
+A.. Ac. A.. B.. B..
+A.. A.. A.. C.. Bp.
+A.. Ac. De. C.. Cs.
+Dt. D.. D.. C.. C..
+D.. D.. D.. C.. C..
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dan m
+victim V Viola f
+clue A is on c
+clue B is in D
+clue C is in C
+clue C is corner
+clue D is beside s
+extra A is in A
+extra A is col 2
+extra B is beside e
+extra B is col 3
+extra C is row 5
+extra D is col 4
+extra D is in C
+solution A=1:1:2 B=1:4:3 C=1:5:5 D=1:3:4 V=1:2:1
+''',
+  '''
+case easy-050
+title The Stolen Sunhat
+setting beach
+area A Cafe
+area B Rocks
+area C Dunes
+area D Pier
+kind t block table
+kind w sit towel
+kind k block rock
+kind c sit chair
+grid Beach 5 5
+B.. B.. D.. Dc. D..
+Bw. B.. Dc. D.. D..
+B.. Bk. B.. D.. D..
+At. B.. Bk. C.. D..
+A.. B.. Cw. C.. C..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+victim V Vicky f
+clue A is beside k
+clue B is row 5
+clue B is in B
+clue C is in C
+clue D is on c
+extra A is in B
+extra A is beside w
+extra C is row 4
+extra D is in D
+extra D is row 2
+solution A=1:3:1 B=1:5:2 C=1:4:4 D=1:2:3 V=1:1:5
+''',
+  '''
+case easy-051
+title The Stolen Owl
+setting forest
+area A Path
+area B Lake
+area C Cave
+area D Clearing
+area E Cabin
+kind l sit log
+kind k block rock
+kind b sit boat
+kind c sit chair
+grid Forest 6 6
+Bk. B.. Bb1 Bb1 B.. B..
+B.. Bb. A.. Al. B.. B..
+E.. A.. A.. A.. D.. D..
+Ec. Dl. D.. D.. D.. D..
+Dl. D.. D.. D.. D.. Dk.
+C.. Cl. D.. D.. Dk. D..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Viola f
+clue A is beside b
+clue A is col 5
+clue B is beside l
+clue B is row 3
+clue C is beside k
+clue D is in D
+clue D is on l
+clue E is on l
+clue E is row 5
+extra A is in B
+extra B is in A
+extra C is row 6
+extra C is in D
+extra D is row 4
+extra E is in D
+solution A=1:1:5 B=1:3:4 C=1:6:6 D=1:4:2 E=1:5:1 V=1:2:3
+''',
+  '''
+case easy-052
+title The Stolen Tram
+setting city
+area A Square
+area B Park
+area C Street
+area D Bank
+area E Shop
+kind i block bin
+kind m block lamp
+kind a sit car
+kind t block table
+kind s block shelf
+grid City 6 6
+Cm. C.. C.. C.. C.. C..
+B.. Bi. B.. Ca1 Ca1 C..
+B.. B.. B.. C.. D.. D..
+A.. A.. A.. C.. D.. D..
+A.. Ai. D.. D.. Dt. Dt.
+A.. Ai. E.. E.. Es. E..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is in C
+clue A is col 3
+clue B is beside a
+clue C is col 5
+clue C is in C
+clue D is row 6
+clue E is row 5
+extra B is col 4
+extra B is in C
+extra C is on a
+extra D is in E
+extra D is beside s
+extra E is beside i
+extra E is in A
+solution A=1:1:3 B=1:3:4 C=1:2:5 D=1:6:6 E=1:5:1 V=1:4:2
+''',
+  '''
+case easy-053
+title The Stolen Rooster
+setting farm
+area A Pond
+area B Barn
+area C Yard
+area D House
+area E Field
+kind k block rock
+kind h sit hay bale
+kind o block cow
+kind t block table
+grid Farm 6 6
+E.. Eh. E.. D.. D.. D..
+C.. B.. B.. B.. B.. D..
+Ch. B.. Bh. B.. B.. Dt.
+Bh. B.. Bo. B.. B.. D..
+B.. Bh. A.. Ak. D.. Dt.
+A.. A.. Ak. A.. A.. A..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+victim V Vanda f
+clue A is beside t
+clue B is on h
+clue C is in A
+clue C is col 5
+clue D is in A
+clue E is in B
+clue E is on h
+extra A is col 6
+extra A is in D
+extra B is in E
+extra B is row 1
+extra D is beside k
+extra D is col 3
+extra E is col 1
+solution A=1:2:6 B=1:1:2 C=1:6:5 D=1:5:3 E=1:4:1 V=1:3:4
+''',
+  '''
+case easy-054
+title The Stolen Ruler
+setting school
+area A Hall
+area B Yard
+area C Canteen
+area D Classroom
+area E Library
+kind s block shelf
+kind i block bin
+kind t block table
+kind c sit chair
+kind d block desk
+grid School 6 6
+C.. Ct. D.. D.. Dc. B..
+A.. A.. D.. D.. B.. B..
+As. A.. A.. A.. B.. Bi.
+A.. A.. As. A.. As. B..
+A.. As. Ed. E.. E.. Bi.
+E.. E.. E.. E.. Ed. Ed.
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is col 6
+clue B is in A
+clue B is col 2
+clue C is row 5
+clue D is beside c
+clue E is beside s
+clue E is row 2
+extra A is in B
+extra A is beside i
+extra B is beside s
+extra C is beside d
+extra C is in E
+extra D is row 1
+extra D is in D
+extra E is in A
+solution A=1:4:6 B=1:3:2 C=1:5:5 D=1:1:4 E=1:2:1 V=1:6:3
+''',
+  '''
+case easy-055
+title The Stolen Whistle
+setting train
+area A Sleeper
+area B Second Class
+area C Luggage Car
+area D First Class
+area E Engine
+kind l block suitcase
+kind r sit rug
+kind s block shelf
+kind k block trunk
+kind c sit seat
+grid Train 6 6
+E.. Es. C.. Ck. Cs. C..
+A.. E.. E.. C.. C.. C..
+A.. Dc. E.. E.. Es. B..
+A.. D.. Dc. E.. E.. Bl.
+A.. A.. D.. D.. B.. B..
+Ar. Al. B.. B.. B.. Bs.
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is on c
+clue B is row 1
+clue C is row 3
+clue C is beside s
+clue D is beside r
+clue E is row 6
+extra A is in D
+extra A is col 3
+extra B is corner
+extra B is beside s
+extra C is in E
+extra D is in A
+extra D is row 5
+extra E is in B
+extra E is beside s
+solution A=1:4:3 B=1:1:6 C=1:3:4 D=1:5:1 E=1:6:5 V=1:2:2
+''',
+  '''
+case easy-056
+title The Stolen Compass
+setting ship
+area A Deck
+area B Galley
+area C Bridge
+area D Hold
+area E Bow
+kind a sit lifeboat
+kind l block barrel
+kind t block table
+kind c sit chair
+kind k block crate
+grid Ship 6 6
+Dk. D.. D.. A.. A.. Aa.
+B.. Dl. D.. C.. C.. Ct.
+B.. B.. B.. C.. C.. Cc.
+Bl. B.. Bl. C.. Ct. Ct.
+B.. B.. C.. C.. C.. C..
+Bl. C.. C.. Cc. E.. El.
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vlad m
+clue A is row 4
+clue B is col 6
+clue B is on c
+clue C is beside a
+clue D is on c
+clue E is in D
+extra A is in B
+extra A is beside l
+extra B is in C
+extra C is in A
+extra C is row 1
+extra D is in C
+extra D is col 4
+extra E is beside l
+extra E is row 2
+solution A=1:4:2 B=1:3:6 C=1:1:5 D=1:6:4 E=1:2:3 V=1:5:1
+''',
+  '''
+case easy-057
+title The Stolen Torch
+setting camp
+area A Fire Ring
+area B Kitchen
+area C Tents
+area D Woods
+area E Lake
+kind f block campfire
+kind t block table
+kind n sit tent
+kind k block rock
+kind l sit log
+kind b sit canoe
+grid Camp 6 6
+B.. B.. Cn. A.. A.. Af.
+Bt. B.. C.. C.. A.. Dk.
+B.. Bt. D.. D.. Dl. D..
+E.. Ek. E.. E.. Dl. D..
+Eb1 Eb1 E.. Ek. D.. D..
+E.. E.. E.. E.. D.. D..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Vicky f
+clue A is in B
+clue A is row 3
+clue B is corner
+clue C is beside b
+clue D is in B
+clue E is beside f
+extra A is beside t
+extra B is in D
+extra B is col 6
+extra C is beside k
+extra C is in E
+extra D is beside t
+extra D is row 2
+extra E is col 5
+extra E is in A
+solution A=1:3:1 B=1:6:6 C=1:5:3 D=1:2:2 E=1:1:5 V=1:4:4
+''',
+  '''
+case easy-058
+title The Stolen Suite
+setting hotel
+area A Bar
+area B Room 2
+area C Kitchen
+area D Pool
+area E Room 1
+kind t block table
+kind b sit bed
+kind c sit chair
+kind p block plant
+kind u sit sunbed
+grid Hotel 6 6
+Bb1 Bb1 E.. E.. Eb3 Eb3
+B.. Bb2 Bb2 E.. Ct. C..
+B.. B.. B.. E.. C.. C..
+B.. B.. B.. E.. Ct. A..
+D.. D.. D.. C.. C.. At.
+Du. Dp. C.. Cc. C.. Ct.
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Vicky f
+clue A is in C
+clue B is on c
+clue C is in E
+clue D is beside p
+clue E is beside b
+clue E is row 3
+extra A is col 6
+extra A is beside t
+extra B is in C
+extra B is row 6
+extra C is col 5
+extra C is on b
+extra D is in D
+extra D is row 5
+extra E is in B
+solution A=1:2:6 B=1:6:4 C=1:1:5 D=1:5:2 E=1:3:3 V=1:4:1
+''',
+  '''
+case easy-059
+title The Stolen Duck
+setting park
+area A Lawn
+area B Pond
+area C Path
+area D Cafe
+area E Playground
+kind e block tree
+kind b sit boat
+kind n sit bench
+kind u block bush
+kind c sit chair
+kind w sit swing
+grid Park 6 6
+Dc. D.. D.. Ew. E.. B..
+Dc. D.. Cu. E.. E.. Bb1
+D.. C.. C.. A.. A.. Bb1
+C.. C.. Cu. A.. A.. Ae.
+C.. Cu. C.. C.. C.. C..
+C.. C.. C.. C.. C.. Cn.
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vicky f
+clue A is in B
+clue B is beside u
+clue C is beside c
+clue D is beside e
+clue E is in D
+clue E is corner
+extra A is on b
+extra A is beside b
+extra B is row 5
+extra B is in C
+extra C is in D
+extra C is row 2
+extra D is in A
+extra D is row 4
+extra E is beside c
+solution A=1:3:6 B=1:5:3 C=1:2:2 D=1:4:5 E=1:1:1 V=1:6:4
+''',
+  '''
+case easy-060
+title The Stolen Mummy
+setting museum
+area A Cafe
+area B Garden
+area C Hall
+area D Gift Shop
+area E Gallery
+kind c sit chair
+kind p block plant
+kind n sit bench
+kind v block vase
+kind u block statue
+grid Museum 6 6
+B.. B.. B.. E.. Eu. E..
+Bn. D.. D.. E.. A.. A..
+B.. Dv. D.. En. A.. A..
+Cp. C.. E.. En. A.. A..
+C.. C.. E.. E.. Ap. Ac.
+C.. C.. E.. E.. A.. A..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Victor m
+clue A is in E
+clue A is row 6
+clue B is beside p
+clue C is in B
+clue D is beside n
+clue D is row 5
+clue E is on n
+extra B is row 4
+extra B is in A
+extra C is col 2
+extra D is in E
+extra E is row 2
+extra E is in B
+solution A=1:6:3 B=1:4:5 C=1:1:2 D=1:5:4 E=1:2:1 V=1:3:6
+''',
+  '''
+case easy-061
+title The Crooked Doorbell
+setting home
+area A Garden
+area B Kitchen
+area C Bathroom
+area D Living Room
+area E Garage
+kind c sit chair
+kind t block table
+kind s block shelf
+kind p block plant
+kind r sit rug
+grid Home 6 6
+E.. E.. Es. D.. B.. B..
+E.. E.. E.. D.. Bt. B..
+C.. Cs. C.. D.. Dt. Dr.
+C.. C.. Cp. A.. A.. A..
+Cp. Cs. C.. A.. Ac. A..
+C.. C.. C.. A.. Ac. Ac.
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vicky f
+clue A is in E
+clue B is on c
+clue C is beside t
+clue D is beside s
+clue D is row 6
+clue E is beside s
+clue E is beside p
+extra A is col 1
+extra A is corner
+extra B is col 5
+extra B is in A
+extra C is in B
+extra C is col 6
+extra D is in C
+extra E is col 3
+solution A=1:1:1 B=1:5:5 C=1:2:6 D=1:6:2 E=1:3:3 V=1:4:4
+''',
+  '''
+case easy-062
+title The Crooked Lighthouse
+setting beach
+area A Cafe
+area B Pier
+area C Dunes
+area D Sand
+area E Rocks
+kind c sit chair
+kind t block table
+kind p block palm
+kind d sit sunbed
+kind w sit towel
+kind k block rock
+grid Beach 6 6
+B.. B.. A.. Ac. A.. A..
+B.. Bt. B.. At. Ac. A..
+D.. Dw. D.. Dd. A.. A..
+C.. D.. D.. D.. D.. A..
+Cp. E.. Ew. Ek. E.. A..
+E.. E.. E.. E.. E.. Ew.
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eli m
+victim V Vlad m
+clue A is beside k
+clue A is col 5
+clue B is in A
+clue C is in D
+clue C is col 1
+clue D is col 4
+clue D is in D
+clue E is beside t
+clue E is row 2
+extra A is in E
+extra B is row 1
+extra B is corner
+extra C is beside w
+extra D is beside d
+extra E is in B
+solution A=1:5:5 B=1:1:6 C=1:3:1 D=1:4:4 E=1:2:3 V=1:6:2
+''',
+  '''
+case easy-063
+title The Crooked Trail
+setting forest
+area A Lake
+area B Clearing
+area C Cave
+area D Pines
+area E Cabin
+kind k block rock
+kind b sit boat
+kind l sit log
+kind u block bush
+kind t block table
+kind c sit chair
+grid Forest 6 6
+D.. D.. E.. E.. C.. C..
+D.. Du. E.. Et. E.. Ck.
+B.. Bu. E.. Ec. A.. A..
+Bl. Bl. Et. E.. A.. Ab1
+B.. B.. B.. E.. A.. Ab1
+B.. B.. B.. Ak. Ak. A..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Val m
+clue A is in C
+clue A is corner
+clue B is on l
+clue B is col 1
+clue C is beside t
+clue D is col 4
+clue E is in A
+clue E is row 3
+extra A is beside k
+extra B is in B
+extra C is in E
+extra C is col 3
+extra D is in E
+solution A=1:1:6 B=1:4:1 C=1:2:3 D=1:5:4 E=1:3:5 V=1:6:2
+''',
+  '''
+case easy-064
+title The Crooked Alley
+setting city
+area A Square
+area B Bank
+area C Park
+area D Shop
+area E Street
+kind m block lamp
+kind c sit chair
+kind i block bin
+kind e block tree
+kind s block shelf
+kind a sit car
+grid City 6 6
+C.. Ci. C.. A.. Am. A..
+C.. Ce. C.. Am. A.. A..
+C.. C.. D.. D.. D.. D..
+Ce. Em. D.. Ea1 D.. D..
+E.. E.. E.. Ea1 Ds. Ds.
+E.. E.. Em. E.. Bc. B..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vicky f
+clue A is beside i
+clue B is beside s
+clue B is col 5
+clue C is in E
+clue C is col 4
+clue D is in E
+clue D is col 3
+clue E is row 2
+extra A is row 1
+extra A is corner
+extra B is in D
+extra C is beside a
+extra D is beside a
+extra E is in A
+solution A=1:1:1 B=1:4:5 C=1:6:4 D=1:5:3 E=1:2:6 V=1:3:2
+''',
+  '''
+case easy-065
+title The Crooked Haystack
+setting farm
+area A Barn
+area B Yard
+area C House
+area D Pond
+area E Field
+kind h sit hay bale
+kind a sit tractor
+kind b sit bed
+kind k block rock
+grid Farm 6 6
+B.. B.. B.. B.. B.. B..
+B.. B.. B.. D.. B.. Ba.
+Ba2 Ba2 Dk. D.. A.. Cb3
+Eh. B.. E.. A.. A.. Cb3
+Ea4 Ea4 E.. A.. Aa1 Aa1
+E.. E.. A.. A.. Ah. A..
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eva f
+victim V Val m
+clue A is in A
+clue A is beside h
+clue B is in B
+clue B is on a
+clue C is beside a
+clue C is col 2
+clue D is row 3
+clue D is in D
+clue E is in E
+clue E is col 3
+extra A is row 5
+extra B is col 6
+extra C is in E
+extra D is beside k
+solution A=1:5:5 B=1:2:6 C=1:6:2 D=1:3:4 E=1:4:3 V=1:1:1
+''',
+  '''
+case easy-066
+title The Crooked Homework
+setting school
+area A Yard
+area B Classroom
+area C Gym
+area D Canteen
+area E Hall
+kind e block tree
+kind d block desk
+kind m sit mat
+kind t block table
+kind s block shelf
+kind n sit bench
+grid School 6 6
+E.. B.. Bd. B.. B.. Bd.
+E.. En. B.. B.. B.. B..
+E.. E.. E.. Bd. D.. Dt.
+A.. Es. En. E.. D.. D..
+Ae. A.. E.. E.. D.. D..
+C.. Cm. C.. Dt. D.. D..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+victim V Vlad m
+clue A is beside e
+clue B is beside t
+clue C is on m
+clue D is in B
+clue E is beside d
+clue E is col 3
+extra A is row 4
+extra A is in A
+extra B is in D
+extra B is row 3
+extra C is col 2
+extra C is in C
+extra D is beside d
+extra D is row 1
+extra E is in B
+solution A=1:4:1 B=1:3:5 C=1:6:2 D=1:1:4 E=1:2:3 V=1:5:6
+''',
+  '''
+case easy-067
+title The Crooked Timetable
+setting train
+area A First Class
+area B Dining Car
+area C Sleeper
+area D Second Class
+area E Engine
+kind t block table
+kind r sit rug
+kind l block suitcase
+kind s block shelf
+grid Train 6 6
+B.. Cr. C.. C.. A.. A..
+B.. B.. B.. Br. A.. At.
+B.. Br. E.. Es. Ds. Dl.
+B.. Bt. E.. D.. D.. D..
+Dl. Dl. D.. D.. D.. D..
+D.. Dl. D.. D.. Ds. D..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vicky f
+clue A is in D
+clue B is on r
+clue C is beside s
+clue C is col 6
+clue D is in D
+clue D is col 3
+clue E is in A
+clue E is row 1
+extra A is row 4
+extra B is in B
+extra B is row 3
+extra C is in D
+extra D is beside l
+solution A=1:4:4 B=1:3:2 C=1:6:6 D=1:5:3 E=1:1:5 V=1:2:1
+''',
+  '''
+case easy-068
+title The Crooked Logbook
+setting ship
+area A Bow
+area B Deck
+area C Galley
+area D Bridge
+area E Cabin
+kind c sit chair
+kind l block barrel
+kind t block table
+grid Ship 6 6
+E.. E.. A.. A.. C.. C..
+E.. Ec. A.. Ac. Ct. C..
+E.. E.. A.. Dc. D.. C..
+E.. Ac. A.. D.. D.. D..
+Ec. B.. B.. B.. B.. B..
+Bl. B.. B.. B.. Bl. Bl.
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dan m
+person E Eli m
+victim V Vicky f
+clue A is row 6
+clue B is in A
+clue B is col 3
+clue C is in C
+clue C is row 3
+clue D is in E
+clue D is row 4
+clue E is in E
+clue E is row 2
+extra A is beside l
+extra A is in B
+extra D is beside c
+extra E is on c
+solution A=1:6:4 B=1:1:3 C=1:3:6 D=1:4:1 E=1:2:2 V=1:5:5
+''',
+  '''
+case easy-069
+title The Crooked Rucksack
+setting camp
+area A Woods
+area B Fire Ring
+area C Kitchen
+area D Field
+area E Lake
+kind k block rock
+kind e block tree
+kind c sit chair
+kind l sit log
+kind t block table
+kind b sit canoe
+grid Camp 6 6
+E.. E.. B.. Bl. Bc. A..
+Eb. B.. B.. B.. Ak. Ae.
+C.. C.. Bc. B.. A.. A..
+Cc. C.. C.. A.. Ak. A..
+C.. Ct. Dc. D.. A.. A..
+Cc. C.. D.. D.. A.. A..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vlad m
+clue A is on b
+clue B is in A
+clue C is beside c
+clue D is corner
+clue D is row 6
+clue E is row 3
+clue E is beside c
+extra A is in E
+extra A is col 1
+extra B is beside k
+extra B is row 5
+extra C is beside t
+extra C is in C
+extra D is in A
+extra E is in B
+solution A=1:2:1 B=1:5:5 C=1:4:2 D=1:6:6 E=1:3:4 V=1:1:3
+''',
+  '''
+case easy-070
+title The Crooked Guestbook
+setting hotel
+area A Room 2
+area B Kitchen
+area C Room 1
+area D Lobby
+area E Pool
+kind b sit bed
+kind c sit chair
+kind t block table
+kind d block desk
+kind u sit sunbed
+kind p block plant
+grid Hotel 6 6
+A.. A.. Ab. E.. Ep. E..
+Ac. A.. E.. E.. E.. E..
+A.. C.. Cd. Eu. E.. B..
+C.. C.. C.. Bt. B.. B..
+C.. Cb1 Cb1 B.. Bt. B..
+C.. C.. D.. Dc. B.. B..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Victor m
+clue A is in B
+clue B is on u
+clue C is beside b
+clue C is col 1
+clue D is on b
+clue E is beside t
+clue E is row 6
+extra A is col 6
+extra B is in E
+extra B is col 4
+extra C is in C
+extra D is in A
+extra D is col 3
+extra E is in B
+solution A=1:4:6 B=1:3:4 C=1:5:1 D=1:1:3 E=1:6:5 V=1:2:2
+''',
+  '''
+case easy-071
+title The Crooked Bandstand
+setting park
+area A Pond
+area B Cafe
+area C Playground
+area D Lawn
+area E Rose Garden
+kind b sit boat
+kind t block table
+kind w sit swing
+kind e block tree
+kind n sit bench
+kind u block bush
+grid Park 6 6
+E.. E.. Eu. De. D.. D..
+E.. E.. Eu. D.. De. D..
+E.. E.. D.. D.. D.. De.
+A.. A.. Dn. C.. Cw. C..
+A.. A.. A.. Bt. C.. C..
+A.. Ab. Ab. B.. B.. B..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+victim V Vlad m
+clue A is beside t
+clue B is on w
+clue C is in C
+clue D is beside u
+clue D is row 1
+clue E is col 3
+extra A is col 4
+extra A is in B
+extra B is in C
+extra B is col 5
+extra C is row 5
+extra D is in E
+extra E is in D
+extra E is beside n
+solution A=1:6:4 B=1:4:5 C=1:5:6 D=1:1:2 E=1:3:3 V=1:2:1
+''',
+  '''
+case easy-072
+title The Crooked Catalogue
+setting museum
+area A Garden
+area B Gift Shop
+area C Hall
+area D Cafe
+area E Dino Room
+kind u block statue
+kind v block vase
+kind t block table
+kind o block skeleton
 kind n sit bench
 grid Museum 6 6
-D.. D.. D.. D.. Cu. C..
-Dp. A.. A.. Cc. C.. C..
-Au. A.. C.. C.. Cc. C..
-Ao. Eo. E.. C.. C.. C..
-E.. E.. B.. Bp. B.. Bc.
-E.. En. B.. B.. B.. B..
-open Museum 3 1 N door
-open Museum 5 3 W door
-open Museum 5 5 N door
-open Museum 4 1 W window
-open Museum 5 1 W window
+E.. E.. En. Eo. E.. E..
+E.. E.. En. E.. E.. Eo.
+C.. Cu. B.. B.. B.. B..
+Cu. C.. B.. Bv. A.. A..
+C.. C.. C.. A.. Au. Dt.
+C.. C.. Cu. Cu. A.. D..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vlad m
+clue A is corner
+clue A is in C
+clue B is col 4
+clue C is in B
+clue C is col 5
+clue D is corner
+clue E is in E
+clue E is col 2
+extra A is col 1
+extra B is in A
+extra B is beside u
+extra D is row 1
+extra D is beside o
+extra E is beside n
+solution A=1:6:1 B=1:5:4 C=1:3:5 D=1:1:6 E=1:2:2 V=1:4:3
+''',
+  '''
+case easy-073
+title The Final Curtain
+setting home
+area A Hall
+area B Living Room
+area C Bedroom
+area D Kitchen
+area E Bathroom
+kind r sit rug
+kind s block shelf
+kind t block table
+kind c sit chair
+kind p block plant
+grid Home 6 6
+E.. E.. Es. E.. B.. B..
+C.. C.. Ep. B.. Bt. B..
+C.. C.. E.. D.. B.. B..
+Cr. As. D.. D.. Dc. B..
+A.. Ar. A.. D.. Bt. Br.
+A.. A.. A.. Ar. A.. B..
 person A Anna f
 person B Bea f
 person C Carl m
 person D Dana f
 person E Eva f
-victim J Jack m
+victim V Vera f
+clue A is in D
+clue A is col 3
+clue B is row 6
+clue B is on r
+clue C is beside t
+clue C is row 2
+clue D is in E
+clue E is on r
+extra B is in A
+extra C is in B
+extra D is col 1
+extra D is corner
+extra E is col 2
+extra E is beside s
+solution A=1:4:3 B=1:6:4 C=1:2:6 D=1:1:1 E=1:5:2 V=1:3:5
+''',
+  '''
+case easy-074
+title The Final Tide
+setting beach
+area A Pier
+area B Rocks
+area C Dunes
+area D Cafe
+area E Sea
+kind c sit chair
+kind w sit towel
+kind p block palm
+kind t block table
+kind b sit boat
+grid Beach 6 6
+E.. E.. Bw. B.. B.. B..
+Eb1 Eb1 B.. B.. Bw. C..
+E.. Dt. D.. B.. Cp. C..
+E.. Dc. D.. D.. C.. A..
+E.. D.. D.. A.. A.. Ac.
+Dc. D.. Ac. A.. A.. A..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dana f
+person E Eva f
+victim V Vlad m
+clue A is row 5
 clue A is in A
-clue B is in A
-clue B is beside u
-clue C is row 6
-clue C is beside p
+clue B is beside p
+clue C is col 6
+clue C is in C
+clue D is in A
+clue E is on b
+clue E is col 2
+extra B is row 4
+extra B is in C
+extra C is beside p
+extra D is on c
+extra D is col 3
+extra E is in E
+solution A=1:5:4 B=1:4:5 C=1:3:6 D=1:6:3 E=1:2:2 V=1:1:1
+''',
+  '''
+case easy-075
+title The Final Fern
+setting forest
+area A Pines
+area B Path
+area C Lake
+area D Clearing
+area E Cabin
+kind k block rock
+kind l sit log
+kind u block bush
+kind b sit boat
+kind t block table
+grid Forest 6 6
+E.. Et. E.. B.. Bu. B..
+Ck. C.. E.. B.. B.. Du.
+C.. C.. Et. B.. D.. D..
+C.. C.. Cb1 A.. A.. A..
+C.. C.. Cb1 Al. Al. Ak.
+C.. C.. C.. A.. A.. A..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Vince m
+clue A is in B
+clue A is row 3
+clue B is beside t
+clue C is col 6
+clue D is on b
+clue E is on l
+extra B is in E
+extra B is col 1
+extra C is beside k
+extra C is in A
+extra D is in C
+extra D is col 3
+extra E is beside l
+extra E is col 5
+solution A=1:3:4 B=1:1:1 C=1:6:6 D=1:4:3 E=1:5:5 V=1:2:2
+''',
+  '''
+case easy-076
+title The Final Rooftop
+setting city
+area A Bank
+area B Shop
+area C Park
+area D Cafe
+area E Square
+kind t block table
+kind e block tree
+kind m block lamp
+kind i block bin
+grid City 6 6
+B.. B.. B.. E.. E.. E..
+B.. B.. E.. E.. E.. D..
+B.. Bt. E.. Em. Em. Di.
+Bt. B.. C.. Ce. D.. D..
+C.. C.. C.. C.. A.. A..
+Ce. C.. Cm. C.. A.. At.
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eli m
+victim V Victor m
+clue A is row 3
+clue A is beside m
+clue B is in D
+clue C is col 6
+clue C is in E
+clue D is beside m
+clue E is beside t
+extra A is in E
+extra B is row 4
+extra C is corner
+extra D is in C
+extra D is row 6
+extra E is row 2
+extra E is in B
+solution A=1:3:3 B=1:4:5 C=1:1:6 D=1:6:4 E=1:2:2 V=1:5:1
+''',
+  '''
+case easy-077
+title The Final Milk Pail
+setting farm
+area A Pond
+area B House
+area C Orchard
+area D Field
+area E Yard
+kind k block rock
+kind b sit bed
+kind c sit chair
+kind e block tree
+kind h sit hay bale
+kind o block cow
+grid Farm 6 6
+D.. B.. B.. C.. C.. Ce.
+Do. B.. Bb1 C.. Ch. Ce.
+D.. B.. Bb1 C.. C.. C..
+Bc. B.. B.. B.. E.. E..
+B.. B.. Eh. E.. E.. Ak.
+Bb. E.. E.. Eh. E.. A..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Victor m
+clue A is beside c
+clue B is col 2
+clue B is in E
+clue C is in B
+clue C is row 3
+clue D is beside h
 clue D is row 1
 clue E is in E
-solution A=1:2:3 B=1:3:2 C=1:6:4 D=1:1:6 E=1:5:1 J=1:4:5
+extra A is beside b
+extra A is in B
+extra C is on b
+extra D is beside e
+extra E is row 4
+solution A=1:5:1 B=1:6:2 C=1:3:3 D=1:1:5 E=1:4:6 V=1:2:4
+''',
+  '''
+case easy-078
+title The Final Bell
+setting school
+area A Canteen
+area B Classroom
+area C Library
+area D Gym
+area E Hall
+kind c sit chair
+kind d block desk
+kind i block bin
+kind m sit mat
+kind n sit bench
+grid School 6 6
+Ac. Ac. B.. B.. B.. B..
+A.. A.. Bi. B.. B.. Bd.
+E.. A.. A.. B.. B.. B..
+E.. D.. Ac. A.. Cc. C..
+E.. Dm. D.. D.. C.. C..
+Ei. Dn. D.. D.. C.. C..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Viola f
+clue A is on m
+clue B is beside i
+clue C is beside c
+clue D is in D
+clue D is col 4
+clue E is in A
+extra A is beside n
+extra A is in D
+extra B is in B
+extra B is row 1
+extra C is col 6
+extra C is in C
+extra E is row 2
+extra E is beside c
+solution A=1:5:2 B=1:1:3 C=1:4:6 D=1:6:4 E=1:2:1 V=1:3:5
+''',
+  '''
+case easy-079
+title The Final Platform
+setting train
+area A Dining Car
+area B Second Class
+area C First Class
+area D Sleeper
+area E Engine
+kind t block table
+kind r sit rug
+kind c sit seat
+kind l block suitcase
+kind s block shelf
+grid Train 6 6
+Dl. Dr. D.. D.. Ar. A..
+D.. D.. Dr. C.. At. A..
+D.. D.. Cl. C.. A.. Ar.
+B.. E.. C.. C.. A.. A..
+B.. E.. E.. Es. A.. A..
+Bc. E.. Es. E.. A.. A..
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eva f
+victim V Vince m
+clue A is row 1
+clue A is beside r
+clue B is col 4
+clue B is in E
+clue C is beside s
+clue D is in E
+clue E is beside l
+extra A is in A
+extra B is beside s
+extra C is in E
+extra C is row 5
+extra D is row 4
+extra E is in D
+extra E is col 1
+solution A=1:1:6 B=1:6:4 C=1:5:3 D=1:4:2 E=1:2:1 V=1:3:5
+''',
+  '''
+case easy-080
+title The Final Lifebuoy
+setting ship
+area A Hold
+area B Bow
+area C Galley
+area D Deck
+area E Cabin
+kind l block barrel
+kind c sit chair
+kind k block crate
+kind r sit rug
+grid Ship 6 6
+C.. C.. C.. A.. Al. Al.
+Er. Ec. C.. Cl. A.. A..
+E.. E.. D.. A.. A.. A..
+Ec. E.. Dk. B.. Bc. Bl.
+E.. Er. E.. B.. B.. B..
+E.. E.. B.. B.. B.. B..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Vince m
+clue A is col 6
+clue A is in A
+clue B is beside l
+clue B is in B
+clue C is on r
+clue D is beside k
+clue E is beside l
+extra A is beside l
+extra B is on c
+extra C is in E
+extra C is col 2
+extra D is row 3
+extra D is in D
+extra E is row 1
+extra E is in A
+solution A=1:2:6 B=1:4:5 C=1:5:2 D=1:3:3 E=1:1:4 V=1:6:1
+''',
+  '''
+case easy-081
+title The Final Tent Peg
+setting camp
+area A Tents
+area B Kitchen
+area C Lake
+area D Field
+area E Fire Ring
+kind c sit chair
+kind t block table
+kind k block rock
+kind n sit tent
+kind l sit log
+grid Camp 6 6
+Bc. B.. B.. B.. El. E..
+B.. B.. E.. E.. E.. E..
+Bt. B.. E.. E.. E.. Ac.
+B.. B.. El. El. A.. A..
+Bc. B.. E.. D.. D.. Ck.
+B.. B.. Bc. D.. Dn. C..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Val m
+clue A is in E
+clue B is row 5
+clue B is in E
+clue C is in E
+clue C is row 3
+clue D is on c
+clue E is on n
+extra A is row 2
+extra B is beside l
+extra C is beside l
+extra D is in B
+extra D is col 1
+extra E is col 5
+extra E is in D
+solution A=1:2:6 B=1:5:3 C=1:3:4 D=1:1:1 E=1:6:5 V=1:4:2
+''',
+  '''
+case easy-082
+title The Final Trolley
+setting hotel
+area A Lobby
+area B Bar
+area C Room 2
+area D Kitchen
+area E Pool
+kind o sit sofa
+kind d block desk
+kind c sit chair
+kind t block table
+kind p block plant
+kind u sit sunbed
+grid Hotel 6 6
+A.. A.. A.. E.. Ep. E..
+A.. A.. Ad. E.. E.. E..
+C.. C.. A.. Ad. Eu. E..
+Cc. A.. A.. A.. E.. Dt.
+B.. Bo. Ao1 D.. D.. D..
+Ao2 Ao2 Ao1 D.. D.. D..
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eli m
+victim V Vera f
+clue A is corner
+clue B is in D
+clue C is beside p
+clue D is col 3
+clue D is beside d
+clue E is beside c
+extra A is row 6
+extra A is in D
+extra B is row 5
+extra C is in E
+extra C is beside u
+extra D is in A
+extra E is in C
+extra E is row 3
+solution A=1:6:6 B=1:5:4 C=1:2:5 D=1:1:3 E=1:3:1 V=1:4:2
+''',
+  '''
+case easy-083
+title The Final Ice Cream
+setting park
+area A Playground
+area B Lawn
+area C Pond
+area D Cafe
+area E Path
+kind n sit bench
+kind u block bush
+kind b sit boat
+kind t block table
+kind c sit chair
+grid Park 6 6
+D.. E.. Eu. E.. E.. En.
+D.. Dc. En. E.. E.. E..
+D.. D.. Cb1 E.. B.. B..
+D.. Dt. Cb1 B.. Bn. B..
+An. A.. A.. B.. B.. Bn.
+A.. A.. A.. An. B.. Bu.
+person A Adam m
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eli m
+victim V Vince m
+clue A is in B
+clue A is col 5
+clue B is in A
+clue C is in A
+clue C is on n
+clue D is in E
+clue D is col 3
+clue E is beside n
+clue E is col 4
+extra A is beside n
+extra B is col 2
+extra C is col 1
+extra D is on n
+extra E is in B
+solution A=1:3:5 B=1:6:2 C=1:5:1 D=1:2:3 E=1:4:4 V=1:1:6
+''',
+  '''
+case easy-084
+title The Final Exhibit
+setting museum
+area A Garden
+area B Cafe
+area C Gift Shop
+area D Gallery
+area E Hall
+kind u block statue
+kind p block plant
+kind v block vase
+kind s block shelf
+kind n sit bench
+grid Museum 6 6
+A.. A.. A.. A.. Du. D..
+Au. A.. A.. Au. E.. D..
+Cv. C.. Cv. E.. E.. En.
+C.. C.. C.. E.. E.. E..
+C.. Cs. E.. E.. Eu. Bp.
+C.. C.. E.. En. B.. B..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Vera f
+clue A is beside s
+clue B is in B
+clue C is col 5
+clue C is beside n
+clue D is in A
+clue D is col 3
+clue E is beside u
+clue E is col 2
+extra A is row 5
+extra A is in C
+extra B is beside p
+extra B is row 6
+extra C is in E
+extra E is in A
+solution A=1:5:1 B=1:6:6 C=1:3:5 D=1:1:3 E=1:2:2 V=1:4:4
+''',
+  '''
+case easy-085
+title The Broken Saucepan
+setting home
+area A Garage
+area B Bedroom
+area C Bathroom
+area D Garden
+area E Kitchen
+kind a sit car
+kind s block shelf
+kind b sit bed
+kind c sit chair
+kind p block plant
+kind e block tree
+grid Home 6 6
+As. A.. E.. Es. B.. B..
+A.. A.. E.. B.. B.. B..
+A.. A.. D.. Bc. B.. Bb2
+A.. A.. De. B.. Bb. Bb2
+A.. Aa1 Aa1 B.. Cp. C..
+A.. A.. A.. A.. C.. C..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Victor m
+clue A is beside s
+clue B is corner
+clue C is on a
+clue D is in A
+clue E is in D
+extra A is in A
+extra A is col 1
+extra B is in B
+extra B is row 1
+extra C is beside a
+extra C is in A
+extra D is col 4
+extra E is row 3
+extra E is beside e
+solution A=1:2:1 B=1:1:6 C=1:5:2 D=1:6:4 E=1:3:3 V=1:4:5
+''',
+  '''
+case easy-086
+title The Broken Deckchair
+setting beach
+area A Cafe
+area B Sand
+area C Dunes
+area D Rocks
+area E Sea
+kind t block table
+kind c sit chair
+kind u block umbrella
+kind d sit sunbed
+kind k block rock
+kind w sit towel
+kind b sit boat
+grid Beach 6 6
+D.. D.. Dk. B.. B.. B..
+C.. E.. D.. Dw. Bu. Bd.
+C.. Eb1 Eb1 D.. A.. A..
+C.. C.. Ck. D.. A.. A..
+Ck. C.. C.. Ck. Ac. A..
+C.. C.. C.. Ck. A.. At.
+person A Anna f
+person B Ben m
+person C Cora f
+person D Dan m
+person E Eva f
+victim V Vanda f
+clue A is beside b
+clue A is col 3
+clue B is on w
+clue C is beside k
+clue D is beside c
+clue D is col 6
+clue E is corner
+clue E is row 1
+extra A is on b
+extra B is in D
+extra B is col 4
+extra C is in C
+extra C is col 2
+extra D is beside t
+extra E is in D
+solution A=1:3:3 B=1:2:4 C=1:4:2 D=1:5:6 E=1:1:1 V=1:6:5
+''',
+  '''
+case easy-087
+title The Broken Pinecone
+setting forest
+area A Clearing
+area B Pines
+area C Path
+area D Cave
+area E Lake
+kind k block rock
+kind e block tree
+kind b sit boat
+grid Forest 6 6
+A.. A.. Dk. E.. E.. E..
+Ak. A.. D.. Ek. Eb1 Eb1
+A.. Ak. D.. Be. Ek. E..
+A.. B.. Bk. B.. E.. E..
+A.. B.. B.. C.. E.. E..
+B.. B.. C.. Ck. C.. C..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is corner
+clue A is in B
+clue B is in D
+clue C is in B
+clue D is on b
+clue D is beside k
+clue E is in C
+extra A is row 6
+extra B is row 3
+extra C is col 2
+extra C is beside k
+extra D is row 2
+extra E is beside k
+extra E is row 5
+solution A=1:6:1 B=1:3:3 C=1:4:2 D=1:2:5 E=1:5:4 V=1:1:6
+''',
+  '''
+case easy-088
+title The Broken Briefcase
+setting city
+area A Cafe
+area B Bank
+area C Park
+area D Shop
+area E Street
+kind t block table
+kind c sit chair
+kind e block tree
+kind s block shelf
+kind m block lamp
+kind i block bin
+grid City 6 6
+E.. Ei. E.. D.. Ds. Dt.
+A.. At. E.. D.. Ds. Ds.
+A.. A.. E.. D.. D.. D..
+Bc. B.. E.. D.. D.. D..
+Em. E.. Ei. D.. Ds. Ce.
+E.. E.. C.. Ce. C.. C..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is col 5
+clue B is in E
+clue B is row 3
+clue C is in A
+clue D is in D
+clue D is col 6
+clue E is in E
+extra A is beside e
+extra A is in C
+extra C is col 1
+extra C is beside t
+extra E is beside i
+extra E is beside m
+solution A=1:6:5 B=1:3:3 C=1:2:1 D=1:4:6 E=1:5:2 V=1:1:4
+''',
+  '''
+case easy-089
+title The Broken Horseshoe
+setting farm
+area A Pond
+area B House
+area C Yard
+area D Barn
+area E Orchard
+kind k block rock
+kind t block table
+kind a sit tractor
+kind g block pig
+kind h sit hay bale
+grid Farm 6 6
+D.. D.. C.. C.. C.. C..
+D.. D.. Ca1 Ca1 C.. C..
+D.. Dg. C.. C.. Ca2 Ca2
+D.. D.. Dg. A.. A.. A..
+Dg. Ak. A.. A.. E.. E..
+Bt. B.. B.. E.. Eh. E..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is in D
+clue A is row 4
+clue B is beside a
+clue B is row 1
+clue C is beside k
+clue D is beside g
+clue D is row 2
+clue E is on h
+extra A is beside g
+extra B is in C
+extra C is row 5
+extra C is in A
+extra D is in D
+extra E is row 6
+extra E is in E
+solution A=1:4:1 B=1:1:4 C=1:5:3 D=1:2:2 E=1:6:5 V=1:3:6
+''',
+  '''
+case easy-090
+title The Broken Notebook
+setting school
+area A Canteen
+area B Library
+area C Hall
+area D Yard
+area E Gym
+kind t block table
+kind d block desk
+kind i block bin
+kind s block shelf
+kind e block tree
+kind n sit bench
+kind m sit mat
+grid School 6 6
+En. E.. E.. E.. E.. E..
+Em. E.. E.. E.. E.. Em.
+B.. B.. Em. En. D.. E..
+B.. Bd. C.. C.. Di. D..
+C.. C.. Ci. C.. D.. De.
+C.. Cs. C.. Cs. A.. At.
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Vera f
+clue A is in D
+clue A is row 4
+clue B is beside n
+clue B is col 4
+clue C is beside i
+clue D is beside e
+clue E is beside d
+extra A is beside i
+extra B is in E
+extra C is in C
+extra C is beside s
+extra D is beside i
+extra D is in D
+extra E is row 3
+extra E is in B
+solution A=1:4:6 B=1:2:4 C=1:6:3 D=1:5:5 E=1:3:2 V=1:1:1
+''',
+  '''
+case easy-091
+title The Broken Lantern
+setting train
+area A Luggage Car
+area B Engine
+area C First Class
+area D Dining Car
+area E Sleeper
+kind k block trunk
+kind c sit seat
+kind s block shelf
+kind l block suitcase
+kind r sit rug
+grid Train 6 6
+C.. C.. Er. Bs. B.. B..
+C.. E.. E.. B.. B.. B..
+Cr. Cl. A.. B.. B.. Bc.
+A.. A.. A.. A.. B.. Bs.
+Ak. Dc. D.. Dc. Bs. B..
+Ak. D.. D.. D.. D.. D..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Viola f
+clue A is beside s
+clue A is row 1
+clue B is beside k
+clue C is on c
+clue C is col 4
+clue D is beside r
+clue E is beside s
+extra A is in B
+extra B is in A
+extra B is col 1
+extra C is in D
+extra D is col 3
+extra D is in E
+extra E is on c
+extra E is in B
+solution A=1:1:5 B=1:4:1 C=1:5:4 D=1:2:3 E=1:3:6 V=1:6:2
+''',
+  '''
+case easy-092
+title The Broken Rope
+setting ship
+area A Hold
+area B Bow
+area C Bridge
+area D Cabin
+area E Deck
+kind k block crate
+kind l block barrel
+kind c sit chair
+kind b sit bed
+grid Ship 6 6
+Ek. E.. E.. Cc. Db1 Db1
+E.. E.. E.. C.. A.. A..
+Ek. Cc. C.. C.. A.. Al.
+B.. Bc. B.. Ak. A.. A..
+Bc. B.. B.. A.. A.. A..
+B.. B.. Bc. A.. Ak. A..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eva f
+victim V Vlad m
+clue A is col 5
+clue B is beside c
+clue B is in C
+clue C is in E
+clue D is in C
+clue D is col 3
+clue E is on c
+extra A is in A
+extra A is beside k
+extra B is col 4
+extra C is beside k
+extra C is row 1
+extra D is beside c
+extra E is in B
+extra E is col 1
+solution A=1:4:5 B=1:2:4 C=1:1:2 D=1:3:3 E=1:5:1 V=1:6:6
+''',
+  '''
+case easy-093
+title The Broken Kettle
+setting camp
+area A Woods
+area B Tents
+area C Lake
+area D Fire Ring
+area E Kitchen
+kind l sit log
+kind c sit chair
+kind k block rock
+kind f block campfire
+kind t block table
+grid Camp 6 6
+E.. Et. E.. Et. E.. B..
+E.. E.. E.. Ec. E.. Bc.
+Ck. C.. D.. D.. B.. B..
+Ck. C.. D.. Bc. B.. Bc.
+A.. C.. Df. Bc. B.. B..
+Al. C.. D.. B.. Bc. B..
+person A Anna f
+person B Ben m
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Val m
+clue A is in D
+clue B is in C
+clue C is row 4
+clue C is on c
+clue D is on l
+clue E is beside t
+clue E is col 3
+extra A is row 3
+extra B is col 2
+extra C is in B
+extra D is in A
+extra D is corner
+extra E is in E
+solution A=1:3:4 B=1:5:2 C=1:4:6 D=1:6:1 E=1:1:3 V=1:2:5
+''',
+  '''
+case easy-094
+title The Broken Towel
+setting hotel
+area A Lobby
+area B Room 1
+area C Room 2
+area D Bar
+area E Garden
+kind p block plant
+kind d block desk
+kind b sit bed
+kind c sit chair
+kind e block tree
+grid Hotel 6 6
+A.. A.. A.. Ap. A.. B..
+Dc. D.. B.. B.. B.. Bb.
+D.. Dc. C.. C.. E.. Bd.
+D.. Dc. Cc. E.. E.. E..
+D.. D.. E.. E.. Ee. Ee.
+D.. Ee. E.. Ep. E.. E..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Victor m
+clue A is in B
+clue B is in E
+clue C is in E
+clue C is row 6
+clue D is row 2
+clue D is beside c
+clue E is on c
+extra A is beside b
+extra A is row 1
+extra B is beside p
+extra B is row 5
+extra C is beside p
+extra D is in D
+extra E is in C
+extra E is row 4
+solution A=1:1:6 B=1:5:4 C=1:6:5 D=1:2:2 E=1:4:3 V=1:3:1
+''',
+  '''
+case easy-095
+title The Broken Squirrel
+setting park
+area A Path
+area B Playground
+area C Lawn
+area D Cafe
+area E Pond
+kind u block bush
+kind n sit bench
+kind w sit swing
+kind c sit chair
+kind b sit boat
+grid Park 6 6
+D.. D.. D.. D.. D.. D..
+Dc. C.. Dc. D.. D.. D..
+C.. C.. B.. Bw. B.. A..
+C.. C.. Cn. E.. A.. A..
+Cu. Cn. Cn. Eb. Au. A..
+C.. C.. C.. A.. An. A..
+person A Adam m
+person B Ben m
+person C Carl m
+person D Dan m
+person E Eli m
+victim V Vince m
+clue A is on c
+clue B is on b
+clue C is beside u
+clue C is corner
+clue D is in A
+clue E is beside n
+extra A is row 2
+extra A is in D
+extra B is in E
+extra B is row 5
+extra C is row 6
+extra D is col 6
+extra E is in C
+extra E is col 2
+solution A=1:2:3 B=1:5:4 C=1:6:1 D=1:3:6 E=1:4:2 V=1:1:5
+''',
+  '''
+case easy-096
+title The Broken Audio Guide
+setting museum
+area A Hall
+area B Cafe
+area C Gift Shop
+area D Garden
+area E Gallery
+kind p block plant
+kind c sit chair
+kind s block shelf
+kind n sit bench
+kind v block vase
+grid Museum 6 6
+A.. Ap. A.. Cs. B.. B..
+C.. C.. C.. C.. Bc. Bc.
+C.. C.. C.. C.. B.. B..
+Cs. C.. Cs. E.. E.. B..
+Ev. En. E.. E.. E.. D..
+E.. E.. E.. D.. D.. Dn.
+person A Anna f
+person B Bea f
+person C Cora f
+person D Dan m
+person E Eli m
+victim V Viola f
+clue A is beside p
+clue B is in E
+clue B is col 1
+clue C is on c
+clue D is beside s
+clue E is in D
+extra A is in A
+extra A is col 3
+extra B is beside v
+extra C is col 5
+extra C is beside c
+extra D is in C
+extra D is col 2
+extra E is beside n
+extra E is col 6
+solution A=1:1:3 B=1:6:1 C=1:2:5 D=1:4:2 E=1:5:6 V=1:3:4
+''',
+  '''
+case easy-097
+title The Borrowed Cushion
+setting home
+area A Bedroom
+area B Bathroom
+area C Living Room
+area D Garage
+area E Kitchen
+kind b sit bed
+kind s block shelf
+kind p block plant
+kind t block table
+grid Home 6 6
+Ab2 Ab2 A.. A.. E.. E..
+C.. Ab1 Ab1 As. Ep. Et.
+Cp. A.. A.. A.. E.. E..
+B.. A.. A.. A.. E.. Ep.
+B.. B.. D.. Ds. Ds. E..
+B.. Bs. D.. D.. D.. D..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dan m
+person E Eva f
+victim V Vince m
+clue A is row 1
+clue A is beside s
+clue B is in C
+clue C is in E
+clue D is in D
+clue D is col 5
+clue E is in D
+extra A is in A
+extra B is col 1
+extra B is beside p
+extra C is beside t
+extra C is col 6
+extra D is beside s
+extra E is beside s
+extra E is col 3
+solution A=1:1:4 B=1:2:1 C=1:3:6 D=1:6:5 E=1:5:3 V=1:4:2
+''',
+  '''
+case easy-098
+title The Borrowed Lifebelt
+setting beach
+area A Sand
+area B Rocks
+area C Cafe
+area D Pier
+area E Sea
+kind d sit sunbed
+kind u block umbrella
+kind k block rock
+kind w sit towel
+kind c sit chair
+kind t block table
+kind b sit boat
+grid Beach 6 6
+C.. C.. C.. Cc. C.. Cc.
+C.. Ct. C.. C.. E.. Eb.
+A.. Ad. D.. D.. E.. B..
+A.. A.. Dt. D.. E.. B..
+Au. A.. B.. Bk. B.. B..
+B.. B.. Bw. B.. Bk. B..
+person A Anna f
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eli m
+victim V Vera f
+clue A is beside w
+clue A is col 4
+clue B is in B
+clue C is in E
+clue C is row 3
+clue D is beside d
+clue E is on c
+extra A is beside k
+extra B is beside k
+extra B is beside w
+extra D is in A
+extra D is row 4
+extra E is row 1
+extra E is in C
+solution A=1:6:4 B=1:5:3 C=1:3:5 D=1:4:2 E=1:1:6 V=1:2:1
+''',
+  '''
+case easy-099
+title The Borrowed Moss
+setting forest
+area A Cabin
+area B Clearing
+area C Pines
+area D Lake
+area E Path
+kind c sit chair
+kind k block rock
+kind u block bush
+kind b sit boat
+kind l sit log
+grid Forest 6 6
+B.. B.. Db1 Db1 E.. E..
+B.. B.. D.. El. E.. E..
+B.. Bu. E.. Eu. E.. Ac.
+B.. Bk. Eu. E.. E.. A..
+B.. Ck. C.. El. E.. E..
+Bk. C.. Ck. C.. C.. E..
+person A Adam m
+person B Bea f
+person C Carl m
+person D Dana f
+person E Eva f
+victim V Vince m
+clue A is in C
+clue B is beside u
+clue C is row 1
+clue C is in B
+clue D is beside k
+clue E is beside k
+clue E is col 4
+extra A is col 3
+extra A is beside k
+extra B is row 3
+extra B is in E
+extra D is row 4
+extra D is in B
+extra E is in C
+solution A=1:5:3 B=1:3:5 C=1:1:2 D=1:4:1 E=1:6:4 V=1:2:6
+''',
+  '''
+case easy-100
+title The Borrowed Pigeon
+setting city
+area A Park
+area B Square
+area C Bank
+area D Shop
+area E Street
+kind i block bin
+kind e block tree
+kind t block table
+kind s block shelf
+kind m block lamp
+kind a sit car
+grid City 6 6
+D.. Dt. D.. D.. D.. Ea1
+Bi. D.. Ds. Dt. D.. Ea1
+B.. Dt. D.. D.. D.. E..
+B.. B.. D.. D.. A.. E..
+B.. B.. Be. A.. A.. E..
+C.. Ct. C.. Ai. Em. E..
+person A Adam m
+person B Ben m
+person C Cora f
+person D Dana f
+person E Eli m
+victim V Vicky f
+clue A is beside i
+clue A is in B
+clue B is corner
+clue C is in A
+clue C is row 4
+clue D is in C
+clue E is beside t
+extra A is col 1
+extra B is in E
+extra B is beside a
+extra D is beside t
+extra D is row 6
+extra E is beside s
+extra E is in D
+solution A=1:3:1 B=1:1:6 C=1:4:5 D=1:6:3 E=1:2:2 V=1:5:4
 ''',
 ];

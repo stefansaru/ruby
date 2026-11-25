@@ -16,7 +16,7 @@ It is pushy's working pipeline: the sheet and its prompt are the only copy of ar
 - [ ] Docs list the art still outstanding
 
 ## Implementation
-The art list and prompt workflow are being written in round 1. No art exists.
+The art list (`docs/Art.md`) and the prompt writer (`tool/write_sprite_prompts.py`) are written (2026-11-24; prompts regenerated 2026-11-25). No art exists; the cutter is not built.
 
 ## Related Tests
 None yet.

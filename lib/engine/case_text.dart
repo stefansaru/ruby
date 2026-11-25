@@ -38,7 +38,9 @@ class _Parser {
   final List<Opening> openings = <Opening>[];
   final List<Person> people = <Person>[];
   final List<Clue> clues = <Clue>[];
+  final List<Clue> extras = <Clue>[];
   final List<(int, List<String>)> clueLines = <(int, List<String>)>[];
+  final List<(int, List<String>)> extraLines = <(int, List<String>)>[];
   final List<(int, List<String>)> openLines = <(int, List<String>)>[];
   (int, List<String>)? solutionLine;
 
@@ -47,6 +49,17 @@ class _Parser {
 
   int number(String s, [String what = 'number']) =>
       int.tryParse(s) ?? fail('expected a $what, got "$s"');
+
+  /// A count of people: never negative.
+  int count(String s) {
+    final n = number(s, 'count');
+    return n >= 0 ? n : fail('a count cannot be negative');
+  }
+
+  /// A line that may appear only once.
+  void once(String word, bool first) {
+    if (!first) fail('"$word" is given twice');
+  }
 
   CaseDef parse() {
     var i = 0;
@@ -61,10 +74,13 @@ class _Parser {
           : '';
       switch (t[0]) {
         case 'case':
+          once('case', id.isEmpty);
           id = rest;
         case 'title':
+          once('title', title.isEmpty);
           title = rest;
         case 'setting':
+          once('setting', setting.isEmpty);
           setting = rest;
         case 'rule':
           if (rest == 'liar') {
@@ -111,18 +127,34 @@ class _Parser {
           if (people.any((Person p) => p.id == t[1])) {
             fail('person ${t[1]} is defined twice');
           }
+          final name = t[2].replaceAll('_', ' ');
+          if (people.any((Person p) => p.name == name)) {
+            fail('two people are called $name');
+          }
+          final traits = t.length > 4 ? t[4].split(',').toSet() : <String>{};
+          for (final trait in traits) {
+            // These words already mean something where a trait is named.
+            if (trait.isEmpty ||
+                trait.startsWith('!') ||
+                const <String>{'m', 'f', 'any'}.contains(trait)) {
+              fail('"$trait" cannot be a trait');
+            }
+          }
           people.add(
             Person(
               id: t[1],
-              name: t[2].replaceAll('_', ' '),
+              name: name,
               gender: t[3] == 'm' ? Gender.male : Gender.female,
-              traits: t.length > 4 ? t[4].split(',').toSet() : const <String>{},
+              traits: traits,
               isVictim: t[0] == 'victim',
             ),
           );
         case 'clue':
           clueLines.add((lineNo, t.sublist(1)));
+        case 'extra':
+          extraLines.add((lineNo, t.sublist(1)));
         case 'solution':
+          once('solution', solutionLine == null);
           solutionLine = (lineNo, t.sublist(1));
         default:
           fail('unknown line "${t[0]}"');
@@ -130,6 +162,7 @@ class _Parser {
     }
     lineNo = 0;
     if (id.isEmpty) fail('missing "case <id>"');
+    if (setting.isEmpty) fail('missing "setting <id>"');
     if (grids.isEmpty) fail('no grid');
     if (people.where((Person p) => p.isVictim).length != 1) {
       fail('a case has exactly one victim');
@@ -148,6 +181,14 @@ class _Parser {
       }
       clues.add(clue);
     }
+    for (final (int n, List<String> t) in extraLines) {
+      lineNo = n;
+      final clue = _clue(t);
+      final who = clue.subject;
+      if (who == null) fail('an extra statement needs a speaker');
+      if (people[who].isVictim) fail('the victim gives no statement');
+      extras.add(clue);
+    }
     List<int>? solution;
     if (solutionLine != null) {
       lineNo = solutionLine!.$1;
@@ -164,16 +205,13 @@ class _Parser {
       openings: openings,
       people: people,
       clues: clues,
+      extras: extras,
       liar: liar,
       noTouch: noTouch,
       solution: solution,
     );
-    var capacity = 0;
-    for (final g in grids) {
-      capacity += g.rows < g.cols ? g.rows : g.cols;
-    }
-    if (people.length > capacity) {
-      fail('${people.length} people cannot fit: the grids hold $capacity');
+    if (people.length > c.capacity) {
+      fail('${people.length} people cannot fit: the grids hold ${c.capacity}');
     }
     for (final o in openings) {
       if (!c.isWall(o.cell, o.side)) {
@@ -186,6 +224,13 @@ class _Parser {
     if (solution != null) {
       final wrong = c.check(solution);
       if (wrong != null) fail('the stated solution is wrong: $wrong');
+      for (final extra in extras) {
+        if (!extra.holds(c, solution)) {
+          fail('an extra statement is false: ${clueNotation(c, extra)}');
+        }
+      }
+    } else if (extras.isNotEmpty) {
+      fail('extra statements need a stated solution to be checked against');
     }
     return c;
   }
@@ -286,7 +331,13 @@ class _Parser {
     final side = 'NESW'.indexOf(t[4]);
     if (side < 0 || t[4].length != 1) fail('side is N, E, S or W');
     if (t[5] != 'door' && t[5] != 'window') fail('door or window');
-    openings.add(Opening(cell, Side.values[side], isDoor: t[5] == 'door'));
+    final opening = Opening(cell, Side.values[side], isDoor: t[5] == 'door');
+    if (openings.any(
+      (Opening o) => o.cell == opening.cell && o.side == opening.side,
+    )) {
+      fail('two openings on the same side of one square');
+    }
+    openings.add(opening);
   }
 
   int _person(String s) {
@@ -347,7 +398,9 @@ class _Parser {
         return OnKind(k);
       case 'beside':
         if (t.length == 3 && t[2].startsWith('x')) {
-          return BesideKind(_kind(t[1]), exactly: number(t[2].substring(1)));
+          final sides = number(t[2].substring(1));
+          if (sides < 1 || sides > 4) fail('a square has 1 to 4 sides');
+          return BesideKind(_kind(t[1]), exactly: sides);
         }
         need(2);
         return BesideKind(_kind(t[1]));
@@ -391,7 +444,7 @@ class _Parser {
       switch (t[1]) {
         case 'count':
           if (t.length < 4) fail('count <n> <test>');
-          return Count(_test(t.sublist(3)), number(t[2]));
+          return Count(_test(t.sublist(3)), count(t[2]));
         case 'more':
           if (t.length != 4) fail('more <area> <area>');
           return More(_area(t[2]), _area(t[3]));
@@ -450,7 +503,10 @@ class _Parser {
         return Rel(s, other(), RelKind.samePosition);
       case 'dist':
         if (t.length != 4) fail('dist <person> <steps>');
-        return Rel(s, other(), RelKind.distance, a: number(t[3]));
+        final steps = number(t[3]);
+        // Never the same row or column, so never fewer than two steps.
+        if (steps < 2) fail('two people are at least 2 steps apart');
+        return Rel(s, other(), RelKind.distance, a: steps);
       case 'alone':
         exact(2);
         return Alone(s);
@@ -458,10 +514,13 @@ class _Parser {
         if (t.length < 3) fail('alonewith <person>...');
         final list = t.sublist(2).map(_person).toList();
         if (list.contains(s)) fail('alonewith lists the other people');
+        if (list.toSet().length != list.length) {
+          fail('alonewith names someone twice');
+        }
         return AloneWith(s, list);
       case 'others':
         if (t.length != 4) fail('others <who> <n>');
-        return Others(s, _selector(t[2]), number(t[3]));
+        return Others(s, _selector(t[2]), count(t[3]));
       case 'only':
         return OnlyOne(s, _test(t.sublist(2)));
       case 'allothers':
@@ -479,11 +538,70 @@ class _Parser {
       if (at.length != 3) fail('solution entry is <id>=<grid>:<row>:<col>');
       final g = number(at[0]);
       if (g < 1 || g > grids.length) fail('solution: no grid $g');
-      pos[_person(kv[0])] = _cell(g - 1, number(at[1]), number(at[2]));
+      final who = _person(kv[0]);
+      if (pos[who] >= 0) fail('the solution places ${kv[0]} twice');
+      pos[who] = _cell(g - 1, number(at[1]), number(at[2]));
     }
     if (pos.contains(-1)) fail('the solution must place everyone');
     return pos;
   }
+}
+
+/// What a list of cases needs to know about one, read without checking
+/// the whole case (the list would otherwise parse and verify every row).
+class CaseHeader {
+  const CaseHeader({
+    required this.id,
+    required this.title,
+    required this.setting,
+    required this.sizes,
+    required this.people,
+  });
+  final String id;
+  final String title;
+  final String setting;
+
+  /// (rows, columns) of each grid.
+  final List<(int, int)> sizes;
+  final int people;
+}
+
+/// The header of a case in the text format. Trusts the text: use
+/// [parseCase] to check it. Missing parts come back empty, never thrown.
+CaseHeader readHeader(String text) {
+  var id = '';
+  var title = '';
+  var setting = '';
+  var people = 0;
+  final sizes = <(int, int)>[];
+  for (final raw in text.split('\n')) {
+    final line = raw.trim();
+    final space = line.indexOf(' ');
+    if (space < 0) continue;
+    final rest = line.substring(space + 1).trim();
+    switch (line.substring(0, space)) {
+      case 'case':
+        id = rest;
+      case 'title':
+        title = rest;
+      case 'setting':
+        setting = rest;
+      case 'grid':
+        final t = rest.split(RegExp(r'\s+'));
+        final rows = t.length == 3 ? int.tryParse(t[1]) : null;
+        final cols = t.length == 3 ? int.tryParse(t[2]) : null;
+        if (rows != null && cols != null) sizes.add((rows, cols));
+      case 'person' || 'victim':
+        people++;
+    }
+  }
+  return CaseHeader(
+    id: id,
+    title: title,
+    setting: setting,
+    sizes: sizes,
+    people: people,
+  );
 }
 
 // ---------------------------------------------------------------- writing
@@ -604,6 +722,9 @@ String writeCase(CaseDef c) {
   }
   for (final clue in c.clues) {
     b.writeln('clue ${clueNotation(c, clue)}');
+  }
+  for (final extra in c.extras) {
+    b.writeln('extra ${clueNotation(c, extra)}');
   }
   final s = c.solution;
   if (s != null) {

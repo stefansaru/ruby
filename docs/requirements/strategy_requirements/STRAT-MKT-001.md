@@ -12,7 +12,7 @@ strategic_sources: [MarketResearch.md, PainPointsAndConcepts.md, Campaign_Launch
 The largest competitor has the thinnest features; the feature-rich ones are tiny. The clarity tier is open, and it is what a solo studio can do best.
 
 ## Requirement
-The game competes on clarity and fairness: exact clues, certified cases, real notes, calm ads. It does not try to match competitors on case volume, social play or editors.
+The game competes on clarity and fairness: exact clues, certified cases, real notes, no ads (owner ruling 2026-11-25). It does not try to match competitors on case volume, social play or editors.
 
 ## Strategic Sources
 - [MarketResearch.md](../../strategy/MarketResearch.md)

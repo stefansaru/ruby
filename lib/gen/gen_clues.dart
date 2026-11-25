@@ -323,3 +323,50 @@ List<Candidate>? chooseClues(CaseDef scene, GenConfig cfg, Random rnd) {
   });
   return ordered;
 }
+
+/// How many statements a suspect has once the extras are added.
+const int statementsPerSuspect = 3;
+
+/// Extra true statements for [c] (GEN-035): each suspect is topped up to
+/// [statementsPerSuspect]. They come from the same list of true
+/// statements as the clues, so none speaks of the victim's area.
+List<Clue> chooseExtras(CaseDef c, GenConfig cfg, Random rnd) {
+  // In a liar case a true extra beside the lie would name the liar, and
+  // leaving only the liar without extras would too: such a case has none.
+  if (c.liar) return const <Clue>[];
+  final pos = c.solution!;
+  final pool = listCandidates(c, pos, cfg.tier)..shuffle(rnd);
+  final used = <String>{for (final Clue x in c.clues) clueNotation(c, x)};
+  final out = <Clue>[];
+  for (var p = 0; p < c.people.length; p++) {
+    if (p == c.victim) continue;
+    final mine = <Clue>[
+      for (final Clue x in c.clues)
+        if (x.subject == p) x,
+    ];
+    bool namesLine(Clue x) => x is Is && (x.test is InRow || x.test is InCol);
+    while (mine.length < statementsPerSuspect) {
+      final open = <Candidate>[
+        for (final Candidate x in pool)
+          if (x.clue.subject == p &&
+              x.family != Family.notTest &&
+              !used.contains(clueNotation(c, x.clue)) &&
+              // A row and a column together would name the square.
+              !(namesLine(x.clue) && mine.any(namesLine)))
+            x,
+      ];
+      if (open.isEmpty) break;
+      var roll = rnd.nextInt(
+        open.fold(0, (int sum, Candidate x) => sum + x.family.weight),
+      );
+      final pick = open.firstWhere((Candidate x) {
+        roll -= x.family.weight;
+        return roll < 0;
+      });
+      mine.add(pick.clue);
+      out.add(pick.clue);
+      used.add(clueNotation(c, pick.clue));
+    }
+  }
+  return out;
+}

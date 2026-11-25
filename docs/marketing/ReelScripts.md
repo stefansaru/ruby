@@ -1,8 +1,8 @@
 # Reel Scripts — draft
 
 **Draft 1, 2026-11-24.** Building blocks for 20–40 second vertical videos:
-pick one hook, one middle, one ending. All need a playable build to record;
-none can be filmed yet. Screen text stays within the truth rules of
+pick one hook, one middle, one ending. A playable draft with placeholder shapes
+exists (2026-11-25); nothing is releasable or filmable until the art is in. Screen text stays within the truth rules of
 [Campaign_Launch.md](Campaign_Launch.md).
 
 ## Hooks (first two seconds)
@@ -52,7 +52,10 @@ the reveal. Never on a daily case on its day.)
 **E2.** The reveal: the murderer's token, the room outlined, one line: "Ben was
 alone with Vera in the Garden."
 
-**E3.** "Detective Sudoku. Free. Every case has one answer." Store badge.
+**E3.** "Detective Sudoku. No ads. Free to try. Every case has one answer."
+Store badge. *(Draft changed 2026-11-25 from "Detective Sudoku. Free. Every
+case has one answer.": the game has no ads and is no longer wholly free. Waits
+for the owner's approval.)*
 
 ## Rules for every clip
 

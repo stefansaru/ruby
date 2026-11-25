@@ -4,13 +4,10 @@ One list of everything known to be wrong, rough or accepted with a risk. An item
 deleted when it is fixed. Work to do is in [TODO.md](TODO.md); this file is for
 faults and for decisions not to fix.
 
-Dated 2026-11-24.
+Dated 2026-11-24, revised 2026-11-25. Numbers are not reused: 1.1 (objects in
+areas where they make no sense) was fixed on 2026-11-25 by GEN-029 and deleted.
 
 ## 1. Content
-
-1.1 **Objects can land where they make no sense.** The generator filters objects only
-by inside or outside, so a boat can be drawn on a Path and a car in a Hall. The rules
-still hold; the picture will look odd. TODO 6.
 
 1.2 **Two-grid cases deal areas at random.** "Upstairs" can get the Garden. TODO 7.
 
@@ -43,22 +40,27 @@ counts as a corner of the grid. Documented as the rule; TODO 8 asks the owner.
 
 ## 3. Product
 
-3.1 **The name may collide.** "Detective Sudoku" is another app's subtitle. TODO 49.
+3.1 **The name collides** with "Cluedoku: Detective Sudoku" and will change; it is
+still the working title everywhere. TODO 49.
 
 3.2 **Generated art is itself a risk.** Players in this genre mark apps down for
 AI-looking art; our art will come from prompts. Mitigation is in docs/Art.md and
 docs/strategy/RiskAnalysis.md; it is not proven.
 
-3.3 **No hint text exists.** The solver returns steps as data. The sentences in
-docs/Techniques.md are proposals. TODO 24.
+3.3 **Hint text is unapproved draft copy** (`describeStep`, `describeHint`). The
+sentences in docs/Techniques.md are proposals. TODO 24, 58.
+
+3.4 **The playable draft is a draft.** Solved ticks, mode and opened extras are
+saved, but a half-solved board is not (APP-GAM-012); objects are text labels; not
+laid out for small phones. TODO 14 to 22 and 25.
 
 ## 4. Accepted — do not re-raise
 
 4.1 **The packs are source files, not assets.** They make the repository diff large
 when regenerated. Accepted for the compile-time and test-time safety.
 
-4.2 **The tutorial and easy tiers overlap in technique range.** The tutorial is told
-apart by its 4x4 size and its guided steps, not by technique.
+4.2 **The tutorial and easy tiers have the same technique range** (clue and single,
+GEN-032). The tutorial is told apart by its 4x4 size; guided steps are not built (TODO 18).
 
 4.3 **`solution` names a grid by number while `open` names it by name** in the case
 format. Harmless; changing it would rewrite every pack.

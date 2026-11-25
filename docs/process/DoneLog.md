@@ -50,8 +50,49 @@ Done on 2026-11-24:
 - Process: commit checklist, this log.
 - Requirements register: strategy, app and process layers, one file per id.
 
-To be added when true: the first commit and push (with the commit hash).
+The first commit and push: 703bdc8, "Detective Sudoku round 1: docs, engine, generator,
+case packs". The later rounds are not committed (2026-11-25).
 
 Not built in this round, and not claimed: any playable screen, notes, hint
 text or hint screen, coins, ads, the daily case, art, sound, translations, the
 store release and the website page. They are in `TODO.md`.
+
+## After the first play on a phone (2026-11-24)
+
+- TODO 6 closed: each area lists the objects that belong in it; the generator and
+  the shipped-case check keep to the list (GEN-029).
+- The victim is always a V, listed last (GEN-030), and placed last by the solver
+  and the hints (GEN-031).
+- Easy cases need clue and single only; last in line moved to normal (GEN-032).
+  All five packs regenerated.
+- Playable draft: crosses on the row and column of a placed person; the hint says
+  who and why before it gives the square.
+
+## After the second play on a phone (2026-11-25)
+
+- Train lamp replaced by a suitcase; titles from the setting (GEN-033); no unused doors or
+  windows (GEN-034); extra statements in the case format and the generator (GEN-035);
+  100 cases each in tutorial, easy, normal and hard; all packs regenerated.
+- Statements as a checklist with tick and cross (GEN-036); "+" for one more statement;
+  placed cards greyed; next person selected and scrolled to; tap on a placed person lifts
+  them; hint card shorter and closable; area names on the grid.
+- Cases made on request (GEN-037) with a button under each pack.
+- Detective and cat mode as a wording switch; "How to play" sheet.
+- Progress, mode and opened extras saved on the device (TODO 19, the saving part).
+- Owner ruling: no ads. TODO items 27, 29 to 34 and 36 (coins, consent, banner, rewarded
+  video, ad health, ad ids, audio check, AdMob account) are dropped, not done. Monetisation rewritten.
+- Research recorded: non-murder puzzle books (docs/features/Modes.md); prices and audience
+  (docs/strategy/Monetisation.md, TargetAudience.md, MarketResearch.md).
+
+## The audit (2026-11-25)
+
+- Docs audit: 15 groups of findings applied (stale "not built" statements, the full
+  list of what `checkShipped` refuses, requirement statuses, "Covered by" lines, the
+  sprite tool and Art.md learning the suitcase).
+- Architecture audit: play decisions moved into `CaseSession`; shared rules given one
+  home; `Tier` and `usedOpenings` moved to the engine; the architecture test rewritten
+  as allowlists; `readHeader` for the case list.
+- Code review: grid clipping on wide and short screens, taps after solving, liar and
+  two-grid hints, the random button, parser values that can never be true, tool
+  arguments, saved numbers that make no sense, starting without storage.
+- Tests: 145 to 208; line coverage 95.6% to 99.96%.

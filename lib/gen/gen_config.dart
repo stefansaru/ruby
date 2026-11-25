@@ -2,26 +2,9 @@
 library;
 
 import '../data/settings.dart';
-import '../engine/logic_solver.dart';
+import '../engine/tier.dart';
 
-/// The difficulty ladder. A case belongs to a tier by the hardest technique
-/// the logic solver needs for it (docs/Levels.md), not by its size.
-enum Tier {
-  tutorial(Technique.clue, Technique.single),
-  easy(Technique.clue, Technique.lastInLine),
-  normal(Technique.intersection, Technique.pair),
-  hard(Technique.subset, Technique.counting),
-  expert(Technique.whatIf, Technique.liarSplit);
-
-  const Tier(this.easiest, this.hardest);
-
-  /// The hardest technique a case of this tier needs lies in this range.
-  final Technique easiest;
-  final Technique hardest;
-
-  bool accepts(Technique t) =>
-      t.index >= easiest.index && t.index <= hardest.index;
-}
+export '../engine/tier.dart';
 
 class GenConfig {
   GenConfig({
@@ -35,7 +18,7 @@ class GenConfig {
     this.liar = false,
     this.noTouch = false,
     this.traits = false,
-    this.attempts = 400,
+    this.attempts = 1500,
   }) {
     if (id.isEmpty) throw ArgumentError.value(id, 'id', 'must not be empty');
     if (!settings.any((SettingDef s) => s.id == setting)) {
@@ -50,7 +33,7 @@ class GenConfig {
       }
     }
     if (people < 3 || people > 12) {
-      throw ArgumentError.value(grids, 'grids', 'must hold 3 to 12 people');
+      throw ArgumentError.value(people, 'grids', 'must hold 3 to 12 people');
     }
     if (titleIndex < 0) {
       throw ArgumentError.value(

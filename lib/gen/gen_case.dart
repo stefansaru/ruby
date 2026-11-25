@@ -10,6 +10,7 @@ import '../engine/clue.dart';
 import '../engine/exact_solver.dart';
 import '../engine/logic_solver.dart';
 import '../engine/model.dart';
+import '../engine/openings.dart';
 import 'gen_clues.dart';
 import 'gen_config.dart';
 import 'gen_scene.dart';
@@ -68,21 +69,21 @@ GenOutcome generateCase(GenConfig cfg) {
 
     final chosen = chooseClues(scene, cfg, rnd);
     if (chosen == null) continue;
+    final clues = <Clue>[for (final Candidate x in chosen) x.clue];
     final c = scene.copyWith(
-      clues: <Clue>[for (final Candidate x in chosen) x.clue],
+      clues: clues,
       liar: cfg.liar,
+      // No door or window that no clue speaks of (GEN-034).
+      openings: usedOpenings(scene, clues),
     );
     final found = solveExact(c);
     if (found.length != 1 || c.check(found.first) != null) continue;
     pass(Gate.unique);
 
     final text = writeCase(c);
-    final CaseDef back;
-    try {
-      back = parseCase(text);
-    } on CaseFormatException {
-      continue;
-    }
+    // What was written must read back as the same case. A text the parser
+    // refuses here is a fault in the writer, so it is not caught.
+    final back = parseCase(text);
     if (writeCase(back) != text) continue;
     pass(Gate.wellFormed);
 
@@ -102,7 +103,11 @@ GenOutcome generateCase(GenConfig cfg) {
     if (families.length < wanted || most * 10 > chosen.length * 6) continue;
     pass(Gate.variety);
 
-    return GenOutcome(back, grade, funnel, draw, <Family>[
+    // Extras last, so they never decide which draw is accepted.
+    final full = parseCase(
+      writeCase(back.copyWith(extras: chooseExtras(back, cfg, rnd))),
+    );
+    return GenOutcome(full, grade, funnel, draw, <Family>[
       for (final Candidate x in chosen) x.family,
     ]);
   }

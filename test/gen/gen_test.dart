@@ -1,10 +1,12 @@
 import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ruby/data/settings.dart';
 import 'package:ruby/engine/case_text.dart';
 import 'package:ruby/engine/clue.dart';
 import 'package:ruby/engine/exact_solver.dart';
 import 'package:ruby/engine/model.dart';
+import 'package:ruby/engine/openings.dart';
 import 'package:ruby/engine/wording.dart';
 import 'package:ruby/gen/gen_campaign.dart';
 import 'package:ruby/gen/gen_case.dart';
@@ -173,9 +175,20 @@ void main() {
       expect(writeCase(scene), contains('---'));
     });
 
-    test('titles differ for every index', () {
-      final titles = <String>{for (var i = 0; i < titleCount; i++) titleFor(i)};
-      expect(titles, hasLength(titleCount));
+    test('GEN-033 titles differ for every index and every setting', () {
+      final titles = <String>{
+        for (final s in settings)
+          for (var i = 0; i < titleCount; i++) titleFor(s, i),
+      };
+      expect(titles, hasLength(titleCount * settings.length));
+    });
+
+    test('GEN-033 no title word belongs to two settings', () {
+      final nouns = <String>[for (final s in settings) ...s.titles];
+      expect(nouns.toSet(), hasLength(nouns.length));
+      for (final s in settings) {
+        expect(s.titles, hasLength(12), reason: s.id);
+      }
     });
   });
 
@@ -267,7 +280,8 @@ void main() {
           s = drawScene(cfg, rnd);
           if (s != null) chosen = chooseClues(s, cfg, rnd);
         }
-        final c = s!.copyWith(clues: <Clue>[for (final x in chosen) x.clue]);
+        final clues = <Clue>[for (final x in chosen) x.clue];
+        final c = s!.copyWith(clues: clues, openings: usedOpenings(s, clues));
         final found = solveExact(c);
         expect(found, hasLength(1));
         expect(found.single, c.solution);
@@ -300,7 +314,7 @@ void main() {
     test('GEN-028 every pack has unique ids, titles and seeds', () {
       final ids = <String>{};
       final seeds = <int>{};
-      final titles = <int>{};
+      final titles = <String>{};
       var total = 0;
       for (final tier in Tier.values) {
         final slots = campaign(tier);
@@ -309,7 +323,7 @@ void main() {
           total++;
           ids.add(cfg.id);
           seeds.add(cfg.seed);
-          titles.add(cfg.titleIndex);
+          titles.add('${cfg.setting} ${cfg.titleIndex}');
           expect(cfg.tier, tier);
           expect(cfg.id, startsWith('${tier.name}-'));
           expect(cfg.titleIndex, lessThan(titleCount));
@@ -318,6 +332,23 @@ void main() {
       expect(ids, hasLength(total));
       expect(seeds, hasLength(total));
       expect(titles, hasLength(total));
+    });
+
+    test('GEN-033 a tier too large for its share of titles is refused', () {
+      expect(titleRound(1), 0);
+      expect(titleRound(settings.length), 0);
+      expect(titleRound(settings.length + 1), 1);
+      expect(() => titleRound(10 * settings.length + 1), throwsStateError);
+      for (final tier in Tier.values) {
+        for (final cfg in campaign(tier)) {
+          // The shipped slots leave the rest of the titles to random cases.
+          expect(cfg.titleIndex, lessThan(Tier.values.length * 10));
+          expect(
+            randomConfig(tier, cfg.seed).titleIndex,
+            greaterThanOrEqualTo(Tier.values.length * 10),
+          );
+        }
+      }
     });
 
     test('GEN-028 every pack beyond the tutorial visits every setting', () {

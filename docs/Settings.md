@@ -27,216 +27,345 @@ Two more rules follow from how clues are worded:
   wrongly.
 - **Within a setting, every object has its own one-letter code**, used in the case format.
 
-## What an object entry says
+## Which object goes where
+
+**Each area lists the objects that belong in it, and an object is only ever placed in an
+area that lists it** (GEN-029, 2026-11-24). A boat is on the Lake, the Sea or a Pond; a car
+is in the Garage or on the Street; a bed is in a bedroom.
+
+*Why:* the first build only knew "inside" and "outside", so a boat could land in the Pines
+or on the Path. A scene that makes no sense makes the clues about it feel arbitrary.
 
 | Column | Meaning |
 |---|---|
+| Objects that belong there | The only objects the generator may put in that area. |
 | Can be on it | Yes: a person can stand on its square ("on a chair"). No: it blocks its square; people stand beside it. |
-| Where | inside: only in indoor areas. outside: only in outdoor areas. anywhere: both. |
 | Squares | 1, or 2 for a wide object. A wide object is drawn across two touching squares of one area when there is room, otherwise on one. |
 
-A scene does not use every object of its setting: the generator picks two or three objects
-you can be on and two or three that block, then places them only in areas where they belong.
-*Why:* a scene with eight kinds of object is hard to read; four to six is plenty for clues.
+A scene does not use every object: each area gets at most two kinds from its own list.
+*Why:* a scene with many kinds of object is hard to read.
 
 When a case has two grids, the grids take the setting's two grid names.
+
+The tables below are written from `lib/data/settings.dart`; `test/data/mapping_test.dart`
+checks the list itself and every shipped case against it.
+
+## Titles
+
+**A case title is "The", an adjective and one of its setting's title words** ("The Last
+Ticket" on the Train). Each setting has twelve words and no word is in two settings
+(GEN-033, 2026-11-25). *Why:* titles used to come from one list for every place, so a train
+case could be "The Muddy Matchbox".
 
 ## The settings
 
 ### Home — grids: Downstairs, Upstairs
 
-Areas: Kitchen, Bedroom, Bathroom, Living Room, Hall, Garage (indoor); Garden (outdoor).
+Title words: Teacup, Key, Slipper, Doorbell, Curtain, Saucepan, Cushion, Doormat, Armchair, Teapot, Photograph, Blanket.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| chair | c | yes | inside | 1 |
-| bed | b | yes | inside | 2 |
-| rug | r | yes | inside | 1 |
-| table | t | no | inside | 1 |
-| shelf | s | no | inside | 1 |
-| plant | p | no | anywhere | 1 |
-| tree | e | no | outside | 1 |
-| car | a | yes | anywhere | 2 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Kitchen | yes | chair, table, shelf, plant |
+| Bedroom | yes | bed, rug, chair, shelf |
+| Bathroom | yes | rug, shelf, plant |
+| Living Room | yes | chair, rug, table, plant |
+| Hall | yes | rug, shelf, plant |
+| Garden | no | tree, plant, chair, table |
+| Garage | yes | car, shelf |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| chair | c | yes | 1 |
+| bed | b | yes | 2 |
+| rug | r | yes | 1 |
+| table | t | no | 1 |
+| shelf | s | no | 1 |
+| plant | p | no | 1 |
+| tree | e | no | 1 |
+| car | a | yes | 2 |
 
 ### Beach — grids: North Beach, South Beach
 
-Areas: Sand, Sea, Pier, Dunes, Rocks (outdoor); Cafe (indoor).
+Title words: Sandcastle, Seashell, Sunhat, Lighthouse, Tide, Deckchair, Lifebelt, Flip-Flop, Bucket, Crab, Postcard, Parasol.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| towel | w | yes | outside | 1 |
-| boat | b | yes | outside | 2 |
-| sunbed | d | yes | outside | 1 |
-| umbrella | u | no | outside | 1 |
-| palm | p | no | outside | 1 |
-| rock | k | no | outside | 1 |
-| chair | c | yes | inside | 1 |
-| table | t | no | inside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Sand | no | towel, sunbed, umbrella, palm |
+| Sea | no | boat, rock |
+| Pier | no | chair, table |
+| Cafe | yes | chair, table |
+| Dunes | no | towel, palm, rock |
+| Rocks | no | rock, towel |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| towel | w | yes | 1 |
+| boat | b | yes | 2 |
+| sunbed | d | yes | 1 |
+| umbrella | u | no | 1 |
+| palm | p | no | 1 |
+| rock | k | no | 1 |
+| chair | c | yes | 1 |
+| table | t | no | 1 |
 
 ### Forest — grids: East Woods, West Woods
 
-Areas: Clearing, Pines, Lake, Path (outdoor); Cabin, Cave (indoor).
+Title words: Acorn, Mushroom, Owl, Trail, Fern, Pinecone, Moss, Birdhouse, Hollow, Footprint, Axe, Birdsong.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| tree | e | no | outside | 1 |
-| bush | u | no | outside | 1 |
-| rock | k | no | anywhere | 1 |
-| log | l | yes | outside | 1 |
-| boat | b | yes | outside | 2 |
-| chair | c | yes | inside | 1 |
-| table | t | no | inside | 1 |
-| rug | r | yes | inside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Clearing | no | log, rock, bush |
+| Pines | no | tree, bush, log, rock |
+| Lake | no | boat, rock |
+| Cabin | yes | chair, table, rug |
+| Path | no | log, rock, bush |
+| Cave | yes | rock, log |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| tree | e | no | 1 |
+| bush | u | no | 1 |
+| rock | k | no | 1 |
+| log | l | yes | 1 |
+| boat | b | yes | 2 |
+| chair | c | yes | 1 |
+| table | t | no | 1 |
+| rug | r | yes | 1 |
 
 ### City — grids: Old Town, New Town
 
-Areas: Street, Square, Park (outdoor); Shop, Cafe, Bank (indoor).
+Title words: Taxi, Newspaper, Tram, Alley, Rooftop, Briefcase, Pigeon, Signpost, Receipt, Umbrella, Pavement, Clocktower.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| car | a | yes | outside | 2 |
-| bench | n | yes | outside | 1 |
-| lamp | m | no | outside | 1 |
-| tree | e | no | outside | 1 |
-| shelf | s | no | inside | 1 |
-| table | t | no | inside | 1 |
-| chair | c | yes | inside | 1 |
-| bin | i | no | anywhere | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Street | no | car, lamp, bin |
+| Shop | yes | shelf, table, bin |
+| Cafe | yes | table, chair, bin |
+| Square | no | bench, lamp, tree, bin |
+| Bank | yes | table, chair, shelf |
+| Park | no | bench, tree, bin, lamp |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| car | a | yes | 2 |
+| bench | n | yes | 1 |
+| lamp | m | no | 1 |
+| tree | e | no | 1 |
+| shelf | s | no | 1 |
+| table | t | no | 1 |
+| chair | c | yes | 1 |
+| bin | i | no | 1 |
 
 ### Farm — grids: Farmyard, Fields
 
-Areas: Field, Yard, Pond, Orchard (outdoor); Barn, House (indoor).
+Title words: Scarecrow, Pitchfork, Rooster, Haystack, Milk Pail, Horseshoe, Wheelbarrow, Fence, Egg Basket, Weathervane, Gate, Harvest.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| hay bale | h | yes | anywhere | 1 |
-| tractor | a | yes | outside | 2 |
-| cow | o | no | outside | 1 |
-| pig | g | no | outside | 1 |
-| tree | e | no | outside | 1 |
-| chair | c | yes | inside | 1 |
-| table | t | no | inside | 1 |
-| bed | b | yes | inside | 2 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Barn | yes | hay bale, tractor, cow, pig |
+| Field | no | hay bale, tractor, cow |
+| Yard | no | tractor, pig, hay bale |
+| House | yes | chair, table, bed |
+| Pond | no | rock |
+| Orchard | no | tree, hay bale |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| hay bale | h | yes | 1 |
+| tractor | a | yes | 2 |
+| cow | o | no | 1 |
+| pig | g | no | 1 |
+| tree | e | no | 1 |
+| chair | c | yes | 1 |
+| table | t | no | 1 |
+| bed | b | yes | 2 |
+| rock | k | no | 1 |
 
 ### School — grids: Ground Floor, First Floor
 
-Areas: Classroom, Library, Gym, Hall, Canteen (indoor); Yard (outdoor).
+Title words: Blackboard, Satchel, Ruler, Homework, Bell, Notebook, Chalk, Report Card, Lunchbox, Pencil, Register, Eraser.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| desk | d | no | inside | 1 |
-| chair | c | yes | inside | 1 |
-| shelf | s | no | inside | 1 |
-| mat | m | yes | inside | 1 |
-| bench | n | yes | anywhere | 1 |
-| tree | e | no | outside | 1 |
-| table | t | no | inside | 1 |
-| bin | i | no | anywhere | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Classroom | yes | desk, chair, shelf, bin |
+| Library | yes | shelf, table, chair, desk |
+| Gym | yes | mat, bench |
+| Hall | yes | bench, bin, shelf |
+| Canteen | yes | table, chair, bin |
+| Yard | no | bench, tree, bin |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| desk | d | no | 1 |
+| chair | c | yes | 1 |
+| shelf | s | no | 1 |
+| mat | m | yes | 1 |
+| bench | n | yes | 1 |
+| tree | e | no | 1 |
+| table | t | no | 1 |
+| bin | i | no | 1 |
 
 ### Train — grids: Front Cars, Rear Cars
 
-Areas (all indoor): Engine, First Class, Second Class, Dining Car, Sleeper, Luggage Car.
+Title words: Ticket, Luggage, Whistle, Timetable, Platform, Lantern, Carriage, Compartment, Signal, Tunnel, Berth, Luggage Rack.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| seat | c | yes | inside | 1 |
-| bed | b | yes | inside | 2 |
-| table | t | no | inside | 1 |
-| trunk | k | no | inside | 1 |
-| rug | r | yes | inside | 1 |
-| shelf | s | no | inside | 1 |
-| lamp | l | no | inside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Engine | yes | seat, shelf |
+| First Class | yes | seat, table, rug, suitcase |
+| Second Class | yes | seat, shelf, suitcase |
+| Dining Car | yes | seat, table, rug |
+| Sleeper | yes | bed, rug, suitcase |
+| Luggage Car | yes | trunk, shelf, suitcase |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| seat | c | yes | 1 |
+| bed | b | yes | 2 |
+| table | t | no | 1 |
+| trunk | k | no | 1 |
+| rug | r | yes | 1 |
+| shelf | s | no | 1 |
+| suitcase | l | no | 1 |
 
 ### Ship — grids: Upper Deck, Lower Deck
 
-Areas: Deck, Bow (outdoor); Bridge, Cabin, Galley, Hold (indoor).
+Title words: Anchor, Porthole, Compass, Logbook, Lifebuoy, Rope, Gangway, Chart, Hammock, Spyglass, Sail, Cargo.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| chair | c | yes | anywhere | 1 |
-| bed | b | yes | inside | 2 |
-| crate | k | no | anywhere | 1 |
-| barrel | l | no | anywhere | 1 |
-| lifeboat | a | yes | outside | 2 |
-| table | t | no | inside | 1 |
-| rug | r | yes | inside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Deck | no | chair, lifeboat, barrel, crate |
+| Bridge | yes | chair, table |
+| Cabin | yes | bed, rug, chair, table |
+| Galley | yes | table, barrel, chair |
+| Hold | yes | crate, barrel |
+| Bow | no | chair, barrel |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| chair | c | yes | 1 |
+| bed | b | yes | 2 |
+| crate | k | no | 1 |
+| barrel | l | no | 1 |
+| lifeboat | a | yes | 2 |
+| table | t | no | 1 |
+| rug | r | yes | 1 |
 
 ### Camp — grids: Lakeside, Hillside
 
-Areas: Fire Ring, Tents, Lake, Woods, Field (outdoor); Kitchen (indoor).
+Title words: Marshmallow, Sleeping Bag, Torch, Rucksack, Tent Peg, Kettle, Flask, Songbook, Paddle, Guy Rope, Firewood, Billycan.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| tent | n | yes | outside | 1 |
-| log | l | yes | outside | 1 |
-| canoe | b | yes | outside | 2 |
-| tree | e | no | outside | 1 |
-| campfire | f | no | outside | 1 |
-| rock | k | no | outside | 1 |
-| table | t | no | anywhere | 1 |
-| chair | c | yes | anywhere | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Fire Ring | no | campfire, log, rock, chair |
+| Tents | no | tent, chair |
+| Lake | no | canoe, rock |
+| Woods | no | tree, log, rock |
+| Field | no | tent, chair, table |
+| Kitchen | yes | table, chair |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| tent | n | yes | 1 |
+| log | l | yes | 1 |
+| canoe | b | yes | 2 |
+| tree | e | no | 1 |
+| campfire | f | no | 1 |
+| rock | k | no | 1 |
+| table | t | no | 1 |
+| chair | c | yes | 1 |
 
 ### Hotel — grids: Ground Floor, First Floor
 
-Areas: Lobby, Room 1, Room 2, Bar, Kitchen (indoor); Pool, Garden (outdoor).
+Title words: Room Key, Luggage Cart, Suite, Guestbook, Trolley, Towel, Minibar, Revolving Door, Elevator, Wake-Up Call, Pillow, Reservation.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| bed | b | yes | inside | 2 |
-| chair | c | yes | inside | 1 |
-| sofa | o | yes | inside | 2 |
-| table | t | no | inside | 1 |
-| plant | p | no | anywhere | 1 |
-| desk | d | no | inside | 1 |
-| sunbed | u | yes | outside | 1 |
-| tree | e | no | outside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Lobby | yes | sofa, desk, plant, chair |
+| Room 1 | yes | bed, chair, desk |
+| Room 2 | yes | bed, chair, desk |
+| Bar | yes | chair, table, sofa |
+| Pool | no | sunbed, plant |
+| Kitchen | yes | table, chair |
+| Garden | no | tree, plant, chair |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| bed | b | yes | 2 |
+| chair | c | yes | 1 |
+| sofa | o | yes | 2 |
+| table | t | no | 1 |
+| plant | p | no | 1 |
+| desk | d | no | 1 |
+| sunbed | u | yes | 1 |
+| tree | e | no | 1 |
 
 ### Park — grids: North Park, South Park
 
-Areas: Lawn, Playground, Pond, Path, Rose Garden (outdoor); Cafe (indoor).
+Title words: Picnic, Kite, Duck, Bandstand, Ice Cream, Squirrel, Frisbee, Watering Can, Birdbath, Sundial, Carousel, Balloon.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| bench | n | yes | outside | 1 |
-| tree | e | no | outside | 1 |
-| bush | u | no | outside | 1 |
-| fountain | f | no | outside | 1 |
-| swing | w | yes | outside | 1 |
-| boat | b | yes | outside | 2 |
-| table | t | no | inside | 1 |
-| chair | c | yes | inside | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Lawn | no | tree, bench, bush |
+| Playground | no | swing, bench |
+| Pond | no | boat |
+| Path | no | bench, bush |
+| Rose Garden | no | bush, fountain, bench |
+| Cafe | yes | table, chair |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| bench | n | yes | 1 |
+| tree | e | no | 1 |
+| bush | u | no | 1 |
+| fountain | f | no | 1 |
+| swing | w | yes | 1 |
+| boat | b | yes | 2 |
+| table | t | no | 1 |
+| chair | c | yes | 1 |
 
 ### Museum — grids: Ground Floor, First Floor
 
-Areas: Hall, Gallery, Dino Room, Gift Shop, Cafe (indoor); Garden (outdoor).
+Title words: Painting, Fossil, Mummy, Catalogue, Exhibit, Audio Guide, Portrait, Relic, Display Case, Ticket Stub, Mask, Sculpture.
 
-| Object | Code | Can be on it | Where | Squares |
-|---|---|---|---|---|
-| bench | n | yes | anywhere | 1 |
-| statue | u | no | anywhere | 1 |
-| vase | v | no | inside | 1 |
-| skeleton | o | no | inside | 1 |
-| shelf | s | no | inside | 1 |
-| chair | c | yes | inside | 1 |
-| table | t | no | inside | 1 |
-| plant | p | no | anywhere | 1 |
+| Area | Indoor | Objects that belong there |
+|---|---|---|
+| Hall | yes | bench, statue, plant |
+| Gallery | yes | bench, vase, statue |
+| Dino Room | yes | skeleton, bench |
+| Gift Shop | yes | shelf, vase |
+| Cafe | yes | chair, table, plant |
+| Garden | no | bench, statue, plant |
+
+| Object | Code | Can be on it | Squares |
+|---|---|---|---|
+| bench | n | yes | 1 |
+| statue | u | no | 1 |
+| vase | v | no | 1 |
+| skeleton | o | no | 1 |
+| shelf | s | no | 1 |
+| chair | c | yes | 1 |
+| table | t | no | 1 |
+| plant | p | no | 1 |
 
 ## Known rough edges (2026-11-24)
 
-- Some pairings the "where" rule allows read oddly: a boat can land in the Dunes or on the
-  Path because both are outdoor; a rock in a Cave is fine but a rock in a Cabin is also
-  allowed. Fixing this needs a finer rule than inside/outside (for example a list of areas
-  per object). Listed in TODO.
 - The areas of a two-grid case are dealt to the grids at random, so "Upstairs" can receive
-  the Garden. Same fix.
+  the Garden (TODO 7).
 - "Room 1" and "Room 2" break the one-word rule and sit next to row numbers in clues; they
   are candidates for renaming (Suite, Attic).
+- An object that blocks must be a real obstacle. The Train's lamp was not, so it is a
+  suitcase since 2026-11-25; the City's lamp is a lamp post and stays.
+- A Pond on the Farm only has a rock, and the Pier only a chair and a table: plain, but
+  nothing there is out of place. More objects mean more sprites.
 
 ## Adding a setting
 
 1. Add a `SettingDef` to `lib/data/settings.dart`: id, name, two grid names, at least six
    areas (a two-grid case needs areas for both grids), and objects with unique one-letter
-   codes. Include at least three objects a person can be on and three that block, and make
+   codes. Include at least three objects a person can be on (two-square ones count) and three
+   that block (the Museum has two to be on, bench and chair: the one exception,
+   2026-11-25), and make
    sure both indoor and outdoor areas (if the setting has both) have objects that fit them.
 2. Check the names against the naming rule above.
 3. Add the setting to this file and its sprites to `docs/Art.md`.

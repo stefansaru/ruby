@@ -1,8 +1,10 @@
 # APP-ADS-004 — Ad Unit Ids: Test by Default, Production at Release
 
 **Tags:** Ads, Build, Security
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⛔ Retired (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
+
+> Retired 2026-11-25. Owner ruling: the game carries no ads, so there are no ad unit ids. Replaced by [APP-PAY-001](../pay/APP-PAY-001.md) (no ad SDK is linked); release builds are [PROC-REL-001](../../process_requirements/PROC-REL-001.md). The rest of this file is kept as history.
 
 ## Requirement
 Ad unit ids are read from `--dart-define`. When absent, Google's published test ids are used. A store build asserts that production ids are present. No production id is committed to the repository.

@@ -13,7 +13,13 @@ import 'package:ruby/gen/gen_config.dart';
 void main(List<String> args) {
   var n = 3;
   for (final a in args) {
-    if (a.startsWith('--n=')) n = int.tryParse(a.substring(4)) ?? n;
+    final value = a.startsWith('--n=') ? int.tryParse(a.substring(4)) : null;
+    if (value == null || value < 1) {
+      stderr.writeln('usage: bench_gen [--n=<slots per tier, 1 or more>]');
+      exitCode = 64;
+      return;
+    }
+    n = value;
   }
   for (final tier in Tier.values) {
     final slots = campaign(tier);

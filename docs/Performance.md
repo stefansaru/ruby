@@ -42,3 +42,30 @@ tries to drop, so its speed is the generator's speed.
 
 Solver time on a phone (hints run the logic solver on the device), memory, and
 release-mode numbers. They matter once the hint button exists.
+
+## 2026-11-25, same machine: larger packs and cases made on request
+
+| What | Time |
+|---|---|
+| All five packs (436 cases), `dart run tool/generate_cases.dart` | about 26 s |
+| Normal pack (100 cases) | about 11 s |
+| Hard pack (100 cases) | about 6 s |
+| Expert pack (36 cases) | about 6 s |
+
+One case made on request (`RandomCases.make`, twelve seeds per tier, JIT):
+
+| Tier | Median | Worst of twelve |
+|---|---|---|
+| tutorial | 7 ms | 36 ms |
+| easy | 9 ms | 69 ms |
+| normal | 98 ms | 469 ms |
+| hard | 40 ms | 1040 ms |
+| expert | 121 ms | 1097 ms |
+
+The app runs this off the UI thread and shows a spinner on the button. **Not measured on a
+phone yet** (ManualTestPlan MT-16.10); a slow phone may take a few seconds for hard and
+expert.
+
+On 2026-11-25 (audit) `RandomCases.make` began running `checkShipped` on each case it
+returns. Measured again the same way: tutorial 6 ms median (42 worst), easy 9 (70),
+normal 98 (461), hard 44 (1018), expert 122 (1081). The check costs nothing visible.

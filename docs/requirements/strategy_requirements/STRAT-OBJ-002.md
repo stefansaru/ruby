@@ -24,7 +24,7 @@ No commit and no release is made with a failing gate: analyzer, tests, generator
 - [ ] A continuous-integration run repeats analyze and test on every push
 
 ## Evidence / Current State
-The four gates exist and pass locally on 2026-11-24: `flutter analyze`, `flutter test`, `dart run tool/generate_cases.dart --dry-run`, `dart run tool/check_cases.dart`. Open: there is no release commit yet, and no continuous-integration run.
+The four gates exist and pass locally on 2026-11-24: `flutter analyze`, `flutter test`, `dart run tool/generate_cases.dart --dry-run`, `dart run tool/check_cases.dart`. Open: there is no release commit yet; the workflow `.github/workflows/dart.yml` exists but has not been seen to run (TODO 55, 2026-11-25).
 
 ## Related Requirements
 - [PROC-CMT-001](../process_requirements/PROC-CMT-001.md) — Commit Gates

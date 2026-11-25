@@ -22,11 +22,11 @@ Sheets (docs/Art.md section 6):
   objects_sit            4 x 3  one-square objects a person can be on
   objects_indoor         4 x 3  one-square objects that block, indoors
   objects_outdoor        4 x 3  one-square objects that block, outdoors,
-                                plus the door and the window
+                                plus the door and the window (full)
   objects_wide           4 x 4  two-square objects lying left-right
   objects_wide_vertical  4 x 4  the same objects lying top-bottom
   people                 4 x 3  suspect tokens, victim, reveal
-  ui                     4 x 4  marks, buttons, coin, stamp
+  ui                     4 x 4  marks, buttons, stamp
   icon                   1      the app icon
   feature_graphic        1      the store banner
 
@@ -153,9 +153,9 @@ LOOKS = {
     "desk": "a school DESK with an open book and a pencil on it",
     "shelf": "a tall BOOKSHELF full of coloured books",
     "plant": "a leafy green POT PLANT in a terracotta pot",
-    "lamp": "a tall LAMP POST with a glowing yellow lantern",
     "bin": "a round metal LITTER BIN with a lid",
     "trunk": "a brown travel TRUNK with brass corners and two straps",
+    "suitcase": "a brown leather SUITCASE standing upright, with a handle on top and two buckled straps",
     "crate": "a wooden CRATE with crossed planks",
     "barrel": "a wooden BARREL with two metal hoops",
     "vase": "a large blue-and-white VASE on a small plinth",
@@ -165,6 +165,7 @@ LOOKS = {
     "palm": "a PALM TREE with a curved trunk and five fronds",
     "bush": "a thick round green BUSH with a few red berries",
     "rock": "a big grey BOULDER with a mossy patch",
+    "lamp": "a tall street LAMP POST with a glowing yellow lantern",
     "umbrella": "a red-and-white striped BEACH UMBRELLA, open, seen from above and slightly in front",
     "campfire": "a small CAMPFIRE: a ring of stones, crossed logs, a cheerful orange flame",
     "fountain": "a round stone FOUNTAIN with blue water and a small jet",
@@ -174,10 +175,12 @@ LOOKS = {
 
 SHEET_SIT = ["chair", "seat", "rug", "mat", "towel", "sunbed", "log", "bench",
              "hay bale", "tent", "swing", "-"]
-SHEET_INDOOR = ["table", "desk", "shelf", "plant", "lamp", "bin", "trunk", "crate",
+# The lamp is a street lamp (city only since 2026-11-25), so it is on the
+# outdoor sheet; that freed the indoor cell the suitcase needed.
+SHEET_INDOOR = ["table", "desk", "shelf", "plant", "bin", "trunk", "suitcase", "crate",
                 "barrel", "vase", "statue", "skeleton"]
-SHEET_OUTDOOR = ["tree", "palm", "bush", "rock", "umbrella", "campfire", "fountain",
-                 "cow", "pig"]  # then door, window, one empty cell
+SHEET_OUTDOOR = ["tree", "palm", "bush", "rock", "lamp", "umbrella", "campfire",
+                 "fountain", "cow", "pig"]  # then door, window: the sheet is full
 SHEET_WIDE = ["bed", "car", "boat", "tractor", "lifeboat", "canoe", "sofa"]
 
 CELL = 192  # sheet pixels per cell, as in pushy's object sheets
@@ -426,9 +429,10 @@ UI = [
     "a green TICK mark - 'placed and sure'",
     "a red ring HIGHLIGHT: an empty circle outline that would sit around a cell",
     "a HINT button face: a yellow light bulb on a round cream button",
-    "a gold COIN with a magnifying-glass emblem",
-    "a small STACK of three of the same gold coins",
-    "a film-clapper 'WATCH' icon: a small play triangle on a clapperboard",
+    "a PLUS button face: a dark plus sign on a round cream button",
+    "a CLOSE button face: a small dark X on a round grey button, clearly a button and not the "
+    "red cross mark of cell 1",
+    None,
     "a round red rubber STAMP mark reading as a ring with a tick in it (no letters) - 'case solved'",
     "a brass MAGNIFYING GLASS",
     "an UNDO arrow curling to the left",
@@ -443,7 +447,7 @@ UI = [
 
 def ui_prompt():
     return (
-        head("sixteen INTERFACE PIECES")
+        head("fifteen INTERFACE PIECES")
         + "WHAT THESE ARE FOR\n\n"
         "The marks a player puts on the map while solving, and the buttons and badges around it. The "
         "marks (cells 1-4) are drawn over floors and objects, so they need a strong dark outline and "
@@ -557,7 +561,7 @@ def build_prompts():
         "objects_indoor": objects_prompt(
             "twelve INDOOR OBJECTS THAT BLOCK A SQUARE", BLOCK_RULE, SHEET_INDOOR),
         "objects_outdoor": objects_prompt(
-            "nine OUTDOOR OBJECTS THAT BLOCK A SQUARE, plus a door and a window",
+            "ten OUTDOOR OBJECTS THAT BLOCK A SQUARE, plus a door and a window",
             BLOCK_RULE + " The last two drawings, the door and the window, are different: they are "
             "thin bars laid over the wall between two cells, and block nothing.",
             SHEET_OUTDOOR, extra=[door, window]),
@@ -581,13 +585,15 @@ def main():
     # rewritten from scratch each run so a stale one never lingers.
     accepted_dir = ROOT / "sprites" / "prompts"
     drafts_dir = args.output / "prompts"
+    # Build first: a failed check must not leave the drafts folder empty.
+    prompts = build_prompts()
     accepted_dir.mkdir(parents=True, exist_ok=True)
     if drafts_dir.exists():
         for old in drafts_dir.glob("*.txt"):
             old.unlink()
     drafts_dir.mkdir(parents=True, exist_ok=True)
 
-    for name, text in build_prompts().items():
+    for name, text in prompts.items():
         accepted = (ROOT / "sprites" / f"{name}.png").exists()
         path = (accepted_dir if accepted else drafts_dir) / f"{name}.txt"
         path.write_text(text, encoding="utf-8")

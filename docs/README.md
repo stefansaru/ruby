@@ -8,8 +8,9 @@ projects' docs true):
 
 - Every rule carries its reason and its date.
 - Present tense means now. What is no longer true moves to [History.md](History.md).
-- Docs do not repeat numbers that live in code (how many cases, how many tests); they
-  name the file that holds them.
+- Counts that live in code (how many cases, how many tests) are stated only where they
+  are a decision or a measurement, with a date; elsewhere the doc names the file that
+  holds them. (Revised 2026-11-25: the rule now says what is done.)
 - Outstanding work is only in [../TODO.md](../TODO.md); known faults only in
   [../OpenIssues.md](../OpenIssues.md).
 
@@ -33,13 +34,14 @@ projects' docs true):
 | [testing/ManualTestPlan.md](testing/ManualTestPlan.md) | Checks a person runs. |
 | [Performance.md](Performance.md) | Measured generator and solver times. |
 | [Art.md](Art.md) | What must be drawn, sheet formats, the art pipeline. |
-| [architecture/ads/Ads.md](architecture/ads/Ads.md) | Ads design (not built). |
+| [architecture/ads/Ads.md](architecture/ads/Ads.md) | Retired 2026-11-25: the game carries no ads. Kept as a pointer. |
 
 ## Features (designs; see TODO for what is built)
 
 | File | Owns |
 |---|---|
-| [features/Hints.md](features/Hints.md) | Hint ladder, coins, the watch-an-ad flow. |
+| [features/Modes.md](features/Modes.md) | Detective and cat mode: the research, what changes (only words), the draft copy, what is open. |
+| [features/Hints.md](features/Hints.md) | Hints (free): what the draft does, the hint ladder, extra statements. |
 | [features/Notes.md](features/Notes.md) | Per-suspect notes and marks. |
 | [features/DailyCase.md](features/DailyCase.md) | The shared daily case. |
 
@@ -49,11 +51,11 @@ projects' docs true):
 |---|---|
 | [strategy/VisionMissionValues.md](strategy/VisionMissionValues.md) | Vision, mission, values. |
 | [strategy/Objectives.md](strategy/Objectives.md) | Measurable goals. |
-| [strategy/MarketResearch.md](strategy/MarketResearch.md) | The genre, the twelve competitors, sources. |
-| [strategy/TargetAudience.md](strategy/TargetAudience.md) | Who plays and how. |
+| [strategy/MarketResearch.md](strategy/MarketResearch.md) | The genre, the twelve competitors, prices and models of rivals, sources. |
+| [strategy/TargetAudience.md](strategy/TargetAudience.md) | Who plays, how, and what they pay for. |
 | [strategy/PainPointsAndConcepts.md](strategy/PainPointsAndConcepts.md) | What players complain about and our answer to each. |
 | [strategy/RiskAnalysis.md](strategy/RiskAnalysis.md) | Risks and mitigations. |
-| [strategy/Monetisation.md](strategy/Monetisation.md) | Banner, rewarded hints, what we will not do. |
+| [strategy/Monetisation.md](strategy/Monetisation.md) | No ads; free to try, one purchase; price, comparables, what we will not do. |
 | [marketing/](marketing/) | Launch campaign, reel scripts, store listing draft. |
 
 ## Requirements and process

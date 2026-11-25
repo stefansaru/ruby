@@ -4,10 +4,10 @@
 **Status:** ❌ Pending (written 2026-11-24)
 
 ## Requirement
-A store build is made by a script that injects production ad ids, marks the build as a store build, runs the gates and refuses to run from any branch but `main`. Each release is logged with its version, date and commit.
+A store build is made by a script that marks the build as a store build, runs the gates and refuses to run from any branch but `main`. Each release is logged with its version, date and commit. There are no ad ids to inject: the game carries no ads (owner ruling 2026-11-25).
 
 ## Why
-A release made by hand eventually ships test ads or an untested commit.
+A release made by hand eventually ships an untested commit or a debug setting.
 
 ## Acceptance Criteria
 - [ ] PowerShell and bash release scripts exist and agree
@@ -21,8 +21,8 @@ Nothing built yet.
 None yet.
 
 ## Related Requirements
-- [APP-ADS-004](../app_requirements/ads/APP-ADS-004.md) — Ad Unit Ids: Test by Default, Production at Release
+- [APP-PAY-001](../app_requirements/pay/APP-PAY-001.md) — One Purchase Unlocks Everything; No Ads Anywhere
 - [PROC-TST-002](../process_requirements/PROC-TST-002.md) — Manual Test Plan Before a Release
 
 ## Related Docs
-- [Ads.md](../../architecture/ads/Ads.md)
+- [Monetisation.md](../../strategy/Monetisation.md)

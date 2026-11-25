@@ -18,30 +18,33 @@ const List<(String, String)> _names = <(String, String)>[
   ('Wanda', 'Will'), ('Zoe', 'Zak'), //
 ];
 
+/// The victim is always a V, so the black "V" disc reads as "victim".
+const List<(String, String)> _victims = <(String, String)>[
+  ('Vera', 'Victor'),
+  ('Viola', 'Vince'),
+  ('Vicky', 'Vlad'),
+  ('Vanda', 'Val'),
+];
+
 const List<String> _adjectives = <String>[
-  'Quiet', 'Missing', 'Broken', 'Late', 'Cold', 'Silent', 'Crooked', 'Last',
-  'Lost', 'Velvet', 'Hidden', 'Empty', 'Second', 'Locked', 'Borrowed',
-  'Open', 'Wrong', 'Spare', 'Muddy', 'Torn', 'Early', 'Blue', 'Sleepy',
-  'Odd', //
+  'Missing', 'Quiet', 'Broken', 'Last', 'Lost', 'Hidden', 'Second',
+  'Borrowed', 'Wrong', 'Spare', 'Forgotten', 'Stolen', 'Secret', 'Old',
+  'Silent', 'Odd', 'Crooked', 'Curious', 'Unlucky', 'Vanishing', 'Midnight',
+  'Final', 'Third', 'Mysterious', //
 ];
 
-const List<String> _nouns = <String>[
-  'Teacup', 'Key', 'Letter', 'Umbrella', 'Glove', 'Ticket', 'Candle',
-  'Button', 'Clock', 'Ribbon', 'Lantern', 'Map', 'Whistle', 'Scarf',
-  'Coin', 'Window', 'Footprint', 'Postcard', 'Spoon', 'Bell', 'Hat',
-  'Suitcase', 'Notebook', 'Matchbox', //
-];
+/// How many different titles [titleFor] can make for one setting.
+const int titleCount = 12 * 24;
 
-/// How many different titles [titleFor] can make.
-const int titleCount = 24 * 24;
-
-/// "The Quiet Teacup": a title from two plain words. Each [index] below
-/// [titleCount] gives a different title, so a pack never repeats one.
-String titleFor(int index) {
+/// "The Last Ticket": an adjective and something that belongs to the
+/// setting (GEN-033). Each [index] below [titleCount] gives a different
+/// title for the same setting, and no two settings share a noun.
+String titleFor(SettingDef setting, int index) {
   final i = index % titleCount;
-  final adjective = i % _adjectives.length;
-  final noun = (i ~/ _adjectives.length + 5 * adjective) % _nouns.length;
-  return 'The ${_adjectives[adjective]} ${_nouns[noun]}';
+  final count = setting.titles.length;
+  final noun = i % count;
+  final adjective = (i ~/ count + 5 * noun) % _adjectives.length;
+  return 'The ${_adjectives[adjective]} ${setting.titles[noun]}';
 }
 
 /// A scene, a cast and a rule-abiding placement, or null when this draw
@@ -49,14 +52,6 @@ String titleFor(int index) {
 CaseDef? drawScene(GenConfig cfg, Random rnd) {
   final setting = settings.firstWhere((SettingDef s) => s.id == cfg.setting);
   final areaPool = List<AreaSpec>.of(setting.areas)..shuffle(rnd);
-  final sits = setting.kinds.where((KindSpec k) => k.sit).toList()
-    ..shuffle(rnd);
-  final blocks = setting.kinds.where((KindSpec k) => !k.sit).toList()
-    ..shuffle(rnd);
-  final kindSpecs = <KindSpec>[
-    ...sits.take(2 + rnd.nextInt(2)),
-    ...blocks.take(2 + rnd.nextInt(2)),
-  ];
 
   final grids = <GridDef>[];
   final areas = <AreaDef>[];
@@ -94,6 +89,8 @@ CaseDef? drawScene(GenConfig cfg, Random rnd) {
     final left = areaPool.length - areaSpecs.length;
     final share = cfg.grids.length == 1 ? left : left ~/ (2 - g);
     final wanted = max(2, min(share, sqrt(count).round() - 1));
+    // A setting with too few areas for this shape: no scene.
+    if (areaSpecs.length + wanted > areaPool.length) return null;
     final areaOf = List<List<int>>.generate(
       rows,
       (_) => List<int>.filled(cols, -1),
@@ -154,12 +151,10 @@ CaseDef? drawScene(GenConfig cfg, Random rnd) {
     );
     for (var a = 0; a < wanted; a++) {
       final spec = areaSpecs[first + a];
-      final fits = kindSpecs
-          .where(
-            (KindSpec k) =>
-                k.where == Where.anywhere ||
-                (k.where == Where.inside) == spec.indoor,
-          )
+      // Only objects that belong in this area (GEN-029), and at most two
+      // kinds of them so a scene stays easy to read.
+      final fits = (setting.kinds.where(spec.allows).toList()..shuffle(rnd))
+          .take(2)
           .toList();
       if (fits.isEmpty) continue;
       final mine = <(int, int)>[
@@ -230,14 +225,15 @@ CaseDef? drawScene(GenConfig cfg, Random rnd) {
       ObjectKind(k.code, k.name, canOccupy: k.sit),
   ];
 
-  // Cast: suspects A, B, C... and a victim with a later initial.
+  // Cast: suspects A, B, C... and, listed last, a victim whose name
+  // begins with V (GEN-030).
   final n = cfg.people;
-  final victimName = n - 1 + rnd.nextInt(_names.length - n + 1);
+  final victimName = _victims[rnd.nextInt(_victims.length)];
   final people = <Person>[
     for (var p = 0; p < n; p++)
       () {
         final male = rnd.nextBool();
-        final (her, his) = _names[p == n - 1 ? victimName : p];
+        final (her, his) = p == n - 1 ? victimName : _names[p];
         final name = male ? his : her;
         return Person(
           id: name[0],
@@ -254,7 +250,7 @@ CaseDef? drawScene(GenConfig cfg, Random rnd) {
 
   final scene = CaseDef(
     id: cfg.id,
-    title: titleFor(cfg.titleIndex),
+    title: titleFor(setting, cfg.titleIndex),
     setting: cfg.setting,
     grids: grids,
     areas: areas,

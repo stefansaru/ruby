@@ -16,7 +16,7 @@ Every grid shows a letter over each column (A from the left) and a number beside
 - [ ] Hints name squares as letter then number
 
 ## Implementation
-Wording side built (2026-11-24): clue sentences name rows by number and columns by letter, squares are labelled letter then number (`CaseDef.cellLabel`), and on a two-grid case row and column sentences end "of her grid" / "of his grid" (GEN-024). The grid itself and the hint text wait for the UI.
+Wording side built (2026-11-24): clue sentences name rows by number and columns by letter, squares are labelled letter then number (`CaseDef.cellLabel`), and on a two-grid case row and column sentences end "of her grid" / "of his grid" (GEN-024). The draft grid draws the labels (2026-11-25): lettered columns along the top and numbered rows down the left (`lib/widgets/case_grid.dart`). The hint text is draft copy (`describeStep`), not approved.
 
 ## Related Tests
 `test/engine/wording_test.dart`, `test/data/packs_test.dart` (GEN-024).

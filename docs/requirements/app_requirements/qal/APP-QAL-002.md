@@ -15,7 +15,7 @@ A case that is wrong should fail on the developer's machine, not on a player's p
 - [x] Adding a broken case to a pack makes the suite fail
 
 ## Implementation
-Built (2026-11-24). `test/data/packs_test.dart` runs `checkShipped` (`lib/gen/gen_check.dart`) on every entry of every pack: parse (which re-checks the stored solution), exactly one solution and it is the stored one, solved by the logic solver within the tier, every suspect speaks, no clue to spare. Packs are reached through `lib/data/cases.dart`; the same test fails unless there is a pack for every tier and a case for every campaign slot, so a pack cannot be left out. `dart run tool/check_cases.dart` runs the same check from the command line. A broken entry fails the per-case expectation; this is by construction and has no test of its own.
+Built (2026-11-24). `test/data/packs_test.dart` runs `checkShipped` (`lib/gen/gen_check.dart`) on every entry of every pack: parse (which re-checks the stored solution), exactly one solution and it is the stored one, solved by the logic solver within the tier, every suspect speaks, no clue to spare; since 2026-11-25 also no misplaced object, the victim listed last as V and placed last, no unused door or window, no repeated statement (the full list is in `docs/Testing.md` section 3). Packs are reached through `lib/data/cases.dart`; the same test fails unless there is a pack for every tier and a case for every campaign slot, so a pack cannot be left out. `dart run tool/check_cases.dart` runs the same check from the command line. A broken entry fails the per-case expectation; this is by construction and has no test of its own.
 
 ## Related Tests
 `test/data/packs_test.dart` (GEN-009, GEN-010, GEN-013, GEN-014, GEN-015, GEN-019, GEN-020, GEN-022).

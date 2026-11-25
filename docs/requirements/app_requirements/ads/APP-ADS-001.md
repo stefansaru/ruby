@@ -1,8 +1,10 @@
 # APP-ADS-001 — Banner
 
 **Tags:** Ads, Monetisation
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⛔ Retired (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
+
+> Retired 2026-11-25. Owner ruling: the game carries no ads, so there is no banner. Replaced by [APP-PAY-001](../pay/APP-PAY-001.md) (one purchase unlocks everything; no ads anywhere). The rest of this file is kept as history.
 
 ## Requirement
 One adaptive anchored banner sits at the bottom of every screen, placed once for the whole app. It is not shown during the consent flow, never overlaps content, loads once at a time and backs off after a failed load.

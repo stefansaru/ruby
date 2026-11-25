@@ -2,17 +2,22 @@
 
 A cosy murder-mystery logic puzzle for phones, in Flutter. People stand on a grid of
 areas, one per row and column; each suspect makes a statement; the murderer is the
-one person who was alone with the victim. Free, with a banner and an opt-in rewarded
-video that earns hint coins.
+one person who was alone with the victim. No ads (owner ruling 2026-11-25): free to
+try, one purchase for the rest (docs/strategy/Monetisation.md). A "cat mode" tells the
+same cases as a missing kitten (docs/features/Modes.md).
 
 **Read [docs/README.md](docs/README.md) first.** It says which doc owns which subject.
 [TODO.md](TODO.md) is the only list of outstanding work.
 
-## State (2026-11-24)
+## State (2026-11-25)
 
-Built: docs, the rules engine, both solvers, the generator, the case packs, the tests.
-Not built: the playable screens, notes, hints as shown, coins, ads, daily case, art,
-sounds, translations, release. `lib/main.dart` is a placeholder. Never describe an
+Built: docs, the rules engine, both solvers, the generator, the case packs (436 cases),
+the tests, and a playable draft: case list with saved ticks, a random case per tier,
+case screen with placeholder shapes, area names on the grid, placing, crosses and
+clash marks, statements as a tick/cross checklist with "+" for one more, a two-step
+free hint, win check, detective and cat wording. Not built: the purchase and its gate,
+notes, the hint ladder, daily case, art, sounds, translations, release. The name
+"Detective Sudoku" is a working title that will change (TODO 49). Never describe an
 unbuilt part as working; `TODO.md` says what exists.
 
 ## The one architectural rule
@@ -21,7 +26,8 @@ unbuilt part as working; `TODO.md` says what exists.
 
 - `lib/engine/` is pure Dart: no Flutter, no `dart:io`, no generator, no data. It owns
   the rules, the clue meanings, the wording, both solvers and the case text format.
-- `lib/gen/` is the offline generator: no Flutter, no `dart:io`. The app never imports it.
+- `lib/gen/` is the generator: no Flutter, no `dart:io`. One app file imports it,
+  `lib/services/random_case.dart` (a case made on request); screens and widgets never do.
 - `lib/data/` holds `settings.dart` (hand-written) and the generated packs.
 - `tool/` only reads arguments and files; the logic it runs lives in `lib/`.
 
@@ -48,6 +54,7 @@ the change is not committed.
   change the generator or `lib/gen/gen_campaign.dart` and regenerate.
 - A case ships only when it has exactly one solution, is solved by the logic solver
   without guessing, and its hardest technique fits its tier.
+- `extra` lines are true statements the player can ask for; nothing may depend on them.
 - Every clue has one meaning: `Clue.holds`. Wording, notation and solver pieces are
   derived from the same object. A new clue type needs all of them plus a row in
   [docs/GameRules.md](docs/GameRules.md) and a test.

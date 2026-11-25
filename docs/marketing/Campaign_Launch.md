@@ -1,9 +1,10 @@
 # Launch Campaign — draft
 
-**Draft 1, 2026-11-24. Nothing here is scheduled.** The game is not playable
-yet; every claim below must be true of the build that ships before it is used
-([PROC-REL-002](../requirements/process_requirements/PROC-REL-002.md)). No
-dates are set until the playable build exists.
+**Draft 1, 2026-11-24. Nothing here is scheduled.** A playable draft with
+placeholder shapes exists (2026-11-25); nothing is releasable or filmable until
+the art is in. Every claim below must be true of the build that ships before it
+is used ([PROC-REL-002](../requirements/process_requirements/PROC-REL-002.md)).
+No dates are set until a releasable build exists.
 
 ## Position
 
@@ -20,7 +21,8 @@ The proof points, each of which must exist before it is claimed:
 | "Every case checked by a solver: one answer, no guessing" | The shipped packs pass the data tests |
 | "Tap any clue to see exactly what it means" | Clue preview is built |
 | "Notes for each suspect" | Per-suspect notes are built |
-| "No ads while you solve" | Ad rules are built and tested |
+| "No ads. None." | True of the draft today (2026-11-25): no ad SDK is in the project. Owner ruling 2026-11-25. A selling point: every rival with an audience carries ads |
+| "Free to try. One purchase unlocks everything. No subscription." | The purchase is built, restorable and tested, and the owner has confirmed the price and what is free. Nothing of this is built |
 | "Hints that explain the step" | Hint ladder is built |
 
 ## Who we talk to
@@ -61,10 +63,10 @@ justify a cost per install.
 
 ## Measures
 
-Installs, day-1 and day-7 return, cases solved per player, share of players who
-use a hint, share who watch a rewarded video, and the count of reviews that
-mention wording, ads or notes (good or bad). Targets are set after the closed
-test, not before. Note that the app as designed collects no analytics of its
-own (APP-PRV-002); the first three come from the Play Console, the hint and
-ad shares from AdMob at best, and anything finer needs an owner decision on
+Installs, day-1 and day-7 return, the share of installs that buy the unlock,
+and the count of reviews that mention wording, the price, "no ads" or notes
+(good or bad). Targets are set after the closed test, not before. Note that
+the app as designed collects no analytics of its own (APP-PRV-002); installs,
+return and purchases come from the Play Console, and anything finer (cases
+solved per player, share of players who use a hint) needs an owner decision on
 analytics first.

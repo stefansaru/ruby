@@ -144,7 +144,7 @@ that explains and offers "Place".
 
 Reading the table: one app has most of the installs with the fewest features;
 the feature-rich apps are all tiny and weeks old; nobody combines certified
-fairness, exact wording, good notes and a gentle ad model **and** has an
+fairness, exact wording, good notes and no ads **and** has an
 audience yet. Content ratings are "Everyone" for most, "Everyone 10+" for the
 two that declare violence.
 
@@ -170,8 +170,83 @@ Which of these the engine carries in v1, and which wait, is decided in
 
 ## 6. The reference for money
 
-4 Pics 1 Word: 50M+ installs, 4.6★ from 1.27M reviews; coins from solving
-spent on hints; coin packs and an ad-free "Premium"
-([Play](https://play.google.com/store/apps/details?id=de.lotum.whatsinthefoto.us)).
-Its ad cadence is not published; recent reviews call it too frequent. Our use
-of the pattern is [Monetisation.md](Monetisation.md).
+**There is no single reference game any more (2026-11-25).** The game carries no
+ads (owner ruling 2026-11-25), so the reference is the group of premium puzzle
+apps in §7.2: free to try or paid once, no ads, a one-time unlock or pack at
+$3.99–4.99. Our model is [Monetisation.md](Monetisation.md).
+
+Until 2026-11-24 the reference was 4 Pics 1 Word (coins from solving spent on
+hints, a banner, rewarded video, coin packs and an ad-free "Premium";
+[Play](https://play.google.com/store/apps/details?id=de.lotum.whatsinthefoto.us)).
+That is no longer the pattern we follow; see [History.md](../History.md).
+
+## 7. Prices and models, researched 2026-11-25
+
+**Limits.** Figures are as seen on 2026-11-25, **mostly from search snippets and
+page summaries, not from live store pages**. Several store pages would not load.
+The live listings must be re-checked before a price is decided. Dates in
+brackets are the date of the source that quoted the price. This section looks
+beyond the twelve Play listings of §2 and includes iOS and Steam.
+
+### 7.1 Direct competitors
+
+| App | Platform | Model | Prices seen | Size and rating | Source |
+|---|---|---|---|---|---|
+| Enigmic: Crime Puzzle Cases (Infinity Games) | Android, iOS, PC | Free; an ad after each case; 960 cases free | Remove ads EUR 4.99 (Jul 2026); pack EUR 5.49, three-pack bundle EUR 9.49 (Aug 2026). In-app price range on Play unverified: the Play page would not load | 500K+ installs; about 4.2–4.3★ from 11–13K reviews | [Hipertextual](https://hipertextual.com/actualidad/me-he-vuelto-adicto-a-los-murdokus-y-ahora-he-encontrado-el-juego-perfecto-para-el-movil-hay-miles-y-son-100-gratis/), [Androidworld](https://androidworld.nl/apps/enigmic-is-de-perfecte-mobiele-mix-van-sudoku-en-cluedo/), [Play](https://play.google.com/store/apps/details?id=com.tangramgamestudio.enigmic) |
+| Roomers - Sudoku Murder Logic (Luis Espinal) | iOS only | Free, **no ads**; 41 cases plus a free daily | One-time unlock EUR 7.99 (Jul 2026) | 31 ratings on the Dutch store | [iPhoned](https://www.iphoned.nl/nieuws/murdoku-iphone/), [Pocket Gamer](https://www.pocketgamer.com/roomers/out-now-for-ios/) |
+| Murder Sudoku: Tiny Crimes | iOS | Free with ads | One-time remove-ads; price not found | 4.8★ from 2.7K ratings; released Jun 2026 | [mwm.ai](https://mwm.ai/apps/murder-sudoku-tiny-crimes/6776382837) |
+| Roomdoku | iOS | Free with ads and consumables | Remove ads $4.99; consumables $0.49–7.99 | 3 ratings | [App Store](https://apps.apple.com/app/id6763867859) |
+| SusDoku | Steam | Paid | EUR 4.99 | 41 reviews, 36% positive | [Steam](https://store.steampowered.com/app/4860070/CluDoku/) |
+| Killer Sudoku by Sudoku.com | iOS | Free with ads | Remove ads $4.99 | not recorded | [App Store](https://apps.apple.com/jo/app/id1505735640) |
+
+There is no official Murdoku app; murdoku.com has a free web player.
+
+The Enigmic figures here (about 4.2–4.3★ from 11–13K reviews) differ from §2.1
+(4.4★ from 13.5K on the US Play listing, 2026-11-24) because they come from
+other storefronts and older articles.
+
+### 7.2 Premium puzzle comparables
+
+| App | Model | Prices seen | Source |
+|---|---|---|---|
+| Good Sudoku | Free, one-time unlock | $3.99 at its 2020 launch; EUR 5.99 on EU storefronts | [9to5Mac](https://9to5mac.com/2020/07/23/good-sudoku-ios-app-launches-to-save-sudoku/) |
+| Cracking the Cryptic: Classic Sudoku, Killer Sudoku | Paid upfront; the hub app is free with packs | $4.99 (EUR 5.99 in Austria); hub packs $0.99–4.99 | [App Store](https://apps.apple.com/us/app/-/id1544165118) |
+| Logic Grid Puzzles (Egghead, Puzzle Baron content) | Free with 100 puzzles, no ads; optional subscription | $3.99 per 100-puzzle pack | [App Store](https://apps.apple.com/app/id919571269) |
+| Star Battle Puzzles (Egghead) | Packs | $3.99 per 150 puzzles | [App Store](https://apps.apple.com/app/id6739070759) |
+| Conceptis Sudoku | Free, packs | $0.99–3.99 | [App Store](https://apps.apple.com/app/id537201666) |
+| Hexcells (iOS) | Paid | $0.99–2.99 | [App Store](https://apps.apple.com/app/hexcells/id1094707999) |
+
+**The pattern:** a one-time unlock or a pack at $3.99–4.99 (EUR 5–6), with
+EUR 7.99 the top of what was found.
+
+### 7.3 Paper
+
+| Product | Price seen | Source |
+|---|---|---|
+| The Murdoku book, 80 puzzles | List $18.99 US, GBP 16.99 UK, about EUR 20 in the Netherlands, EUR 24 in Ireland; Amazon has discounted it to $8.65 (undated). About $0.11–0.24 a puzzle | [Hachette](https://www.hachettebookgroup.com/titles/manuel-garand/murdoku/9781454961796/), [Penguin UK](https://www.penguin.co.uk/books/476207/murdoku-by-garand-m/9781405985451) |
+| Logic-case PDFs on Etsy | $3.99 for 10 cases; EUR 10.33 for 45; EUR 31.25 for 270 | Etsy search results |
+| "Cat Sudoku - 50 Cozy Cat Logic Mysteries" (Clara Ahrens), a cat-themed printable | $5.99, was $9.99 | Etsy, per search snippet |
+
+### 7.4 Market and fees
+
+- **The book:** more than 140,000 copies in Spain, driven by the streamer
+  Cristinini and by TikTok, number one on Amazon Spain; 15 languages; Dutch
+  stock sold out; no unit figures found for Germany or the US
+  ([Euronews, Sep 2026](https://www.euronews.com/culture/2026/09/01/murdoku-and-the-adult-activity-book-boom-a-phenomenon-sweeping-spain),
+  [murdoku.com](https://murdoku.com/book)).
+- **Mobile puzzle in-app revenue:** about $10B in 2025, dominated by match and
+  merge games (Sensor Tower via
+  [PocketGamer.biz](https://www.pocketgamer.biz/puzzle-games-rise-as-mobile-genres-compete-for-attention-in-2026/)).
+- **Conversion from free to a one-time unlock:** no recent puzzle-specific
+  figure. Old anchors: Gasketball 0.67% at $2.99
+  ([2012](https://www.nbcnews.com/tech/tech-news/how-app-200-000-downloads-led-developer-homelessness-flna946720));
+  Ionage 2.3% worldwide, 3.7% in the UK
+  ([2013](https://www.gameanalytics.com/blog/an-indie-perspective-launching-a-f2p-game));
+  a general free-to-play range of 2–5%.
+- **Store fees, Play Pass, Apple Arcade:** in
+  [Monetisation.md](Monetisation.md) §Store fees.
+- **Audience:** in [TargetAudience.md](TargetAudience.md).
+
+What this means for us: the rivals with an audience all carry ads, and the one
+rival without ads charges the most. A free part without ads and one purchase at
+$4.99 sits inside what puzzle players already pay.

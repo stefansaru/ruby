@@ -187,5 +187,30 @@ void main() {
       expect(r.hardest, Technique.liarSplit);
       expect(solveLogic(c, max: Technique.whatIf).solved, isFalse);
     });
+
+    test('GEN-031 the victim is the last person placed', () {
+      final c = parseCase(starterCase);
+      final r = solveLogic(c);
+      expect(r.solved, isTrue);
+      final placed = <int>[
+        for (final s in r.steps)
+          if (s.technique == Technique.single) s.person!,
+      ];
+      expect(placed, hasLength(c.people.length));
+      expect(placed.last, c.victim);
+    });
+
+    test('GEN-031 a victim the player has placed is taken as given', () {
+      final c = parseCase(starterCase);
+      final r = solveLogic(
+        c,
+        fixed: <int, int>{c.victim: c.solution![c.victim]},
+      );
+      expect(r.solved, isTrue);
+      final first = r.steps.firstWhere(
+        (LogicStep s) => s.technique == Technique.single,
+      );
+      expect(first.person, c.victim);
+    });
   });
 }

@@ -59,8 +59,9 @@ and column: C4, in the Pond with Cora. Cora is the murderer.
 | `grid` | `grid <name> <rows> <cols>` then one line per row | The name is one word; use `_` for a space (`Ground_Floor`). Sides are 1 to 26. Areas and kinds must be defined above the grid that uses them. |
 | `open` | `open <grid name> <row> <col> N\|E\|S\|W door\|window` | A door or window on that side of that square. Rows and columns count from 1. That side must be a wall: the outline of the grid or the border between two areas. |
 | `person` | `person <id> <name> m\|f [trait,trait]` | A suspect. One-character id. `_` in a name becomes a space. Traits are a comma-separated list with no spaces. Nothing may follow the traits. |
-| `victim` | `victim <id> <name> m\|f [traits]` | Exactly one per case. |
+| `victim` | `victim <id> <name> m\|f [traits]` | Exactly one per case. Shipped cases: id V, listed last (GEN-030, checked by `checkShipped`, not the parser). |
 | `clue` | `clue <id> ...` or `clue * ...` | A statement by that person, or a general clue. The notation for every clue is in the catalogue in `docs/GameRules.md` section 5. |
+| `extra` | `extra <id> ...` | An extra statement by that person, in the same notation (GEN-035). True, never needed, shown only when the player asks. Needs a `solution` line to be checked against. |
 | `solution` | `solution <id>=<grid>:<row>:<col> ...` | The certified answer: every person, grid number (1 for the first grid), row and column from 1. |
 
 ### Squares
@@ -96,6 +97,8 @@ Each with a message and the line number:
   -1, 0 or 1 or is 0 on both axes; an `offset` with no axis or with a 0;
 - a statement made by the victim;
 - `rule liar` with fewer than two statements;
+- an `extra` with no speaker, by the victim, false in the solution, or with no `solution`
+  line (GEN-035, 2026-11-25);
 - an `open` or `solution` entry pointing outside a grid or at a missing square;
 - a solution that does not place everyone, or that breaks a placement rule, the victim
   rule, a clue or the liar rule.
@@ -136,8 +139,8 @@ as one.
 | Tier | Hardest technique needed | Clues that first appear |
 |---|---|---|
 | tutorial | clue or single | in an area, on an object, beside an object, row, column |
-| easy | up to last in line | corner of the grid |
-| normal | intersection or pair | not..., in front of, above/below/left/right, exactly N rows or columns, same area, alone, edge, corner of an area, object in my row or column, the only person |
+| easy | clue or single, like the tutorial, on larger grids | corner of the grid |
+| normal | last in line, intersection or pair | not..., in front of, above/below/left/right, exactly N rows or columns, same area, alone, edge, corner of an area, object in my row or column, the only person |
 | hard | subset or counting | alone with, exactly N others, diagonal, exactly N people, object on exactly 2 sides, one of two areas, not same area, same grid, same position, group clues, traits |
 | expert | what if or liar split | can see, steps apart, more people in A than in B; the case rules no touching and one liar |
 
@@ -160,8 +163,9 @@ needed to start a case.
 settings rotate through the list in `lib/data/settings.dart`, so every pack visits every
 place. The seed is fixed by tier and slot number, and everything random in a draw comes
 from it, so the same slot always produces the same case. Each slot also carries a title
-index, and `titleFor` (`lib/gen/gen_scene.dart`) gives a different title for every index, so
-no title is used twice across the packs.
+index, and `titleFor` (`lib/gen/gen_scene.dart`) gives a different title for every index
+within a setting; no title word is in two settings (GEN-033), so no title is used twice
+across the packs.
 
 The shapes per tier (how many of each is in the file and changes there, not here):
 
@@ -200,7 +204,10 @@ The sweep (`checkShipped` in `lib/gen/gen_check.dart`) starts from the stored te
 trusts nothing else: the case parses; the exact solver finds exactly one solution and it is
 the certified one; the logic solver finishes it, reaches the same answer, and the hardest
 technique lies in the pack's tier; every suspect says something; and no clue can be removed
-without losing uniqueness (a suspect's only statement always stays). The same function runs
+without losing uniqueness (a suspect's only statement always stays). It also refuses a
+misplaced object, a victim not listed last or not V, an unused door or window, a repeated
+statement, and a victim not placed last; the complete list is in
+[Testing.md](Testing.md) section 3 (2026-11-25). The same function runs
 over every case in `test/data/packs_test.dart`. *Why a second check after the gates:* the
 gates judge a case while it is being made; the sweep judges what was actually written to
 the file, so a bug in rendering or a hand edit cannot hide.
@@ -208,3 +215,30 @@ the file, so a bug in rendering or a hand edit cannot hide.
 Changing anything a draw depends on (a setting, a clue family, the solver, the order of
 random calls) changes the cases. That is expected; regenerate, read the funnel, and commit
 the packs with the change that caused them.
+
+## Additions of 2026-11-25
+
+- **Pack sizes.** Tutorial, easy, normal and hard hold 100 cases each; expert holds 36.
+  Shapes inside a tier keep the proportions of the table above. *Why:* the owner asked for
+  a hundred per category; expert was not named and waits for a ruling.
+- **Extra statements.** After a case is accepted the generator adds `extra` lines until each
+  suspect has three statements in all, where the scene has that many true things left to
+  say. They are drawn last so they never decide which draw is accepted, and the solvers
+  never read them (GEN-035).
+- **Doors and windows.** A draw still places them, because clues may use them; once the
+  clues are chosen, every opening no clue needs is removed (GEN-034).
+- **Titles** come from the setting (GEN-033, `docs/Settings.md`).
+- **Cases made on request.** `randomConfig(tier, seed)` describes a slot outside the packs;
+  `lib/services/random_case.dart` builds it on the device with the same `generateCase`
+  (GEN-037). Such a case has an id beginning `random-`, is not stored and gets no tick.
+- **Attempts per slot** went from 400 to 1500: with a hundred normal cases one slot ran out.
+
+## Additions of the audit, 2026-11-25
+
+- The parser's new refusals are listed in GEN-006.
+- A liar case carries no `extra` lines (GEN-035).
+- `readHeader` reads the `case`, `title`, `setting`, `grid` and cast lines only; it is for
+  lists and trusts the text.
+- `tool/generate_cases.dart` refuses an unknown flag or tier (exit 64) and never writes
+  or compares a pack that is missing a slot. *Why:* a mistyped `--dry-run` rewrote the
+  packs, and a mistyped `--only` passed the gate by doing nothing.

@@ -1,7 +1,7 @@
 # APP-GAM-001 — Placing and Removing People
 
 **Tags:** Gameplay, Core
-**Status:** ❌ Pending (written 2026-11-24)
+**Status:** ⚠️ Partial (2026-11-25)
 **NORM Sources:** (derived; no normative register exists yet)
 
 ## Requirement
@@ -17,10 +17,10 @@ Placement is the whole game. Refusing impossible squares is bookkeeping; refusin
 - [ ] The rules applied come from the engine, never re-implemented in the view
 
 ## Implementation
-Nothing built yet.
+Draft built (2026-11-25). `CaseSession` (`lib/engine/session.dart`) places, moves and removes anyone, the victim included; it refuses a square nobody can stand on and a square someone else is on, and reports people who share a row or column (`conflicts`) without refusing them. `lib/screens/case_screen.dart` asks it and says "Nobody can stand there." on a refusal; `lib/widgets/case_grid.dart` marks the clashing people. Missing: the draft draws placeholder shapes, it is not laid out for small phones, a half-solved board is not saved (APP-GAM-012), and undo is not built (APP-GAM-005). The criteria stay open until the owner has played the build.
 
 ## Related Tests
-None yet.
+`test/engine/session_test.dart` (GEN-001), `test/screens/play_test.dart`.
 
 ## Related Requirements
 - [APP-GAM-002](../../app_requirements/gam/APP-GAM-002.md) — Accusation and Win Check

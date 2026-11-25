@@ -1,6 +1,7 @@
 # Store Listing — draft
 
-**Draft 1, 2026-11-24. Not for publishing.** The game is not playable yet.
+**Draft 1, 2026-11-24. Not for publishing.** A playable draft with placeholder
+shapes exists (2026-11-25); nothing is releasable or filmable until the art is in.
 Each block below is tagged with what must exist before it may be used; before
 release, delete every sentence whose feature did not ship
 ([PROC-REL-002](../requirements/process_requirements/PROC-REL-002.md)).
@@ -46,10 +47,14 @@ Sudoku" is already another app's subtitle.
 > • Undo that keeps your notes.
 > • Hints that explain the next step instead of just giving the answer.
 >
-> **Calm** *[needs: ad rules built and tested; offline play verified]*
-> • No ads interrupt you while you solve. Watch a short video only if you want hint coins.
+> **Calm** *[needs: no ad SDK in the build; offline play verified]*
+> • No ads. None.
 > • No energy, no keys, no timers.
 > • Plays offline.
+>
+> **Free to try** *[needs: the purchase built, restorable and tested; price and free part confirmed by the owner]*
+> • The first two packs are free and complete.
+> • One purchase unlocks everything else. No subscription, nothing to buy twice.
 >
 > **Many places, more rules** *[needs: packs for each setting; name only settings that ship]*
 > Home, Beach, Forest, City, Farm, School, Train, Ship, Camp, Hotel, Park and
@@ -62,8 +67,12 @@ Not in the listing: any case count (state it only when counted from the
 release build), any language other than those complete, "daily case" (v2),
 and the word "Murdoku".
 
-Wording note: a banner is on screen during a case, so the listing says "no
-ads *interrupt* you", not "no ads while you solve".
+Wording note (2026-11-25): the game carries no ads at all (owner ruling), so
+the listing says "No ads", plainly; it is a selling point against every rival
+with an audience. The "Calm" and "Free to try" lines above are new draft copy
+and wait for the owner's approval. Until 2026-11-24 the draft said "No ads
+interrupt you while you solve. Watch a short video only if you want hint
+coins."
 
 ## Keywords and search phrases
 
@@ -80,7 +89,9 @@ For the App Store keyword field later (100 characters):
 - Category: Puzzle.
 - Content rating: to be set by the questionnaire, answered truthfully
   (RiskAnalysis.md R4). Competitors sit at Everyone or Everyone 10+.
-- Contains ads: yes. In-app purchases: no (v1).
+- Contains ads: no (owner ruling 2026-11-25). In-app purchases: yes, one
+  one-time unlock (recommended; price not yet confirmed by the owner, see
+  [Monetisation.md](../strategy/Monetisation.md)).
 
 ## Screenshot plan (phone, portrait)
 
@@ -96,5 +107,6 @@ All from the real build. Caption text is a draft.
 | 6 | Setting picker with several places | "Home, Beach, Train… new places, new rules." |
 | 7 | A two-grid case | "Cases that grow with you." |
 
-Feature graphic and icon: prompts to be written with the art list; see
-`docs/Art.md`.
+Feature graphic and icon: `tool/write_sprite_prompts.py` writes their prompts
+(`output/prompts/icon.txt`, `feature_graphic.txt`); neither is drawn yet
+(2026-11-25). See `docs/Art.md`.
