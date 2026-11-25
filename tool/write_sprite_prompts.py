@@ -23,12 +23,18 @@ Sheets (docs/Art.md section 6):
   objects_indoor         4 x 3  one-square objects that block, indoors
   objects_outdoor        4 x 3  one-square objects that block, outdoors,
                                 plus the door and the window (full)
-  objects_wide           4 x 4  two-square objects lying left-right
-  objects_wide_vertical  4 x 4  the same objects lying top-bottom
+  objects_wide           4 x 4  two-square objects lying left-right, seen
+                                from straight above; the game turns them
+                                for top-bottom (owner ruling 2026-11-25)
   people                 4 x 3  suspect tokens, victim, reveal
+  cats                   4 x 3  the same tokens as cats, for cat mode
   ui                     4 x 4  marks, buttons, stamp
   icon                   1      the app icon
   feature_graphic        1      the store banner
+  tv_banner              1      the Android TV home-screen banner
+
+It also writes output/prompts/README.md: the order to generate in and what to
+check on each sheet.
 
 Usage:  py -3 tool/write_sprite_prompts.py [--output output]
 """
@@ -327,55 +333,44 @@ BLOCK_RULE = (
 )
 
 
-def wide_prompt(vertical):
+def wide_prompt():
     names = SHEET_WIDE
-    if vertical:
-        layout = (
-            "- ONE image divided into EXACTLY 4 columns x 4 rows of equal SQUARE cells, each cell "
-            f"{CELL} x {CELL} pixels, so the whole image is {4 * CELL} x {4 * CELL}.\n"
-            "- Each object is TWO CELLS TALL: it fills a cell and the cell directly BELOW it. Rows 1-2 "
-            "hold four objects side by side (one per column), rows 3-4 hold four more.\n"
-            "- Draw THIN 1-PIXEL SOLID BLACK LINES (#000000) between the COLUMNS, around the outside, "
-            "and between row 2 and row 3. Draw NO line between rows 1 and 2 or between rows 3 and 4: "
-            "an object crosses that boundary.\n")
-        slots = [f"Column {i % 4 + 1}, rows {'1-2' if i < 4 else '3-4'}: {LOOKS[n]}, lying TOP TO "
-                 f"BOTTOM (its head or front at the top)." for i, n in enumerate(names)]
-        slots.append("Column 4, rows 3-4: leave EMPTY (plain white).")
-        way = "top-bottom"
-    else:
-        layout = (
-            "- ONE image divided into EXACTLY 4 columns x 4 rows of equal SQUARE cells, each cell "
-            f"{CELL} x {CELL} pixels, so the whole image is {4 * CELL} x {4 * CELL}.\n"
-            "- Each object is TWO CELLS WIDE: it fills a cell and the cell directly to its RIGHT. "
-            "Columns 1-2 hold one object per row, columns 3-4 hold another.\n"
-            "- Draw THIN 1-PIXEL SOLID BLACK LINES (#000000) between the ROWS, around the outside, and "
-            "between column 2 and column 3. Draw NO line between columns 1 and 2 or between columns 3 "
-            "and 4: an object crosses that boundary.\n")
-        slots = [f"Row {i // 2 + 1}, columns {'1-2' if i % 2 == 0 else '3-4'}: {LOOKS[n]}, lying LEFT "
-                 f"TO RIGHT (its head or front on the left)." for i, n in enumerate(names)]
-        slots.append("Row 4, columns 3-4: leave EMPTY (plain white).")
-        way = "left-right"
+    slots = [f"Row {i // 2 + 1}, columns {'1-2' if i % 2 == 0 else '3-4'}: {LOOKS[n]}, lying LEFT "
+             f"TO RIGHT (its head or front on the left)." for i, n in enumerate(names)]
+    slots.append("Row 4, columns 3-4: leave EMPTY (plain white).")
     listing = "\n".join(slots)
     return (
-        head(f"seven LARGE OBJECTS, each two cells long, lying {way},")
+        head("seven LARGE OBJECTS, each two cells long, lying left-right,")
         + "WHAT THESE ARE FOR\n\n"
         "Each of these covers TWO neighbouring map cells, and a suspect token can be placed on either "
         "half (\"He was on a bed\"). The two halves are cut apart and drawn on two cells, so the "
         "object must be spread evenly over both: no half may be nearly empty, and the middle of each "
         "half must be simple and flat enough to carry a token. Like the small objects a person can be "
         "on, they are LIGHT, WARM and rounded.\n\n"
+        "IMPORTANT - STRICTLY FROM DIRECTLY ABOVE: the game turns these drawings by a quarter turn "
+        "when an object lies top-to-bottom on the map. So draw each one as a flat plan view, looking "
+        "STRAIGHT DOWN: no front face, no side face, no legs or wheels seen from the side, no cast "
+        "shadow, and shading that does not say where the light comes from. A drawing must look right "
+        "when the image is rotated 90 degrees.\n\n"
         f"WHAT TO DRAW\n\n{listing}\n\n"
         "SHEET LAYOUT\n\n"
-        f"{layout}"
+        "- ONE image divided into EXACTLY 4 columns x 4 rows of equal SQUARE cells, each cell "
+        f"{CELL} x {CELL} pixels, so the whole image is {4 * CELL} x {4 * CELL}.\n"
+        "- Each object is TWO CELLS WIDE: it fills a cell and the cell directly to its RIGHT. "
+        "Columns 1-2 hold one object per row, columns 3-4 hold another.\n"
+        "- Draw THIN 1-PIXEL SOLID BLACK LINES (#000000) between the ROWS, around the outside, and "
+        "between column 2 and column 3. Draw NO line between columns 1 and 2 or between columns 3 "
+        "and 4: an object crosses that boundary.\n"
         "- The background is plain solid WHITE (#FFFFFF); it is cut away afterwards. Draw NO floor and "
         "NO shadow. NO PURE WHITE inside a drawing (use cream or pale grey), and a dark 1-2 pixel "
         "outline all the way round.\n"
-        "- Each object is centred in its two-cell slot with a white margin of about 8% on every side, "
-        "and is the SAME object, in the same colours, as on the other sheet of large objects.\n"
+        "- Each object is centred in its two-cell slot with a white margin of about 8% on every "
+        "side.\n"
         "- No text, labels or numbers.\n\n"
         "FINAL CHECK\n\n"
-        f"- Eight two-cell slots, seven filled, each object lying {way} across exactly two cells.\n"
+        "- Eight two-cell slots, seven filled, each object lying left-right across exactly two cells.\n"
         "- Each half of each object still reads as part of that object when seen alone.\n"
+        "- Every object is a plan view from straight above and still looks right turned on its side.\n"
     )
 
 
@@ -423,6 +418,56 @@ def people_prompt():
     )
 
 
+CATS = [
+    "a SHE-CAT token: a sitting cat seen from above and slightly in front, round head, two pointed "
+    "ears, tail curled round its feet, two dot eyes; her fur is warm GINGER ORANGE with a cream "
+    "chest",
+    "the same SHE-CAT wearing a wide-brimmed HAT",
+    "the same SHE-CAT wearing round GLASSES",
+    "the same SHE-CAT wearing the HAT and the GLASSES",
+    "a HE-CAT token: the same sitting cat in the same pose; his fur is cool BLUE-GREY with a "
+    "cream chest",
+    "the same HE-CAT wearing a flat-topped HAT",
+    "the same HE-CAT wearing round GLASSES",
+    "the same HE-CAT wearing the HAT and the GLASSES",
+    "the MISSING KITTEN: a much smaller, rounder cat in pale lilac instead of cream, curled up "
+    "asleep with closed eyes",
+    "an UNKNOWN CAT token: the sitting cat as a plain DARK CHARCOAL silhouette, much darker than "
+    "the blue-grey he-cat, with a question mark shape cut out of its chest",
+    "the FOUND reveal: a ginger cat with wide surprised eyes and the lilac kitten peeking out from "
+    "behind it",
+    "a dark PAW PRINT: one large pad and four toe pads - the sign for cat mode",
+]
+
+
+def cats_prompt():
+    return (
+        head("the CAT TOKENS")
+        + "WHAT THESE ARE FOR\n\n"
+        "The game has a second, gentler telling of every puzzle, with no crime in it: the suspects "
+        "are cats and the puzzle is to find which cat was hiding a missing kitten. The grid, the "
+        "objects and the clues stay the same, so these tokens replace the people tokens one for one. "
+        "The game draws a coloured disc under the token and the cat's LETTER beside it, so the token "
+        "itself carries NO letter. What a token must show is only what clues can mention: whether it "
+        "is a she-cat or a he-cat, and whether it wears a HAT and/or GLASSES. FUR COLOUR says which: "
+        "all four she-cats are the same warm GINGER ORANGE and all four he-cats the same cool "
+        "BLUE-GREY, two colours that cannot be confused, also by a colour-blind player (one is "
+        "clearly lighter than the other). The hat and the glasses must be readable at 30 pixels, so "
+        "make them large and dark. Board-game pieces, not portraits: flat fur, no stripes, no whisker "
+        "clutter.\n\n"
+        "WHAT TO DRAW - 12 CELLS, LEFT TO RIGHT, ROW BY ROW\n\n"
+        f"{cells_text(CATS, 4)}\n\n"
+        "SHEET LAYOUT - ONE IMAGE, 4 COLUMNS x 3 ROWS\n\n"
+        f"{grid_text(4, 3)}\n"
+        "- Each token is centred in its cell and fills about 70% of it. The eight cat tokens are "
+        "exactly the same size and pose and differ ONLY in fur colour, hat and glasses.\n\n"
+        "FINAL CHECK\n\n"
+        "- 4 x 3 cells, thin black grid, white background, no pure white inside a token.\n"
+        "- She-cat and he-cat tell apart at 30 pixels; so do hat / no hat and glasses / no glasses.\n"
+        "- The kitten is clearly smaller and lilac. No letters, no numbers.\n"
+    )
+
+
 UI = [
     "a red hand-drawn CROSS mark (an X, two brush strokes) - 'not here'",
     "a small solid CANDIDATE DOT, dark blue, with a lighter rim - 'maybe here'",
@@ -432,7 +477,8 @@ UI = [
     "a PLUS button face: a dark plus sign on a round cream button",
     "a CLOSE button face: a small dark X on a round grey button, clearly a button and not the "
     "red cross mark of cell 1",
-    None,
+    "an EMPTY CHECK BOX: a small cream square with a dark outline and nothing in it - 'not known "
+    "yet'; the tick of cell 3 and the cross of cell 1 must fit inside it",
     "a round red rubber STAMP mark reading as a ring with a tick in it (no letters) - 'case solved'",
     "a brass MAGNIFYING GLASS",
     "an UNDO arrow curling to the left",
@@ -447,7 +493,7 @@ UI = [
 
 def ui_prompt():
     return (
-        head("fifteen INTERFACE PIECES")
+        head("sixteen INTERFACE PIECES")
         + "WHAT THESE ARE FOR\n\n"
         "The marks a player puts on the map while solving, and the buttons and badges around it. The "
         "marks (cells 1-4) are drawn over floors and objects, so they need a strong dark outline and "
@@ -505,6 +551,63 @@ def feature_prompt():
         "- Nothing important within 40 pixels of any edge.\n"
         "- Cosy and inviting: a puzzle to settle into, not a crime scene.\n"
     )
+
+
+def tv_banner_prompt():
+    return (
+        "Create ONE wide banner image, 1280 x 720 pixels (16:9), for the home screen of a television, "
+        "for the game described below. It is shown small (320 x 180) in a row of other apps.\n\n"
+        f"ABOUT THE GAME\n\n{GAME}\n\nART STYLE\n\n{STYLE}\n\n"
+        "WHAT TO DRAW\n\n"
+        "On the LEFT 40%: a 4 x 4 map seen from above, in the game's pixel art, with thick dark walls "
+        "splitting it into three areas (wooden boards, green grass, blue water), one chair, one tree, "
+        "and three cream pawn tokens on different rows and columns; a brass magnifying glass rests "
+        "over its lower right corner. On the RIGHT 60%: plain warm deep-red background with a subtle "
+        "paper texture, left EMPTY so the game's name can be added later in large letters. Big chunky "
+        "pixels and very few details: at 320 x 180 it must still read as a grid, pawns and a "
+        "magnifying glass.\n\n"
+        "RULES\n\n"
+        "- Exactly 16:9, filled edge to edge, no transparent pixels, no border, square corners.\n"
+        "- NO text, NO letters, NO numbers, no logos.\n"
+        "- Nothing important within 5% of any edge: televisions crop the picture.\n"
+    )
+
+
+README = """Art prompts still to generate (written by tool/write_sprite_prompts.py)
+
+Each .txt here is one paste-ready prompt for one image. A sheet that has been
+accepted (sprites/<name>.png exists) no longer has a .txt here.
+
+Order (each sets the look for the next; attach the accepted sheets as style
+references when generating a later one):
+
+ 1. objects_sit            the look of everything a person can be on
+ 2. objects_indoor         the look of everything that blocks
+ 3. objects_outdoor        same family, plus door and window
+ 4. people                 the tokens that stand on the objects
+ 5. terrain                floors, judged with objects and tokens laid on them
+ 6. objects_wide           beds, boats, cars, from straight above
+ 7. ui                     marks and buttons
+ 8. cats                   cat mode tokens (attach the people sheet)
+ 9. icon                   needs the final look, so late
+10. feature_graphic        store banner; the name is added by hand
+11. tv_banner              only if the game goes to TV (TODO 74)
+
+What to check before accepting a sheet:
+
+- The grid: the right number of columns and rows, lines straight, nothing
+  touching a line.
+- Shrink it so one cell is 40 pixels: is every drawing still nameable, and can
+  no two be confused? (Clues name objects.)
+- Objects a person can be on look light and low; objects that block look dark
+  and tall.
+- No pure white inside a drawing, no text anywhere, the same outline and light
+  on every sheet.
+
+Drop the result in input/ under the sheet's name (input/objects_sit.png).
+To change a prompt, change the script, not the .txt: these files are rewritten
+on every run.
+"""
 
 
 # ---------------------------------------------------------------------------
@@ -565,12 +668,13 @@ def build_prompts():
             BLOCK_RULE + " The last two drawings, the door and the window, are different: they are "
             "thin bars laid over the wall between two cells, and block nothing.",
             SHEET_OUTDOOR, extra=[door, window]),
-        "objects_wide": wide_prompt(vertical=False),
-        "objects_wide_vertical": wide_prompt(vertical=True),
+        "objects_wide": wide_prompt(),
         "people": people_prompt(),
+        "cats": cats_prompt(),
         "ui": ui_prompt(),
         "icon": icon_prompt(),
         "feature_graphic": feature_prompt(),
+        "tv_banner": tv_banner_prompt(),
     }
 
 
@@ -599,6 +703,7 @@ def main():
         path.write_text(text, encoding="utf-8")
         tag = "accepted" if accepted else "draft"
         print(f"{tag:8} {path}  ({len(text.split())} words)")
+    (drafts_dir / "README.md").write_text(README, encoding="utf-8")
 
 
 if __name__ == "__main__":

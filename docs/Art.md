@@ -34,9 +34,12 @@ tools cut them into assets.
   Reason: "can I put someone here?" is the first question about every square,
   and the answer must not depend on memorising a list.
 - **Wide objects span two squares**, left-right or top-bottom, and a person
-  can be on either half. Each orientation is drawn, not rotated. Reason: the
-  view is "from above and slightly in front", so a rotated bed would show its
-  front on its side.
+  can be on either half. They are drawn once, lying left-right and seen from
+  straight above, and the game turns them a quarter turn for top-bottom
+  (owner ruling 2026-11-25; before that each orientation was to be drawn).
+  Reason: half the drawing, and one bed that looks the same both ways. The
+  cost is a flatter look than the small objects, which are seen slightly from
+  the front, so the prompt forbids front faces and cast shadows.
 - **Icons over portraits.** People are board-game pawns, not faces. Reason:
   see section 9.
 
@@ -114,7 +117,7 @@ An object shared by several settings is drawn once.
 | tent | camp |
 | swing | park |
 
-**A person can be on these (two squares), 7, each in two orientations:**
+**A person can be on these (two squares), 7, drawn once and turned by the game:**
 
 | Object | Settings |
 |---|---|
@@ -179,12 +182,27 @@ until the object has a description and a sheet cell.
 - Unknown person: a grey silhouette, for card slots not yet revealed.
 - Caught: the pawn behind bars, for the reveal when a case is solved.
 
-**Marks and interface** (sheet `ui`, 16 cells, 15 used): cross ("not here"),
+**Cats** (sheet `cats`, 12 cells, added 2026-11-25): the same eleven tokens
+for cat mode (`docs/features/Modes.md`), cell for cell, so the game swaps one
+atlas for the other. Fur colour says she or he (owner ruling 2026-11-25):
+she-cats are ginger, he-cats blue-grey, because clues can say "women" and
+"men" and the token must show it. The two differ in lightness as well as hue,
+so they stay apart for a colour-blind player. Hat and glasses as on the
+people. The missing kitten is small and lilac; the reveal is a cat with the
+kitten behind it. The twelfth cell is a paw print, the sign for cat mode in
+the menu.
+
+**Marks and interface** (sheet `ui`, 16 cells, all used): cross ("not here"),
 candidate dot ("maybe here"), tick, ring highlight, hint button, plus button,
-close button, case-solved stamp, magnifying glass, undo, eraser, clue card
-panel, button and pressed button, star. The coin, the coin stack and the
-watch-an-ad icon were removed from the prompt on 2026-11-25 (owner ruling: no
-ads and no coins); plus and close took two of their cells and one is empty.
+close button, empty check box, case-solved stamp, magnifying glass, undo,
+eraser, clue card panel, button and pressed button, star. The coin, the coin
+stack and the watch-an-ad icon were removed from the prompt on 2026-11-25
+(owner ruling: no ads and no coins); plus, close and the empty check box of
+the statement checklist took their cells.
+
+**Drawn by the game, not sprited:** the area-name tabs on the walls (a
+trapezoid in the wall colour with white text, 2026-11-25). Reason: the tab
+carries text and must fit any name at any size.
 
 **Drawn by the font, not sprited:** the column letters and row numbers around
 the grid, the suspect letters, area names, and all clue text. Reason: text in
@@ -194,11 +212,13 @@ sharpest thing on screen. The font itself is an open item in `TODO.md`.
 
 **Store art:** the app icon (`icon`, 1024 x 1024) and the store banner
 (`feature_graphic`, 1024 x 500). Neither carries text; the name is added on
-the banner by hand, so it can change without a new drawing.
+the banner by hand, so it can change without a new drawing. A third, the
+television home-screen banner (`tv_banner`, 16:9, shown at 320 x 180), is
+only needed if the game goes to TV (TODO 74 and 75).
 
 ## 6. Sheets
 
-Ten prompts, written by `tool/write_sprite_prompts.py`:
+Eleven prompts, written by `tool/write_sprite_prompts.py`:
 
 | Sheet | Grid | Cells used | Background | Holds |
 |---|---|---|---|---|
@@ -206,12 +226,13 @@ Ten prompts, written by `tool/write_sprite_prompts.py`:
 | `objects_sit` | 4 x 3 | 11 | white, black lines | one-square objects a person can be on |
 | `objects_indoor` | 4 x 3 | 12 | white, black lines | indoor blocking objects |
 | `objects_outdoor` | 4 x 3 | 12 | white, black lines | outdoor blocking objects, door, window |
-| `objects_wide` | 4 x 4 | 14 (7 slots of 2) | white, black lines | wide objects, left-right |
-| `objects_wide_vertical` | 4 x 4 | 14 (7 slots of 2) | white, black lines | wide objects, top-bottom |
+| `objects_wide` | 4 x 4 | 14 (7 slots of 2) | white, black lines | wide objects, left-right, from straight above |
 | `people` | 4 x 3 | 11 | white, black lines | tokens |
-| `ui` | 4 x 4 | 15 | white, black lines | marks and interface |
+| `cats` | 4 x 3 | 12 | white, black lines | the tokens as cats, paw print |
+| `ui` | 4 x 4 | 16 | white, black lines | marks and interface |
 | `icon` | single | 1 | filled | app icon |
 | `feature_graphic` | single | 1 | filled | store banner |
+| `tv_banner` | single | 1 | filled | TV home-screen banner |
 
 The lamp is on `objects_outdoor`, not `objects_indoor` (2026-11-25). Reason:
 since the Train's lamp became a suitcase, the lamp is only the City's street
@@ -261,9 +282,12 @@ first file arrives, not before, so the build never names an empty folder.
 
 1. `py -3 tool/write_sprite_prompts.py` writes every outstanding prompt to
    `output/prompts/<name>.txt`. That folder is therefore the list of art
-   still to make. Today it holds all ten (last run 2026-11-25, with the
-   suitcase). The script builds every prompt before it deletes the old drafts,
-   so a failed check leaves the folder as it was.
+   still to make. Today it holds all eleven (last run 2026-11-25, with the
+   cats, the TV banner and the empty check box). The script builds every
+   prompt before it deletes the old drafts, so a failed check leaves the
+   folder as it was. It also writes `output/prompts/README.md`: the order to
+   generate the sheets in (small objects first, because they set the look;
+   the icon and banners last) and what to check before accepting one.
 2. The owner pastes a prompt into the image generator and drops the result in
    `input/`.
 3. The sheet is cut and previewed (step 5's tools) and the owner reviews the
@@ -320,10 +344,11 @@ in `docs/strategy/RiskAnalysis.md`: say nothing false about how the art is made.
 
 ## 10. Open points for the owner
 
-- View for wide objects: drawn in both orientations (this document) or strict
-  top-down and rotated by code (half the drawing, flatter look).
-- The victim marker (fainted pawn with stars): cosy enough, or too light for a
-  murder mystery?
+Answered 2026-11-25: wide objects are strict top-down and turned by code; the
+fainted pawn with stars is the victim marker; cats show she and he by fur
+colour; no special font for now (the platform font stays, TODO 79).
+
+Still open:
+
 - Suspect colour as a disc under a neutral token (this document), or tokens
   drawn in several colours.
-- The font: pushy ships OpenDyslexic; whether ruby uses the same.

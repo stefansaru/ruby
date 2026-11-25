@@ -21,9 +21,15 @@ before release.
 Three rounds are done: foundations; fixes after the first play (objects in their
 areas, victim V and last, easy readable off the grid); fixes after the second play
 (checklist statements, extras, area names, titles, no stray doors, random cases, cat
-mode, saved progress, no ads). The draft still uses placeholder shapes. Next: the
-owner plays this build and approves or changes the new copy (items 58 to 60), then
-the rename (item 49), then the purchase (section 4).
+mode, saved progress, no ads). Since then: an audit, exploratory tests with a second
+witness, area names on wall-coloured tabs, and a study of other screens with a trial
+on a TV. The draft still uses placeholder shapes. Next, in this order:
+
+1. The owner generates the art from `output/prompts/` (items 37, 38; eleven prompts
+   and a README with the order) and the cutter is ported (39).
+2. The owner plays the build and approves or changes the copy (58 to 60).
+3. Wide screens and keys (72, 73), then the TV decision (74).
+4. The rename (49), then the purchase (section 4).
 
 ## 1. Rules and content (engine and generator)
 
@@ -114,20 +120,32 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
     the split.
 61. [ ] Decide whether extra statements ("+") or hints are ever sold. Today both are
     free. **(owner)**
+80. [ ] Decide whether future packs are included in the one purchase (recommended:
+    yes) and whether family sharing is on (docs/strategy/Monetisation.md).
+    **(owner)**
 62. [ ] Play Pass and Apple Arcade: apply after launch, once there are ratings.
 
 ## 5. Art and sound
 
-37. [ ] Answer the art questions in docs/Art.md (wide objects, victim marker, token
-    colours, font). **(owner)**
+37. [ ] One art question is left in docs/Art.md section 10: suspect colour as a
+    disc under a neutral token, or tokens drawn in several colours. The others
+    were answered on 2026-11-25. **(owner)**
 38. [ ] Generate the sheets from `output/prompts/` and drop them in `input/`. **(owner)**
-    The prompts were regenerated 2026-11-25 with the suitcase (Train) and without
-    the coin and ad icons.
+    Eleven prompts (regenerated 2026-11-25): floors, four object sheets, people,
+    cats, interface, icon, store banner, TV banner.
+    `output/prompts/README.md` gives the order and what to check.
 39. [ ] Port the named-tile cutter and atlas builder from pushy when the first sheet
     arrives; accepted sheets to `sprites/`, prompts to `sprites/prompts/`.
 40. [ ] App icon and store feature graphic. **(owner)**
 41. [ ] Sounds: place, remove, wrong, solved; a mute setting.
 42. [ ] Decide what the store listing says about how the art is made. **(owner)**
+77. [ ] Draw the game with the art once sheets are accepted: floors per area, object
+    and token sprites in place of the labelled tiles and discs, the interface
+    marks; a second token atlas for cat mode. After 39.
+78. [ ] Android adaptive icon (foreground and background layers) and a launch screen
+    from the accepted icon; today both are Flutter's defaults.
+79. [ ] Choose a font and ship it in `assets/fonts/`. No special font for now
+    (owner, 2026-11-25): the platform font stays until this is taken up.
 
 ## 6. Languages
 
@@ -173,8 +191,9 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
 58. [ ] Approve or change the new player-facing copy: hint lines (`describeHint`,
     `describeStep`), "How to play" (`howToPlay`), the solved line, the cat-mode
     words (docs/features/Modes.md has them side by side). **(owner)**
-59. [ ] Cat mode beyond words: cat names, cat sprites, and the few statements that
-    say "person", "women" or "men". **(owner)** for names and art.
+59. [ ] Cat mode beyond words: cat names, cat sprites (prompt written; she-cats
+    ginger, he-cats blue-grey, owner 2026-11-25), and the few statements that say
+    "person", "women" or "men". **(owner)** for names.
 60. [ ] Play the new build: are the ticks, the "+", the greyed cards and the area
     names right? Is any title or object pairing still odd? **(owner)**
 63. [ ] A third mode, "missing item" ("who took the cookies"), on the same engine.
@@ -189,7 +208,18 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
 68. [ ] The longest functions (`drawScene`, `listCandidates`, `chooseClues`, the
     parser's main loop, the case screen's `build`) are over a hundred lines. Split
     when next changed; splitting the generator must not reorder its random calls.
-69. [ ] Wide objects (bed, boat) are drawn as two tiles; the art will draw them as one.
+69. [ ] Wide objects (bed, boat) are drawn as two tiles; the art draws them as one,
+    lying left-right, and the game must turn the sprite for top-bottom.
+81. [ ] Save a half-solved board so a case can be resumed (APP-GAM-012; OpenIssues
+    3.4). Today only ticks, the mode and opened extras are saved.
+82. [ ] More kinds of expert case: most need "what if", liar cases are the only
+    other flavour (OpenIssues 1.4). Depends on 5 and on 83.
+83. [ ] Teach the logic solver to count across statements ("exactly N in an area"
+    from two clues together). Today such cases are thrown away, which costs
+    yield, not correctness (OpenIssues 2.1). v2.
+84. [ ] Cat mode in the store: say in the listing and the content rating which
+    telling is the default, if cat mode is to widen the audience
+    (docs/features/Modes.md). **(owner)**
 
 70. [ ] Run a first hand-exploration session with the charters in
     docs/testing/Exploratory.md section 5 and record findings. **(owner)** or anyone
@@ -199,16 +229,33 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
 
 ## 10. Other screens (investigated 2026-11-25, docs/features/Screens.md)
 
-72. [ ] Type and spacing scale by screen size; case list in columns on wide screens;
-    cards in two columns beside the grid when there is room.
-73. [ ] Keyboard, remote and game pad: a cursor on the grid, keys for person, hint,
-    restart and back, visible focus; a widget test that plays a case with keys only.
+Recommended order: 72, 73, 74, then 75 (docs/features/Screens.md).
+
+72. [ ] Type and spacing scale chosen from the shorter side of the screen (phone,
+    tablet, TV), applied through the theme; case list in two or three columns on
+    wide screens; cards in two columns beside the grid when there is room.
+73. [ ] Keyboard, remote and game pad: a cursor on the grid moved by arrows or the
+    D-pad, OK doing what a tap does (`CaseSession.tap`); keys for next and previous
+    person, hint, one more statement, close the message, restart and back; a
+    visible focus ring on every control, the grid focused first; a widget test
+    that plays a case with keys only, and a planted bug in `tool/plant_bugs.py`
+    for "a key does something a tap would not".
 74. [ ] Decide whether TV is a target. Tried on the BRAVIA 2015 on 2026-11-25: it
     runs, the remote opens cases and hints, no square can be reached and no focus
     is visible (docs/features/Screens.md). **(owner)** to judge it on the sofa.
 75. [ ] Google TV: launcher entry, banner, touchscreen not required, TV layout with safe
     margins, Play Console TV form factor. Only after 73 and 74.
-76. [ ] Build and run once on iOS and on the web; neither has been built yet.
+76. [ ] Build and run once on iOS and on the web; neither has been built yet. On the
+    web also check the load size (the packs are source).
+85. [ ] Manual pass on a real tablet, with split-screen and a foldable's inner
+    display (ManualTestPlan). Nothing has been run on a tablet. **(device)**
+86. [ ] Try the Chromecast HD on the owner's network (a real Google TV, Android 14)
+    once 73 exists; the BRAVIA trial was on Android 7. **(device)**
+87. [ ] Desktop (Windows, macOS, Linux): not set up. Needs 73, a minimum window
+    size, and a meaning for hover and right-click. v2.
+88. [ ] Put the build with the area-name tabs on the owner's phone (it was not
+    connected on 2026-11-25), and decide whether the app stays on the BRAVIA.
+    **(device)** **(owner)**
 
 ## Parked (do not start without an owner ruling)
 
@@ -224,7 +271,7 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
 - Item 56 and 57: the price and what is free.
 - Item 59: cat names and art, if cat mode is to be more than words.
 - Item 65: should expert also hold 100 cases?
-- Item 37: the art questions.
+- Item 37: the one art question left (suspect colours).
 - Item 1: play some cases on paper and say whether they are fun.
 - Item 8: should "corner of the grid" count the squares around a cut corner? Today it does.
 - Item 16: approve the wording of the solved card.
@@ -233,3 +280,8 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
 - Item 42: what the store listing says about how the art is made.
 - Item 46: the daily case: generated on the device or shipped ahead, v1 or v2.
 - Item 61: are extra statements ("+") or hints ever sold? Today both are free.
+- Item 67: a "submit" step, or the check by itself on the last placement as today?
+- Item 74: is TV a target? Judge the BRAVIA build from the sofa.
+- Item 80: are future packs included in the purchase; is family sharing on?
+- Item 84: which telling the store listing leads with, if cat mode stays.
+- Item 88: plug the phone in for the tab build; keep or remove the app on the TV.
