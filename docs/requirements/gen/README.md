@@ -54,3 +54,7 @@ Conventions:
 | [GEN-035](GEN-035.md) | Extra statements are true and never needed |
 | [GEN-036](GEN-036.md) | A statement's mark follows the placements |
 | [GEN-037](GEN-037.md) | A case made on request is as sound as a shipped one |
+| [GEN-038](GEN-038.md) | The rules have a second witness |
+| [GEN-039](GEN-039.md) | A case seen in a mirror is the same puzzle |
+| [GEN-040](GEN-040.md) | Play never breaks the board |
+| [GEN-041](GEN-041.md) | The sentence says what the clue means |

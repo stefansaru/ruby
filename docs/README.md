@@ -32,6 +32,7 @@ projects' docs true):
 | [Testing.md](Testing.md) | The gates and the reason for each. |
 | [testing/Tests.md](testing/Tests.md) | Inventory of the test files. |
 | [testing/ManualTestPlan.md](testing/ManualTestPlan.md) | Checks a person runs. |
+| [testing/Exploratory.md](testing/Exploratory.md) | The rules explored by tests that draw their own inputs, the second witness, planted bugs, and charters for exploring by hand. |
 | [Performance.md](Performance.md) | Measured generator and solver times. |
 | [Art.md](Art.md) | What must be drawn, sheet formats, the art pipeline. |
 | [architecture/ads/Ads.md](architecture/ads/Ads.md) | Retired 2026-11-25: the game carries no ads. Kept as a pointer. |
@@ -41,6 +42,7 @@ projects' docs true):
 | File | Owns |
 |---|---|
 | [features/Modes.md](features/Modes.md) | Detective and cat mode: the research, what changes (only words), the draft copy, what is open. |
+| [features/Screens.md](features/Screens.md) | Landscape, tablets, Google TV and other sizes: what works, what does not, what each needs. |
 | [features/Hints.md](features/Hints.md) | Hints (free): what the draft does, the hint ladder, extra statements. |
 | [features/Notes.md](features/Notes.md) | Per-suspect notes and marks. |
 | [features/DailyCase.md](features/DailyCase.md) | The shared daily case. |

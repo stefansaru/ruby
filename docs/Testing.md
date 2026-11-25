@@ -96,3 +96,12 @@ is a contradiction check in the subset technique that an easier technique always
 reaches first. No floor is enforced by the doctor script yet (TODO 13). The generator's
 quality as a puzzle setter (are the cases fun?) is not something a test can decide;
 that is the paper-solving check in the manual test plan.
+
+## 6. Exploring for the flaws nobody thought of (2026-11-25)
+
+The tests above check what we thought to check, and almost all of them trust the engine's
+own reading of the rules. [testing/Exploratory.md](testing/Exploratory.md) describes the
+tests that do not: a second, independent statement of the rules that the engine must agree
+with; mirrors and other changes that must not matter; a random player with invariants;
+and a check of every English sentence against its clue. `tool/plant_bugs.py` plants
+deliberate bugs to prove those tests can fail (32 of 32 caught on 2026-11-25).

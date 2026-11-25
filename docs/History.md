@@ -5,6 +5,9 @@ docs describe the present; this one keeps the reasons from being lost.
 
 ## 2026-11-25 — the audit
 
+- **Area names were grey text straight on the floor**, hard to read over a colour. They
+  are white on a tab in the colour of the wall, hanging from the wall (owner, with a
+  sketch).
 - **The case screen decided what a tap meant and who was next.** That is in
   `CaseSession` now.
 - **A tap on an empty square after the case was solved moved the last person and

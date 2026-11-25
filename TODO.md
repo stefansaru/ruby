@@ -191,6 +191,25 @@ DoneLog. docs/strategy/Monetisation.md has the model and the evidence.
     when next changed; splitting the generator must not reorder its random calls.
 69. [ ] Wide objects (bed, boat) are drawn as two tiles; the art will draw them as one.
 
+70. [ ] Run a first hand-exploration session with the charters in
+    docs/testing/Exploratory.md section 5 and record findings. **(owner)** or anyone
+    who has not written the code.
+71. [ ] Deep exploratory run (`RUBY_EXPLORE=20`) and `tool/plant_bugs.py` before each
+    release. **(gate)** for release, not for commits.
+
+## 10. Other screens (investigated 2026-11-25, docs/features/Screens.md)
+
+72. [ ] Type and spacing scale by screen size; case list in columns on wide screens;
+    cards in two columns beside the grid when there is room.
+73. [ ] Keyboard, remote and game pad: a cursor on the grid, keys for person, hint,
+    restart and back, visible focus; a widget test that plays a case with keys only.
+74. [ ] Decide whether TV is a target. Tried on the BRAVIA 2015 on 2026-11-25: it
+    runs, the remote opens cases and hints, no square can be reached and no focus
+    is visible (docs/features/Screens.md). **(owner)** to judge it on the sofa.
+75. [ ] Google TV: launcher entry, banner, touchscreen not required, TV layout with safe
+    margins, Play Console TV form factor. Only after 73 and 74.
+76. [ ] Build and run once on iOS and on the web; neither has been built yet.
+
 ## Parked (do not start without an owner ruling)
 
 - Ranked duels, co-op, level editor, community cases: competitors have them; they

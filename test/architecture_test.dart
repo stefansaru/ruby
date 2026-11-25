@@ -179,6 +179,19 @@ void main() {
     }
   });
 
+  test('GEN-038 the second witness shares no code with the game', () {
+    // The oracle and the mirror are only worth something while they do
+    // not lean on what they check.
+    for (final path in <String>[
+      'test/support/oracle.dart',
+      'test/support/transform.dart',
+    ]) {
+      final f = File(path);
+      expect(f.existsSync(), isTrue, reason: path);
+      expect(imports(f), isEmpty, reason: '$path imports ${imports(f)}');
+    }
+  });
+
   test('GEN-022 a generated file says so, and only generated files do', () {
     for (final f in dartFiles('lib')) {
       final generated = RegExp(r'lib/data/cases_\w+\.dart$').hasMatch(name(f));

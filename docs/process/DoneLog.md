@@ -96,3 +96,11 @@ store release and the website page. They are in `TODO.md`.
   two-grid hints, the random button, parser values that can never be true, tool
   arguments, saved numbers that make no sense, starting without storage.
 - Tests: 145 to 208; line coverage 95.6% to 99.96%.
+
+## Exploratory tests (2026-11-25)
+
+- A second witness for the rules (`test/support/oracle.dart`) and 35 exploratory tests in
+  `test/explore/`: engine against oracle, solvers against the slow search, mirrors, a
+  random player, sentences against clues, damaged text, random taps (GEN-038 to 041).
+- `tool/plant_bugs.py`: 32 planted bugs, all caught after three gaps were closed.
+- docs/testing/Exploratory.md: the rules explored, how to run deep, charters for a person.

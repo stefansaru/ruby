@@ -4,6 +4,9 @@ import '../engine/model.dart';
 import '../engine/session.dart';
 import '../theme/palette.dart';
 
+/// Walls, and the tabs that carry the area names on them.
+const Color _wallColor = Color(0xDD000000);
+
 /// Where the squares of one grid are inside a box: lettered columns along
 /// the top, numbered rows down the left, square cells.
 class GridGeometry {
@@ -137,7 +140,7 @@ class _GridPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeWidth = cell * 0.09
       ..strokeCap = StrokeCap.square
-      ..color = Colors.black87;
+      ..color = _wallColor;
 
     for (var k = 0; k < grid.cols; k++) {
       _text(
@@ -274,9 +277,9 @@ class _GridPainter extends CustomPainter {
     }
   }
 
-  /// Writes each area's name just inside its longest stretch of top
-  /// wall, or down its longest stretch of left wall when that gives the
-  /// name more room.
+  /// Writes each area's name on a tab in the colour of the wall, hanging
+  /// from its longest stretch of top wall, or from its longest stretch of
+  /// left wall when that gives the name more room.
   void _areaNames(Canvas canvas) {
     final c = session.c;
     final grid = g.grid;
@@ -311,32 +314,50 @@ class _GridPainter extends CustomPainter {
         text: TextSpan(
           text: c.areas[a].name,
           style: TextStyle(
-            fontSize: cell * 0.17,
+            fontSize: cell * 0.15,
             height: 1,
             fontWeight: FontWeight.w700,
-            color: Colors.black.withValues(alpha: 0.62),
+            // The tab is the colour of the wall; the name stands out on it.
+            color: Colors.white,
           ),
         ),
         textDirection: TextDirection.ltr,
         maxLines: 1,
       )..layout();
-      final pad = cell * 0.08;
-      double room(int squares) => squares * cell - 2 * pad;
+      // The name sits on a tab that hangs from the wall: as wide as the
+      // name at the wall, cut slanted at its far end.
+      final height = cell * 0.2;
+      final pad = cell * 0.07;
+      final slant = height * 0.7;
+      double room(int squares) => squares * cell - 2 * pad - slant;
       // Turn the name only when it does not fit across and fits better down.
       final turned = painter.width > room(across.$3) && down.$3 > across.$3;
       final space = room(turned ? down.$3 : across.$3);
       final scale = painter.width > space ? space / painter.width : 1.0;
+      final width = painter.width * scale + 2 * pad;
       canvas.save();
+      // Move to where the tab meets the wall, x running along the wall.
       if (turned) {
         final top = g.rectOf(down.$1, down.$2);
         canvas
-          ..translate(top.left + pad * 0.6, top.top + down.$3 * cell - pad)
+          ..translate(top.left, top.top + down.$3 * cell)
           ..rotate(-1.5707963267948966);
       } else {
         final first = g.rectOf(across.$1, across.$2);
-        canvas.translate(first.left + pad, first.top + pad * 0.6);
+        canvas.translate(first.left, first.top);
       }
-      canvas.scale(scale);
+      canvas
+        ..drawPath(
+          Path()
+            ..moveTo(0, 0)
+            ..lineTo(width + slant, 0)
+            ..lineTo(width, height)
+            ..lineTo(0, height)
+            ..close(),
+          Paint()..color = _wallColor,
+        )
+        ..translate(pad, (height - painter.height * scale) / 2)
+        ..scale(scale);
       painter
         ..paint(canvas, Offset.zero)
         ..dispose();

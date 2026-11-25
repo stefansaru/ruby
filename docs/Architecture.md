@@ -92,6 +92,7 @@ test instead of failing on a phone.
 | `dart run tool/show_case.dart <tier> <n> [--answer]` | Prints a case as a player reads it; with `--answer`, the answer and the solver's steps. |
 | `dart run tool/bench_gen.dart [--n=N]` | Times a sample of slots from every tier. |
 | `py -3 tool/write_sprite_prompts.py` | Writes the art prompts; see [Art.md](Art.md). |
+| `py -3 tool/plant_bugs.py [suite]` | Plants one deliberate bug at a time in `lib/` and reports which tests notice; see [testing/Exploratory.md](testing/Exploratory.md). Slow; not a gate. |
 | `./doctor.sh`, `.\doctor.ps1` | The commit gates, in order. |
 
 ## 6. How a case is made
@@ -111,7 +112,7 @@ test instead of failing on a phone.
 | `lib/engine/session.dart` | `CaseSession`: the player's placements, who is selected, what a tap does (`tap` returns placed, lifted, refused or ignored), who is next, clashes, the squares to cross out, the statements a card shows and the mark of each (open, met, broken), solved, and what a hint says and why (worked out once per board). Pure Dart, so the screen decides nothing. |
 | `lib/screens/home_screen.dart` | A tab per tier, a row per case with a green tick when solved, a "Generate a random case" button under each list, a menu for the mode and "How to play". |
 | `lib/screens/case_screen.dart` | One case: grids, a closable message card, character cards whose statements are a checklist (tick, cross, "+" for one more). Placed cards are greyed and the next person is selected and scrolled to. |
-| `lib/widgets/case_grid.dart` | Draws one grid with placeholder shapes, the area names along the walls and a cross on squares ruled out by a placed person; reports taps. `GridGeometry` maps squares to pixels. |
+| `lib/widgets/case_grid.dart` | Draws one grid with placeholder shapes, the area names on wall-coloured tabs hanging from the walls, and a cross on squares ruled out by a placed person; reports taps. `GridGeometry` maps squares to pixels. |
 | `lib/widgets/clue_text.dart` | Draws `**key words**` bold. |
 | `lib/theme/palette.dart` | Placeholder colours. |
 | `lib/services/progress.dart` | Solved cases, the mode and opened extras, saved through a store. |

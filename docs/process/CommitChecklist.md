@@ -36,6 +36,20 @@ Gates 4 and 5 may be skipped only when the commit touches no file under
 - **Something that stopped being true:** the old text moves to
   `docs/History.md`; the docs describe the present.
 
+## When the change touches the rules, a clue, a solver or the wording
+
+Also run the deep exploratory tests and the planted bugs
+([Exploratory.md](../testing/Exploratory.md)); they take minutes and are not gates:
+
+```
+RUBY_EXPLORE=20 flutter test test/explore
+py -3 tool/plant_bugs.py
+```
+
+A new clue type or technique gets a line in the oracle (`test/support/oracle.dart`,
+written from the rules document, not from the engine), a line in the forms lists of the
+exploratory tests, and a planted bug.
+
 ## Commit message
 
 A short imperative subject; a body that says why. End with the attribution

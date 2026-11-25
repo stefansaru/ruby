@@ -26,6 +26,24 @@ The number of tests is not written here; `flutter test` prints it.
 | `hardening_test.dart` | Added with the audit of 2026-11-25. Values the parser refuses (a header line twice, a missing setting, a name used twice, keyword traits, distances under 2, negative counts, sides outside 1 to 4, a person twice in a solution, two openings on one wall). `readHeader` agrees with `parseCase` on every shipped case and never throws. The session: a tap places, lifts, is refused or is ignored once solved; the victim waits; a card's statements and extras; a hint is worked out once per board. One statement's pieces without the case rules. Liar cases: the solver names the lie, a hint never quotes it as true, there are no extras. Two grids: squares and lines named with their grid. Capacity, clashes, random ids. Which openings the clues need, for every clue type. Config refusals; a case that does not parse, a clue to spare and a silent suspect are reported; every setting has areas for two grids. | 006, 007, 011, 017, 019, 020, 026, 034, 035, 036 |
 | `edges_test.dart` | Added 2026-11-25. Parser refusals with their reasons (malformed header and scene lines, an area on two grids, unknown tests and clues, an offset of nothing, extras without a solution; a refusal names its line, or the case). The "everyone else" pieces, one per person. Negated wordings ("exactly N sides", "in my row"), and a negated clue has a sentence but is never stored. The rule sentence of a tall grid. A sentence for every technique; the victim rule in the words of the mode; hint lines for the victim and for a suspect with a harder step; the solved line and the rules sheet in both modes. A liar case where every statement as the lie fails; a hint still names someone, the victim last, when logic cannot finish. | 004, 006, 011, 024, 026, 027, 035 |
 
+## Exploratory (`test/explore/`, helpers in `test/support/`)
+
+Added 2026-11-25. These draw their own inputs from a fixed seed; the rules they explore are
+listed in [Exploratory.md](Exploratory.md). `RUBY_EXPLORE=<n>` makes them draw n times more.
+
+| File | What it covers | GEN ids |
+|---|---|---|
+| `meaning_test.dart` | The engine against the oracle: the certified answers; every shipped clue on random boards; whether a board is an answer; the slow search finds one answer on small cases; every clue form on the fixture board and on a two-grid scene; the rules of no-touch and cut-corner scenes. | 038 |
+| `solvers_test.dart` | For every clue form, alone, in pairs, with no-touch and with one liar, the exact solver finds exactly what the slow search finds. No technique rules out a square an answer uses, also on a grid with rows to spare. A placement never pushes someone off a square. | 038, 011, 013, 027, 001 |
+| `symmetry_test.dart` | Every case mirrored left to right and top to bottom has one answer, the mirror, and is solved by logic; the mirror changes what it should; mirroring twice gives the case back; extras counted as clues leave one answer. | 039 |
+| `play_test.dart` | A random player on cases of every tier with eight invariants checked after every action; hints finish any board. A tick or cross on a part-filled board is final, for every clue form and on wrong boards. The solver never rules out a true square from any correct board. | 040, 036, 013, 026 |
+| `words_test.dart` | Every shipped sentence against its notation: names, directions, counts, denials, pronouns; two-grid rows and columns say "of her grid"; thirty wrong sentences are noticed. | 041 |
+| `fuzz_test.dart` | Damaged case text is refused or sound, and never throws anything else; junk is refused; cases made on request pass the shipped check, the oracle and both mirrors; random taps on the screen at four sizes raise no error. | 006, 037, 040 |
+
+`test/support/oracle.dart` is the second witness (it may not import the game;
+`architecture_test.dart` checks that). `transform.dart` mirrors case text. `explore.dart`
+loads the packs and draws boards.
+
 ## Generator (`test/gen/`)
 
 | File | What it covers | GEN ids |
